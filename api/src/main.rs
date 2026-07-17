@@ -20,12 +20,16 @@ async fn main() {
         std::path::PathBuf::from(&config.storage.base_path),
     ));
 
+    let engine = book_vault::search::engine::SearchEngine::new();
+    engine.rebuild(&db);
+
     let state: SharedState = Arc::new(AppState {
         metadata_service: book_vault::metadata::service::MetadataService::new(),
         config: config.clone(),
         db,
         storage,
         rate_limiter: book_vault::auth::rate_limit::RateLimiter::new(5, 900),
+        search_engine: engine,
     });
 
     let worker_state = state.clone();

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
 	import { api, authState } from "$lib/api/client";
+	import { goto } from "$app/navigation";
 	import type { BookResponse } from "$lib/api/generated";
 	import UploadModal from "$lib/components/UploadModal.svelte";
 	import BookOpen from "@lucide/svelte/icons/book-open";
@@ -11,6 +12,7 @@
 	import Plus from "@lucide/svelte/icons/plus";
 	import Trash2 from "@lucide/svelte/icons/trash-2";
 	import ChevronRight from "@lucide/svelte/icons/chevron-right";
+	import Info from "@lucide/svelte/icons/info";
 
 	type ShelfInfo = {
 		id: string;
@@ -145,6 +147,16 @@
 											class="font-label text-label-sm bg-surface-container-high rounded px-2 py-0.5 tracking-wider uppercase"
 											>{formatBadge(book.format)}</span
 										>
+										<button
+											onclick={(e) => {
+												e.preventDefault();
+												goto(`/book/${book.id}`);
+											}}
+											class="text-on-surface-variant/40 hover:text-secondary ml-auto cursor-pointer transition-colors"
+											title="Details"
+										>
+											<Info size={14} />
+										</button>
 									</div>
 									<h3 class="font-display text-headline-sm mb-1">{book.title}</h3>
 									<p class="font-body text-body-md text-on-surface-variant italic">
@@ -284,7 +296,10 @@
 			{:else}
 				<div class="gap-gutter grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 					{#each shelves as shelf (shelf.id)}
-						<div class="paper-card group rounded-xl p-6 transition-all hover:shadow-lg">
+						<a
+							href="/shelves/{shelf.id}"
+							class="paper-card group block rounded-xl p-6 transition-all hover:shadow-lg"
+						>
 							<div class="mb-4 flex items-start justify-between">
 								<div
 									class="bg-surface-container flex h-10 w-10 items-center justify-center rounded-lg"
@@ -292,7 +307,10 @@
 									<Bookmark size={18} class="text-secondary" />
 								</div>
 								<button
-									onclick={() => handleDeleteShelf(shelf.id)}
+									onclick={(e) => {
+										e.preventDefault();
+										handleDeleteShelf(shelf.id);
+									}}
 									disabled={deletingShelf === shelf.id}
 									class="text-on-surface-variant/30 hover:text-error p-1 opacity-0 transition-all group-hover:opacity-100 disabled:opacity-30"
 								>
@@ -317,7 +335,7 @@
 								</span>
 								<ChevronRight size={16} class="text-on-surface-variant/30" />
 							</div>
-						</div>
+						</a>
 					{/each}
 				</div>
 			{/if}

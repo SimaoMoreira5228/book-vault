@@ -191,12 +191,40 @@ impl JobWorker {
         kind: &str,
         job: &job_queue::Model,
     ) -> Result<(), AppError> {
-        match kind {
-            "ingest_epub" => crate::ingest::epub::ingest(&state, job).await,
-            "ingest_pdf" => crate::ingest::pdf::ingest(&state, job).await,
-            "ingest_cbz" => crate::ingest::cbz::ingest(&state, job).await,
-            "ingest_mobi" => crate::ingest::mobi::ingest(&state, job).await,
+        let result = match kind {
+            "ingest_epub" => crate::ingest::epub::ingest(state, job).await,
+            "ingest_pdf" => crate::ingest::pdf::ingest(state, job).await,
+            "ingest_cbz" => crate::ingest::cbz::ingest(state, job).await,
+            "ingest_mobi" => crate::ingest::mobi::ingest(state, job).await,
             other => Err(AppError::Internal(format!("Unknown job kind: {other}"))),
+        };
+
+        if result.is_ok() {
+            if let Some(book_id_str) = job.payload.get("book_id").and_then(|v| v.as_str()) {
+                if let Ok(book_id) = uuid::Uuid::parse_str(book_id_str) {
+                    if let Ok(ir) = Self::load_ir(state, book_id).await {
+                        state.search_engine.index_book(book_id, &ir);
+                    }
+                }
+            }
         }
+
+        result
+    }
+
+    async fn load_ir(state: &SharedState, book_id: uuid::Uuid) -> Result<crate::ir::BookIr, AppError> {
+        use crate::db::entities::book_ir;
+        use sea_orm::ColumnTrait;
+
+        let row = BookIr::find()
+            .filter(book_ir::Column::BookId.eq(book_id))
+            .one(&state.db)
+            .await?
+            .ok_or_else(|| AppError::NotFound("Book IR not found".into()))?;
+
+        let ir: crate::ir::BookIr = rmp_serde::from_slice(&row.payload)
+            .map_err(|e| AppError::Internal(format!("Failed to decode IR: {e}")))?;
+
+        Ok(ir)
     }
 }

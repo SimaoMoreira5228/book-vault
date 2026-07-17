@@ -6,6 +6,7 @@ import type {
 	LoginRequest,
 	RegisterRequest,
 	SearchResult,
+	ProspectiveMetadata,
 	ShelfResponse,
 	UserResponse
 } from "./generated";
@@ -116,9 +117,25 @@ export const api = {
 
 	shelves: {
 		list: () => request<ShelfResponse[]>("GET", "/api/v1/shelves"),
+		get: (id: string) => request<ShelfResponse>("GET", `/api/v1/shelves/${id}`),
 		create: (data: { name: string; description?: string; kind?: string }) =>
 			request<ShelfResponse>("POST", "/api/v1/shelves", data),
-		delete: (id: string) => request<void>("DELETE", `/api/v1/shelves/${id}`)
+		delete: (id: string) => request<void>("DELETE", `/api/v1/shelves/${id}`),
+		getBooks: (id: string) =>
+			request<
+				Array<{
+					book_id: string;
+					title: string;
+					author: string | null;
+					read_status: string;
+				}>
+			>("GET", `/api/v1/shelves/${id}/books`),
+		addBook: (shelfId: string, bookId: string) =>
+			request<Record<string, unknown>>("POST", `/api/v1/shelves/${shelfId}/books`, {
+				book_id: bookId
+			}),
+		removeBook: (shelfId: string, bookId: string) =>
+			request<void>("DELETE", `/api/v1/shelves/${shelfId}/books/${bookId}`)
 	},
 
 	search: (q: string) => request<SearchResult>("GET", `/api/v1/search?q=${encodeURIComponent(q)}`),
@@ -265,6 +282,28 @@ export const api = {
 					`/api/v1/revisions/${revisionId}/restore`
 				)
 		}
+	},
+
+	metadata: {
+		get: (bookId: string) =>
+			request<Record<string, unknown>>("GET", `/api/v1/books/${bookId}/metadata`),
+		candidates: (bookId: string, query: { title?: string; author?: string; isbn?: string }) =>
+			request<ProspectiveMetadata[]>(
+				"GET",
+				`/api/v1/books/${bookId}/metadata/candidates?${new URLSearchParams(
+					Object.fromEntries(Object.entries(query).filter(([, v]) => v != null))
+				).toString()}`
+			),
+		confirm: (bookId: string, candidate: ProspectiveMetadata) =>
+			request<Record<string, unknown>>("POST", `/api/v1/books/${bookId}/metadata/confirm`, {
+				candidate
+			}),
+		refresh: (bookId: string) =>
+			request<Record<string, unknown>>("POST", `/api/v1/books/${bookId}/metadata/refresh`),
+		lockField: (bookId: string, field: string) =>
+			request<Record<string, unknown>>("POST", `/api/v1/books/${bookId}/metadata/lock/${field}`),
+		unlockField: (bookId: string, field: string) =>
+			request<Record<string, unknown>>("DELETE", `/api/v1/books/${bookId}/metadata/lock/${field}`)
 	},
 
 	sessions: {

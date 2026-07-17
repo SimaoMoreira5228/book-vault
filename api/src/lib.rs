@@ -31,6 +31,7 @@ pub struct AppState {
     pub storage: Arc<dyn storage::StorageProvider>,
     pub metadata_service: metadata::service::MetadataService,
     pub rate_limiter: auth::rate_limit::RateLimiter,
+    pub search_engine: search::engine::SearchEngine,
 }
 
 pub fn build_router(state: SharedState) -> Router {

@@ -6,6 +6,7 @@ export type { UserResponse } from "./UserResponse";
 export type { ShelfResponse } from "./ShelfResponse";
 export type { SearchResult } from "./SearchResult";
 export type BookHit = { id: string; title: string; author: string | null };
+export type { ContentHit } from "./ContentHit";
 export type { BookIr } from "./BookIr";
 export type { Section } from "./Section";
 export type { Block } from "./Block";

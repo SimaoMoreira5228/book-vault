@@ -1,7 +1,7 @@
 use std::net::SocketAddr;
 use std::sync::Arc;
 
-use book_vault::{build_router, db, storage::LocalFsProvider, AppState, Config, SharedState};
+use book_vault::{build_router, db, search, storage::LocalFsProvider, AppState, Config, SharedState};
 use serde_json::Value;
 use tokio::net::TcpListener;
 
@@ -35,6 +35,7 @@ impl TestApp {
             db: db_conn,
             storage,
             rate_limiter: book_vault::auth::rate_limit::RateLimiter::new(100, 900),
+            search_engine: search::engine::SearchEngine::new(),
         });
 
         let app = build_router(state);
