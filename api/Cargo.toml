@@ -11,11 +11,6 @@ edition = "2021"
 name = "book_vault"
 path = "src/lib.rs"
 
-[[test]]
-name = "integration"
-path = "tests/integration.rs"
-harness = true
-
 [features]
 default = ["sqlite"]
 sqlite = ["sea-orm/sqlx-sqlite", "migration/sqlite"]
@@ -65,7 +60,7 @@ toml = "1"
 base64 = "0.22"
 tempfile = "3"
 lopdf = "0.44"
-reqwest = { version = "0.13", features = ["json"] }
+reqwest = { version = "0.13", features = ["json", "multipart", "cookies"] }
 
 [package.metadata.ts-rs]
 dir = "../web/src/lib/api/generated"

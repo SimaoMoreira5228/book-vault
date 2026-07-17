@@ -181,13 +181,26 @@ async fn create_shelf(
     };
 
     let shelf = shelves::Entity::insert(shelf).exec_with_returning(&state.db).await?;
+
+    let library_ids = crate::routes::books::get_user_library_ids(&state.db, auth.user_id).await?;
+    let count = if shelf.kind == "dynamic" {
+        if let Some(ref ast) = shelf.rule_ast {
+            let condition = eval::build_condition(ast)?;
+            Books::find()
+                .filter(books::Column::LibraryId.is_in(library_ids))
+                .filter(condition)
+                .count(&state.db)
+                .await? as usize
+        } else { 0 }
+    } else { 0 };
+
     Ok(Json(ShelfResponse {
         id: shelf.id,
         library_id: shelf.library_id,
         name: shelf.name,
         description: shelf.description,
         kind: shelf.kind,
-        book_count: 0,
+        book_count: count,
         created_at: shelf.created_at.to_string(),
     }))
 }

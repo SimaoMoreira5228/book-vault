@@ -96,7 +96,7 @@ async fn login_handler(
     State(state): State<SharedState>,
     headers: HeaderMap,
     Json(req): Json<LoginRequest>,
-) -> Result<Json<serde_json::Value>, AppError> {
+) -> Result<(HeaderMap, Json<serde_json::Value>), AppError> {
     let user = Users::find()
         .filter(users::Column::Email.eq(&req.email))
         .one(&state.db)
@@ -125,13 +125,12 @@ async fn login_handler(
     let cookie = set_session_cookie(&token, state.config.auth.session_ttl_days);
     let user_resp: UserResponse = user.into();
 
-    let mut headers = HeaderMap::new();
-    headers.insert(header::SET_COOKIE, cookie.parse().unwrap());
+    let mut resp_headers = HeaderMap::new();
+    resp_headers.insert(header::SET_COOKIE, cookie.parse().unwrap());
 
-    Ok(Json(serde_json::json!({
+    Ok((resp_headers, Json(serde_json::json!({
         "user": user_resp,
-        "cookie": cookie,
-    })))
+    }))))
 }
 
 async fn logout_handler(
