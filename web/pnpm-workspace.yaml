@@ -9,3 +9,6 @@ allowBuilds:
 
 minimumReleaseAgeExclude:
   - svelte@5.56.6
+onlyBuiltDependencies:
+  - workerd
+  - sharp
