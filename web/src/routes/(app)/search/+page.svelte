@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from "$lib/paraglide/messages";
 	import { api } from "$lib/api/client";
 	import type { BookHit } from "$lib/api/generated";
 	import Search from "@lucide/svelte/icons/search";
@@ -37,9 +38,9 @@
 <section class="mb-section-gap">
 	<header class="mb-8">
 		<span class="font-label text-label-sm text-secondary mb-2 block tracking-widest uppercase"
-			>Discover</span
+			>{m.search_subtitle()}</span
 		>
-		<h2 class="font-display text-headline-md">Search Library</h2>
+		<h2 class="font-display text-headline-md">{m.search_title()}</h2>
 	</header>
 
 	<form onsubmit={handleSearch} class="mb-12">
@@ -48,7 +49,7 @@
 			<input
 				type="text"
 				bind:value={query}
-				placeholder="Search by title or author..."
+				placeholder={m.search_placeholder()}
 				class="bg-surface-container-low border-outline/10 font-body text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:ring-primary/10 w-full rounded-xl border py-4 pr-4 pl-12 focus:ring-2 focus:outline-none"
 			/>
 		</div>
@@ -58,7 +59,9 @@
 		{#if results.length === 0}
 			<div class="py-16 text-center">
 				<SearchX size={32} class="text-on-surface-variant/30 mb-4 block" />
-				<p class="font-body text-body-md text-on-surface-variant">No results found for "{query}"</p>
+				<p class="font-body text-body-md text-on-surface-variant">
+					{m.search_no_results({ query })}
+				</p>
 			</div>
 		{:else}
 			<div class="space-y-4">
@@ -83,7 +86,7 @@
 								{/if}
 							</div>
 							<p class="font-label text-label-sm text-on-surface-variant">
-								{hit.author ?? "Unknown Author"}
+								{hit.author ?? m.library_unknown_author()}
 							</p>
 						</div>
 					</a>

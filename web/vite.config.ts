@@ -1,3 +1,4 @@
+import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vitest/config";
 import { playwright } from "@vitest/browser-playwright";
@@ -16,6 +17,12 @@ export default defineConfig({
 			},
 			adapter: adapter({ fallback: "index.html" }),
 			experimental: { remoteFunctions: true }
+		}),
+
+		paraglideVitePlugin({
+			project: "./project.inlang",
+			outdir: "./src/lib/paraglide",
+			strategy: ["url"]
 		})
 	],
 	test: {

@@ -1,39 +1,60 @@
 <script lang="ts">
+	import * as m from "$lib/paraglide/messages";
+	import * as v from "valibot";
 	import { authState } from "$lib/api/client";
 	import { goto } from "$app/navigation";
-	import type { LoginRequest } from "$lib/api/generated";
+	import { LoginSchema } from "$lib/validation";
+	import type { LoginFormData } from "$lib/validation";
 
 	let email = $state("");
 	let password = $state("");
-	let error = $state("");
+	let apiError = $state("");
+	let fieldErrors = $state<Partial<Record<keyof LoginFormData, string>>>({});
 	let loading = $state(false);
 
-	async function handleSubmit() {
-		error = "";
-		loading = true;
+	function validate(): LoginFormData | null {
+		const result = v.safeParse(LoginSchema, { email, password });
+		if (!result.success) {
+			const errors: Partial<Record<keyof LoginFormData, string>> = {};
+			for (const issue of result.issues) {
+				const path = issue.path?.[0]?.key as keyof LoginFormData;
+				if (path && !errors[path]) errors[path] = issue.message;
+			}
+			fieldErrors = errors;
+			return null;
+		}
+		fieldErrors = {};
+		return result.output;
+	}
 
-		const result = await authState.login({ email, password } as LoginRequest);
+	async function handleSubmit() {
+		apiError = "";
+		const data = validate();
+		if (!data) return;
+
+		loading = true;
+		const result = await authState.login({ email: data.email, password: data.password });
 
 		if (result.isOk()) {
 			goto("/");
 		} else {
-			error = result.error.message || "Login failed";
+			apiError = result.error.message || "Login failed";
 		}
 		loading = false;
 	}
 </script>
 
 <div class="mb-12 text-center">
-	<h1 class="font-display text-display-mobile text-primary mb-2">Book Vault</h1>
+	<h1 class="font-display text-display-mobile text-primary mb-2">{m.app_name()}</h1>
 	<p class="font-label text-label-sm text-on-surface-variant tracking-widest uppercase">
-		Digital Sanctuary
+		{m.app_tagline()}
 	</p>
 </div>
 
-<form onsubmit={handleSubmit} class="space-y-8">
-	{#if error}
+<form onsubmit={handleSubmit} novalidate class="space-y-8">
+	{#if apiError}
 		<div class="font-label text-label-sm text-error bg-error-container/20 rounded-lg px-4 py-3">
-			{error}
+			{apiError}
 		</div>
 	{/if}
 
@@ -41,44 +62,53 @@
 		<label
 			for="email"
 			class="font-label text-label-sm text-on-surface-variant mb-2 block tracking-widest uppercase"
-			>Email</label
+			>{m.auth_login_email_label()}</label
 		>
 		<input
 			id="email"
 			type="email"
 			bind:value={email}
-			class="input-minimal"
+			class={["input-minimal", fieldErrors.email ? "border-error" : "border-on-surface-variant/20"]}
 			placeholder="your@email.com"
-			required
+			oninput={() => (fieldErrors.email = undefined)}
 		/>
+		{#if fieldErrors.email}
+			<p class="font-label text-label-sm text-error mt-1">{fieldErrors.email}</p>
+		{/if}
 	</div>
 
 	<div>
 		<label
 			for="password"
 			class="font-label text-label-sm text-on-surface-variant mb-2 block tracking-widest uppercase"
-			>Password</label
+			>{m.auth_login_password_label()}</label
 		>
 		<input
 			id="password"
 			type="password"
 			bind:value={password}
-			class="input-minimal"
+			class={[
+				"input-minimal",
+				fieldErrors.password ? "border-error" : "border-on-surface-variant/20"
+			]}
 			placeholder="••••••••"
-			required
+			oninput={() => (fieldErrors.password = undefined)}
 		/>
+		{#if fieldErrors.password}
+			<p class="font-label text-label-sm text-error mt-1">{fieldErrors.password}</p>
+		{/if}
 	</div>
 
 	<button type="submit" disabled={loading} class="btn-primary w-full">
-		{loading ? "Signing in..." : "Sign In"}
+		{loading ? m.auth_login_submitting() : m.auth_login_submit()}
 	</button>
 
 	<p class="font-label text-label-sm text-on-surface-variant text-center">
-		Don't have an account?
+		{m.auth_login_no_account()}
 		<a
 			href="/register"
 			class="text-secondary border-secondary/30 hover:border-secondary border-b transition-all"
-			>Register</a
+			>{m.auth_login_link_register()}</a
 		>
 	</p>
 </form>

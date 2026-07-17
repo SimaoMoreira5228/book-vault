@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from "$lib/paraglide/messages";
 	import { authState } from "$lib/api/client";
 	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
@@ -34,7 +35,7 @@
 			<div
 				class="border-outline/10 bg-surface-container h-8 w-8 overflow-hidden rounded-full border"
 			/>
-			<h1 class="font-display text-display-mobile text-primary">Book Vault</h1>
+			<h1 class="font-display text-display-mobile text-primary">{m.app_name()}</h1>
 		</div>
 		<button class="text-primary transition-opacity hover:opacity-80 active:scale-95">
 			<Bell size={20} />
@@ -58,7 +59,7 @@
 			]}
 		>
 			<BookOpen size={20} />
-			<span class="font-label text-label-sm mt-1">Library</span>
+			<span class="font-label text-label-sm mt-1">{m.nav_library()}</span>
 		</a>
 		<a
 			href="/search"
@@ -70,7 +71,7 @@
 			]}
 		>
 			<Search size={20} />
-			<span class="font-label text-label-sm mt-1">Search</span>
+			<span class="font-label text-label-sm mt-1">{m.nav_search()}</span>
 		</a>
 		<a
 			href="/studio"
@@ -82,14 +83,14 @@
 			]}
 		>
 			<PenSquare size={20} />
-			<span class="font-label text-label-sm mt-1">Studio</span>
+			<span class="font-label text-label-sm mt-1">{m.nav_studio()}</span>
 		</a>
 		<a
 			href="/notes"
 			class="text-on-surface-variant flex flex-col items-center justify-center px-4 py-1 opacity-70 transition-colors active:scale-90"
 		>
 			<ScrollText size={20} />
-			<span class="font-label text-label-sm mt-1">Notes</span>
+			<span class="font-label text-label-sm mt-1">{m.nav_notes()}</span>
 		</a>
 	</nav>
 </div>

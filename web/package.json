@@ -18,6 +18,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
+		"@inlang/paraglide-js": "^2.18.2",
 		"@playwright/test": "^1.60.0",
 		"@sveltejs/adapter-static": "next",
 		"@sveltejs/kit": "next",
@@ -46,6 +47,7 @@
 		"vitest-browser-svelte": "^2.1.1"
 	},
 	"dependencies": {
-		"@lucide/svelte": "^1.24.0"
+		"@lucide/svelte": "^1.24.0",
+		"valibot": "^1.4.2"
 	}
 }

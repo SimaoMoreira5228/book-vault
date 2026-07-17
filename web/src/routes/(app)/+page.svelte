@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from "$lib/paraglide/messages";
 	import { api, authState } from "$lib/api/client";
 	import type { BookResponse } from "$lib/api/generated";
 	import BookOpen from "@lucide/svelte/icons/book-open";
@@ -27,8 +28,12 @@
 	const forYou = $derived(books.filter((b) => b.read_status !== "reading"));
 
 	function formatBadge(format: string): string {
-		if (format === "mobi_raw") return "MOBI";
-		if (format === "cbz") return "CBZ";
+		if (format === "mobi_raw") return m.book_format_mobi();
+		if (format === "cbz") return m.book_format_cbz();
+		if (format === "pdf") return m.book_format_pdf();
+		if (format === "epub") return m.book_format_epub();
+		if (format === "native") return m.book_format_native();
+		if (format === "bvir") return m.book_format_bvir();
 		return format.toUpperCase();
 	}
 </script>
@@ -43,14 +48,14 @@
 		<header class="mb-8 flex items-end justify-between">
 			<div>
 				<span class="font-label text-label-sm text-secondary mb-2 block tracking-widest uppercase"
-					>Resume Journey</span
+					>{m.library_reading_subtitle()}</span
 				>
-				<h2 class="font-display text-headline-md">Currently Reading</h2>
+				<h2 class="font-display text-headline-md">{m.library_reading_title()}</h2>
 			</div>
 			<a
 				href="/search"
 				class="font-label text-label-md text-secondary hover:border-secondary border-b border-transparent transition-all"
-				>View All</a
+				>{m.library_reading_view_all()}</a
 			>
 		</header>
 
@@ -58,7 +63,7 @@
 			<div class="paper-card rounded-xl p-12 text-center">
 				<BookOpen size={32} class="text-on-surface-variant/30 mb-4 block" />
 				<p class="font-body text-body-md text-on-surface-variant">
-					No books being read yet. Upload or create your first book!
+					{m.library_reading_empty()}
 				</p>
 			</div>
 		{:else}
@@ -84,13 +89,13 @@
 								</div>
 								<h3 class="font-display text-headline-sm mb-1">{book.title}</h3>
 								<p class="font-body text-body-md text-on-surface-variant italic">
-									{book.author ?? "Unknown Author"}
+									{book.author ?? m.library_unknown_author()}
 								</p>
 							</div>
 							<div class="mt-6">
 								<div class="mb-2 flex items-end justify-between">
 									<span class="font-label text-label-sm text-on-surface-variant uppercase"
-										>In Progress</span
+										>{m.library_reading_progress()}</span
 									>
 								</div>
 								<div class="reading-progress-bar overflow-hidden rounded-full">
@@ -109,9 +114,9 @@
 		<header class="mb-8 flex items-end justify-between">
 			<div>
 				<span class="font-label text-label-sm text-secondary mb-2 block tracking-widest uppercase"
-					>Curated Selection</span
+					>{m.library_for_you_subtitle()}</span
 				>
-				<h2 class="font-display text-headline-md">For You</h2>
+				<h2 class="font-display text-headline-md">{m.library_for_you_title()}</h2>
 			</div>
 		</header>
 
@@ -119,7 +124,7 @@
 			<div class="border-outline-variant/30 rounded-xl border-2 border-dashed p-12 text-center">
 				<LibraryBig size={32} class="text-on-surface-variant/30 mb-4 block" />
 				<p class="font-body text-body-md text-on-surface-variant">
-					Your library is empty. Upload an EPUB or PDF to get started.
+					{m.library_for_you_empty()}
 				</p>
 			</div>
 		{:else}
@@ -148,7 +153,7 @@
 							{book.title}
 						</h4>
 						<p class="font-label text-label-sm text-on-surface-variant">
-							{book.author ?? "Unknown Author"}
+							{book.author ?? m.library_unknown_author()}
 						</p>
 					</a>
 				{/each}
@@ -161,7 +166,9 @@
 						size={28}
 						class="text-on-surface-variant/40 transition-transform group-hover:scale-110"
 					/>
-					<span class="font-label text-label-sm text-on-surface-variant mt-2">Add Book</span>
+					<span class="font-label text-label-sm text-on-surface-variant mt-2"
+						>{m.library_add_book()}</span
+					>
 				</a>
 			</div>
 		{/if}

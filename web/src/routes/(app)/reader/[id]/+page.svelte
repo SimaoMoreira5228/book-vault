@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from "$lib/paraglide/messages";
 	import { api } from "$lib/api/client";
 	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
@@ -99,7 +100,7 @@
 			<ArrowLeft size={20} class="text-primary" />
 		</button>
 		<h1 class="font-display text-headline-sm text-primary max-w-[240px] truncate md:max-w-md">
-			{meta?.title ?? bookData?.book.spine[0]?.title ?? "Loading..."}
+			{meta?.title ?? bookData?.book.spine[0]?.title ?? m.reader_loading()}
 		</h1>
 	</div>
 	<div class="flex items-center gap-2">
@@ -114,7 +115,7 @@
 							: "text-on-surface-variant hover:text-primary"
 					]}
 				>
-					Extracted Text
+					{m.reader_tab_text()}
 				</button>
 				<button
 					onclick={() => (pdfMode = "pdf")}
@@ -125,7 +126,7 @@
 							: "text-on-surface-variant hover:text-primary"
 					]}
 				>
-					Original PDF
+					{m.reader_tab_pdf()}
 				</button>
 			</div>
 		{/if}
@@ -133,7 +134,7 @@
 			<button
 				onclick={() => api.raw(bookId)}
 				class="p-2 transition-transform duration-200 hover:opacity-80 active:scale-95"
-				title="Download Original"
+				title={m.reader_download()}
 			>
 				<Download size={20} class="text-on-surface-variant" />
 			</button>
@@ -187,7 +188,7 @@
 						class="font-label text-label-sm text-on-surface-variant hover:text-primary flex items-center gap-1 p-2 transition-colors disabled:cursor-not-allowed disabled:opacity-30"
 					>
 						<ChevronLeft size={14} />
-						Previous
+						{m.reader_prev()}
 					</button>
 					<span class="font-label text-label-md text-on-surface-variant/60 tracking-widest">
 						{comicPage} / {comicPages.length}
@@ -197,7 +198,7 @@
 						disabled={comicPage >= comicPages.length}
 						class="font-label text-label-sm text-on-surface-variant hover:text-primary flex items-center gap-1 p-2 transition-colors disabled:cursor-not-allowed disabled:opacity-30"
 					>
-						Next
+						{m.reader_next()}
 						<ChevronRight size={14} />
 					</button>
 				</div>
@@ -211,7 +212,7 @@
 			</p>
 			<button onclick={() => api.raw(bookId)} class="btn-primary">
 				<Download size={20} />
-				Download Original
+				{m.reader_download()}
 			</button>
 		</div>
 	{:else if bookData}
@@ -268,17 +269,17 @@
 			class="font-label text-label-sm text-on-surface-variant hover:text-primary flex items-center gap-1 p-2 transition-colors"
 		>
 			<ChevronLeft size={14} />
-			Previous
+			{m.reader_prev()}
 		</button>
 	</div>
 	<div class="font-label text-label-md text-on-surface-variant/60 tracking-widest">
-		{progress}% Complete
+		{m.reader_complete({ progress })}
 	</div>
 	<div class="flex items-center gap-2">
 		<button
 			class="font-label text-label-sm text-on-surface-variant hover:text-primary flex items-center gap-1 p-2 transition-colors"
 		>
-			Next
+			{m.reader_next()}
 			<ChevronRight size={14} />
 		</button>
 	</div>

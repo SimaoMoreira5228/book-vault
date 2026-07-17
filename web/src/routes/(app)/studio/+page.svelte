@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from "$lib/paraglide/messages";
 	import { api } from "$lib/api/client";
 	import type { BookResponse } from "$lib/api/generated";
 	import Plus from "@lucide/svelte/icons/plus";
@@ -46,13 +47,13 @@
 <section class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 	<div>
 		<p class="font-label text-label-sm text-secondary mb-2 tracking-widest uppercase">
-			Author Dashboard
+			{m.studio_dashboard()}
 		</p>
-		<h2 class="font-display text-headline-md text-primary">Creator Studio</h2>
+		<h2 class="font-display text-headline-md text-primary">{m.studio_title()}</h2>
 	</div>
 	<button onclick={createNew} class="btn-primary">
 		<Plus size={20} />
-		Start New Project
+		{m.studio_new_project()}
 	</button>
 </section>
 
@@ -60,9 +61,9 @@
 <section class="mb-section-gap grid grid-cols-1 gap-6 md:grid-cols-3">
 	<div class="border-primary/5 rounded-xl border bg-white p-8 shadow-sm md:col-span-2">
 		<div class="mb-8 flex items-start justify-between">
-			<h3 class="font-display text-headline-sm text-primary">Writing Insights</h3>
+			<h3 class="font-display text-headline-sm text-primary">{m.studio_insights_title()}</h3>
 			<div class="text-on-surface-variant font-label text-label-sm flex items-center gap-2">
-				<span>This Week</span>
+				<span>{m.studio_insights_week()}</span>
 				<ChevronDown size={18} />
 			</div>
 		</div>
@@ -87,7 +88,7 @@
 				<p class="font-display mb-1 text-[32px] leading-none">
 					{drafts.length > 0 ? `${drafts.length}` : "0"}
 				</p>
-				<p class="font-label text-label-sm opacity-60">Manuscripts</p>
+				<p class="font-label text-label-sm opacity-60">{m.studio_manuscripts()}</p>
 			</div>
 		</div>
 		<div
@@ -96,7 +97,7 @@
 			<Clock size={20} class="text-on-primary-container" />
 			<div>
 				<p class="font-display mb-1 text-[32px] leading-none">--</p>
-				<p class="font-label text-label-sm opacity-60">Deep focus time</p>
+				<p class="font-label text-label-sm opacity-60">{m.studio_focus_time()}</p>
 			</div>
 		</div>
 	</div>
@@ -105,7 +106,7 @@
 <!-- Current Drafts -->
 <section class="mb-section-gap">
 	<div class="mb-8 flex items-center justify-between">
-		<h3 class="font-display text-headline-sm text-primary">Current Drafts</h3>
+		<h3 class="font-display text-headline-sm text-primary">{m.studio_drafts_title()}</h3>
 	</div>
 
 	{#if loading}
@@ -124,9 +125,9 @@
 			>
 				<PlusCircle size={20} class="text-on-surface-variant" />
 			</div>
-			<p class="font-display text-on-surface-variant text-[16px]">New Manuscript</p>
+			<p class="font-display text-on-surface-variant text-[16px]">{m.studio_new_manuscript()}</p>
 			<p class="font-label text-label-sm text-on-surface-variant mt-2 text-center opacity-60">
-				Start your next masterpiece
+				{m.studio_start_masterpiece()}
 			</p>
 		</div>
 	{:else}
@@ -143,7 +144,7 @@
 						<div class="absolute right-4 bottom-4">
 							<span
 								class="font-label text-primary rounded-full bg-white/90 px-3 py-1 text-[10px] tracking-widest uppercase backdrop-blur"
-								>Draft</span
+								>{m.studio_draft_badge()}</span
 							>
 						</div>
 					</div>
@@ -165,7 +166,7 @@
 				>
 					<PlusCircle size={20} class="text-on-surface-variant" />
 				</div>
-				<p class="font-display text-on-surface-variant text-[16px]">New Manuscript</p>
+				<p class="font-display text-on-surface-variant text-[16px]">{m.studio_new_manuscript()}</p>
 			</div>
 		</div>
 	{/if}
