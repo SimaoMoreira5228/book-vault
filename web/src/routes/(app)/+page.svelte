@@ -4,6 +4,7 @@
 	import { goto } from "$app/navigation";
 	import type { BookResponse } from "$lib/api/generated";
 	import UploadModal from "$lib/components/UploadModal.svelte";
+	import BookCover from "$lib/components/BookCover.svelte";
 	import BookOpen from "@lucide/svelte/icons/book-open";
 	import LibraryBig from "@lucide/svelte/icons/library-big";
 	import PlusCircle from "@lucide/svelte/icons/plus-circle";
@@ -132,14 +133,11 @@
 							href="/reader/{book.id}"
 							class="paper-card flex h-full flex-col overflow-hidden rounded-xl transition-all hover:shadow-lg sm:flex-row"
 						>
-							<div
-								class="bg-surface-container relative aspect-[2/3] w-full sm:aspect-auto sm:w-1/3"
-							>
-								<div class="book-spine-effect absolute inset-0"></div>
-								<div class="flex h-full w-full items-center justify-center">
-									<BookOpen size={32} class="text-on-surface-variant/30" />
-								</div>
-							</div>
+							<BookCover
+								bookId={book.id}
+								class="aspect-[2/3] w-full sm:aspect-auto sm:w-1/3"
+								coverClass="rounded-none"
+							/>
 							<div class="flex flex-1 flex-col justify-between p-6">
 								<div>
 									<div class="text-on-surface-variant mb-2 flex items-center gap-2">
@@ -362,23 +360,19 @@
 				<div class="gap-gutter grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 					{#each forYou as book (book.id)}
 						<a href="/reader/{book.id}" class="group cursor-pointer">
-							<div
-								class="paper-card bg-surface-container relative mb-4 aspect-[2/3] overflow-hidden rounded-xl border-none"
-							>
-								<div class="book-spine-effect absolute inset-0"></div>
-								<div class="flex h-full w-full items-center justify-center">
-									<BookOpen size={40} class="text-on-surface-variant/20" />
+							<BookCover
+								bookId={book.id}
+								class="paper-card bg-surface-container mb-4 aspect-[2/3] rounded-xl border-none"
+							/>
+							{#if book.format === "mobi_raw" || book.format === "cbz"}
+								<div class="absolute top-2 right-2">
+									<span
+										class="font-label text-primary rounded bg-white/90 px-2 py-0.5 text-[10px] tracking-wider uppercase backdrop-blur"
+									>
+										{formatBadge(book.format)}</span
+									>
 								</div>
-								{#if book.format === "mobi_raw" || book.format === "cbz"}
-									<div class="absolute top-2 right-2">
-										<span
-											class="font-label text-primary rounded bg-white/90 px-2 py-0.5 text-[10px] tracking-wider uppercase backdrop-blur"
-										>
-											{formatBadge(book.format)}</span
-										>
-									</div>
-								{/if}
-							</div>
+							{/if}
 							<h4
 								class="font-label text-label-md text-primary group-hover:text-secondary mb-1 transition-colors"
 							>

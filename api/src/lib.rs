@@ -2,6 +2,7 @@ use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt, EnvFilte
 
 mod config;
 mod error;
+pub mod cover;
 pub mod db;
 
 pub mod auth;

@@ -62,4 +62,16 @@ impl From<serde_json::Error> for AppError {
     }
 }
 
+impl From<std::io::Error> for AppError {
+    fn from(err: std::io::Error) -> Self {
+        AppError::Internal(format!("IO error: {}", err))
+    }
+}
+
+impl From<zip::result::ZipError> for AppError {
+    fn from(err: zip::result::ZipError) -> Self {
+        AppError::Internal(format!("Zip error: {}", err))
+    }
+}
+
 pub type AppResult<T> = Result<T, AppError>;

@@ -4,7 +4,7 @@
 	import type { BookHit, ContentHit } from "$lib/api/generated";
 	import Search from "@lucide/svelte/icons/search";
 	import SearchX from "@lucide/svelte/icons/search-x";
-	import BookOpen from "@lucide/svelte/icons/book-open";
+	import BookCover from "$lib/components/BookCover.svelte";
 	import FileText from "@lucide/svelte/icons/file-text";
 	import { SvelteMap, SvelteSet } from "svelte/reactivity";
 
@@ -109,7 +109,7 @@
 								<div
 									class="bg-surface-container flex h-14 w-10 shrink-0 items-center justify-center rounded-lg"
 								>
-									<BookOpen size={18} class="text-on-surface-variant/30" />
+									<BookCover bookId={hit.id} class="h-14 w-10 shrink-0 rounded-lg" />
 								</div>
 								<div class="min-w-0 flex-1">
 									<div class="flex items-center gap-2">

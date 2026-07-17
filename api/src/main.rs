@@ -16,9 +16,23 @@ async fn main() {
         .await
         .expect("Failed to run migrations");
 
-    let storage = Arc::new(book_vault::storage::LocalFsProvider::new(
-        std::path::PathBuf::from(&config.storage.base_path),
-    ));
+    let storage: Arc<dyn book_vault::storage::StorageProvider> =
+        match config.storage.provider.as_str() {
+            "s3" => {
+                info!("Using S3 storage provider");
+                Arc::new(
+                    book_vault::storage::S3Provider::new(&config.storage.s3)
+                        .await
+                        .expect("Failed to initialize S3 provider"),
+                )
+            }
+            _ => {
+                info!("Using local filesystem storage provider");
+                Arc::new(book_vault::storage::LocalFsProvider::new(
+                    std::path::PathBuf::from(&config.storage.base_path),
+                ))
+            }
+        };
 
     let engine = book_vault::search::engine::SearchEngine::new();
     engine.rebuild(&db);

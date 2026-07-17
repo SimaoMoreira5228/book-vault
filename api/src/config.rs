@@ -37,6 +37,53 @@ pub struct StorageConfig {
     pub base_path: String,
     #[serde(default = "default_storage_provider")]
     pub provider: String,
+    #[serde(default)]
+    pub s3: S3Config,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct S3Config {
+    #[serde(default = "default_s3_endpoint")]
+    pub endpoint: String,
+    #[serde(default = "default_s3_region")]
+    pub region: String,
+    #[serde(default = "default_s3_bucket")]
+    pub bucket: String,
+    #[serde(default = "default_s3_access_key")]
+    pub access_key: String,
+    #[serde(default = "default_s3_secret_key")]
+    pub secret_key: String,
+    #[serde(default)]
+    pub path_style: bool,
+}
+
+fn default_s3_endpoint() -> String {
+    String::new()
+}
+fn default_s3_region() -> String {
+    "us-east-1".to_string()
+}
+fn default_s3_bucket() -> String {
+    "bookvault".to_string()
+}
+fn default_s3_access_key() -> String {
+    String::new()
+}
+fn default_s3_secret_key() -> String {
+    String::new()
+}
+
+impl Default for S3Config {
+    fn default() -> Self {
+        Self {
+            endpoint: default_s3_endpoint(),
+            region: default_s3_region(),
+            bucket: default_s3_bucket(),
+            access_key: default_s3_access_key(),
+            secret_key: default_s3_secret_key(),
+            path_style: false,
+        }
+    }
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -114,6 +161,7 @@ impl Default for StorageConfig {
         Self {
             base_path: default_storage_path(),
             provider: default_storage_provider(),
+            s3: S3Config::default(),
         }
     }
 }

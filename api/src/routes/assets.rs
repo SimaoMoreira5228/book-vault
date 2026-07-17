@@ -25,6 +25,7 @@ pub fn routes() -> Router<SharedState> {
         .route("/{id}/comic/pages", get(comic_page_list))
         .route("/{id}/comic/page/{n}", get(comic_page))
         .route("/{id}/assets/{asset_id}", get(asset_image))
+        .route("/{id}/cover", get(book_cover))
 }
 
 async fn raw_source(
@@ -148,6 +149,34 @@ async fn asset_image(
     Ok((
         StatusCode::OK,
         [(header::CONTENT_TYPE, asset.mime_type)],
+        data,
+    ))
+}
+
+async fn book_cover(
+    State(state): State<SharedState>,
+    auth: AuthenticatedUser,
+    Path(book_id): Path<Uuid>,
+) -> Result<impl IntoResponse, AppError> {
+    let book = Books::find_by_id(book_id)
+        .one(&state.db)
+        .await?
+        .ok_or_else(|| AppError::NotFound("Book not found".into()))?;
+
+    let library_ids = crate::routes::books::get_user_library_ids(&state.db, auth.user_id).await?;
+    if !library_ids.contains(&book.library_id) {
+        return Err(AppError::Forbidden("Access denied".into()));
+    }
+
+    let assets = AssetService::list_assets(&state.db, book_id).await?;
+    let cover = assets.into_iter().find(|a| a.kind == "cover").ok_or_else(|| {
+        AppError::NotFound("No cover found for this book".into())
+    })?;
+
+    let data = AssetService::get_image_data(&(*state.storage), cover.id).await?;
+    Ok((
+        StatusCode::OK,
+        [(header::CONTENT_TYPE, cover.mime_type)],
         data,
     ))
 }

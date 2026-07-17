@@ -4,14 +4,15 @@
 	import { goto } from "$app/navigation";
 	import { page } from "$app/state";
 	import type { ShelfResponse, BookResponse } from "$lib/api/generated";
+	import BookCover from "$lib/components/BookCover.svelte";
 	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
-	import BookOpen from "@lucide/svelte/icons/book-open";
 	import Bookmark from "@lucide/svelte/icons/bookmark";
 	import Trash2 from "@lucide/svelte/icons/trash-2";
 	import Plus from "@lucide/svelte/icons/plus";
 	import Search from "@lucide/svelte/icons/search";
 	import X from "@lucide/svelte/icons/x";
 	import Check from "@lucide/svelte/icons/check";
+	import Info from "@lucide/svelte/icons/info";
 
 	type ShelfBook = {
 		book_id: string;
@@ -237,7 +238,7 @@
 
 		{#if books.length === 0}
 			<div class="paper-card rounded-xl p-16 text-center">
-				<BookOpen size={36} class="text-on-surface-variant/20 mb-4 block" />
+				<Bookmark size={36} class="text-on-surface-variant/20 mb-4 block" />
 				<p class="font-body text-body-md text-on-surface-variant mb-6">{m.shelf_detail_empty()}</p>
 				{#if shelf.kind === "static"}
 					<button
@@ -254,12 +255,7 @@
 					<div
 						class="paper-card flex items-center gap-5 rounded-xl p-5 transition-all hover:shadow-md"
 					>
-						<a
-							href="/reader/{book.book_id}"
-							class="bg-surface-container flex h-14 w-10 shrink-0 items-center justify-center rounded-lg"
-						>
-							<BookOpen size={18} class="text-on-surface-variant/30" />
-						</a>
+						<BookCover bookId={book.book_id} class="h-14 w-10 shrink-0 rounded-lg" />
 						<div class="min-w-0 flex-1">
 							<a
 								href="/reader/{book.book_id}"
@@ -277,7 +273,7 @@
 								class="font-label text-label-sm text-on-surface-variant/50 hover:text-primary px-2 py-1 transition-colors"
 								title="Details"
 							>
-								<BookOpen size={14} />
+								<Info size={14} />
 							</a>
 							{#if shelf.kind === "static"}
 								<button

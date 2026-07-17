@@ -62,6 +62,8 @@ tempfile = "3"
 lopdf = "0.44"
 reqwest = { version = "0.13", features = ["json", "multipart", "cookies"] }
 dashmap = "6"
+aws-sdk-s3 = "1"
+aws-config = "1"
 
 [package.metadata.ts-rs]
 dir = "../web/src/lib/api/generated"

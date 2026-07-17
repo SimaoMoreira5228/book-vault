@@ -7,6 +7,7 @@
 	import FieldDisplay from "$lib/components/FieldDisplay.svelte";
 	import FieldEditor from "$lib/components/FieldEditor.svelte";
 	import FieldNumber from "$lib/components/FieldNumber.svelte";
+	import BookCover from "$lib/components/BookCover.svelte";
 	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
 	import BookOpen from "@lucide/svelte/icons/book-open";
 	import Pencil from "@lucide/svelte/icons/pencil";
@@ -275,11 +276,7 @@
 
 		<div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
 			<div class="flex items-start gap-6">
-				<div class="bg-surface-container h-32 w-24 flex-shrink-0 overflow-hidden rounded-xl">
-					<div class="flex h-full w-full items-center justify-center">
-						<BookOpen size={36} class="text-on-surface-variant/20" />
-					</div>
-				</div>
+				<BookCover bookId={book.id} class="h-32 w-24 shrink-0 rounded-xl" />
 				<div class="min-w-0 flex-1 pt-2">
 					<h1 class="font-display text-headline-md text-primary mb-2">{book.title}</h1>
 					<p class="font-body text-body-md text-on-surface-variant italic">{book.author ?? "—"}</p>

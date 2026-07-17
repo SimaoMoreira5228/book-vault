@@ -50,6 +50,13 @@ pub async fn ingest(state: &crate::SharedState, job: &job_queue::Model) -> Resul
         .await?;
     }
 
+    let cursor = std::io::Cursor::new(raw_bytes.as_slice());
+    if let Ok(mut archive) = zip::ZipArchive::new(cursor) {
+        if let Ok(Some((cover_data, mime))) = crate::cover::extract_from_cbz(&mut archive) {
+            let _ = crate::cover::store_cover(&state.db, &*state.storage, book_id, &cover_data, &mime).await;
+        }
+    }
+
     let mut active: books::ActiveModel = book.into();
     active.read_status = Set("reading".to_string());
     active.updated_at = Set(now);
