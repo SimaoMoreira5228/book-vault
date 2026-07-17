@@ -6,50 +6,50 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, Serialize, Deserialize)]
 #[sea_orm(table_name = "reading_progress")]
 pub struct Model {
-    #[sea_orm(primary_key, auto_increment = false)]
-    pub id: Uuid,
-    #[sea_orm(unique_key = "idx_rp_user_book")]
-    pub user_id: Uuid,
-    #[sea_orm(unique_key = "idx_rp_user_book")]
-    pub book_id: Uuid,
-    pub section_id: Uuid,
-    pub block_index: i64,
-    pub char_offset: i64,
-    #[sea_orm(column_type = "Double")]
-    pub percentage: f64,
-    pub updated_at: DateTimeWithTimeZone,
+	#[sea_orm(primary_key, auto_increment = false)]
+	pub id: Uuid,
+	#[sea_orm(unique_key = "idx_rp_user_book")]
+	pub user_id: Uuid,
+	#[sea_orm(unique_key = "idx_rp_user_book")]
+	pub book_id: Uuid,
+	pub section_id: Uuid,
+	pub block_index: i64,
+	pub char_offset: i64,
+	#[sea_orm(column_type = "Double")]
+	pub percentage: f64,
+	pub updated_at: DateTimeWithTimeZone,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {
-    #[sea_orm(
-        belongs_to = "super::books::Entity",
-        from = "Column::BookId",
-        to = "super::books::Column::Id",
-        on_update = "NoAction",
-        on_delete = "Cascade"
-    )]
-    Books,
-    #[sea_orm(
-        belongs_to = "super::users::Entity",
-        from = "Column::UserId",
-        to = "super::users::Column::Id",
-        on_update = "NoAction",
-        on_delete = "Cascade"
-    )]
-    Users,
+	#[sea_orm(
+		belongs_to = "super::books::Entity",
+		from = "Column::BookId",
+		to = "super::books::Column::Id",
+		on_update = "NoAction",
+		on_delete = "Cascade"
+	)]
+	Books,
+	#[sea_orm(
+		belongs_to = "super::users::Entity",
+		from = "Column::UserId",
+		to = "super::users::Column::Id",
+		on_update = "NoAction",
+		on_delete = "Cascade"
+	)]
+	Users,
 }
 
 impl Related<super::books::Entity> for Entity {
-    fn to() -> RelationDef {
-        Relation::Books.def()
-    }
+	fn to() -> RelationDef {
+		Relation::Books.def()
+	}
 }
 
 impl Related<super::users::Entity> for Entity {
-    fn to() -> RelationDef {
-        Relation::Users.def()
-    }
+	fn to() -> RelationDef {
+		Relation::Users.def()
+	}
 }
 
 impl ActiveModelBehavior for ActiveModel {}

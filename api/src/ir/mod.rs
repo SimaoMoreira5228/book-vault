@@ -8,15 +8,15 @@ use uuid::Uuid;
 #[derive(Clone, Debug, Serialize, Deserialize, TS)]
 #[ts(export)]
 pub struct Section {
-    pub id: Uuid,
-    pub title: Option<String>,
-    pub sequence_index: u32,
-    pub blocks: Vec<block::Block>,
+	pub id: Uuid,
+	pub title: Option<String>,
+	pub sequence_index: u32,
+	pub blocks: Vec<block::Block>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, TS)]
 #[ts(export)]
 pub struct BookIr {
-    pub version: u8,
-    pub spine: Vec<Section>,
+	pub version: u8,
+	pub spine: Vec<Section>,
 }

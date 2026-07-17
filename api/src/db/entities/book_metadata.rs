@@ -6,34 +6,34 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Serialize, Deserialize)]
 #[sea_orm(table_name = "book_metadata")]
 pub struct Model {
-    #[sea_orm(primary_key, auto_increment = false)]
-    pub id: Uuid,
-    #[sea_orm(unique)]
-    pub book_id: Uuid,
-    pub provider_ids: Json,
-    pub locked_fields: Json,
-    pub cached_metadata: Json,
-    pub last_refreshed_at: Option<DateTimeWithTimeZone>,
-    pub created_at: DateTimeWithTimeZone,
-    pub updated_at: DateTimeWithTimeZone,
+	#[sea_orm(primary_key, auto_increment = false)]
+	pub id: Uuid,
+	#[sea_orm(unique)]
+	pub book_id: Uuid,
+	pub provider_ids: Json,
+	pub locked_fields: Json,
+	pub cached_metadata: Json,
+	pub last_refreshed_at: Option<DateTimeWithTimeZone>,
+	pub created_at: DateTimeWithTimeZone,
+	pub updated_at: DateTimeWithTimeZone,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {
-    #[sea_orm(
-        belongs_to = "super::books::Entity",
-        from = "Column::BookId",
-        to = "super::books::Column::Id",
-        on_update = "NoAction",
-        on_delete = "Cascade"
-    )]
-    Books,
+	#[sea_orm(
+		belongs_to = "super::books::Entity",
+		from = "Column::BookId",
+		to = "super::books::Column::Id",
+		on_update = "NoAction",
+		on_delete = "Cascade"
+	)]
+	Books,
 }
 
 impl Related<super::books::Entity> for Entity {
-    fn to() -> RelationDef {
-        Relation::Books.def()
-    }
+	fn to() -> RelationDef {
+		Relation::Books.def()
+	}
 }
 
 impl ActiveModelBehavior for ActiveModel {}

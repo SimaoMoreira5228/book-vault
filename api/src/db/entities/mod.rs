@@ -7,6 +7,7 @@ pub mod assets;
 pub mod book_ir;
 pub mod book_metadata;
 pub mod book_revisions;
+pub mod bookmarks;
 pub mod books;
 pub mod comic_ir;
 pub mod job_queue;

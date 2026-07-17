@@ -6,31 +6,31 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Serialize, Deserialize)]
 #[sea_orm(table_name = "book_revisions")]
 pub struct Model {
-    #[sea_orm(primary_key, auto_increment = false)]
-    pub id: Uuid,
-    pub book_id: Uuid,
-    pub section_id: Uuid,
-    pub snapshot: Json,
-    pub version: i64,
-    pub created_at: DateTimeWithTimeZone,
+	#[sea_orm(primary_key, auto_increment = false)]
+	pub id: Uuid,
+	pub book_id: Uuid,
+	pub section_id: Uuid,
+	pub snapshot: Json,
+	pub version: i64,
+	pub created_at: DateTimeWithTimeZone,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {
-    #[sea_orm(
-        belongs_to = "super::books::Entity",
-        from = "Column::BookId",
-        to = "super::books::Column::Id",
-        on_update = "NoAction",
-        on_delete = "Cascade"
-    )]
-    Books,
+	#[sea_orm(
+		belongs_to = "super::books::Entity",
+		from = "Column::BookId",
+		to = "super::books::Column::Id",
+		on_update = "NoAction",
+		on_delete = "Cascade"
+	)]
+	Books,
 }
 
 impl Related<super::books::Entity> for Entity {
-    fn to() -> RelationDef {
-        Relation::Books.def()
-    }
+	fn to() -> RelationDef {
+		Relation::Books.def()
+	}
 }
 
 impl ActiveModelBehavior for ActiveModel {}

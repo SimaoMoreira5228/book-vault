@@ -4,7 +4,8 @@ use dashmap::DashMap;
 use tracing::info;
 use uuid::Uuid;
 
-use crate::ir::{block::Block, BookIr};
+use crate::ir::BookIr;
+use crate::ir::block::Block;
 
 #[derive(Clone)]
 pub struct SearchHit {
@@ -46,10 +47,7 @@ impl SearchEngine {
 						.or_default()
 						.push((book_id, section.id, idx as u32));
 					for tri in trigrams(word) {
-						self.trigram_index
-							.entry(tri)
-							.or_default()
-							.insert(word.clone());
+						self.trigram_index.entry(tri).or_default().insert(word.clone());
 					}
 				}
 				self.texts.insert(key, text);
@@ -147,7 +145,7 @@ impl SearchEngine {
 					let cand_tris: HashSet<String> = trigrams(candidate).into_iter().collect();
 					let union = term_tris.union(&cand_tris).count() as f64;
 					let similarity = if union > 0.0 { overlap / union } else { 0.0 };
-					if similarity >= 0.4 {
+					if similarity >= 0.3 {
 						if let Some(fuzzy) = self.word_index.get(candidate) {
 							for &(bid, sid, bidx) in fuzzy.iter() {
 								let e = scores.entry((bid, sid, bidx)).or_insert((0.0, Vec::new()));
@@ -192,8 +190,9 @@ impl SearchEngine {
 	}
 
 	pub fn rebuild(&self, db: &sea_orm::DatabaseConnection) {
-		use crate::db::entities::book_ir as ir_entity;
 		use sea_orm::{ColumnTrait, EntityTrait, QueryFilter};
+
+		use crate::db::entities::book_ir as ir_entity;
 
 		let rows = tokio::task::block_in_place(|| {
 			tokio::runtime::Handle::current().block_on(async {
@@ -243,9 +242,7 @@ fn extract_block_text(block: &Block) -> String {
 	match block {
 		Block::Paragraph(spans) => spans.iter().map(|s| s.text.as_str()).collect(),
 		Block::Heading { spans, .. } => spans.iter().map(|s| s.text.as_str()).collect(),
-		Block::BlockQuote(blocks) => {
-			blocks.iter().map(extract_block_text).collect::<Vec<_>>().join(" ")
-		}
+		Block::BlockQuote(blocks) => blocks.iter().map(extract_block_text).collect::<Vec<_>>().join(" "),
 		Block::CodeBlock { content, .. } => content.clone(),
 		Block::OrderedList(items) => items
 			.iter()
@@ -258,24 +255,16 @@ fn extract_block_text(block: &Block) -> String {
 			.collect::<Vec<_>>()
 			.join(" "),
 		Block::Table { headers, rows, .. } => {
-			let h: String = headers
-				.iter()
-				.flat_map(|c| c.spans.iter().map(|s| s.text.as_str()))
-				.collect();
+			let h: String = headers.iter().flat_map(|c| c.spans.iter().map(|s| s.text.as_str())).collect();
 			let r: String = rows
 				.iter()
-				.flat_map(|row| {
-					row.iter()
-						.flat_map(|c| c.spans.iter().map(|s| s.text.as_str()))
-				})
+				.flat_map(|row| row.iter().flat_map(|c| c.spans.iter().map(|s| s.text.as_str())))
 				.collect();
 			format!("{h} {r}")
 		}
 		Block::Image { alt, .. } => alt.clone().unwrap_or_default(),
 		Block::HorizontalRule => String::new(),
-		Block::Footnote { blocks, .. } => {
-			blocks.iter().map(extract_block_text).collect::<Vec<_>>().join(" ")
-		}
+		Block::Footnote { blocks, .. } => blocks.iter().map(extract_block_text).collect::<Vec<_>>().join(" "),
 		Block::RawHtml { content } => strip_html(content),
 	}
 }
@@ -312,15 +301,10 @@ fn generate_snippet(text: &str, position: usize, max_len: usize) -> String {
 	};
 
 	let s = adj_start.saturating_sub(15);
-	let s = text[..s.max(0)]
-		.rfind(char::is_whitespace)
-		.unwrap_or(adj_start);
+	let s = text[..s.max(0)].rfind(char::is_whitespace).unwrap_or(adj_start);
 	let e = (end + 15).min(text.len());
 	let e = if e < text.len() {
-		text[e..]
-			.find(char::is_whitespace)
-			.map(|p| e + p)
-			.unwrap_or(text.len())
+		text[e..].find(char::is_whitespace).map(|p| e + p).unwrap_or(text.len())
 	} else {
 		text.len()
 	};

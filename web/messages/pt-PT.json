@@ -85,6 +85,8 @@
 	"reader_export_epub": "EPUB",
 	"reader_export_pdf": "PDF",
 	"reader_export_markdown": "Markdown",
+	"reader_bookmark_add": "Adicionar marcador",
+	"reader_bookmark_remove": "Remover marcador",
 	"reader_progress_saving": "A guardar...",
 	"reader_progress_saved": "Progresso guardado",
 	"library_finished_title": "Leitura Conclu\u00edda",

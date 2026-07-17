@@ -1,13 +1,24 @@
-use crate::AppError;
 use uuid::Uuid;
 
+use crate::AppError;
+
 const COVER_FILENAMES: &[&str] = &[
-	"cover.jpg", "cover.jpeg", "cover.png", "Cover.jpg", "Cover.jpeg", "Cover.png",
-	"OPS/cover.jpg", "OPS/cover.jpeg", "OPS/cover.png",
-	"images/cover.jpg", "images/cover.png",
+	"cover.jpg",
+	"cover.jpeg",
+	"cover.png",
+	"Cover.jpg",
+	"Cover.jpeg",
+	"Cover.png",
+	"OPS/cover.jpg",
+	"OPS/cover.jpeg",
+	"OPS/cover.png",
+	"images/cover.jpg",
+	"images/cover.png",
 ];
 
-pub fn extract_from_epub(archive: &mut zip::ZipArchive<std::io::Cursor<&[u8]>>) -> Result<Option<(Vec<u8>, String)>, AppError> {
+pub fn extract_from_epub(
+	archive: &mut zip::ZipArchive<std::io::Cursor<&[u8]>>,
+) -> Result<Option<(Vec<u8>, String)>, AppError> {
 	for name in COVER_FILENAMES {
 		if let Ok(mut file) = archive.by_name(name) {
 			let mut data = Vec::new();
@@ -41,7 +52,9 @@ pub fn extract_from_epub(archive: &mut zip::ZipArchive<std::io::Cursor<&[u8]>>) 
 	Ok(None)
 }
 
-pub fn extract_from_cbz(archive: &mut zip::ZipArchive<std::io::Cursor<&[u8]>>) -> Result<Option<(Vec<u8>, String)>, AppError> {
+pub fn extract_from_cbz(
+	archive: &mut zip::ZipArchive<std::io::Cursor<&[u8]>>,
+) -> Result<Option<(Vec<u8>, String)>, AppError> {
 	for i in 0..archive.len() {
 		let mut file = archive.by_index(i)?;
 		let name = file.name().to_lowercase();

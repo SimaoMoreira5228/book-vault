@@ -5,6 +5,7 @@ pub use super::assets::Entity as Assets;
 pub use super::book_ir::Entity as BookIr;
 pub use super::book_metadata::Entity as BookMetadata;
 pub use super::book_revisions::Entity as BookRevisions;
+pub use super::bookmarks::Entity as Bookmarks;
 pub use super::books::Entity as Books;
 pub use super::comic_ir::Entity as ComicIr;
 pub use super::job_queue::Entity as JobQueue;

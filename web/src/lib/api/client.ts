@@ -306,6 +306,30 @@ export const api = {
 			request<Record<string, unknown>>("DELETE", `/api/v1/books/${bookId}/metadata/lock/${field}`)
 	},
 
+	bookmarks: {
+		list: (bookId: string) =>
+			request<
+				Array<{
+					id: string;
+					book_id: string;
+					section_id: string;
+					block_index: number;
+					title: string | null;
+					note: string | null;
+					created_at: string;
+				}>
+			>("GET", `/api/v1/bookmarks/${bookId}`),
+		create: (data: {
+			book_id: string;
+			section_id: string;
+			block_index: number;
+			title?: string;
+			note?: string;
+		}) => request<Record<string, unknown>>("POST", `/api/v1/bookmarks/${data.book_id}`, data),
+		delete: (bookmarkId: string) =>
+			request<void>("DELETE", `/api/v1/bookmarks/single/${bookmarkId}`)
+	},
+
 	sessions: {
 		list: () =>
 			request<

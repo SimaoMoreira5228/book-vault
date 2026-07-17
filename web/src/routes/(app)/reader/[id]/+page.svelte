@@ -82,6 +82,31 @@
 	let editNoteId = $state<string | null>(null);
 	let noteDraft = $state("");
 	let deleting = $state<string | null>(null);
+	let bookmarks = $state<Array<{ id: string; section_id: string }>>([]);
+
+	async function loadBookmarks() {
+		const r = await api.bookmarks.list(bookId);
+		if (r.isOk()) bookmarks = r.value as unknown as Array<{ id: string; section_id: string }>;
+	}
+
+	async function toggleBookmark() {
+		const existing = bookmarks.find((b) => b.section_id === sectionId);
+		if (existing) {
+			await api.bookmarks.delete(existing.id);
+			bookmarks = bookmarks.filter((b) => b.section_id !== sectionId);
+		} else {
+			const r = await api.bookmarks.create({
+				book_id: bookId,
+				section_id: sectionId,
+				block_index: Math.round(progress / 10)
+			});
+			if (r.isOk())
+				bookmarks = [
+					...bookmarks,
+					{ id: (r.value as unknown as { id: string }).id, section_id: sectionId }
+				];
+		}
+	}
 
 	let formatsWithDownload = $derived(["pdf", "mobi_raw", "epub"]);
 	let saveTimer: ReturnType<typeof setInterval> | undefined;
@@ -193,6 +218,7 @@
 		if (metaResult.isOk() && metaResult.value.format === "cbz") loadComicPages();
 		loading = false;
 		await loadAnnotations();
+		await loadBookmarks();
 	}
 
 	async function loadComicPages() {
@@ -481,8 +507,19 @@
 					{/if}
 				</div>
 			{/if}
-			<button class="p-2 transition-transform duration-200 hover:opacity-80 active:scale-95">
-				<Bookmark size={20} class="text-on-surface-variant" />
+			<button
+				onclick={toggleBookmark}
+				class="p-2 transition-transform duration-200 hover:opacity-80 active:scale-95"
+				title={bookmarks.find((b) => b.section_id === sectionId)
+					? m.reader_bookmark_remove()
+					: m.reader_bookmark_add()}
+			>
+				<Bookmark
+					size={20}
+					class={bookmarks.find((b) => b.section_id === sectionId)
+						? "text-secondary"
+						: "text-on-surface-variant"}
+				/>
 			</button>
 		</div>
 	</header>

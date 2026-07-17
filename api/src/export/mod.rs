@@ -1,15 +1,15 @@
 pub mod epub;
-pub mod pdf;
 pub mod markdown;
-
-pub use epub::EpubExporter;
-pub use pdf::PdfExporter;
-pub use markdown::MarkdownExporter;
+pub mod pdf;
 
 use async_trait::async_trait;
+pub use epub::EpubExporter;
+pub use markdown::MarkdownExporter;
+pub use pdf::PdfExporter;
+
 use crate::ir::BookIr;
 
 #[async_trait]
 pub trait Exporter: Send + Sync {
-    async fn export(&self, ir: &BookIr) -> Result<Vec<u8>, crate::AppError>;
+	async fn export(&self, ir: &BookIr) -> Result<Vec<u8>, crate::AppError>;
 }

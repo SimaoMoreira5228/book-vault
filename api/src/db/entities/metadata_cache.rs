@@ -6,13 +6,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Serialize, Deserialize)]
 #[sea_orm(table_name = "metadata_cache")]
 pub struct Model {
-    #[sea_orm(primary_key, auto_increment = false)]
-    pub id: Uuid,
-    pub provider: String,
-    pub query_hash: String,
-    pub response: Json,
-    pub expires_at: DateTimeWithTimeZone,
-    pub created_at: DateTimeWithTimeZone,
+	#[sea_orm(primary_key, auto_increment = false)]
+	pub id: Uuid,
+	pub provider: String,
+	pub query_hash: String,
+	pub response: Json,
+	pub expires_at: DateTimeWithTimeZone,
+	pub created_at: DateTimeWithTimeZone,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

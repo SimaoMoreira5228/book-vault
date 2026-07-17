@@ -6,18 +6,18 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Serialize, Deserialize)]
 #[sea_orm(table_name = "job_queue")]
 pub struct Model {
-    #[sea_orm(primary_key, auto_increment = false)]
-    pub id: Uuid,
-    pub kind: String,
-    pub status: String,
-    pub payload: Json,
-    pub error: Option<String>,
-    pub retry_count: i8,
-    pub max_retries: i8,
-    pub scheduled_at: Option<DateTimeWithTimeZone>,
-    pub started_at: Option<DateTimeWithTimeZone>,
-    pub completed_at: Option<DateTimeWithTimeZone>,
-    pub created_at: DateTimeWithTimeZone,
+	#[sea_orm(primary_key, auto_increment = false)]
+	pub id: Uuid,
+	pub kind: String,
+	pub status: String,
+	pub payload: Json,
+	pub error: Option<String>,
+	pub retry_count: i8,
+	pub max_retries: i8,
+	pub scheduled_at: Option<DateTimeWithTimeZone>,
+	pub started_at: Option<DateTimeWithTimeZone>,
+	pub completed_at: Option<DateTimeWithTimeZone>,
+	pub created_at: DateTimeWithTimeZone,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

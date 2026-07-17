@@ -1,13 +1,15 @@
-use axum::{extract::State, routing::get, Json, Router};
+use axum::extract::State;
+use axum::routing::get;
+use axum::{Json, Router};
+use sea_orm::{ColumnTrait, Condition, EntityTrait, QueryFilter, QueryOrder, QuerySelect};
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
 use uuid::Uuid;
 
 use crate::auth::middleware::AuthenticatedUser;
-use crate::db::entities::prelude::*;
 use crate::db::entities::books;
+use crate::db::entities::prelude::*;
 use crate::{AppError, SharedState};
-use sea_orm::{ColumnTrait, EntityTrait, ExprTrait, QueryFilter, QueryOrder, QuerySelect};
 
 #[derive(Deserialize)]
 pub struct SearchQuery {
@@ -52,15 +54,12 @@ async fn search_handler(
 	auth: AuthenticatedUser,
 	axum::extract::Query(q): axum::extract::Query<SearchQuery>,
 ) -> Result<Json<SearchResult>, AppError> {
-	let library_ids =
-		crate::routes::books::get_user_library_ids(&state.db, auth.user_id).await?;
+	let library_ids = crate::routes::books::get_user_library_ids(&state.db, auth.user_id).await?;
 	let limit = std::cmp::min(q.limit.unwrap_or(20), 100);
 	let offset = q.offset.unwrap_or(0);
 
 	let user_book_ids: Vec<Uuid> = Books::find()
 		.filter(books::Column::LibraryId.is_in(library_ids.clone()))
-		.select_only()
-		.column(books::Column::Id)
 		.all(&state.db)
 		.await?
 		.into_iter()
@@ -71,9 +70,9 @@ async fn search_handler(
 	let hits = Books::find()
 		.filter(books::Column::LibraryId.is_in(library_ids))
 		.filter(
-			books::Column::Title
-				.like(&pattern)
-				.or(books::Column::Author.like(&pattern)),
+			Condition::any()
+				.add(books::Column::Title.like(&pattern))
+				.add(books::Column::Author.like(&pattern)),
 		)
 		.order_by_desc(books::Column::UpdatedAt)
 		.offset(offset)

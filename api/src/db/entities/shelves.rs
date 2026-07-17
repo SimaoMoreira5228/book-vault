@@ -6,64 +6,65 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Serialize, Deserialize)]
 #[sea_orm(table_name = "shelves")]
 pub struct Model {
-    #[sea_orm(primary_key, auto_increment = false)]
-    pub id: Uuid,
-    pub library_id: Uuid,
-    pub name: String,
-    pub description: Option<String>,
-    pub kind: String,
-    pub rule_ast: Option<Json>,
-    pub owner_id: Uuid,
-    pub created_at: DateTimeWithTimeZone,
+	#[sea_orm(primary_key, auto_increment = false)]
+	pub id: Uuid,
+	pub library_id: Uuid,
+	pub name: String,
+	pub description: Option<String>,
+	pub kind: String,
+	pub rule_ast: Option<Json>,
+	pub owner_id: Uuid,
+	pub created_at: DateTimeWithTimeZone,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {
-    #[sea_orm(
-        belongs_to = "super::libraries::Entity",
-        from = "Column::LibraryId",
-        to = "super::libraries::Column::Id",
-        on_update = "NoAction",
-        on_delete = "Cascade"
-    )]
-    Libraries,
-    #[sea_orm(has_many = "super::shelf_entries::Entity")]
-    ShelfEntries,
-    #[sea_orm(
-        belongs_to = "super::users::Entity",
-        from = "Column::OwnerId",
-        to = "super::users::Column::Id",
-        on_update = "NoAction",
-        on_delete = "Cascade"
-    )]
-    Users,
+	#[sea_orm(
+		belongs_to = "super::libraries::Entity",
+		from = "Column::LibraryId",
+		to = "super::libraries::Column::Id",
+		on_update = "NoAction",
+		on_delete = "Cascade"
+	)]
+	Libraries,
+	#[sea_orm(has_many = "super::shelf_entries::Entity")]
+	ShelfEntries,
+	#[sea_orm(
+		belongs_to = "super::users::Entity",
+		from = "Column::OwnerId",
+		to = "super::users::Column::Id",
+		on_update = "NoAction",
+		on_delete = "Cascade"
+	)]
+	Users,
 }
 
 impl Related<super::libraries::Entity> for Entity {
-    fn to() -> RelationDef {
-        Relation::Libraries.def()
-    }
+	fn to() -> RelationDef {
+		Relation::Libraries.def()
+	}
 }
 
 impl Related<super::shelf_entries::Entity> for Entity {
-    fn to() -> RelationDef {
-        Relation::ShelfEntries.def()
-    }
+	fn to() -> RelationDef {
+		Relation::ShelfEntries.def()
+	}
 }
 
 impl Related<super::users::Entity> for Entity {
-    fn to() -> RelationDef {
-        Relation::Users.def()
-    }
+	fn to() -> RelationDef {
+		Relation::Users.def()
+	}
 }
 
 impl Related<super::books::Entity> for Entity {
-    fn to() -> RelationDef {
-        super::shelf_entries::Relation::Books.def()
-    }
-    fn via() -> Option<RelationDef> {
-        Some(super::shelf_entries::Relation::Shelves.def().rev())
-    }
+	fn to() -> RelationDef {
+		super::shelf_entries::Relation::Books.def()
+	}
+
+	fn via() -> Option<RelationDef> {
+		Some(super::shelf_entries::Relation::Shelves.def().rev())
+	}
 }
 
 impl ActiveModelBehavior for ActiveModel {}
