@@ -11,3 +11,5 @@ export type { Section } from "./Section";
 export type { Block } from "./Block";
 export type { Span } from "./Span";
 export type { TableCell } from "./TableCell";
+export type { ProspectiveMetadata } from "./ProspectiveMetadata";
+export type { MetadataQuery } from "./MetadataQuery";

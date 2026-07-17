@@ -20,7 +20,12 @@ async fn main() {
         std::path::PathBuf::from(&config.storage.base_path),
     ));
 
-    let state: SharedState = Arc::new(AppState { config, db, storage });
+    let state: SharedState = Arc::new(AppState {
+        metadata_service: book_vault::metadata::service::MetadataService::new(),
+        config,
+        db,
+        storage,
+    });
 
     let worker_state = state.clone();
     tokio::spawn(async move {

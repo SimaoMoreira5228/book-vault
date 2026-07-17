@@ -35,6 +35,8 @@ pub enum Relation {
     Assets,
     #[sea_orm(has_one = "super::book_ir::Entity")]
     BookIr,
+    #[sea_orm(has_one = "super::book_metadata::Entity")]
+    BookMetadata,
     #[sea_orm(has_many = "super::book_revisions::Entity")]
     BookRevisions,
     #[sea_orm(has_one = "super::comic_ir::Entity")]
@@ -68,6 +70,12 @@ impl Related<super::assets::Entity> for Entity {
 impl Related<super::book_ir::Entity> for Entity {
     fn to() -> RelationDef {
         Relation::BookIr.def()
+    }
+}
+
+impl Related<super::book_metadata::Entity> for Entity {
+    fn to() -> RelationDef {
+        Relation::BookMetadata.def()
     }
 }
 

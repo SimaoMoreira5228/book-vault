@@ -8,6 +8,7 @@ pub mod auth;
 pub mod ir;
 pub mod storage;
 pub mod ingest;
+pub mod metadata;
 pub mod export;
 pub mod routes;
 pub mod jobs;
@@ -27,6 +28,7 @@ pub struct AppState {
     pub config: Config,
     pub db: sea_orm::DatabaseConnection,
     pub storage: Arc<dyn storage::StorageProvider>,
+    pub metadata_service: metadata::service::MetadataService,
 }
 
 pub fn build_router(state: SharedState) -> Router {

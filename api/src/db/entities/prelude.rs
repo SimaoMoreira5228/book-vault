@@ -3,11 +3,13 @@
 pub use super::annotations::Entity as Annotations;
 pub use super::assets::Entity as Assets;
 pub use super::book_ir::Entity as BookIr;
+pub use super::book_metadata::Entity as BookMetadata;
 pub use super::book_revisions::Entity as BookRevisions;
 pub use super::books::Entity as Books;
 pub use super::comic_ir::Entity as ComicIr;
 pub use super::job_queue::Entity as JobQueue;
 pub use super::libraries::Entity as Libraries;
+pub use super::metadata_cache::Entity as MetadataCache;
 pub use super::reading_progress::Entity as ReadingProgress;
 pub use super::sessions::Entity as Sessions;
 pub use super::shelf_entries::Entity as ShelfEntries;

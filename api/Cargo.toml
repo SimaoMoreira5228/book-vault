@@ -65,6 +65,7 @@ toml = "1"
 base64 = "0.22"
 tempfile = "3"
 lopdf = "0.44"
+reqwest = { version = "0.13", features = ["json"] }
 
 [package.metadata.ts-rs]
 dir = "../web/src/lib/api/generated"

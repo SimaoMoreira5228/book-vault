@@ -95,8 +95,7 @@ printList("Missing in en.json", missingInEn);
 printList("Missing in pt-PT.json", missingInPt);
 printList("Defined in messages but never used in code", definedButUnused);
 
-const hasErrors =
-	missingInEn.length || missingInPt.length;
+const hasErrors = missingInEn.length || missingInPt.length;
 process.exitCode = hasErrors ? 2 : 0;
 if (!hasErrors) {
 	console.log("\nAll paraglide i18n keys look good!");

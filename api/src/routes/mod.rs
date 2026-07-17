@@ -3,6 +3,8 @@ pub mod assets;
 pub mod books;
 pub mod events;
 pub mod export_routes;
+pub mod metadata_routes;
+pub mod progress;
 pub mod read;
 pub mod search;
 pub mod shelves;
@@ -18,6 +20,9 @@ pub fn build_routes() -> Router<crate::SharedState> {
         .nest("/shelves", shelves::routes())
         .nest("/books", assets::routes())
         .nest("/search", search::routes())
+        .nest("/books", progress::book_routes())
+        .nest("/books", metadata_routes::routes())
+        .nest("/annotations", progress::annotation_routes())
         .nest("/events", events::routes())
         .nest("/admin", admin::routes())
         .route("/health", get(health_check))
