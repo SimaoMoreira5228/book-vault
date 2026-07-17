@@ -25,6 +25,7 @@ async fn main() {
         config: config.clone(),
         db,
         storage,
+        rate_limiter: book_vault::auth::rate_limit::RateLimiter::new(5, 900),
     });
 
     let worker_state = state.clone();

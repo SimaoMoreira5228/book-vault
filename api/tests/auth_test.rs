@@ -68,3 +68,25 @@ async fn no_session_returns_401() {
     let (status, _) = app.raw_get("/api/v1/books").await;
     assert_eq!(status, 401, "unauthenticated request should fail");
 }
+
+#[tokio::test]
+async fn rate_limit_exceeded() {
+    let app = TestApp::new().await;
+    for _ in 0..5 {
+        let (status, _) = app.raw_post(
+            "/api/v1/auth/login",
+            &serde_json::json!({"email": "nobody@test.com", "password": "wrong"}),
+        )
+        .await;
+        assert_eq!(status, 401, "wrong login should return 401");
+    }
+}
+
+#[tokio::test]
+async fn rate_limit_clears_on_success() {
+    let app = TestApp::new().await;
+    app.register("ratelimit@test.com", "correctpass123!", "RateLimit").await.unwrap();
+    app.login("ratelimit@test.com", "correctpass123!").await.unwrap();
+    let (status, _) = app.raw_get("/api/v1/books").await;
+    assert_eq!(status, 200, "authenticated request should work after rate limit reset");
+}

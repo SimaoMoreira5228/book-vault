@@ -97,20 +97,46 @@ async fn login_handler(
     headers: HeaderMap,
     Json(req): Json<LoginRequest>,
 ) -> Result<(HeaderMap, Json<serde_json::Value>), AppError> {
-    let user = Users::find()
+    let ip = headers
+        .get("X-Forwarded-For")
+        .and_then(|v| v.to_str().ok().map(|s| s.to_string()))
+        .or_else(|| {
+            headers
+                .get("X-Real-IP")
+                .and_then(|v| v.to_str().ok().map(|s| s.to_string()))
+        })
+        .unwrap_or_else(|| "unknown".to_string());
+
+    state.rate_limiter.check_ip(&ip)?;
+    state.rate_limiter.check_email(&req.email)?;
+
+    let user = match Users::find()
         .filter(users::Column::Email.eq(&req.email))
         .one(&state.db)
-        .await?
-        .ok_or_else(|| AppError::Unauthorized("Invalid email or password".into()))?;
+        .await
+    {
+        Ok(Some(u)) => u,
+        Ok(None) => {
+            state.rate_limiter.record_failure_ip(&ip);
+            state.rate_limiter.record_failure_email(&req.email);
+            return Err(AppError::Unauthorized("Invalid email or password".into()));
+        }
+        Err(e) => return Err(AppError::Db(e)),
+    };
 
-    SessionManager::verify_password(&user.password_hash, &req.password)?;
+    if let Err(_) = SessionManager::verify_password(&user.password_hash, &req.password) {
+        state.rate_limiter.record_failure_ip(&ip);
+        state.rate_limiter.record_failure_email(&req.email);
+        return Err(AppError::Unauthorized("Invalid email or password".into()));
+    }
+
+    state.rate_limiter.reset_ip(&ip);
+    state.rate_limiter.reset_email(&req.email);
 
     let user_agent = headers
         .get(header::USER_AGENT)
         .and_then(|v| v.to_str().ok().map(|s| s.to_string()));
-    let ip_address = headers
-        .get("X-Forwarded-For")
-        .and_then(|v| v.to_str().ok().map(|s| s.to_string()));
+    let ip_address = Some(ip);
 
     let (token, _session) = SessionManager::create_session(
         &state.db,

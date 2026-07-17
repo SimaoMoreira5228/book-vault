@@ -1,7 +1,7 @@
 use std::net::SocketAddr;
 use std::sync::Arc;
 
-use book_vault::{build_router, db, AppState, Config, SharedState, storage::LocalFsProvider};
+use book_vault::{build_router, db, storage::LocalFsProvider, AppState, Config, SharedState};
 use serde_json::Value;
 use tokio::net::TcpListener;
 
@@ -34,6 +34,7 @@ impl TestApp {
             config,
             db: db_conn,
             storage,
+            rate_limiter: book_vault::auth::rate_limit::RateLimiter::new(100, 900),
         });
 
         let app = build_router(state);
@@ -56,66 +57,132 @@ impl TestApp {
             .build()
             .expect("reqwest client");
 
-        Self { addr, client, _db, _storage_dir, _shutdown: Some(tx) }
+        Self {
+            addr,
+            client,
+            _db,
+            _storage_dir,
+            _shutdown: Some(tx),
+        }
     }
 
     pub fn url(&self, path: &str) -> String {
         format!("http://{}{}", self.addr, path)
     }
 
-    pub async fn register(&self, email: &str, password: &str, display_name: &str) -> Result<Value, Value> {
+    pub async fn register(
+        &self,
+        email: &str,
+        password: &str,
+        display_name: &str,
+    ) -> Result<Value, Value> {
         let body = serde_json::json!({ "email": email, "password": password, "display_name": display_name });
-        let resp = self.client.post(self.url("/api/v1/auth/register")).json(&body).send().await.expect("register");
+        let resp = self
+            .client
+            .post(self.url("/api/v1/auth/register"))
+            .json(&body)
+            .send()
+            .await
+            .expect("register");
         let status = resp.status();
         let json: Value = resp.json().await.expect("register json");
-        if status.is_success() || status.as_u16() == 201 { Ok(json) } else { Err(json) }
+        if status.is_success() || status.as_u16() == 201 {
+            Ok(json)
+        } else {
+            Err(json)
+        }
     }
 
     pub async fn login(&self, email: &str, password: &str) -> Result<Value, Value> {
         let body = serde_json::json!({ "email": email, "password": password });
-        let resp = self.client.post(self.url("/api/v1/auth/login")).json(&body).send().await.expect("login");
+        let resp = self
+            .client
+            .post(self.url("/api/v1/auth/login"))
+            .json(&body)
+            .send()
+            .await
+            .expect("login");
         let status = resp.status();
         let json: Value = resp.json().await.expect("login json");
-        if status.is_success() { Ok(json) } else { Err(json) }
+        if status.is_success() {
+            Ok(json)
+        } else {
+            Err(json)
+        }
     }
 
     pub async fn register_and_login(&self, prefix: &str) -> (String, String, Value) {
         let c = COUNTER.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
         let email = format!("{}_{}@test.com", prefix, c);
         let pw = "testpass123!";
-        let u = self.register(&email, pw, &format!("{} User {}", prefix, c)).await.expect("register");
+        let u = self
+            .register(&email, pw, &format!("{} User {}", prefix, c))
+            .await
+            .expect("register");
         self.login(&email, pw).await.expect("login");
         (email, pw.to_string(), u)
     }
 
     pub async fn create_book(&self, title: &str, author: Option<&str>) -> Value {
         let mut body = serde_json::json!({ "title": title });
-        if let Some(a) = author { body["author"] = Value::String(a.to_string()); }
-        let resp = self.client.post(self.url("/api/v1/books")).json(&body).send().await.expect("create book");
+        if let Some(a) = author {
+            body["author"] = Value::String(a.to_string());
+        }
+        let resp = self
+            .client
+            .post(self.url("/api/v1/books"))
+            .json(&body)
+            .send()
+            .await
+            .expect("create book");
         let s = resp.status();
         let j: Value = resp.json().await.expect("create book json");
-        assert!(s.is_success() || s.as_u16() == 201, "create book {title} failed: {j}");
+        assert!(
+            s.is_success() || s.as_u16() == 201,
+            "create book {title} failed: {j}"
+        );
         j
     }
 
     pub async fn list_books(&self) -> Value {
-        let resp = self.client.get(self.url("/api/v1/books")).send().await.expect("list books");
+        let resp = self
+            .client
+            .get(self.url("/api/v1/books"))
+            .send()
+            .await
+            .expect("list books");
         assert!(resp.status().is_success());
         resp.json().await.expect("list books json")
     }
 
     pub async fn create_shelf(&self, name: &str, kind: &str, rule_ast: Option<Value>) -> Value {
         let mut body = serde_json::json!({ "name": name, "kind": kind });
-        if let Some(ast) = rule_ast { body["rule_ast"] = ast; }
-        let resp = self.client.post(self.url("/api/v1/shelves")).json(&body).send().await.expect("create shelf");
+        if let Some(ast) = rule_ast {
+            body["rule_ast"] = ast;
+        }
+        let resp = self
+            .client
+            .post(self.url("/api/v1/shelves"))
+            .json(&body)
+            .send()
+            .await
+            .expect("create shelf");
         let s = resp.status();
         let j: Value = resp.json().await.expect("create shelf json");
-        assert!(s.is_success() || s.as_u16() == 201, "create shelf failed: {j}");
+        assert!(
+            s.is_success() || s.as_u16() == 201,
+            "create shelf failed: {j}"
+        );
         j
     }
 
     pub async fn list_shelves(&self) -> Value {
-        let resp = self.client.get(self.url("/api/v1/shelves")).send().await.expect("list shelves");
+        let resp = self
+            .client
+            .get(self.url("/api/v1/shelves"))
+            .send()
+            .await
+            .expect("list shelves");
         assert!(resp.status().is_success());
         resp.json().await.expect("list shelves json")
     }
@@ -153,7 +220,11 @@ impl TestApp {
             .send()
             .await
             .expect("save progress");
-        assert!(resp.status().is_success(), "save progress failed: {:?}", resp.text().await);
+        assert!(
+            resp.status().is_success(),
+            "save progress failed: {:?}",
+            resp.text().await
+        );
     }
 
     pub async fn add_book_to_shelf(&self, shelf_id: &str, book_id: &str) {
@@ -164,7 +235,11 @@ impl TestApp {
             .send()
             .await
             .expect("add book");
-        assert!(resp.status().is_success(), "add book failed: {:?}", resp.text().await);
+        assert!(
+            resp.status().is_success(),
+            "add book failed: {:?}",
+            resp.text().await
+        );
     }
 
     pub async fn raw_get(&self, path: &str) -> (u16, Value) {
@@ -175,14 +250,26 @@ impl TestApp {
     }
 
     pub async fn raw_post(&self, path: &str, body: &Value) -> (u16, Value) {
-        let resp = self.client.post(self.url(path)).json(body).send().await.unwrap();
+        let resp = self
+            .client
+            .post(self.url(path))
+            .json(body)
+            .send()
+            .await
+            .unwrap();
         let s = resp.status().as_u16();
         let j: Value = resp.json().await.unwrap_or(Value::Null);
         (s, j)
     }
 
     pub async fn raw_put(&self, path: &str, body: &Value) -> (u16, Value) {
-        let resp = self.client.put(self.url(path)).json(body).send().await.unwrap();
+        let resp = self
+            .client
+            .put(self.url(path))
+            .json(body)
+            .send()
+            .await
+            .unwrap();
         let s = resp.status().as_u16();
         let j: Value = resp.json().await.unwrap_or(Value::Null);
         (s, j)

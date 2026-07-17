@@ -10,6 +10,7 @@ pub enum AppError {
     Forbidden(String),
     BadRequest(String),
     Conflict(String),
+    TooManyRequests(String),
     Internal(String),
     Db(sea_orm::DbErr),
 }
@@ -22,6 +23,7 @@ impl std::fmt::Display for AppError {
             AppError::Forbidden(msg) => write!(f, "Forbidden: {}", msg),
             AppError::BadRequest(msg) => write!(f, "Bad request: {}", msg),
             AppError::Conflict(msg) => write!(f, "Conflict: {}", msg),
+            AppError::TooManyRequests(msg) => write!(f, "Too many requests: {}", msg),
             AppError::Internal(msg) => write!(f, "Internal error: {}", msg),
             AppError::Db(err) => write!(f, "Database error: {}", err),
         }
@@ -36,6 +38,7 @@ impl IntoResponse for AppError {
             AppError::Forbidden(msg) => (StatusCode::FORBIDDEN, msg.clone()),
             AppError::BadRequest(msg) => (StatusCode::BAD_REQUEST, msg.clone()),
             AppError::Conflict(msg) => (StatusCode::CONFLICT, msg.clone()),
+            AppError::TooManyRequests(msg) => (StatusCode::TOO_MANY_REQUESTS, msg.clone()),
             AppError::Internal(msg) => (StatusCode::INTERNAL_SERVER_ERROR, msg.clone()),
             AppError::Db(err) => (
                 StatusCode::INTERNAL_SERVER_ERROR,

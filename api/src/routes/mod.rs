@@ -8,6 +8,7 @@ pub mod progress;
 pub mod read;
 pub mod search;
 pub mod shelves;
+pub mod studio;
 
 use axum::{routing::get, Router};
 
@@ -23,6 +24,8 @@ pub fn build_routes() -> Router<crate::SharedState> {
         .nest("/books", progress::book_routes())
         .nest("/books", metadata_routes::routes())
         .nest("/annotations", progress::annotation_routes())
+        .nest("/books", studio::routes())
+        .nest("/revisions", studio::routes())
         .nest("/events", events::routes())
         .nest("/admin", admin::routes())
         .route("/health", get(health_check))

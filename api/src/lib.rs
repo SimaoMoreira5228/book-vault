@@ -30,6 +30,7 @@ pub struct AppState {
     pub db: sea_orm::DatabaseConnection,
     pub storage: Arc<dyn storage::StorageProvider>,
     pub metadata_service: metadata::service::MetadataService,
+    pub rate_limiter: auth::rate_limit::RateLimiter,
 }
 
 pub fn build_router(state: SharedState) -> Router {

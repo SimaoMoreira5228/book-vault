@@ -214,5 +214,66 @@ export const api = {
 		update: (annotationId: string, data: { color?: string; note?: string }) =>
 			request("PUT", `/api/v1/annotations/${annotationId}`, data),
 		delete: (annotationId: string) => request("DELETE", `/api/v1/annotations/${annotationId}`)
+	},
+
+	studio: {
+		saveSection: (bookId: string, sectionId: string, blocks: unknown) =>
+			request<{ message: string; version: number }>(
+				"PUT",
+				`/api/v1/books/${bookId}/sections/${sectionId}`,
+				{ blocks }
+			),
+		revisions: {
+			list: (bookId: string) =>
+				request<
+					Array<{
+						id: string;
+						book_id: string;
+						section_id: string;
+						version: number;
+						created_at: string;
+					}>
+				>("GET", `/api/v1/books/${bookId}/revisions`),
+			get: (revisionId: string) =>
+				request<{
+					id: string;
+					book_id: string;
+					section_id: string;
+					version: number;
+					snapshot: unknown;
+					created_at: string;
+				}>("GET", `/api/v1/revisions/${revisionId}`),
+			restore: (revisionId: string) =>
+				request<{ message: string; version: number }>(
+					"POST",
+					`/api/v1/revisions/${revisionId}/restore`
+				)
+		}
+	},
+
+	admin: {
+		jobs: () =>
+			request<
+				Array<{
+					id: string;
+					kind: string;
+					status: string;
+					error: string | null;
+					retry_count: number;
+					max_retries: number;
+					created_at: string;
+				}>
+			>("GET", "/api/v1/admin/jobs"),
+		users: () =>
+			request<
+				Array<{
+					id: string;
+					email: string;
+					display_name: string;
+					is_admin: boolean;
+					created_at: string;
+				}>
+			>("GET", "/api/v1/admin/users"),
+		cleanupSessions: () => request<{ deleted: number }>("GET", "/api/v1/admin/sessions/cleanup")
 	}
 };
