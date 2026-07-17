@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { authState } from '$lib/api/client';
-	import { goto } from '$app/navigation';
+	import { authState } from "$lib/api/client";
+	import { goto } from "$app/navigation";
 
 	let { children } = $props();
 
 	$effect(() => {
 		if (authState.isAuthenticated) {
-			goto('/');
+			goto("/");
 		}
 	});
 </script>
 
-<div class="min-h-screen bg-surface flex items-center justify-center px-margin-mobile">
+<div class="bg-surface px-margin-mobile flex min-h-screen items-center justify-center">
 	<div class="w-full max-w-md">
 		{@render children()}
 	</div>

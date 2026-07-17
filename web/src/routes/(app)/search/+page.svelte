@@ -1,60 +1,90 @@
 <script lang="ts">
-	import { api } from '$lib/api/client';
-	import type { BookHit } from '$lib/api/generated';
-	import Search from '@lucide/svelte/icons/search';
-	import SearchX from '@lucide/svelte/icons/search-x';
-	import BookOpen from '@lucide/svelte/icons/book-open';
+	import { api } from "$lib/api/client";
+	import type { BookHit } from "$lib/api/generated";
+	import Search from "@lucide/svelte/icons/search";
+	import SearchX from "@lucide/svelte/icons/search-x";
+	import BookOpen from "@lucide/svelte/icons/book-open";
 
-	let query = $state('');
-	let results = $state<BookHit[]>([]);
+	let query = $state("");
+	let results = $state<(BookHit & { format?: string })[]>([]);
 	let searched = $state(false);
+
+	function formatBadge(format: string | undefined): string {
+		if (!format) return "";
+		if (format === "mobi_raw") return "MOBI";
+		if (format === "cbz") return "CBZ";
+		return format.toUpperCase();
+	}
 
 	async function handleSearch() {
 		if (!query.trim()) return;
 		searched = true;
 		const result = await api.search(query);
 		if (result.isOk()) {
-			results = result.value.books;
+			const hits = result.value.books;
+			const metaResults = await Promise.all(hits.map((h) => api.books.get(h.id)));
+			results = hits.map((h, i) => {
+				const meta = metaResults[i];
+				return {
+					...h,
+					format: meta.isOk() ? meta.value.format : undefined
+				};
+			});
 		}
 	}
 </script>
 
 <section class="mb-section-gap">
 	<header class="mb-8">
-		<span class="font-label text-label-sm uppercase tracking-widest text-secondary mb-2 block">Discover</span>
+		<span class="font-label text-label-sm text-secondary mb-2 block tracking-widest uppercase"
+			>Discover</span
+		>
 		<h2 class="font-display text-headline-md">Search Library</h2>
 	</header>
 
 	<form onsubmit={handleSearch} class="mb-12">
 		<div class="relative">
-			<Search size={20} class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" />
+			<Search size={20} class="text-on-surface-variant absolute top-1/2 left-4 -translate-y-1/2" />
 			<input
 				type="text"
 				bind:value={query}
 				placeholder="Search by title or author..."
-				class="w-full pl-12 pr-4 py-4 bg-surface-container-low rounded-xl border border-outline/10 font-body text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-primary/10"
+				class="bg-surface-container-low border-outline/10 font-body text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:ring-primary/10 w-full rounded-xl border py-4 pr-4 pl-12 focus:ring-2 focus:outline-none"
 			/>
 		</div>
 	</form>
 
 	{#if searched}
 		{#if results.length === 0}
-			<div class="text-center py-16">
-				<SearchX size={32} class="text-on-surface-variant/30 block mb-4" />
+			<div class="py-16 text-center">
+				<SearchX size={32} class="text-on-surface-variant/30 mb-4 block" />
 				<p class="font-body text-body-md text-on-surface-variant">No results found for "{query}"</p>
 			</div>
 		{:else}
 			<div class="space-y-4">
-				{#each results as hit}
-					<a href="/reader/{hit.id}" class="paper-card rounded-xl p-6 flex items-center gap-6 hover:shadow-lg transition-all">
-						<div class="w-12 h-16 rounded-lg overflow-hidden bg-surface-container flex-shrink-0">
-							<div class="w-full h-full flex items-center justify-center">
+				{#each results as hit (hit.id)}
+					<a
+						href="/reader/{hit.id}"
+						class="paper-card flex items-center gap-6 rounded-xl p-6 transition-all hover:shadow-lg"
+					>
+						<div class="bg-surface-container h-16 w-12 flex-shrink-0 overflow-hidden rounded-lg">
+							<div class="flex h-full w-full items-center justify-center">
 								<BookOpen size={20} class="text-on-surface-variant/30" />
 							</div>
 						</div>
-						<div>
-							<h3 class="font-display text-headline-sm mb-1">{hit.title}</h3>
-							<p class="font-label text-label-sm text-on-surface-variant">{hit.author ?? 'Unknown Author'}</p>
+						<div class="min-w-0 flex-1">
+							<div class="mb-1 flex items-center gap-2">
+								<h3 class="font-display text-headline-sm truncate">{hit.title}</h3>
+								{#if hit.format}
+									<span
+										class="font-label bg-surface-container-high flex-shrink-0 rounded px-2 py-0.5 text-[10px] tracking-wider uppercase"
+										>{formatBadge(hit.format)}</span
+									>
+								{/if}
+							</div>
+							<p class="font-label text-label-sm text-on-surface-variant">
+								{hit.author ?? "Unknown Author"}
+							</p>
 						</div>
 					</a>
 				{/each}

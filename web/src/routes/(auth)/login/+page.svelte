@@ -1,40 +1,48 @@
 <script lang="ts">
-	import { authState } from '$lib/api/client';
-	import { goto } from '$app/navigation';
-	import type { LoginRequest } from '$lib/api/generated';
+	import { authState } from "$lib/api/client";
+	import { goto } from "$app/navigation";
+	import type { LoginRequest } from "$lib/api/generated";
 
-	let email = $state('');
-	let password = $state('');
-	let error = $state('');
+	let email = $state("");
+	let password = $state("");
+	let error = $state("");
 	let loading = $state(false);
 
 	async function handleSubmit() {
-		error = '';
+		error = "";
 		loading = true;
 
 		const result = await authState.login({ email, password } as LoginRequest);
 
 		if (result.isOk()) {
-			goto('/');
+			goto("/");
 		} else {
-			error = result.error.message || 'Login failed';
+			error = result.error.message || "Login failed";
 		}
 		loading = false;
 	}
 </script>
 
-<div class="text-center mb-12">
+<div class="mb-12 text-center">
 	<h1 class="font-display text-display-mobile text-primary mb-2">Book Vault</h1>
-	<p class="font-label text-label-sm text-on-surface-variant uppercase tracking-widest">Digital Sanctuary</p>
+	<p class="font-label text-label-sm text-on-surface-variant tracking-widest uppercase">
+		Digital Sanctuary
+	</p>
 </div>
 
 <form onsubmit={handleSubmit} class="space-y-8">
 	{#if error}
-		<div class="font-label text-label-sm text-error bg-error-container/20 px-4 py-3 rounded-lg">{error}</div>
+		<div class="font-label text-label-sm text-error bg-error-container/20 rounded-lg px-4 py-3">
+			{error}
+		</div>
 	{/if}
 
 	<div>
-		<label for="email" class="font-label text-label-sm text-on-surface-variant uppercase tracking-widest block mb-2">Email</label>
+		<label
+			for="email"
+			class="font-label text-label-sm text-on-surface-variant mb-2 block tracking-widest uppercase"
+			>Email</label
+		>
 		<input
 			id="email"
 			type="email"
@@ -46,7 +54,11 @@
 	</div>
 
 	<div>
-		<label for="password" class="font-label text-label-sm text-on-surface-variant uppercase tracking-widest block mb-2">Password</label>
+		<label
+			for="password"
+			class="font-label text-label-sm text-on-surface-variant mb-2 block tracking-widest uppercase"
+			>Password</label
+		>
 		<input
 			id="password"
 			type="password"
@@ -58,11 +70,15 @@
 	</div>
 
 	<button type="submit" disabled={loading} class="btn-primary w-full">
-		{loading ? 'Signing in...' : 'Sign In'}
+		{loading ? "Signing in..." : "Sign In"}
 	</button>
 
-	<p class="text-center font-label text-label-sm text-on-surface-variant">
+	<p class="font-label text-label-sm text-on-surface-variant text-center">
 		Don't have an account?
-		<a href="/register" class="text-secondary border-b border-secondary/30 hover:border-secondary transition-all">Register</a>
+		<a
+			href="/register"
+			class="text-secondary border-secondary/30 hover:border-secondary border-b transition-all"
+			>Register</a
+		>
 	</p>
 </form>
