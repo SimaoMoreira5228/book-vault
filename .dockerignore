@@ -1,7 +1,9 @@
 target/
 .git/
-web/
 local/
+node_modules/
+web/node_modules/
+web/.svelte-kit/
 *.md
 .gitignore
 .env

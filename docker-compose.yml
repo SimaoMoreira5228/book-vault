@@ -1,0 +1,84 @@
+services:
+  api:
+    image: bookvault:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      BOOKVAULT_CONFIG: /etc/bookvault/bookvault.toml
+      BOOKVAULT_WEB_DIR: /usr/share/bookvault/web
+    volumes:
+      - bookvault-data:/data
+      - bookvault-storage:/storage
+      - ./bookvault.toml:/etc/bookvault/bookvault.toml:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: false
+      minio:
+        condition: service_healthy
+        required: false
+
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: bookvault
+      POSTGRES_PASSWORD: bookvault
+      POSTGRES_DB: bookvault
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SQL", "pg_isready", "-U", "bookvault"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    profiles:
+      - postgres
+      - full
+
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: bookvault
+      MINIO_ROOT_PASSWORD: bookvault-secret
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    profiles:
+      - s3
+      - full
+
+  # Uncomment if you want a separate reverse-proxy container
+  # caddy:
+  #   image: caddy:2-alpine
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./Caddyfile:/etc/caddy/Caddyfile:ro
+  #     - caddy-data:/data
+  #   profiles:
+  #     - proxy
+
+volumes:
+  bookvault-data:
+  bookvault-storage:
+  postgres-data:
+  minio-data:
+  caddy-data:

@@ -2,3 +2,4 @@ local/
 target/
 bookvault.db
 data
+bookvault.toml

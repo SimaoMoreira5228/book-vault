@@ -1,0 +1,53 @@
+# BookVault Configuration Templates
+
+## Quick start (SQLite + Local storage)
+# No additional services needed
+cp bookvault.sqlite-local.toml bookvault.toml
+docker compose up api
+
+## SQLite + S3 (MinIO) storage
+docker compose --profile s3 up
+
+## Postgres + Local storage
+docker compose --profile postgres up
+
+## Postgres + S3 (MinIO) storage
+docker compose --profile full up
+
+## Configuration reference
+[server]
+host = "0.0.0.0"
+port = 8080
+
+[database]
+# SQLite: url = "sqlite:///data/bookvault.db?mode=rwc"
+# Postgres: url = "postgres://user:password@host:5432/bookvault"
+url = "sqlite:///data/bookvault.db?mode=rwc"
+
+[storage]
+# provider = "local" uses the local filesystem at base_path
+# provider = "s3" uses S3-compatible storage (AWS, MinIO, R2, Backblaze)
+provider = "local"
+base_path = "/storage"
+
+[storage.s3]
+# Only needed when provider = "s3"
+endpoint = "http://minio:9000"     # S3 endpoint URL
+region = "us-east-1"                # AWS region or any value for MinIO
+bucket = "bookvault"                # Bucket name
+access_key = "bookvault"            # Access key ID
+secret_key = "bookvault-secret"     # Secret access key
+path_style = true                   # true for MinIO, false for AWS
+
+[auth]
+session_ttl_days = 30
+session_idle_days = 7
+# "open" = anyone can register, "invite" = invite-only
+mode = "open"
+
+[cors]
+# Use "*" for development, specific origin for production
+allowed_origin = "*"
+
+[logging]
+level = "info"

@@ -1,0 +1,38 @@
+bookvault.example.com {
+	encode gzip zstd
+
+	# API routes
+	handle /api/* {
+		reverse_proxy api:8080
+	}
+	handle /api/v1/* {
+		reverse_proxy api:8080
+	}
+
+	# WebSocket for events
+	handle /events* {
+		reverse_proxy api:8080
+	}
+
+	# Static files + SPA fallback
+	handle {
+		root * /usr/share/bookvault/web
+		try_files {path} /index.html
+		file_server
+	}
+}
+
+# Dev/local config
+:80 {
+	encode gzip zstd
+
+	handle_path /api/* {
+		reverse_proxy localhost:8080
+	}
+
+	handle {
+		root * /usr/share/bookvault/web
+		try_files {path} /index.html
+		file_server
+	}
+}

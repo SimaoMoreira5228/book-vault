@@ -1,0 +1,29 @@
+[server]
+host = "0.0.0.0"
+port = 8080
+
+[database]
+url = "sqlite:///data/bookvault.db?mode=rwc"
+
+[storage]
+provider = "s3"
+base_path = "/storage"
+
+[storage.s3]
+endpoint = "http://minio:9000"
+region = "us-east-1"
+bucket = "bookvault"
+access_key = "bookvault"
+secret_key = "bookvault-secret"
+path_style = true
+
+[auth]
+session_ttl_days = 30
+session_idle_days = 7
+mode = "open"
+
+[cors]
+allowed_origin = "*"
+
+[logging]
+level = "info"
