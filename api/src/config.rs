@@ -12,6 +12,8 @@ pub struct Config {
     #[serde(default)]
     pub auth: AuthConfig,
     #[serde(default)]
+    pub cors: CorsConfig,
+    #[serde(default)]
     pub logging: LoggingConfig,
 }
 
@@ -48,6 +50,12 @@ pub struct AuthConfig {
 }
 
 #[derive(Clone, Debug, Deserialize)]
+pub struct CorsConfig {
+    #[serde(default = "default_cors_origin")]
+    pub allowed_origin: String,
+}
+
+#[derive(Clone, Debug, Deserialize)]
 pub struct LoggingConfig {
     #[serde(default = "default_log_level")]
     pub level: String,
@@ -76,6 +84,9 @@ fn default_session_idle_days() -> i64 {
 }
 fn default_auth_mode() -> String {
     "open".to_string()
+}
+fn default_cors_origin() -> String {
+    "*".to_string()
 }
 fn default_log_level() -> String {
     "info".to_string()
@@ -117,6 +128,14 @@ impl Default for AuthConfig {
     }
 }
 
+impl Default for CorsConfig {
+    fn default() -> Self {
+        Self {
+            allowed_origin: default_cors_origin(),
+        }
+    }
+}
+
 impl Default for LoggingConfig {
     fn default() -> Self {
         Self {
@@ -147,6 +166,7 @@ impl Default for Config {
             database: DatabaseConfig::default(),
             storage: StorageConfig::default(),
             auth: AuthConfig::default(),
+            cors: CorsConfig::default(),
             logging: LoggingConfig::default(),
         }
     }

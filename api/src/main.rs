@@ -22,7 +22,7 @@ async fn main() {
 
     let state: SharedState = Arc::new(AppState {
         metadata_service: book_vault::metadata::service::MetadataService::new(),
-        config,
+        config: config.clone(),
         db,
         storage,
     });
@@ -35,7 +35,7 @@ async fn main() {
 
     let app = build_router(state);
 
-    let addr: SocketAddr = format!("[::]:{}", 8080)
+    let addr: SocketAddr = format!("[::]:{}", config.server.port)
         .parse()
         .expect("Invalid server address");
 

@@ -1,4 +1,5 @@
 import { err, ok, Result } from "neverthrow";
+import { apiConfig } from "./config";
 import type {
 	BookResponse,
 	CreateBookRequest,
@@ -24,11 +25,12 @@ async function request<T>(
 	body?: unknown
 ): Promise<Result<T, ApiError>> {
 	try {
-		const res = await fetch(path, {
+		const url = apiConfig.baseUrl ? `${apiConfig.baseUrl}${path}` : path;
+		const res = await fetch(url, {
 			method,
 			headers: body ? { "Content-Type": "application/json" } : undefined,
 			body: body ? JSON.stringify(body) : undefined,
-			credentials: "same-origin"
+			credentials: apiConfig.credentials
 		});
 
 		if (res.status === 401) {

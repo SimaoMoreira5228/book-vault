@@ -17,7 +17,7 @@ pub mod shelves;
 
 use std::sync::Arc;
 use axum::Router;
-use tower_http::cors::CorsLayer;
+use tower_http::cors::{Any, CorsLayer};
 use tower_http::trace::TraceLayer;
 
 pub use config::Config;
@@ -33,11 +33,26 @@ pub struct AppState {
 }
 
 pub fn build_router(state: SharedState) -> Router {
+    use axum::http::{HeaderValue, Method};
+    use tower_http::cors::AllowOrigin;
+
+    let cors = if state.config.cors.allowed_origin == "*" {
+        CorsLayer::permissive()
+    } else {
+        let origin: HeaderValue = state.config.cors.allowed_origin.clone().parse().unwrap();
+        CorsLayer::new()
+            .allow_origin(AllowOrigin::list([origin]))
+            .allow_methods([Method::GET, Method::POST, Method::PUT, Method::DELETE, Method::OPTIONS])
+            .allow_headers(Any)
+            .allow_credentials(true)
+            .max_age(std::time::Duration::from_secs(86400))
+    };
+
     Router::new()
         .nest("/api/v1", routes::build_routes())
         .with_state(state)
         .layer(TraceLayer::new_for_http())
-        .layer(CorsLayer::permissive())
+        .layer(cors)
 }
 
 pub async fn init_tracing(config: &Config) {
