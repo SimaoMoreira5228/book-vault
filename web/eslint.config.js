@@ -25,6 +25,7 @@ export default defineConfig(
 	},
 	{
 		files: ["**/*.svelte", "**/*.svelte.ts", "**/*.svelte.js"],
+		ignores: ["**/node_modules/**", "**/dist/**", "src/lib/paraglide/**"],
 		languageOptions: {
 			parserOptions: {
 				projectService: true,

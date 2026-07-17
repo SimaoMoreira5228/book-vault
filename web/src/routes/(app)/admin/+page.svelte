@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
 	import { api } from "$lib/api/client";
-	import type { Result } from "neverthrow";
 
 	let tab = $state<"jobs" | "users" | "cleanup">("jobs");
 	let jobs = $state<Array<Record<string, unknown>>>([]);
@@ -87,7 +86,7 @@
 			<div class="flex items-center justify-center py-16">
 				<div
 					class="border-secondary h-8 w-8 animate-spin rounded-full border-2 border-t-transparent"
-				/>
+				></div>
 			</div>
 		{:else if jobs.length === 0}
 			<div class="bg-surface-container-low rounded-xl p-12 text-center">
@@ -137,7 +136,7 @@
 			<div class="flex items-center justify-center py-16">
 				<div
 					class="border-secondary h-8 w-8 animate-spin rounded-full border-2 border-t-transparent"
-				/>
+				></div>
 			</div>
 		{:else}
 			<div class="space-y-3">

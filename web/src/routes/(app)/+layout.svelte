@@ -8,6 +8,7 @@
 	import PenSquare from "@lucide/svelte/icons/pen-square";
 	import ScrollText from "@lucide/svelte/icons/scroll-text";
 	import Bell from "@lucide/svelte/icons/bell";
+	import Settings from "@lucide/svelte/icons/settings";
 
 	let { children } = $props();
 
@@ -34,12 +35,17 @@
 		>
 			<div
 				class="border-outline/10 bg-surface-container h-8 w-8 overflow-hidden rounded-full border"
-			/>
+			></div>
 			<h1 class="font-display text-display-mobile text-primary">{m.app_name()}</h1>
 		</div>
-		<button class="text-primary transition-opacity hover:opacity-80 active:scale-95">
-			<Bell size={20} />
-		</button>
+		<div class="flex items-center gap-2">
+			<button class="text-primary transition-opacity hover:opacity-80 active:scale-95">
+				<Bell size={20} />
+			</button>
+			<a href="/settings" class="text-primary transition-opacity hover:opacity-80 active:scale-95">
+				<Settings size={20} />
+			</a>
+		</div>
 	</header>
 
 	<main class="max-w-container-max px-margin-mobile md:px-margin-desktop mx-auto pt-24 pb-32">
@@ -87,7 +93,12 @@
 		</a>
 		<a
 			href="/notes"
-			class="text-on-surface-variant flex flex-col items-center justify-center px-4 py-1 opacity-70 transition-colors active:scale-90"
+			class={[
+				"flex flex-col items-center justify-center px-4 py-1 transition-colors active:scale-90",
+				isCurrent("/notes")
+					? "text-secondary bg-secondary-container/10 rounded-full"
+					: "text-on-surface-variant opacity-70"
+			]}
 		>
 			<ScrollText size={20} />
 			<span class="font-label text-label-sm mt-1">{m.nav_notes()}</span>

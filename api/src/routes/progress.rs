@@ -70,8 +70,48 @@ pub fn book_routes() -> Router<SharedState> {
 
 pub fn annotation_routes() -> Router<SharedState> {
     Router::new()
+        .route("/all", get(list_all_annotations))
         .route("/{id}", put(update_annotation))
         .route("/{id}", delete(delete_annotation))
+}
+
+async fn list_all_annotations(
+    State(state): State<SharedState>,
+    auth: AuthenticatedUser,
+) -> Result<Json<Vec<AnnotationResponse>>, AppError> {
+    let library_ids = crate::routes::books::get_user_library_ids(&state.db, auth.user_id).await?;
+    let book_ids: Vec<Uuid> = Books::find()
+        .filter(books::Column::LibraryId.is_in(library_ids))
+        .all(&state.db)
+        .await?
+        .into_iter()
+        .map(|b| b.id)
+        .collect();
+
+    let annotations = Annotations::find()
+        .filter(annotations::Column::UserId.eq(auth.user_id))
+        .filter(annotations::Column::BookId.is_in(book_ids))
+        .order_by_desc(annotations::Column::CreatedAt)
+        .all(&state.db)
+        .await?;
+
+    Ok(Json(
+        annotations
+            .into_iter()
+            .map(|a| AnnotationResponse {
+                id: a.id,
+                book_id: a.book_id,
+                section_id: a.section_id,
+                block_index: a.block_index,
+                start_offset: a.start_offset,
+                end_offset: a.end_offset,
+                color: a.color,
+                note: a.note,
+                created_at: a.created_at.to_string(),
+                updated_at: a.updated_at.to_string(),
+            })
+            .collect(),
+    ))
 }
 
 async fn get_progress(

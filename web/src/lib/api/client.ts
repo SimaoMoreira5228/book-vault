@@ -117,7 +117,8 @@ export const api = {
 	shelves: {
 		list: () => request<ShelfResponse[]>("GET", "/api/v1/shelves"),
 		create: (data: { name: string; description?: string; kind?: string }) =>
-			request<ShelfResponse>("POST", "/api/v1/shelves", data)
+			request<ShelfResponse>("POST", "/api/v1/shelves", data),
+		delete: (id: string) => request<void>("DELETE", `/api/v1/shelves/${id}`)
 	},
 
 	search: (q: string) => request<SearchResult>("GET", `/api/v1/search?q=${encodeURIComponent(q)}`),
@@ -173,6 +174,21 @@ export const api = {
 	},
 
 	annotations: {
+		listAll: () =>
+			request<
+				Array<{
+					id: string;
+					book_id: string;
+					section_id: string;
+					block_index: number;
+					start_offset: number;
+					end_offset: number;
+					color: string | null;
+					note: string | null;
+					created_at: string;
+					updated_at: string;
+				}>
+			>("GET", "/api/v1/annotations/all"),
 		list: (bookId: string) =>
 			request<
 				Array<{
@@ -249,6 +265,22 @@ export const api = {
 					`/api/v1/revisions/${revisionId}/restore`
 				)
 		}
+	},
+
+	sessions: {
+		list: () =>
+			request<
+				Array<{
+					id: string;
+					user_agent: string | null;
+					ip_address: string | null;
+					created_at: string;
+					last_seen_at: string;
+					expires_at: string;
+					is_current: boolean;
+				}>
+			>("GET", "/api/v1/auth/sessions"),
+		revoke: (id: string) => request<void>("DELETE", `/api/v1/auth/sessions/${id}`)
 	},
 
 	admin: {

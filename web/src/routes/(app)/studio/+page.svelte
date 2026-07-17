@@ -73,7 +73,7 @@
 					<div
 						class="bg-surface-container w-full rounded-t-lg transition-all duration-1000"
 						style="height: {bar.height}%"
-					/>
+					></div>
 					<span class="font-label text-label-sm mt-2 opacity-50">{bar.day}</span>
 				</div>
 			{/each}
@@ -113,12 +113,17 @@
 		<div class="flex items-center justify-center py-16">
 			<div
 				class="border-secondary h-8 w-8 animate-spin rounded-full border-2 border-t-transparent"
-			/>
+			></div>
 		</div>
 	{:else if drafts.length === 0}
 		<div
 			class="border-outline-variant/30 hover:bg-surface-container/30 group flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-16 transition-colors"
+			role="button"
+			tabindex="0"
 			onclick={createNew}
+			onkeydown={(e) => {
+				if (e.key === "Enter" || e.key === " ") createNew();
+			}}
 		>
 			<div
 				class="bg-surface-container mb-4 flex h-16 w-16 items-center justify-center rounded-full transition-transform group-hover:scale-110"
@@ -137,7 +142,7 @@
 					<div
 						class="bg-surface-container relative mb-4 aspect-[3/4] overflow-hidden rounded-xl shadow-lg transition-transform duration-500 group-hover:-translate-y-2"
 					>
-						<div class="book-spine-gradient absolute inset-0" />
+						<div class="book-spine-gradient absolute inset-0"></div>
 						<div class="flex h-full w-full items-center justify-center">
 							<PenSquare size={48} class="text-on-surface-variant/20" />
 						</div>
@@ -159,7 +164,12 @@
 			{/each}
 			<div
 				class="border-outline-variant/30 hover:bg-surface-container/30 group flex aspect-[3/4] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed transition-colors"
+				role="button"
+				tabindex="0"
 				onclick={createNew}
+				onkeydown={(e) => {
+					if (e.key === "Enter" || e.key === " ") createNew();
+				}}
 			>
 				<div
 					class="bg-surface-container mb-4 flex h-16 w-16 items-center justify-center rounded-full transition-transform group-hover:scale-110"

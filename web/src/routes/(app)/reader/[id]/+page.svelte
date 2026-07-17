@@ -184,7 +184,7 @@
 
 <div class={["min-h-screen transition-colors duration-300", themeClasses[theme]]}>
 	<div class="bg-surface-container-low/20 fixed top-0 left-0 z-[60] w-full">
-		<div class="bg-secondary h-[2px] transition-all duration-300" style="width: {progress}%;" />
+		<div class="bg-secondary h-[2px] transition-all duration-300" style="width: {progress}%;"></div>
 	</div>
 
 	<header
@@ -285,7 +285,7 @@
 				}}
 				class="p-1 hover:opacity-70"><Plus size={16} /></button
 			>
-			<div class="bg-outline-variant/30 mx-2 h-6 w-px" />
+			<div class="bg-outline-variant/30 mx-2 h-6 w-px"></div>
 			<button
 				onclick={() => {
 					if (lineHeight > 1.2) lineHeight -= 0.2;
@@ -309,7 +309,7 @@
 			<div class="p-6">
 				<h3 class="font-display text-headline-sm text-primary mb-6">Contents</h3>
 				<nav class="space-y-3">
-					{#each tocEntries as entry}
+					{#each tocEntries as entry (entry.id)}
 						<button
 							onclick={() => {
 								showToc = false;
@@ -351,7 +351,7 @@
 			<div class="flex items-center justify-center py-32">
 				<div
 					class="border-secondary h-8 w-8 animate-spin rounded-full border-2 border-t-transparent"
-				/>
+				></div>
 			</div>
 		{:else if meta?.format === "pdf" && pdfMode === "pdf"}
 			<object

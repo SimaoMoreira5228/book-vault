@@ -1,6 +1,6 @@
 function resolveBaseUrl(): string {
-	if (typeof window !== "undefined" && (window as Record<string, unknown>).__API_URL__) {
-		return (window as Record<string, unknown>).__API_URL__ as string;
+	if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).__API_URL__) {
+		return (window as unknown as Record<string, unknown>).__API_URL__ as string;
 	}
 	try {
 		return import.meta.env.PUBLIC_API_URL ?? "";
