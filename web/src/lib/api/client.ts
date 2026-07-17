@@ -141,5 +141,76 @@ export const api = {
 		}
 	},
 
-	asset: (bookId: string, assetId: string) => `/api/v1/books/${bookId}/assets/${assetId}`
+	asset: (bookId: string, assetId: string) => `/api/v1/books/${bookId}/assets/${assetId}`,
+
+	progress: {
+		get: (bookId: string) =>
+			request<{
+				section_id: string;
+				block_index: number;
+				char_offset: number;
+				percentage: number;
+				updated_at: string;
+			} | null>("GET", `/api/v1/books/${bookId}/progress`),
+		save: (
+			bookId: string,
+			data: {
+				section_id: string;
+				block_index: number;
+				char_offset: number;
+				percentage: number;
+			}
+		) =>
+			request<{
+				section_id: string;
+				block_index: number;
+				char_offset: number;
+				percentage: number;
+				updated_at: string;
+			}>("PUT", `/api/v1/books/${bookId}/progress`, data)
+	},
+
+	annotations: {
+		list: (bookId: string) =>
+			request<
+				Array<{
+					id: string;
+					book_id: string;
+					section_id: string;
+					block_index: number;
+					start_offset: number;
+					end_offset: number;
+					color: string | null;
+					note: string | null;
+					created_at: string;
+					updated_at: string;
+				}>
+			>("GET", `/api/v1/books/${bookId}/annotations`),
+		create: (
+			bookId: string,
+			data: {
+				section_id: string;
+				block_index: number;
+				start_offset: number;
+				end_offset: number;
+				color?: string;
+				note?: string;
+			}
+		) =>
+			request<{
+				id: string;
+				book_id: string;
+				section_id: string;
+				block_index: number;
+				start_offset: number;
+				end_offset: number;
+				color: string | null;
+				note: string | null;
+				created_at: string;
+				updated_at: string;
+			}>("POST", `/api/v1/books/${bookId}/annotations`, data),
+		update: (annotationId: string, data: { color?: string; note?: string }) =>
+			request("PUT", `/api/v1/annotations/${annotationId}`, data),
+		delete: (annotationId: string) => request("DELETE", `/api/v1/annotations/${annotationId}`)
+	}
 };

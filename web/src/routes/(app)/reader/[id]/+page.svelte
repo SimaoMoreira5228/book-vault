@@ -23,12 +23,43 @@
 	let comicPages = $state<Array<{ page: number; asset_id: string; mime_type: string }>>([]);
 	let comicPage = $state(1);
 	let comicLoading = $state(false);
+	let sectionId = $state("");
 
 	let formatsWithDownload = $derived(["pdf", "mobi_raw", "epub"]);
+	let saveTimer: ReturnType<typeof setInterval> | undefined;
 
 	$effect(() => {
 		if (bookId) {
 			loadBook();
+			loadProgress();
+		}
+		return () => {
+			if (saveTimer) clearInterval(saveTimer);
+		};
+	});
+
+	async function loadProgress() {
+		const result = await api.progress.get(bookId);
+		if (result.isOk() && result.value) {
+			progress = Math.round(result.value.percentage);
+			sectionId = result.value.section_id;
+		}
+	}
+
+	async function saveProgressNow() {
+		if (!sectionId) return;
+		const currentBlock = Math.round(progress / 10);
+		api.progress.save(bookId, {
+			section_id: sectionId,
+			block_index: currentBlock,
+			char_offset: 0,
+			percentage: progress
+		});
+	}
+
+	$effect(() => {
+		if (bookData && sectionId) {
+			saveTimer = setInterval(() => saveProgressNow(), 15000);
 		}
 	});
 
@@ -40,6 +71,8 @@
 		}
 		if (readResult.isOk()) {
 			bookData = readResult.value as { book: BookIr };
+			const firstSection = (readResult.value as { book: BookIr }).book.spine[0];
+			if (firstSection) sectionId = firstSection.id;
 		}
 		if (metaResult.isOk() && metaResult.value.format === "cbz") {
 			loadComicPages();

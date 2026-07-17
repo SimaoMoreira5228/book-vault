@@ -72,5 +72,13 @@
 	"error_unauthorized": "Session expired. Please login again.",
 	"upload_dropzone": "Drop your file here or click to upload",
 	"upload_supported": "Supports EPUB, PDF, CBZ, MOBI",
-	"upload_success": "Upload successful! Processing your book..."
+	"upload_success": "Upload successful! Processing your book...",
+	"reader_annotations": "Annotations",
+	"reader_highlight": "Highlight",
+	"reader_add_note": "Add Note",
+	"reader_delete_annotation": "Delete",
+	"reader_save_note": "Save Note",
+	"reader_progress_saving": "Saving...",
+	"reader_progress_saved": "Progress saved",
+	"library_finished_title": "Finished Reading"
 }

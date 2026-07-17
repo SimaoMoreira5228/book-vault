@@ -13,6 +13,7 @@ pub mod export;
 pub mod routes;
 pub mod jobs;
 pub mod search;
+pub mod shelves;
 
 use std::sync::Arc;
 use axum::Router;

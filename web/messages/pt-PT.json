@@ -72,5 +72,13 @@
 	"error_unauthorized": "Sess\u00e3o expirada. Por favor, inicie sess\u00e3o novamente.",
 	"upload_dropzone": "Largue o ficheiro aqui ou clique para carregar",
 	"upload_supported": "Suporta EPUB, PDF, CBZ, MOBI",
-	"upload_success": "Carregamento bem-sucedido! A processar o seu livro..."
+	"upload_success": "Carregamento bem-sucedido! A processar o seu livro...",
+	"reader_annotations": "Anota\u00e7\u00f5es",
+	"reader_highlight": "Destacar",
+	"reader_add_note": "Adicionar Nota",
+	"reader_delete_annotation": "Eliminar",
+	"reader_save_note": "Guardar Nota",
+	"reader_progress_saving": "A guardar...",
+	"reader_progress_saved": "Progresso guardado",
+	"library_finished_title": "Leitura Conclu\u00edda"
 }
