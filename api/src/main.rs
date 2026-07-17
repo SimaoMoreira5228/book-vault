@@ -1,12 +1,11 @@
 use book_vault::{build_router, AppState, Config, SharedState};
-use std::sync::Arc;
 use std::net::SocketAddr;
+use std::sync::Arc;
 use tracing::info;
 
 #[tokio::main]
 async fn main() {
     let config = Config::load();
-
     book_vault::init_tracing(&config).await;
 
     let db = book_vault::db::connect(&config.database.url)
@@ -22,6 +21,13 @@ async fn main() {
     ));
 
     let state: SharedState = Arc::new(AppState { config, db, storage });
+
+    let worker_state = state.clone();
+    tokio::spawn(async move {
+        let worker = book_vault::jobs::worker::JobWorker::new(worker_state);
+        worker.run_forever().await;
+    });
+
     let app = build_router(state);
 
     let addr: SocketAddr = format!("[::]:{}", 8080)
