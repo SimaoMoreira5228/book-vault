@@ -3,6 +3,7 @@ use std::path::PathBuf;
 use serde::Deserialize;
 
 #[derive(Clone, Debug, Deserialize)]
+#[derive(Default)]
 pub struct Config {
 	#[serde(default)]
 	pub server: ServerConfig,
@@ -205,15 +206,3 @@ impl Config {
 	}
 }
 
-impl Default for Config {
-	fn default() -> Self {
-		Self {
-			server: ServerConfig::default(),
-			database: DatabaseConfig::default(),
-			storage: StorageConfig::default(),
-			auth: AuthConfig::default(),
-			cors: CorsConfig::default(),
-			logging: LoggingConfig::default(),
-		}
-	}
-}

@@ -2,6 +2,7 @@
 
 pub use super::annotations::Entity as Annotations;
 pub use super::assets::Entity as Assets;
+pub use super::authors::Entity as Authors;
 pub use super::book_ir::Entity as BookIr;
 pub use super::book_metadata::Entity as BookMetadata;
 pub use super::book_revisions::Entity as BookRevisions;

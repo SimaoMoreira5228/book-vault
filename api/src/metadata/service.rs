@@ -126,11 +126,10 @@ impl MetadataService {
 				book_active.title = Set(title.clone());
 			}
 		}
-		if !locked_fields.contains(&"author".to_string()) {
-			if !candidate.authors.is_empty() {
+		if !locked_fields.contains(&"author".to_string())
+			&& !candidate.authors.is_empty() {
 				book_active.author = Set(Some(candidate.authors.join(", ")));
 			}
-		}
 		if !locked_fields.contains(&"isbn".to_string()) {
 			if let Some(ref isbn13) = candidate.isbn13 {
 				book_active.isbn = Set(Some(isbn13.clone()));
@@ -236,11 +235,10 @@ impl MetadataService {
 				book_active.title = Set(title.clone());
 			}
 		}
-		if !locked_fields.contains(&"author".to_string()) {
-			if !merged.authors.is_empty() {
+		if !locked_fields.contains(&"author".to_string())
+			&& !merged.authors.is_empty() {
 				book_active.author = Set(Some(merged.authors.join(", ")));
 			}
-		}
 		if !locked_fields.contains(&"isbn".to_string()) {
 			if let Some(ref isbn13) = merged.isbn13 {
 				book_active.isbn = Set(Some(isbn13.clone()));

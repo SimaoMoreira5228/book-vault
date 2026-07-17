@@ -55,7 +55,7 @@ fn render_block(block: &Block) -> String {
 			.iter()
 			.enumerate()
 			.map(|(i, item)| {
-				let inner: String = item.iter().map(|b| render_block(b)).collect::<Vec<_>>().join(" ");
+				let inner: String = item.iter().map(render_block).collect::<Vec<_>>().join(" ");
 				format!("{}. {inner}", i + 1)
 			})
 			.collect::<Vec<_>>()
@@ -63,7 +63,7 @@ fn render_block(block: &Block) -> String {
 		Block::UnorderedList(items) => items
 			.iter()
 			.map(|item| {
-				let inner: String = item.iter().map(|b| render_block(b)).collect::<Vec<_>>().join(" ");
+				let inner: String = item.iter().map(render_block).collect::<Vec<_>>().join(" ");
 				format!("- {inner}")
 			})
 			.collect::<Vec<_>>()
@@ -89,7 +89,7 @@ fn render_block(block: &Block) -> String {
 		}
 		Block::HorizontalRule => "---".to_string(),
 		Block::Footnote { marker, blocks } => {
-			let inner: String = blocks.iter().map(|b| render_block(b)).collect::<Vec<_>>().join(" ");
+			let inner: String = blocks.iter().map(render_block).collect::<Vec<_>>().join(" ");
 			format!("[^{marker}]: {inner}")
 		}
 		Block::RawHtml { content } => content.clone(),

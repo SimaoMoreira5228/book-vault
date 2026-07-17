@@ -77,7 +77,7 @@ async fn parse_pdf(state: &crate::SharedState, book: &books::Model, data: &[u8])
 
 	let lines: Vec<&str> = text.lines().map(|l| l.trim()).filter(|l| !l.is_empty()).collect();
 
-	let lines_per_page = (lines.len() + page_count - 1) / page_count;
+	let lines_per_page = lines.len().div_ceil(page_count);
 
 	let mut spine = Vec::new();
 

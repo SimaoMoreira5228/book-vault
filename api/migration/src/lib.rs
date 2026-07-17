@@ -1,5 +1,7 @@
 pub use sea_orm_migration::prelude::*;
 
+mod m20250717_add_author_id_to_books;
+mod m20250717_create_authors;
 mod m20250717_create_bookmarks;
 mod m20260717_011703_create_assets;
 mod m20260717_011703_create_book_ir;
@@ -39,6 +41,8 @@ impl MigratorTrait for Migrator {
 			Box::new(m20260717_011707_add_keep_source::Migration),
 			Box::new(m20260717_011708_create_book_metadata::Migration),
 			Box::new(m20250717_create_bookmarks::Migration),
+			Box::new(m20250717_create_authors::Migration),
+			Box::new(m20250717_add_author_id_to_books::Migration),
 		]
 	}
 }

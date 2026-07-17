@@ -8,6 +8,12 @@ pub struct GoogleBooksProvider {
 	client: reqwest::Client,
 }
 
+impl Default for GoogleBooksProvider {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl GoogleBooksProvider {
 	pub fn new() -> Self {
 		Self {

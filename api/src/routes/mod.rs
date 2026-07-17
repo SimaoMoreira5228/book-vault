@@ -1,5 +1,6 @@
 pub mod admin;
 pub mod assets;
+pub mod authors;
 pub mod bookmarks;
 pub mod books;
 pub mod events;
@@ -29,6 +30,7 @@ pub fn build_routes() -> Router<crate::SharedState> {
 		.nest("/books", studio::routes())
 		.nest("/revisions", studio::routes())
 		.nest("/events", events::routes())
+		.nest("/authors", authors::author_routes())
 		.nest("/bookmarks", bookmarks::bookmark_routes())
 		.nest("/admin", admin::routes())
 		.route("/health", get(health_check))

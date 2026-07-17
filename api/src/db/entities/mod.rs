@@ -4,6 +4,7 @@ pub mod prelude;
 
 pub mod annotations;
 pub mod assets;
+pub mod authors;
 pub mod book_ir;
 pub mod book_metadata;
 pub mod book_revisions;

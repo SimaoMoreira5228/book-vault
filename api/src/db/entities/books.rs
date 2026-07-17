@@ -25,6 +25,7 @@ pub struct Model {
 	pub updated_at: DateTimeWithTimeZone,
 	pub keep_source: Option<bool>,
 	pub sequence_index: Option<i64>,
+	pub author_id: Option<Uuid>,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
@@ -53,6 +54,14 @@ pub enum Relation {
 	ReadingProgress,
 	#[sea_orm(has_many = "super::shelf_entries::Entity")]
 	ShelfEntries,
+	#[sea_orm(
+		belongs_to = "super::authors::Entity",
+		from = "Column::AuthorId",
+		to = "super::authors::Column::Id",
+		on_update = "NoAction",
+		on_delete = "SetNull"
+	)]
+	Authors,
 }
 
 impl Related<super::annotations::Entity> for Entity {

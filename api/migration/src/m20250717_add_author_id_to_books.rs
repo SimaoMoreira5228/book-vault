@@ -12,15 +12,7 @@ impl MigrationTrait for Migration {
 			.alter_table(
 				Table::alter()
 					.table(Books::Table)
-					.add_column_if_not_exists(ColumnDef::new(Alias::new("keep_source")).boolean().default(true))
-					.to_owned(),
-			)
-			.await?;
-		manager
-			.alter_table(
-				Table::alter()
-					.table(Books::Table)
-					.add_column_if_not_exists(ColumnDef::new(Alias::new("sequence_index")).integer().default(0))
+					.add_column_if_not_exists(ColumnDef::new(Alias::new("author_id")).uuid())
 					.to_owned(),
 			)
 			.await
@@ -31,15 +23,7 @@ impl MigrationTrait for Migration {
 			.alter_table(
 				Table::alter()
 					.table(Books::Table)
-					.drop_column(Alias::new("keep_source"))
-					.to_owned(),
-			)
-			.await?;
-		manager
-			.alter_table(
-				Table::alter()
-					.table(Books::Table)
-					.drop_column(Alias::new("sequence_index"))
+					.drop_column(Alias::new("author_id"))
 					.to_owned(),
 			)
 			.await

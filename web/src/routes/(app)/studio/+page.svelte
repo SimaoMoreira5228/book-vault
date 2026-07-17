@@ -20,7 +20,7 @@
 		loading = true;
 		const result = await api.books.list();
 		if (result.isOk()) {
-			drafts = result.value.filter((b) => b.format === "native");
+			drafts = result.value.books.filter((b) => b.format === "native");
 		}
 		loading = false;
 	}

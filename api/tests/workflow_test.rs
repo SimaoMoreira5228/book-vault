@@ -11,7 +11,7 @@ async fn register_create_book_then_annotate() {
 	let book_id = book["id"].as_str().unwrap().to_string();
 
 	let list = app.list_books().await;
-	assert!(list.as_array().unwrap().iter().any(|b| b["id"] == book_id));
+	assert!(list["books"].as_array().unwrap().iter().any(|b| b["id"] == book_id));
 
 	let section_id = "00000000-0000-0000-0000-000000000001";
 	let ann = app.create_annotation(&book_id, section_id).await;
@@ -76,7 +76,7 @@ async fn full_lifecycle() {
 
 	// Verify list
 	let list = app.list_books().await;
-	let ids: Vec<&str> = list.as_array().unwrap().iter().map(|b| b["id"].as_str().unwrap()).collect();
+	let ids: Vec<&str> = list["books"].as_array().unwrap().iter().map(|b| b["id"].as_str().unwrap()).collect();
 	assert!(ids.contains(&book1_id.as_str()));
 	assert!(!ids.contains(&book2_id.as_str()));
 }

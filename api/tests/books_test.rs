@@ -33,7 +33,7 @@ async fn list_books_returns_only_own() {
 	app.create_book("Another Book", None).await;
 
 	let list = app.list_books().await;
-	let arr = list.as_array().unwrap();
+	let arr = list["books"].as_array().unwrap();
 	assert!(arr.len() >= 2, "should have at least 2 books");
 	let titles: Vec<&str> = arr.iter().map(|b| b["title"].as_str().unwrap()).collect();
 	assert!(titles.contains(&"Alice's Book"));
@@ -126,12 +126,12 @@ async fn book_count_increases() {
 	app.register_and_login("books").await;
 
 	let list0 = app.list_books().await;
-	let count0 = list0.as_array().unwrap().len();
+	let count0 = list0["books"].as_array().unwrap().len();
 
 	app.create_book("Count Test 1", None).await;
 	app.create_book("Count Test 2", None).await;
 
 	let list2 = app.list_books().await;
-	let count2 = list2.as_array().unwrap().len();
+	let count2 = list2["books"].as_array().unwrap().len();
 	assert_eq!(count2, count0 + 2, "book count should increase by 2");
 }

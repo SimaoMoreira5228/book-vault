@@ -138,7 +138,7 @@ impl Exporter for PdfExporter {
 		let total_pages = if lines.is_empty() {
 			1
 		} else {
-			(lines.len() + lines_per_page - 1) / lines_per_page
+			lines.len().div_ceil(lines_per_page)
 		};
 
 		let mut pdf = Pdf::new();

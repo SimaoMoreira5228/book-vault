@@ -6,10 +6,21 @@ import type {
 	LoginRequest,
 	RegisterRequest,
 	SearchResult,
+	PaginatedBooks,
 	ProspectiveMetadata,
 	ShelfResponse,
 	UserResponse
 } from "./generated";
+
+export type ListBooksParams = {
+	limit?: number;
+	offset?: number;
+	sortBy?: string;
+	sortOrder?: "asc" | "desc";
+	readStatus?: string;
+	format?: string;
+	search?: string;
+};
 
 export class ApiError {
 	constructor(
@@ -102,7 +113,19 @@ export const api = {
 	},
 
 	books: {
-		list: () => request<BookResponse[]>("GET", "/api/v1/books"),
+		list: (params?: ListBooksParams) => {
+			const search = new URLSearchParams();
+			if (params) {
+				if (params.limit !== undefined) search.set("limit", String(params.limit));
+				if (params.offset !== undefined) search.set("offset", String(params.offset));
+				if (params.sortBy) search.set("sortBy", params.sortBy);
+				if (params.sortOrder) search.set("sortOrder", params.sortOrder);
+				if (params.readStatus) search.set("read_status", params.readStatus);
+				if (params.format) search.set("format", params.format);
+				if (params.search) search.set("search", params.search);
+			}
+			return request<PaginatedBooks>("GET", `/api/v1/books?${search.toString()}`);
+		},
 		get: (id: string) => request<BookResponse>("GET", `/api/v1/books/${id}`),
 		create: (data: CreateBookRequest) => request<BookResponse>("POST", "/api/v1/books", data),
 		update: (id: string, data: Partial<CreateBookRequest>) =>
@@ -304,6 +327,40 @@ export const api = {
 			request<Record<string, unknown>>("POST", `/api/v1/books/${bookId}/metadata/lock/${field}`),
 		unlockField: (bookId: string, field: string) =>
 			request<Record<string, unknown>>("DELETE", `/api/v1/books/${bookId}/metadata/lock/${field}`)
+	},
+
+	authors: {
+		list: () =>
+			request<
+				Array<{
+					id: string;
+					name: string;
+					sort_name: string | null;
+					bio: string | null;
+					birth_date: string | null;
+					death_date: string | null;
+					book_count: number;
+				}>
+			>("GET", "/api/v1/authors"),
+		get: (id: string) =>
+			request<{
+				id: string;
+				name: string;
+				sort_name: string | null;
+				bio: string | null;
+				birth_date: string | null;
+				death_date: string | null;
+				book_count: number;
+			}>("GET", `/api/v1/authors/${id}`),
+		create: (data: {
+			name: string;
+			sort_name?: string;
+			bio?: string;
+			birth_date?: string;
+			death_date?: string;
+		}) => request<Record<string, unknown>>("POST", "/api/v1/authors", data),
+		linkBook: (bookId: string, authorId: string) =>
+			request<void>("PUT", `/api/v1/books/${bookId}/link-author`, { author_id: authorId })
 	},
 
 	bookmarks: {

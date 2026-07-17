@@ -1,9 +1,10 @@
-use axum::extract::{Multipart, Path, State};
+use axum::extract::{Multipart, Path, Query, State};
 use axum::http::StatusCode;
 use axum::routing::{delete, get, post, put};
 use axum::{Json, Router};
-use sea_orm::{ColumnTrait, EntityTrait, ModelTrait, QueryFilter, QueryOrder, Set};
+use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, ModelTrait, QueryFilter, QueryOrder, QuerySelect, Set};
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
 use ts_rs::TS;
 use uuid::Uuid;
 
@@ -29,6 +30,7 @@ pub struct BookResponse {
 	pub rating: Option<i64>,
 	pub format: String,
 	pub created_at: String,
+	pub author_id: Option<Uuid>,
 	pub updated_at: String,
 }
 
@@ -82,6 +84,7 @@ impl From<books::Model> for BookResponse {
 			read_status: b.read_status,
 			rating: b.rating,
 			format: b.format,
+			author_id: b.author_id,
 			created_at: b.created_at.to_string(),
 			updated_at: b.updated_at.to_string(),
 		}
@@ -125,16 +128,81 @@ pub fn routes() -> Router<SharedState> {
 		.route("/{id}", get(get_book))
 		.route("/{id}", put(update_book))
 		.route("/{id}", delete(delete_book))
+		.route("/{id}/link-author", put(link_author))
 }
 
-async fn list_books(State(state): State<SharedState>, auth: AuthenticatedUser) -> Result<Json<Vec<BookResponse>>, AppError> {
+#[derive(Deserialize)]
+pub struct ListBooksQuery {
+	pub limit: Option<u64>,
+	pub offset: Option<u64>,
+	#[serde(rename = "sortBy")]
+	pub sort_by: Option<String>,
+	#[serde(rename = "sortOrder")]
+	pub sort_order: Option<String>,
+	pub read_status: Option<String>,
+	pub format: Option<String>,
+	pub search: Option<String>,
+}
+
+#[derive(Serialize, TS)]
+#[ts(export)]
+pub struct PaginatedBooks {
+	pub books: Vec<BookResponse>,
+	pub total: u64,
+	pub limit: u64,
+	pub offset: u64,
+}
+
+async fn list_books(
+	State(state): State<SharedState>,
+	auth: AuthenticatedUser,
+	Query(params): Query<ListBooksQuery>,
+) -> Result<Json<PaginatedBooks>, AppError> {
 	let library_ids = get_user_library_ids(&state.db, auth.user_id).await?;
-	let books = Books::find()
-		.filter(books::Column::LibraryId.is_in(library_ids))
-		.order_by_desc(books::Column::UpdatedAt)
-		.all(&state.db)
-		.await?;
-	Ok(Json(books.into_iter().map(BookResponse::from).collect()))
+	let limit = params.limit.unwrap_or(50).min(200);
+	let offset = params.offset.unwrap_or(0);
+
+	let mut query = Books::find().filter(books::Column::LibraryId.is_in(library_ids.clone()));
+
+	if let Some(ref status) = params.read_status {
+		query = query.filter(books::Column::ReadStatus.eq(status));
+	}
+	if let Some(ref fmt) = params.format {
+		query = query.filter(books::Column::Format.eq(fmt));
+	}
+	if let Some(ref q) = params.search {
+		if !q.is_empty() {
+			let pattern = format!("%{}%", q);
+			use sea_orm::Condition;
+			query = query.filter(
+				Condition::any()
+					.add(books::Column::Title.like(&pattern))
+					.add(books::Column::Author.like(&pattern)),
+			);
+		}
+	}
+
+	let total = query.clone().all(&state.db).await?.len() as u64;
+
+	let order_col = match params.sort_by.as_deref() {
+		Some("title") => books::Column::Title,
+		Some("author") => books::Column::Author,
+		Some("created_at") => books::Column::CreatedAt,
+		_ => books::Column::UpdatedAt,
+	};
+	match params.sort_order.as_deref() {
+		Some("asc") => query = query.order_by_asc(order_col),
+		_ => query = query.order_by_desc(order_col),
+	}
+
+	let books = query.offset(offset).limit(limit).all(&state.db).await?;
+
+	Ok(Json(PaginatedBooks {
+		total,
+		limit,
+		offset,
+		books: books.into_iter().map(BookResponse::from).collect(),
+	}))
 }
 
 async fn get_book(
@@ -182,6 +250,7 @@ async fn create_book(
 		source_hash: Set(None),
 		keep_source: Set(None),
 		sequence_index: Set(None),
+		author_id: Set(None),
 		created_at: Set(now),
 		updated_at: Set(now),
 	};
@@ -246,6 +315,7 @@ async fn upload_book(
 		source_hash: Set(None),
 		keep_source: Set(Some(keep_source)),
 		sequence_index: Set(None),
+		author_id: Set(None),
 		created_at: Set(now),
 		updated_at: Set(now),
 	})
@@ -344,4 +414,29 @@ async fn delete_book(
 	book.delete(&state.db).await?;
 	state.storage.delete(&book_id.to_string()).await.ok();
 	Ok(Json(serde_json::json!({ "message": "book deleted" })))
+}
+
+#[derive(Deserialize)]
+struct LinkAuthorRequest {
+	author_id: Option<Uuid>,
+}
+
+async fn link_author(
+	State(state): State<SharedState>,
+	auth: AuthenticatedUser,
+	Path(book_id): Path<Uuid>,
+	Json(req): Json<LinkAuthorRequest>,
+) -> Result<Json<Value>, AppError> {
+	let library_ids = get_user_library_ids(&state.db, auth.user_id).await?;
+	let book = Books::find_by_id(book_id)
+		.one(&state.db)
+		.await?
+		.filter(|b| library_ids.contains(&b.library_id))
+		.ok_or_else(|| AppError::NotFound("Book not found".into()))?;
+
+	let mut active: books::ActiveModel = book.into();
+	active.author_id = Set(req.author_id);
+	let updated = active.update(&state.db).await?;
+
+	Ok(Json(serde_json::json!({ "author_id": updated.author_id })))
 }

@@ -1,9 +1,8 @@
 use axum::extract::{Path, State};
-use axum::http::StatusCode;
 use axum::routing::{get, post, put};
 use axum::{Json, Router};
 use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, QueryOrder, QuerySelect, Set};
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 use uuid::Uuid;
 
 use crate::auth::middleware::AuthenticatedUser;
@@ -141,7 +140,7 @@ async fn list_revisions(
 async fn get_revision(
 	State(state): State<SharedState>,
 	auth: AuthenticatedUser,
-	Path((revision_id)): Path<Uuid>,
+	Path(revision_id ): Path<Uuid>,
 ) -> Result<Json<serde_json::Value>, AppError> {
 	let revision = BookRevisions::find_by_id(revision_id)
 		.one(&state.db)
@@ -170,7 +169,7 @@ async fn get_revision(
 async fn restore_revision(
 	State(state): State<SharedState>,
 	auth: AuthenticatedUser,
-	Path((revision_id)): Path<Uuid>,
+	Path(revision_id ): Path<Uuid>,
 ) -> Result<Json<SectionRestoreResponse>, AppError> {
 	let revision = BookRevisions::find_by_id(revision_id)
 		.one(&state.db)

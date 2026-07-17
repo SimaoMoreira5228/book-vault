@@ -67,7 +67,7 @@ fn render_block(block: &Block) -> String {
 			format!("<img src=\"{asset_ref}\" alt=\"{alt_text}\" />")
 		}
 		Block::BlockQuote(blocks) => {
-			let inner: String = blocks.iter().map(|b| render_block(b)).collect();
+			let inner: String = blocks.iter().map(render_block).collect();
 			format!("<blockquote>{inner}</blockquote>")
 		}
 		Block::CodeBlock { language, content } => {
@@ -77,14 +77,14 @@ fn render_block(block: &Block) -> String {
 		Block::OrderedList(items) => {
 			let inner: String = items
 				.iter()
-				.map(|item| format!("<li>{}</li>", item.iter().map(|b| render_block(b)).collect::<String>()))
+				.map(|item| format!("<li>{}</li>", item.iter().map(render_block).collect::<String>()))
 				.collect();
 			format!("<ol>{inner}</ol>")
 		}
 		Block::UnorderedList(items) => {
 			let inner: String = items
 				.iter()
-				.map(|item| format!("<li>{}</li>", item.iter().map(|b| render_block(b)).collect::<String>()))
+				.map(|item| format!("<li>{}</li>", item.iter().map(render_block).collect::<String>()))
 				.collect();
 			format!("<ul>{inner}</ul>")
 		}
@@ -104,7 +104,7 @@ fn render_block(block: &Block) -> String {
 		}
 		Block::HorizontalRule => "<hr />".to_string(),
 		Block::Footnote { marker, blocks } => {
-			let inner: String = blocks.iter().map(|b| render_block(b)).collect();
+			let inner: String = blocks.iter().map(render_block).collect();
 			format!("<sup>{marker}</sup>{inner}")
 		}
 		Block::RawHtml { content } => content.clone(),
@@ -113,7 +113,7 @@ fn render_block(block: &Block) -> String {
 
 fn section_to_xhtml(title: &str, blocks: &[Block]) -> String {
 	let safe_title = escape_html(title);
-	let body: String = blocks.iter().map(|b| render_block(b)).collect();
+	let body: String = blocks.iter().map(render_block).collect();
 	format!(
 		r#"<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>

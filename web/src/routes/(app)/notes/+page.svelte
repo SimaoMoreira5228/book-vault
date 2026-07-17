@@ -58,7 +58,7 @@
 
 		if (booksResult.isOk()) {
 			books = new Map(
-				booksResult.value.map((b) => [b.id, { id: b.id, title: b.title, author: b.author }])
+				booksResult.value.books.map((b) => [b.id, { id: b.id, title: b.title, author: b.author }])
 			);
 		}
 		if (annotationsResult.isOk()) {

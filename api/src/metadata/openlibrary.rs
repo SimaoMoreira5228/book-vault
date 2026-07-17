@@ -8,6 +8,12 @@ pub struct OpenLibraryProvider {
 	client: reqwest::Client,
 }
 
+impl Default for OpenLibraryProvider {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl OpenLibraryProvider {
 	pub fn new() -> Self {
 		Self {

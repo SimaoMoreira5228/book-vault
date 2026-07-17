@@ -23,6 +23,12 @@ pub struct SearchEngine {
 	texts: DashMap<(Uuid, Uuid, u32), String>,
 }
 
+impl Default for SearchEngine {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl SearchEngine {
 	pub fn new() -> Self {
 		Self {
@@ -289,7 +295,7 @@ fn generate_snippet(text: &str, position: usize, max_len: usize) -> String {
 	}
 
 	let mid = if position > max_len / 2 { position } else { max_len / 2 };
-	let start = if mid > max_len / 2 { mid - max_len / 2 } else { 0 };
+	let start = mid.saturating_sub(max_len / 2);
 	let mut end = start + max_len;
 	if end > text.len() {
 		end = text.len();
@@ -301,7 +307,7 @@ fn generate_snippet(text: &str, position: usize, max_len: usize) -> String {
 	};
 
 	let s = adj_start.saturating_sub(15);
-	let s = text[..s.max(0)].rfind(char::is_whitespace).unwrap_or(adj_start);
+	let s = text[..s].rfind(char::is_whitespace).unwrap_or(adj_start);
 	let e = (end + 15).min(text.len());
 	let e = if e < text.len() {
 		text[e..].find(char::is_whitespace).map(|p| e + p).unwrap_or(text.len())
