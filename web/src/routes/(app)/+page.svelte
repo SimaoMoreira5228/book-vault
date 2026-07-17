@@ -3,6 +3,7 @@
 	import { api, authState } from "$lib/api/client";
 	import { goto } from "$app/navigation";
 	import type { BookResponse } from "$lib/api/generated";
+	import Modal from "$lib/components/Modal.svelte";
 	import UploadModal from "$lib/components/UploadModal.svelte";
 	import BookCover from "$lib/components/BookCover.svelte";
 	import BookOpen from "@lucide/svelte/icons/book-open";
@@ -27,6 +28,7 @@
 
 	let books = $state<BookResponse[]>([]);
 	let shelves = $state<ShelfInfo[]>([]);
+	let progressMap = $state<Record<string, number>>({});
 	let loading = $state(true);
 	let showUpload = $state(false);
 	let showCreateShelf = $state(false);
@@ -46,6 +48,14 @@
 		const [booksResult, shelvesResult] = await Promise.all([api.books.list(), api.shelves.list()]);
 		if (booksResult.isOk()) books = booksResult.value;
 		if (shelvesResult.isOk()) shelves = shelvesResult.value as unknown as ShelfInfo[];
+		const reading = books.filter((b) => b.read_status === "reading");
+		const progResults = await Promise.all(reading.map((b) => api.progress.get(b.id)));
+		const pm: Record<string, number> = {};
+		for (let i = 0; i < reading.length; i++) {
+			const r = progResults[i];
+			if (r && r.isOk() && r.value) pm[reading[i].id] = r.value.percentage;
+		}
+		progressMap = pm;
 		loading = false;
 	}
 
@@ -168,7 +178,10 @@
 										>
 									</div>
 									<div class="reading-progress-bar overflow-hidden rounded-full">
-										<div class="reading-progress-fill" style="width: 40%;"></div>
+										<div
+											class="reading-progress-fill"
+											style="width: {progressMap[book.id] ?? 0}%;"
+										></div>
 									</div>
 								</div>
 							</div>
@@ -190,101 +203,75 @@
 				</button>
 			</header>
 
-			{#if showCreateShelf}
-				<div
-					class="bg-primary/40 fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
-					role="dialog"
-					aria-modal="true"
-					tabindex="-1"
-					onclick={() => (showCreateShelf = false)}
-					onkeydown={(e) => {
-						if (e.key === "Escape") showCreateShelf = false;
-					}}
-				>
-					<div
-						class="bg-surface mx-auto w-full max-w-md rounded-2xl p-8 shadow-2xl"
-						role="document"
-						tabindex="-1"
-						onclick={(e) => e.stopPropagation()}
-						onkeydown={(e) => {
-							if (e.key === "Escape") showCreateShelf = false;
-						}}
-					>
-						<h4 class="font-display text-headline-sm text-primary mb-6">{m.shelf_create()}</h4>
-						<div class="space-y-5">
-							<div>
-								<label
-									for="shelf-name"
-									class="font-label text-label-sm text-on-surface-variant mb-1.5 block tracking-widest uppercase"
-								>
-									{m.shelf_name()}
-								</label>
-								<input
-									id="shelf-name"
-									type="text"
-									bind:value={shelfName}
-									class="input-minimal"
-									placeholder="e.g. Sci-Fi Favorites"
-								/>
-							</div>
-							<div>
-								<label
-									for="shelf-desc"
-									class="font-label text-label-sm text-on-surface-variant mb-1.5 block tracking-widest uppercase"
-								>
-									{m.shelf_description()}
-								</label>
-								<input
-									id="shelf-desc"
-									type="text"
-									bind:value={shelfDesc}
-									class="input-minimal"
-									placeholder="Books I want to read this year"
-								/>
-							</div>
-							<div class="border-outline/10 flex gap-1 rounded-xl border p-1">
-								<button
-									onclick={() => (shelfKind = "static")}
-									class={[
-										"font-label flex-1 rounded-lg px-4 py-2 text-sm transition-all",
-										shelfKind === "static"
-											? "bg-primary text-white shadow-sm"
-											: "text-on-surface-variant hover:text-primary"
-									]}
-								>
-									{m.shelf_kind_static()}
-								</button>
-								<button
-									onclick={() => (shelfKind = "dynamic")}
-									class={[
-										"font-label flex-1 rounded-lg px-4 py-2 text-sm transition-all",
-										shelfKind === "dynamic"
-											? "bg-primary text-white shadow-sm"
-											: "text-on-surface-variant hover:text-primary"
-									]}
-								>
-									{m.shelf_kind_dynamic()}
-								</button>
-							</div>
-							<div class="flex justify-end gap-3 pt-2">
-								<button
-									onclick={() => (showCreateShelf = false)}
-									class="font-label text-label-md text-on-surface-variant px-4 py-2 transition-colors hover:opacity-80"
-								>
-									Cancel
-								</button>
-								<button
-									onclick={handleCreateShelf}
-									class="btn-primary"
-									disabled={!shelfName.trim()}
-								>
-									{m.shelf_create()}
-								</button>
-							</div>
-						</div>
+			<Modal bind:show={showCreateShelf} title={m.shelf_create()} maxWidth="md">
+				<div class="space-y-5">
+					<div>
+						<label
+							for="shelf-name"
+							class="font-label text-label-sm text-on-surface-variant mb-1.5 block tracking-widest uppercase"
+						>
+							{m.shelf_name()}
+						</label>
+						<input
+							id="shelf-name"
+							type="text"
+							bind:value={shelfName}
+							class="input-minimal"
+							placeholder="e.g. Sci-Fi Favorites"
+						/>
 					</div>
-				</div>
-			{/if}
+					<div>
+						<label
+							for="shelf-desc"
+							class="font-label text-label-sm text-on-surface-variant mb-1.5 block tracking-widest uppercase"
+						>
+							{m.shelf_description()}
+						</label>
+						<input
+							id="shelf-desc"
+							type="text"
+							bind:value={shelfDesc}
+							class="input-minimal"
+							placeholder="Books I want to read this year"
+						/>
+					</div>
+					<div class="border-outline/10 flex gap-1 rounded-xl border p-1">
+						<button
+							onclick={() => (shelfKind = "static")}
+							class={[
+								"font-label flex-1 rounded-lg px-4 py-2 text-sm transition-all",
+								shelfKind === "static"
+									? "bg-primary text-white shadow-sm"
+									: "text-on-surface-variant hover:text-primary"
+							]}
+						>
+							{m.shelf_kind_static()}
+						</button>
+						<button
+							onclick={() => (shelfKind = "dynamic")}
+							class={[
+								"font-label flex-1 rounded-lg px-4 py-2 text-sm transition-all",
+								shelfKind === "dynamic"
+									? "bg-primary text-white shadow-sm"
+									: "text-on-surface-variant hover:text-primary"
+							]}
+						>
+							{m.shelf_kind_dynamic()}
+						</button>
+					</div>
+					<div class="flex justify-end gap-3 pt-2">
+						<button
+							onclick={() => (showCreateShelf = false)}
+							class="font-label text-label-md text-on-surface-variant px-4 py-2 transition-colors hover:opacity-80"
+						>
+							Cancel
+						</button>
+						<button onclick={handleCreateShelf} class="btn-primary" disabled={!shelfName.trim()}>
+							{m.shelf_create()}
+						</button>
+					</div>
+				</div></Modal
+			>
 
 			{#if shelves.length === 0}
 				<div class="border-outline-variant/30 rounded-xl border-2 border-dashed p-10 text-center">

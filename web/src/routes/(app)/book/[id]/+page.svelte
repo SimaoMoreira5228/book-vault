@@ -8,6 +8,7 @@
 	import FieldEditor from "$lib/components/FieldEditor.svelte";
 	import FieldNumber from "$lib/components/FieldNumber.svelte";
 	import BookCover from "$lib/components/BookCover.svelte";
+	import FileDown from "@lucide/svelte/icons/file-down";
 	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
 	import BookOpen from "@lucide/svelte/icons/book-open";
 	import Pencil from "@lucide/svelte/icons/pencil";
@@ -302,6 +303,13 @@
 					<BookOpen size={16} />
 					{m.book_detail_reader_link()}
 				</a>
+				<button
+					onclick={() => book && api.export(book.id, "epub")}
+					class="font-label text-label-md text-on-surface-variant hover:text-primary inline-flex items-center gap-1.5 rounded-lg border border-[rgba(0,31,63,0.1)] px-4 py-2 transition-colors"
+				>
+					<FileDown size={16} />
+					{m.reader_export()}
+				</button>
 				<button
 					onclick={() => {
 						editing = !editing;
