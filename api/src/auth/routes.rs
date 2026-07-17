@@ -1,0 +1,248 @@
+use axum::{
+    extract::{Path, State},
+    http::{header, HeaderMap},
+    routing::{delete, get, post},
+    Json, Router,
+};
+use serde::{Deserialize, Serialize};
+use ts_rs::TS;
+use uuid::Uuid;
+
+use crate::db::entities::prelude::*;
+use crate::db::entities::{libraries, users};
+use crate::{auth::session::SessionManager, AppError, SharedState};
+use sea_orm::{ColumnTrait, EntityTrait, QueryFilter, Set};
+
+#[derive(Deserialize, TS)]
+#[ts(export)]
+pub struct LoginRequest {
+    pub email: String,
+    pub password: String,
+}
+
+#[derive(Deserialize, TS)]
+#[ts(export)]
+pub struct RegisterRequest {
+    pub email: String,
+    pub password: String,
+    pub display_name: String,
+}
+
+#[derive(Serialize, TS)]
+#[ts(export)]
+pub struct UserResponse {
+    pub id: Uuid,
+    pub email: String,
+    pub display_name: String,
+    pub is_admin: bool,
+}
+
+#[derive(Serialize)]
+pub struct SessionResponse {
+    pub id: Uuid,
+    pub user_agent: Option<String>,
+    pub ip_address: Option<String>,
+    pub created_at: String,
+    pub last_seen_at: String,
+    pub expires_at: String,
+    pub is_current: bool,
+}
+
+impl From<users::Model> for UserResponse {
+    fn from(u: users::Model) -> Self {
+        Self {
+            id: u.id,
+            email: u.email,
+            display_name: u.display_name,
+            is_admin: u.is_admin,
+        }
+    }
+}
+
+fn extract_session_cookie(headers: &HeaderMap) -> Option<String> {
+    headers
+        .get(header::COOKIE)
+        .and_then(|v| v.to_str().ok())
+        .and_then(|cookies| {
+            cookies.split(';').find_map(|c| {
+                let c = c.trim();
+                c.strip_prefix("bv_session=").map(|s| s.to_string())
+            })
+        })
+}
+
+fn set_session_cookie(token: &str, ttl_days: i64) -> String {
+    format!(
+        "bv_session={}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age={}",
+        token,
+        ttl_days * 86400
+    )
+}
+
+fn clear_session_cookie() -> String {
+    "bv_session=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0".to_string()
+}
+
+pub fn routes() -> Router<SharedState> {
+    Router::new()
+        .route("/login", post(login_handler))
+        .route("/logout", post(logout_handler))
+        .route("/register", post(register_handler))
+        .route("/sessions", get(list_sessions))
+        .route("/sessions/{id}", delete(revoke_session))
+}
+
+async fn login_handler(
+    State(state): State<SharedState>,
+    headers: HeaderMap,
+    Json(req): Json<LoginRequest>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let user = Users::find()
+        .filter(users::Column::Email.eq(&req.email))
+        .one(&state.db)
+        .await?
+        .ok_or_else(|| AppError::Unauthorized("Invalid email or password".into()))?;
+
+    SessionManager::verify_password(&user.password_hash, &req.password)?;
+
+    let user_agent = headers
+        .get(header::USER_AGENT)
+        .and_then(|v| v.to_str().ok().map(|s| s.to_string()));
+    let ip_address = headers
+        .get("X-Forwarded-For")
+        .and_then(|v| v.to_str().ok().map(|s| s.to_string()));
+
+    let (token, _session) = SessionManager::create_session(
+        &state.db,
+        user.id,
+        user_agent,
+        ip_address,
+        state.config.auth.session_ttl_days,
+        state.config.auth.session_idle_days,
+    )
+    .await?;
+
+    let cookie = set_session_cookie(&token, state.config.auth.session_ttl_days);
+    let user_resp: UserResponse = user.into();
+
+    let mut headers = HeaderMap::new();
+    headers.insert(header::SET_COOKIE, cookie.parse().unwrap());
+
+    Ok(Json(serde_json::json!({
+        "user": user_resp,
+        "cookie": cookie,
+    })))
+}
+
+async fn logout_handler(
+    State(state): State<SharedState>,
+    headers: HeaderMap,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let token = extract_session_cookie(&headers)
+        .ok_or_else(|| AppError::Unauthorized("No session cookie".into()))?;
+
+    let session = SessionManager::validate_session(&state.db, &token).await?;
+    SessionManager::revoke_session(&state.db, session.id).await?;
+
+    Ok(Json(serde_json::json!({ "message": "logged out", "cookie": clear_session_cookie() })))
+}
+
+async fn register_handler(
+    State(state): State<SharedState>,
+    Json(req): Json<RegisterRequest>,
+) -> Result<Json<UserResponse>, AppError> {
+    if state.config.auth.mode == "closed" {
+        return Err(AppError::Forbidden("Registration is closed".into()));
+    }
+
+    let existing = Users::find()
+        .filter(users::Column::Email.eq(&req.email))
+        .one(&state.db)
+        .await?;
+
+    if existing.is_some() {
+        return Err(AppError::Conflict("Email already registered".into()));
+    }
+
+    let password_hash = SessionManager::hash_password(&req.password)?;
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
+    let user = users::ActiveModel {
+        id: Set(Uuid::now_v7()),
+        email: Set(req.email),
+        password_hash: Set(password_hash),
+        display_name: Set(req.display_name),
+        is_admin: Set(false),
+        created_at: Set(now),
+        updated_at: Set(now),
+    };
+
+    let user = users::Entity::insert(user).exec_with_returning(&state.db).await?;
+
+    let default_lib = libraries::ActiveModel {
+        id: Set(Uuid::now_v7()),
+        name: Set("My Library".to_string()),
+        description: Set(None),
+        owner_id: Set(user.id),
+        created_at: Set(now),
+    };
+    libraries::Entity::insert(default_lib).exec(&state.db).await?;
+
+    Ok(Json(user.into()))
+}
+
+async fn list_sessions(
+    State(state): State<SharedState>,
+    headers: HeaderMap,
+) -> Result<Json<Vec<SessionResponse>>, AppError> {
+    let token = extract_session_cookie(&headers)
+        .ok_or_else(|| AppError::Unauthorized("No session cookie".into()))?;
+    let current = SessionManager::validate_session(&state.db, &token).await?;
+
+    let sessions = SessionManager::list_user_sessions(&state.db, current.user_id).await?;
+
+    let resp: Vec<SessionResponse> = sessions
+        .into_iter()
+        .map(|s| SessionResponse {
+            id: s.id,
+            user_agent: s.user_agent,
+            ip_address: s.ip_address,
+            created_at: s.created_at.to_string(),
+            last_seen_at: s.last_seen_at.to_string(),
+            expires_at: s.expires_at.to_string(),
+            is_current: s.id == current.id,
+        })
+        .collect();
+
+    Ok(Json(resp))
+}
+
+async fn revoke_session(
+    State(state): State<SharedState>,
+    headers: HeaderMap,
+    Path(session_id): Path<Uuid>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let token = extract_session_cookie(&headers)
+        .ok_or_else(|| AppError::Unauthorized("No session cookie".into()))?;
+    let current = SessionManager::validate_session(&state.db, &token).await?;
+
+    let target = Sessions::find_by_id(session_id)
+        .one(&state.db)
+        .await?
+        .ok_or_else(|| AppError::NotFound("Session not found".into()))?;
+
+    if target.user_id != current.user_id {
+        let user = Users::find_by_id(current.user_id)
+            .one(&state.db)
+            .await?
+            .ok_or_else(|| AppError::NotFound("User not found".into()))?;
+        if !user.is_admin {
+            return Err(AppError::Forbidden(
+                "Cannot revoke another user's session".into(),
+            ));
+        }
+    }
+
+    SessionManager::revoke_session(&state.db, session_id).await?;
+    Ok(Json(serde_json::json!({ "message": "session revoked" })))
+}

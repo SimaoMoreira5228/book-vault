@@ -1,0 +1,9 @@
+target/
+.git/
+web/
+local/
+*.md
+.gitignore
+.env
+bookvault.db
+storage/
