@@ -9,6 +9,7 @@ pub mod metadata_routes;
 pub mod progress;
 pub mod read;
 pub mod search;
+pub mod series;
 pub mod shelves;
 pub mod studio;
 
@@ -30,6 +31,7 @@ pub fn build_routes() -> Router<crate::SharedState> {
 		.nest("/books", studio::routes())
 		.nest("/revisions", studio::routes())
 		.nest("/events", events::routes())
+		.nest("/series", series::series_routes())
 		.nest("/authors", authors::author_routes())
 		.nest("/bookmarks", bookmarks::bookmark_routes())
 		.nest("/admin", admin::routes())

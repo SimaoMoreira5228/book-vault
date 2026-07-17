@@ -15,6 +15,7 @@ pub mod job_queue;
 pub mod libraries;
 pub mod metadata_cache;
 pub mod reading_progress;
+pub mod series;
 pub mod sessions;
 pub mod shelf_entries;
 pub mod shelves;

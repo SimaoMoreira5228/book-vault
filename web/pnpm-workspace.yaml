@@ -1,3 +1,11 @@
+packages:
+  - .
+
 allowBuilds:
   "@tailwindcss/oxide": true
   esbuild: true
+  sharp: true
+  workerd: true
+
+minimumReleaseAgeExclude:
+  - svelte@5.56.6
