@@ -1,9 +1,10 @@
+use crate::db::entities::books;
 use crate::db::entities::job_queue;
 use crate::db::entities::prelude::*;
 use crate::routes::events::notify;
 use crate::{AppError, SharedState};
 use sea_orm::{
-    ActiveModelTrait, ColumnTrait, EntityTrait, ExprTrait, QueryFilter, QueryOrder, Set,
+    ColumnTrait, EntityTrait, ExprTrait, QueryFilter, QueryOrder, Set,
 };
 use std::sync::Arc;
 use std::time::Duration;
@@ -29,6 +30,16 @@ impl JobWorker {
     }
 
     pub async fn run_forever(self) {
+        let cleanup_state = self.state.clone();
+        tokio::spawn(async move {
+            loop {
+                tokio::time::sleep(Duration::from_secs(3600)).await;
+                if let Err(e) = Self::cleanup_sources(&cleanup_state).await {
+                    error!("Source cleanup error: {e}");
+                }
+            }
+        });
+
         let semaphore = Arc::new(Semaphore::new(self.concurrency));
         loop {
             let permit = semaphore.clone().acquire_owned().await;
@@ -46,6 +57,26 @@ impl JobWorker {
             }
             tokio::time::sleep(Duration::from_millis(500)).await;
         }
+    }
+
+    async fn cleanup_sources(state: &SharedState) -> Result<(), AppError> {
+        let books = Books::find()
+            .filter(books::Column::KeepSource.eq(Some(false)))
+            .filter(
+                books::Column::ReadStatus
+                    .ne("pending")
+                    .and(books::Column::ReadStatus.ne("unread")),
+            )
+            .all(&state.db)
+            .await?;
+
+        for book in &books {
+            if state.storage.exists(&book.id.to_string()).await.unwrap_or(false) {
+                state.storage.delete(&book.id.to_string()).await?;
+                info!("Deleted source file for book {} ({})", book.id, book.title);
+            }
+        }
+        Ok(())
     }
 
     async fn process_one(state: &SharedState) -> Result<(), AppError> {
@@ -164,6 +195,7 @@ impl JobWorker {
             "ingest_epub" => crate::ingest::epub::ingest(&state, job).await,
             "ingest_pdf" => crate::ingest::pdf::ingest(&state, job).await,
             "ingest_cbz" => crate::ingest::cbz::ingest(&state, job).await,
+            "ingest_mobi" => crate::ingest::mobi::ingest(&state, job).await,
             other => Err(AppError::Internal(format!("Unknown job kind: {other}"))),
         }
     }

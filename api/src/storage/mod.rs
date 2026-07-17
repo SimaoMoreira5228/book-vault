@@ -1,6 +1,8 @@
+pub mod asset;
 pub mod local;
 pub mod s3;
 
+pub use asset::AssetService;
 pub use local::LocalFsProvider;
 pub use s3::S3Provider;
 

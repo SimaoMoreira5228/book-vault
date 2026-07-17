@@ -23,6 +23,8 @@ pub struct Model {
     pub source_hash: Option<String>,
     pub created_at: DateTimeWithTimeZone,
     pub updated_at: DateTimeWithTimeZone,
+    pub keep_source: Option<bool>,
+    pub sequence_index: Option<i64>,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

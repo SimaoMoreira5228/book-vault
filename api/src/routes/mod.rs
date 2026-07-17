@@ -1,4 +1,5 @@
 pub mod admin;
+pub mod assets;
 pub mod books;
 pub mod events;
 pub mod export_routes;
@@ -15,6 +16,7 @@ pub fn build_routes() -> Router<crate::SharedState> {
         .nest("/books", read::routes())
         .nest("/books", export_routes::routes())
         .nest("/shelves", shelves::routes())
+        .nest("/books", assets::routes())
         .nest("/search", search::routes())
         .nest("/events", events::routes())
         .nest("/admin", admin::routes())

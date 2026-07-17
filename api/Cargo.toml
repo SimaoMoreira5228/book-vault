@@ -45,7 +45,7 @@ sea-orm = { version = "2.0.0-rc", features = [
 ] }
 argon2 = { version = "0.5", features = ["std"] }
 rand = "0.9"
-sha2 = "0.11"
+blake3 = "1.8"
 hex = "0.4"
 bytes = "1"
 rmp-serde = "1"
@@ -64,6 +64,7 @@ ts-rs = { version = "12", features = ["serde-compat", "chrono-impl", "uuid-impl"
 toml = "1"
 base64 = "0.22"
 tempfile = "3"
+lopdf = "0.44"
 
 [package.metadata.ts-rs]
 dir = "../web/src/lib/api/generated"

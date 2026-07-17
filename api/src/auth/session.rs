@@ -8,7 +8,6 @@ use argon2::{
 use sea_orm::{
     ColumnTrait, EntityTrait, ExprTrait, QueryFilter, QueryOrder, Set,
 };
-use sha2::{Digest, Sha256};
 use uuid::Uuid;
 
 pub struct SessionManager;
@@ -23,7 +22,7 @@ impl SessionManager {
         use argon2::password_hash::rand_core::RngCore;
         OsRng.fill_bytes(&mut bytes);
         let token = base64::Engine::encode(&base64::engine::general_purpose::URL_SAFE_NO_PAD, bytes);
-        let hash = Sha256::digest(&bytes).to_vec();
+        let hash = blake3::hash(&bytes).as_bytes().to_vec();
         (token, hash)
     }
 
@@ -64,7 +63,7 @@ impl SessionManager {
     ) -> Result<sessions::Model, AppError> {
         let bytes = base64::Engine::decode(&base64::engine::general_purpose::URL_SAFE_NO_PAD, token)
             .map_err(|_| AppError::Unauthorized("Invalid session token".into()))?;
-        let hash = Sha256::digest(&bytes).to_vec();
+        let hash = blake3::hash(&bytes).as_bytes().to_vec();
 
         let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
         let session = Sessions::find()

@@ -9,7 +9,7 @@ pub struct Model {
     #[sea_orm(primary_key, auto_increment = false)]
     pub id: Uuid,
     pub user_id: Uuid,
-    #[sea_orm(unique)]
+    #[sea_orm(column_type = "Binary(1)", unique)]
     pub token_hash: Vec<u8>,
     pub user_agent: Option<String>,
     pub ip_address: Option<String>,

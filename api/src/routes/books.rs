@@ -190,6 +190,8 @@ async fn create_book(
         rating: Set(None),
         format: Set(req.format.unwrap_or_else(|| "native".to_string())),
         source_hash: Set(None),
+        keep_source: Set(None),
+        sequence_index: Set(None),
         created_at: Set(now),
         updated_at: Set(now),
     };
@@ -233,6 +235,7 @@ async fn upload_book(
     state.storage.put(&book_id.to_string(), &file_data).await?;
 
     let title = filename.rsplit('.').next().unwrap_or(&filename).to_string();
+    let keep_source = matches!(fmt, "pdf" | "mobi" | "mobi_raw" | "azw");
     books::Entity::insert(books::ActiveModel {
         id: Set(book_id),
         library_id: Set(library_id),
@@ -248,6 +251,8 @@ async fn upload_book(
         rating: Set(None),
         format: Set(fmt.to_string()),
         source_hash: Set(None),
+        keep_source: Set(Some(keep_source)),
+        sequence_index: Set(None),
         created_at: Set(now),
         updated_at: Set(now),
     })

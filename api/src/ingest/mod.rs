@@ -1,5 +1,6 @@
 pub mod cbz;
 pub mod epub;
+pub mod mobi;
 pub mod pdf;
 
 use async_trait::async_trait;

@@ -13,6 +13,7 @@ mod m20260717_011706_create_reading_progress;
 mod m20260717_011706_create_annotations;
 mod m20260717_011706_create_book_revisions;
 mod m20260717_011706_create_job_queue;
+mod m20260717_011707_add_keep_source;
 
 pub struct Migrator;
 
@@ -33,6 +34,7 @@ impl MigratorTrait for Migrator {
             Box::new(m20260717_011706_create_annotations::Migration),
             Box::new(m20260717_011706_create_book_revisions::Migration),
             Box::new(m20260717_011706_create_job_queue::Migration),
+            Box::new(m20260717_011707_add_keep_source::Migration),
         ]
     }
 }

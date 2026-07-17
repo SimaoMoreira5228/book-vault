@@ -1,10 +1,10 @@
 use crate::db::entities::book_ir;
 use crate::db::entities::books;
 use crate::db::entities::job_queue;
-use crate::db::entities::prelude::{BookIr as BookIrEntity, Books, JobQueue};
+use crate::db::entities::prelude::{BookIr as BookIrEntity, Books};
 use crate::ir::{block::Block, span::Span, BookIr, Section};
 use crate::AppError;
-use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, Set};
+use sea_orm::{ColumnTrait, EntityTrait, QueryFilter, Set};
 use uuid::Uuid;
 
 pub async fn ingest(state: &crate::SharedState, job: &job_queue::Model) -> Result<(), AppError> {
@@ -56,7 +56,7 @@ pub async fn ingest(state: &crate::SharedState, job: &job_queue::Model) -> Resul
     Ok(())
 }
 
-fn parse_epub(data: &[u8]) -> Result<BookIr, AppError> {
+pub fn parse_epub(data: &[u8]) -> Result<BookIr, AppError> {
     let cursor = std::io::Cursor::new(data);
     let mut archive = zip::ZipArchive::new(cursor)
         .map_err(|e| AppError::Internal(format!("Failed to open EPUB archive: {e}")))?;
