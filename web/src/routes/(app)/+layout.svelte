@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { authState } from "$lib/api/client";
+	import { authState } from "$lib/api/client.svelte";
 	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
 	import BookOpen from "@lucide/svelte/icons/book-open";

@@ -8,9 +8,11 @@ import type {
 	SearchResult,
 	PaginatedBooks,
 	ProspectiveMetadata,
+	SeriesResponse,
 	ShelfResponse,
 	UserResponse
 } from "./generated";
+import { SvelteURLSearchParams } from "svelte/reactivity";
 
 export type ListBooksParams = {
 	limit?: number;
@@ -109,12 +111,16 @@ export const api = {
 	auth: {
 		login: (data: LoginRequest) => authState.login(data),
 		logout: () => authState.logout(),
-		register: (data: RegisterRequest) => authState.register(data)
+		register: (data: RegisterRequest) => authState.register(data),
+		updateProfile: (data: { display_name?: string }) =>
+			request<UserResponse>("PUT", "/api/v1/auth/profile", data),
+		changePassword: (data: { current_password: string; new_password: string }) =>
+			request<Record<string, unknown>>("PUT", "/api/v1/auth/password", data)
 	},
 
 	books: {
 		list: (params?: ListBooksParams) => {
-			const search = new URLSearchParams();
+			const search = new SvelteURLSearchParams();
 			if (params) {
 				if (params.limit !== undefined) search.set("limit", String(params.limit));
 				if (params.offset !== undefined) search.set("offset", String(params.offset));
@@ -313,7 +319,7 @@ export const api = {
 		candidates: (bookId: string, query: { title?: string; author?: string; isbn?: string }) =>
 			request<ProspectiveMetadata[]>(
 				"GET",
-				`/api/v1/books/${bookId}/metadata/candidates?${new URLSearchParams(
+				`/api/v1/books/${bookId}/metadata/candidates?${new SvelteURLSearchParams(
 					Object.fromEntries(Object.entries(query).filter(([, v]) => v != null))
 				).toString()}`
 			),
@@ -361,6 +367,13 @@ export const api = {
 		}) => request<Record<string, unknown>>("POST", "/api/v1/authors", data),
 		linkBook: (bookId: string, authorId: string) =>
 			request<void>("PUT", `/api/v1/books/${bookId}/link-author`, { author_id: authorId })
+	},
+
+	series: {
+		list: () => request<SeriesResponse[]>("GET", "/api/v1/series"),
+		get: (id: string) => request<SeriesResponse>("GET", `/api/v1/series/${id}`),
+		create: (data: { name: string; description?: string }) =>
+			request<SeriesResponse>("POST", "/api/v1/series", data)
 	},
 
 	bookmarks: {

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { api } from "$lib/api/client";
+	import { api } from "$lib/api/client.svelte";
 
 	let tab = $state<"jobs" | "users" | "cleanup">("jobs");
 	let jobs = $state<Array<Record<string, unknown>>>([]);

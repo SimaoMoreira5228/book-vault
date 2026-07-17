@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { api, authState } from "$lib/api/client";
+	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
-	import type { ListBooksParams } from "$lib/api/client";
+	import type { ListBooksParams } from "$lib/api/client.svelte";
 
 	type LibBook = {
 		id: string;

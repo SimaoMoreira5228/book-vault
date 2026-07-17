@@ -16,5 +16,6 @@ export type BookResponse = {
 	format: string;
 	created_at: string;
 	author_id: string | null;
+	series_id: string | null;
 	updated_at: string;
 };

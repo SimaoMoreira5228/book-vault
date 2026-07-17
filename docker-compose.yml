@@ -6,10 +6,9 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "3761:3761"
     environment:
       BOOKVAULT_CONFIG: /etc/bookvault/bookvault.toml
-      BOOKVAULT_WEB_DIR: /usr/share/bookvault/web
     volumes:
       - bookvault-data:/data
       - bookvault-storage:/storage

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { authState } from "$lib/api/client";
+	import { authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
 
 	let { children } = $props();

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { api } from "$lib/api/client";
+	import { api } from "$lib/api/client.svelte";
 	import Modal from "./Modal.svelte";
 	import Upload from "@lucide/svelte/icons/upload";
 	import CheckCircle from "@lucide/svelte/icons/check-circle";

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { api } from "$lib/api/client";
+	import { api } from "$lib/api/client.svelte";
 	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
 	import type { BookIr, BookResponse, Span } from "$lib/api/generated";
