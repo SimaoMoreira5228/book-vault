@@ -4,7 +4,7 @@
 	import { goto } from "$app/navigation";
 	import { resolve } from "$app/paths";
 	import { page } from "$app/state";
-	import type { BookResponse, ProspectiveMetadata } from "$lib/api/generated";
+	import type { BookResponse } from "$lib/api/generated";
 	import FieldDisplay from "$lib/components/FieldDisplay.svelte";
 	import FieldEditor from "$lib/components/FieldEditor.svelte";
 	import FieldNumber from "$lib/components/FieldNumber.svelte";
@@ -14,10 +14,7 @@
 	import BookOpen from "@lucide/svelte/icons/book-open";
 	import Pencil from "@lucide/svelte/icons/pencil";
 	import Trash2 from "@lucide/svelte/icons/trash-2";
-	import Search from "@lucide/svelte/icons/search";
-	import RefreshCw from "@lucide/svelte/icons/refresh-cw";
-	import Lock from "@lucide/svelte/icons/lock";
-	import Unlock from "@lucide/svelte/icons/unlock";
+	import BookMetadataPanel from "$lib/components/BookMetadataPanel.svelte";
 	import { DropdownMenu, Select } from "bits-ui";
 	import ChevronDown from "@lucide/svelte/icons/chevron-down";
 	import Mail from "@lucide/svelte/icons/mail";
@@ -25,7 +22,6 @@
 	import X from "@lucide/svelte/icons/x";
 
 	let book = $state<BookResponse | null>(null);
-	let meta = $state<Record<string, unknown> | null>(null);
 	let loading = $state(true);
 	let error = $state("");
 	let success = $state("");
@@ -42,12 +38,6 @@
 	let editRating = $state<number | null>(null);
 	let editReadStatus = $state("");
 	let saving = $state(false);
-
-	let candidates = $state<ProspectiveMetadata[]>([]);
-	let searching = $state(false);
-	let confirming = $state(false);
-	let selectedCandidate = $state<number | null>(null);
-	let searchingMeta = $state(false);
 
 	let deleting = $state(false);
 	let showDeleteConfirm = $state(false);
@@ -78,9 +68,8 @@
 			return;
 		}
 
-		const [bookResult, metaResult, emailStatusResult] = await Promise.all([
+		const [bookResult, emailStatusResult] = await Promise.all([
 			api.books.get(bookId),
-			api.metadata.get(bookId),
 			api.emailStatus()
 		]);
 
@@ -90,7 +79,6 @@
 			return;
 		}
 		book = bookResult.value;
-		if (metaResult.isOk()) meta = metaResult.value;
 		if (emailStatusResult.isOk()) emailEnabled = emailStatusResult.value.enabled;
 		resetEdit();
 		loading = false;
@@ -150,69 +138,6 @@
 		}
 	}
 
-	async function handleSearchCandidates() {
-		if (!book) return;
-		searching = true;
-		error = "";
-		const result = await api.metadata.candidates(book.id, {
-			title: book.title,
-			author: book.author ?? undefined
-		});
-		if (result.isOk()) {
-			candidates = result.value;
-		} else {
-			error = result.error.message;
-		}
-		searching = false;
-	}
-
-	async function handleConfirmCandidate(index: number) {
-		if (!book) return;
-		confirming = true;
-		selectedCandidate = index;
-		error = "";
-		success = "";
-		const result = await api.metadata.confirm(book.id, candidates[index]);
-		if (result.isOk()) {
-			meta = result.value;
-			success = m.metadata_confirm_success();
-			candidates = [];
-			selectedCandidate = null;
-			loadBook();
-		} else {
-			error = result.error.message;
-			selectedCandidate = null;
-		}
-		confirming = false;
-	}
-
-	async function handleRefresh() {
-		if (!book) return;
-		searchingMeta = true;
-		error = "";
-		success = "";
-		const result = await api.metadata.refresh(book.id);
-		if (result.isOk()) {
-			meta = result.value;
-			success = "Metadata refreshed";
-		} else {
-			error = result.error.message;
-		}
-		searchingMeta = false;
-	}
-
-	async function handleLockField(field: string) {
-		if (!book) return;
-		const result = await api.metadata.lockField(book.id, field);
-		if (result.isOk()) meta = result.value;
-	}
-
-	async function handleUnlockField(field: string) {
-		if (!book) return;
-		const result = await api.metadata.unlockField(book.id, field);
-		if (result.isOk()) meta = result.value;
-	}
-
 	function formatBadge(fmt: string): string {
 		const map: Record<string, string> = {
 			epub: m.book_format_epub(),
@@ -242,24 +167,6 @@
 	function formatDate(d: string | undefined): string {
 		return d ? d.split("T")[0] : "—";
 	}
-
-	const lockedFields: string[] = $derived((meta?.locked_fields as string[]) ?? []);
-	const providerIds = $derived((meta?.provider_ids as Record<string, string>) ?? {});
-
-	const fieldLabels: Record<string, string> = {
-		Title: m.book_detail_field_title(),
-		Author: m.book_detail_field_author(),
-		Description: "Description",
-		Cover: "Cover",
-		Genres: "Genres",
-		PageCount: m.book_detail_field_page_count(),
-		Isbn: m.book_detail_field_isbn(),
-		Publisher: m.book_detail_field_publisher(),
-		PublishedDate: "Published Date",
-		Subtitle: "Subtitle"
-	};
-
-	const metadataFields = Object.keys(fieldLabels);
 </script>
 
 <svelte:head>
@@ -577,157 +484,7 @@
 			{/if}
 		</div>
 
-		<div class="paper-card rounded-xl p-8">
-			<div class="mb-6 flex items-center justify-between">
-				<h3 class="font-display text-headline-sm text-primary">{m.metadata_title()}</h3>
-				<div class="flex gap-2">
-					<button
-						onclick={handleSearchCandidates}
-						disabled={searching}
-						class="font-label text-label-md text-secondary hover:text-secondary/80 inline-flex items-center gap-1.5 transition-colors"
-					>
-						<Search size={16} />{searching ? m.metadata_searching() : m.metadata_search()}
-					</button>
-					<button
-						onclick={handleRefresh}
-						disabled={searchingMeta}
-						class="font-label text-label-md text-on-surface-variant hover:text-primary inline-flex items-center gap-1.5 transition-colors"
-					>
-						<RefreshCw size={14} class={searchingMeta ? "animate-spin" : ""} />
-						{searchingMeta ? m.metadata_refreshing() : m.metadata_refresh()}
-					</button>
-				</div>
-			</div>
-
-			{#if candidates.length > 0}
-				<div class="mb-6 space-y-3">
-					<p
-						class="font-label text-label-sm text-on-surface-variant mb-2 tracking-widest uppercase"
-					>
-						Candidates
-					</p>
-					{#each candidates as candidate, i (candidate.provider + candidate.provider_id)}
-						<div class="bg-surface-container-low rounded-xl p-4">
-							<div class="mb-2 flex items-start justify-between gap-4">
-								<div>
-									<p class="font-display text-headline-sm mb-1">{candidate.title ?? "Unknown"}</p>
-									<p class="font-body text-body-md text-on-surface-variant">
-										{candidate.authors.join(", ") || "—"}
-									</p>
-									<p class="font-label text-label-sm text-secondary mt-1">
-										{m.metadata_candidate_from({ provider: candidate.provider })}
-									</p>
-								</div>
-								<button
-									onclick={() => handleConfirmCandidate(i)}
-									disabled={confirming && selectedCandidate === i}
-									class="btn-primary text-label-sm shrink-0"
-								>
-									{confirming && selectedCandidate === i ? "..." : m.metadata_confirm()}
-								</button>
-							</div>
-							{#if candidate.description}
-								<p class="font-body text-body-md text-on-surface-variant mt-2 line-clamp-3">
-									{candidate.description}
-								</p>
-							{/if}
-							<div class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
-								{#if candidate.publisher}<span
-										class="font-label text-label-sm text-on-surface-variant/60"
-										>{candidate.publisher}</span
-									>{/if}
-								{#if candidate.published_date}<span
-										class="font-label text-label-sm text-on-surface-variant/60"
-										>{candidate.published_date}</span
-									>{/if}
-								{#if candidate.page_count}<span
-										class="font-label text-label-sm text-on-surface-variant/60"
-										>{candidate.page_count}p</span
-									>{/if}
-								{#if candidate.isbn13}<span
-										class="font-label text-label-sm text-on-surface-variant/60"
-										>ISBN: {candidate.isbn13}</span
-									>{/if}
-								{#if candidate.isbn10}<span
-										class="font-label text-label-sm text-on-surface-variant/60"
-										>ISBN10: {candidate.isbn10}</span
-									>{/if}
-								{#if candidate.rating}<span class="text-secondary font-label text-label-sm"
-										>★ {candidate.rating.toFixed(1)}</span
-									>{/if}
-							</div>
-							{#if candidate.genres.length > 0}
-								<div class="mt-2 flex flex-wrap gap-1">
-									{#each candidate.genres as genre (genre)}
-										<span
-											class="font-label text-label-sm bg-secondary/5 text-secondary rounded-full px-2 py-0.5 text-[10px]"
-											>{genre}</span
-										>
-									{/each}
-								</div>
-							{/if}
-						</div>
-					{/each}
-				</div>
-			{:else if searching}
-				<div class="flex items-center justify-center py-8">
-					<div
-						class="border-secondary h-6 w-6 animate-spin rounded-full border-2 border-t-transparent"
-					></div>
-				</div>
-			{/if}
-
-			{#if Object.keys(providerIds).length > 0}
-				<div class="mb-6">
-					<p
-						class="font-label text-label-sm text-on-surface-variant mb-2 tracking-widest uppercase"
-					>
-						{m.metadata_provider_ids()}
-					</p>
-					<div class="flex flex-wrap gap-2">
-						{#each Object.entries(providerIds) as [provider, id] (provider)}
-							<span
-								class="font-label text-label-sm bg-surface-container-high rounded-lg px-3 py-1.5"
-							>
-								{provider}: <span class="text-secondary">{id as string}</span>
-							</span>
-						{/each}
-					</div>
-				</div>
-			{/if}
-
-			<div class="mb-6">
-				<p class="font-label text-label-sm text-on-surface-variant tracking-widest uppercase">
-					{m.metadata_last_refreshed()}: {meta?.last_refreshed_at
-						? formatDate(meta.last_refreshed_at as string)
-						: m.metadata_never()}
-				</p>
-			</div>
-
-			<div>
-				<p class="font-label text-label-sm text-on-surface-variant mb-3 tracking-widest uppercase">
-					Field Locks
-				</p>
-				<div class="flex flex-wrap gap-2">
-					{#each metadataFields as field (field)}
-						{@const locked = lockedFields.includes(field)}
-						<button
-							onclick={() => (locked ? handleUnlockField(field) : handleLockField(field))}
-							class={[
-								"font-label text-label-sm inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 transition-all",
-								locked
-									? "bg-secondary/5 border-secondary/20 text-secondary"
-									: "text-on-surface-variant border-[rgba(0,31,63,0.08)] hover:border-[rgba(0,31,63,0.2)]"
-							]}
-							title={locked ? m.metadata_unlock_field() : m.metadata_lock_field()}
-						>
-							{#if locked}<Lock size={12} />{:else}<Unlock size={12} />{/if}
-							{fieldLabels[field]}
-						</button>
-					{/each}
-				</div>
-			</div>
-		</div>
+		<BookMetadataPanel {book} onRefresh={loadBook} />
 
 		{#if showEmailModal}
 			<div

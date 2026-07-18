@@ -215,6 +215,8 @@
 	];
 </script>
 
+<svelte:head><title>{m.app_name()} — {m.nav_library()}</title></svelte:head>
+
 <UploadModal show={showUpload} onComplete={loadAll} />
 
 <section class="mb-section-gap">
@@ -431,7 +433,7 @@
 							!filterStatus
 								? "bg-secondary border-secondary text-white"
 								: "border-outline/10 text-on-surface-variant hover:text-primary"
-						]}>All</button
+						]}>{m.library_filter_all()}</button
 					>
 					{#each filterOptions as opt (opt.key)}
 						<button

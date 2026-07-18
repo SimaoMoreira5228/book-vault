@@ -478,6 +478,11 @@
 	const rawUrl = $derived(bookId ? `${apiBase}/api/v1/books/${bookId}/raw` : "");
 </script>
 
+<svelte:head
+	><title>{meta?.title ?? spine[0]?.title ?? m.reader_loading()} — {m.app_name()}</title
+	></svelte:head
+>
+
 <svelte:window onscroll={onScroll} onselectionchange={onTextSelect} />
 
 <ReaderLayout

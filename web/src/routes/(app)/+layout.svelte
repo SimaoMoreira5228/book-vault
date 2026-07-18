@@ -10,6 +10,9 @@
 	import ScrollText from "@lucide/svelte/icons/scroll-text";
 	import Bell from "@lucide/svelte/icons/bell";
 	import Settings from "@lucide/svelte/icons/settings";
+	import Sun from "@lucide/svelte/icons/sun";
+	import Moon from "@lucide/svelte/icons/moon";
+	import { getTheme, toggleTheme } from "$lib/theme.svelte";
 	import Menu from "@lucide/svelte/icons/menu";
 	import X from "@lucide/svelte/icons/x";
 	import LibraryBig from "@lucide/svelte/icons/library-big";
@@ -101,12 +104,27 @@
 					<Search size={16} />
 					<span class="font-label text-label-sm opacity-60">Ctrl+K</span>
 				</a>
-				<button class="btn-ghost text-on-surface-variant hover:text-primary p-2 transition-colors">
+				<button
+					onclick={toggleTheme}
+					class="btn-ghost text-on-surface-variant hover:text-primary p-2 transition-colors"
+					aria-label={getTheme() === "dark" ? "Light mode" : "Dark mode"}
+				>
+					{#if getTheme() === "dark"}
+						<Moon size={20} />
+					{:else}
+						<Sun size={20} />
+					{/if}
+				</button>
+				<button
+					class="btn-ghost text-on-surface-variant hover:text-primary p-2 transition-colors"
+					aria-label="Notifications"
+				>
 					<Bell size={20} />
 				</button>
 				<a
 					href={resolve("/settings")}
 					class="btn-ghost text-on-surface-variant hover:text-primary p-2 transition-colors"
+					aria-label={m.settings_title()}
 				>
 					<Settings size={20} />
 				</a>

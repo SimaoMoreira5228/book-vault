@@ -107,12 +107,12 @@
 								class={[
 									"font-label shrink-0 rounded-full px-3 py-1 text-xs",
 									job.status === "completed"
-										? "bg-green-100 text-green-700"
+										? "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
 										: job.status === "dead_letter"
-											? "bg-red-100 text-red-700"
+											? "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300"
 											: job.status === "processing"
-												? "bg-blue-100 text-blue-700"
-												: "bg-yellow-100 text-yellow-700"
+												? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300"
+												: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300"
 								]}
 							>
 								{job.status as string}
@@ -152,7 +152,8 @@
 							<p class="font-label text-label-sm text-on-surface-variant">{user.email as string}</p>
 						</div>
 						{#if user.is_admin}
-							<span class="font-label rounded-full bg-amber-100 px-3 py-1 text-xs text-amber-700"
+							<span
+								class="font-label rounded-full bg-amber-100 px-3 py-1 text-xs text-amber-700 dark:bg-amber-900/40 dark:text-amber-300"
 								>Admin</span
 							>
 						{/if}

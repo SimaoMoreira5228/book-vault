@@ -50,6 +50,8 @@
 	}
 </script>
 
+<svelte:head><title>{m.auth_register_title()} — {m.app_name()}</title></svelte:head>
+
 <div class="mb-12 text-center">
 	<h1 class="font-display text-display-mobile text-primary mb-2">{m.auth_register_title()}</h1>
 	<p class="font-label text-label-sm text-on-surface-variant tracking-widest uppercase">

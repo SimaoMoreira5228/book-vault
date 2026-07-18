@@ -133,17 +133,17 @@
 	function colorClass(color: string | null): string {
 		switch (color) {
 			case "yellow":
-				return "bg-yellow-200/60";
+				return "bg-yellow-200/60 dark:bg-yellow-500/20";
 			case "green":
-				return "bg-green-200/60";
+				return "bg-green-200/60 dark:bg-green-500/20";
 			case "blue":
-				return "bg-blue-200/60";
+				return "bg-blue-200/60 dark:bg-blue-500/20";
 			case "pink":
-				return "bg-pink-200/60";
+				return "bg-pink-200/60 dark:bg-pink-500/20";
 			case "orange":
-				return "bg-orange-200/60";
+				return "bg-orange-200/60 dark:bg-orange-500/20";
 			default:
-				return "bg-yellow-200/60";
+				return "bg-yellow-200/60 dark:bg-yellow-500/20";
 		}
 	}
 

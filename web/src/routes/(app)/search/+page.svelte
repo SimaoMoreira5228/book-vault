@@ -60,6 +60,8 @@
 	}
 </script>
 
+<svelte:head><title>{m.search_title()} — {m.app_name()}</title></svelte:head>
+
 <section class="mb-section-gap">
 	<header class="mb-8">
 		<span class="font-label text-label-sm text-secondary mb-2 block tracking-widest uppercase"

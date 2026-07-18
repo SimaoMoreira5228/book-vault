@@ -44,6 +44,8 @@
 	}
 </script>
 
+<svelte:head><title>{m.studio_title()} — {m.app_name()}</title></svelte:head>
+
 <!-- Header & Action Section -->
 <section class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 	<div>
@@ -60,7 +62,9 @@
 
 <!-- Insights Bento Grid -->
 <section class="mb-section-gap grid grid-cols-1 gap-6 md:grid-cols-3">
-	<div class="border-primary/5 rounded-xl border bg-white p-8 shadow-sm md:col-span-2">
+	<div
+		class="border-primary/5 dark:bg-surface-container rounded-xl border bg-white p-8 shadow-sm md:col-span-2"
+	>
 		<div class="mb-8 flex items-start justify-between">
 			<h3 class="font-display text-headline-sm text-primary">{m.studio_insights_title()}</h3>
 			<div class="text-on-surface-variant font-label text-label-sm flex items-center gap-2">

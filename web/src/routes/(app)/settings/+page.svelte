@@ -15,7 +15,9 @@
 	import CircleX from "@lucide/svelte/icons/circle-x";
 	import Pencil from "@lucide/svelte/icons/pencil";
 	import Sun from "@lucide/svelte/icons/sun";
+	import Moon from "@lucide/svelte/icons/moon";
 	import { Slider } from "bits-ui";
+	import { getTheme, setTheme } from "$lib/theme.svelte";
 
 	type SessionInfo = {
 		id: string;
@@ -297,6 +299,38 @@
 					{localeLabels[locale] ?? locale}
 				</button>
 			{/each}
+		</div>
+	</div>
+
+	<div class="paper-card mb-10 rounded-xl p-8">
+		<div class="mb-6 flex items-center justify-between">
+			<h3 class="font-display text-headline-sm text-primary">{m.settings_app_theme()}</h3>
+		</div>
+		<div class="flex gap-2">
+			<button
+				onclick={() => setTheme("light")}
+				class={[
+					"font-label text-label-sm rounded-xl px-5 py-3 transition-all",
+					getTheme() === "light"
+						? "bg-primary text-white shadow-sm"
+						: "bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container-high"
+				]}
+			>
+				<Sun size={16} class="inline" />
+				{m.settings_theme_light()}
+			</button>
+			<button
+				onclick={() => setTheme("dark")}
+				class={[
+					"font-label text-label-sm rounded-xl px-5 py-3 transition-all",
+					getTheme() === "dark"
+						? "bg-primary text-white shadow-sm"
+						: "bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container-high"
+				]}
+			>
+				<Moon size={16} class="inline" />
+				{m.settings_theme_dark()}
+			</button>
 		</div>
 	</div>
 

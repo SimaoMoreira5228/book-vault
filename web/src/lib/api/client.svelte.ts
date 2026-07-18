@@ -14,7 +14,7 @@ import type {
 } from "./generated";
 import { SvelteURLSearchParams } from "svelte/reactivity";
 
-const apiBase = env.PUBLIC_API_URL.replace(/\/+$/, "");
+const apiBase = (env.PUBLIC_API_URL ?? "").replace(/\/+$/, "");
 export { apiBase };
 
 export type ListBooksParams = {
@@ -302,7 +302,6 @@ export const api = {
 
 	search: (q: string) => request<SearchResult>("GET", `/api/v1/search?q=${encodeURIComponent(q)}`),
 
-	read: (id: string) => request<{ book: unknown }>("GET", `/api/v1/books/${id}/read`),
 	readSpine: (id: string) =>
 		request<Array<{ id: string; title: string | null; sequence_index: number }>>(
 			"GET",
