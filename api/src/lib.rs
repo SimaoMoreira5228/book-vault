@@ -24,6 +24,7 @@ pub mod shelves;
 pub mod storage;
 
 pub use config::Config;
+pub use config::EmailConfig;
 pub use error::AppError;
 
 pub type SharedState = Arc<AppState>;

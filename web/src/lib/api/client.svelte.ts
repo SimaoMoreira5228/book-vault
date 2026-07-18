@@ -257,8 +257,18 @@ export const api = {
 			} catch (e) {
 				return err(new ApiError(0, e instanceof Error ? e.message : "Network error"));
 			}
-		}
+		},
+		sendEmail: (id: string, data: { to: string; format?: string }) =>
+			request<{ message: string; to: string; format: string }>(
+				"POST",
+				`/api/v1/books/${id}/email`,
+				data,
+				{ dedupe: false }
+			)
 	},
+
+	emailStatus: () =>
+		request<{ enabled: boolean; configured: boolean }>("GET", "/api/v1/email/status"),
 
 	shelves: {
 		list: (options?: RequestOptions) =>

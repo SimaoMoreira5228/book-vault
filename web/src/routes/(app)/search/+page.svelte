@@ -76,9 +76,6 @@
 				bind:value={query}
 				placeholder={m.search_placeholder()}
 				class="bg-surface-container-low border-outline/10 font-body text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:ring-primary/10 w-full rounded-xl border py-4 pr-4 pl-12 focus:ring-2 focus:outline-none"
-				onkeydown={(e) => {
-					if (e.key === "Enter") handleSearch();
-				}}
 			/>
 		</div>
 	</form>
@@ -139,7 +136,7 @@
 						{#each contentResults as hit (hit.book_id + hit.section_id + hit.block_index)}
 							{@const meta = bookMeta.get(hit.book_id)}
 							<a
-								href={resolve(`/reader/${hit.book_id}`)}
+								href={resolve(`/reader/${hit.book_id}#section-${hit.section_id}`)}
 								class="paper-card block rounded-xl p-5 transition-all hover:shadow-md"
 							>
 								<div class="mb-2 flex items-center gap-2">

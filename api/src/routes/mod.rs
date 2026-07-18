@@ -3,6 +3,7 @@ pub mod assets;
 pub mod authors;
 pub mod bookmarks;
 pub mod books;
+pub mod email;
 pub mod events;
 pub mod export_routes;
 pub mod jobs;
@@ -30,6 +31,8 @@ pub fn build_routes() -> Router<crate::SharedState> {
 		.nest("/books", metadata_routes::routes())
 		.nest("/annotations", progress::annotation_routes())
 		.nest("/books", studio::routes())
+		.nest("/books", email::book_routes())
+		.nest("/email", email::status_routes())
 		.nest("/revisions", studio::routes())
 		.nest("/events", events::routes())
 		.nest("/series", series::series_routes())

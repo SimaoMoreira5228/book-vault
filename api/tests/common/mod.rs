@@ -324,6 +324,153 @@ impl TestApp {
 		}
 	}
 
+	pub async fn with_email_enabled(smtp_port: u16) -> Self {
+		let mut config = Config::default();
+		config.integrations.email.enabled = true;
+		config.integrations.email.host = "127.0.0.1".to_string();
+		config.integrations.email.port = smtp_port;
+		config.integrations.email.username = "test".to_string();
+		config.integrations.email.password = "test".to_string();
+		config.integrations.email.from = "test@bookvault.test".to_string();
+		config.integrations.email.tls_required = false;
+		Self::with_config(config).await
+	}
+
+	pub async fn with_config(config: Config) -> Self {
+		let _db = tempfile::tempdir().expect("temp db dir");
+		let db_file = _db.path().join("test.db");
+		let db_url = format!("sqlite://{}?mode=rwc", db_file.display());
+
+		let _storage_dir = tempfile::tempdir().expect("temp storage dir");
+
+		let db_conn = db::connect(&db_url).await.expect("db connect");
+		db::run_migrations(&db_conn).await.expect("migrations");
+
+		let storage = Arc::new(LocalFsProvider::new(_storage_dir.path().to_path_buf()));
+
+		let state = Arc::new(AppState {
+			metadata_service: book_vault::metadata::service::MetadataService::new(&config),
+			config,
+			db: db_conn,
+			storage,
+			rate_limiter: book_vault::auth::rate_limit::RateLimiter::new(100, 900),
+			search_engine: search::engine::SearchEngine::new(),
+		});
+
+		let app = build_router(state.clone());
+
+		let worker_state = state;
+		tokio::spawn(async move {
+			let worker = book_vault::jobs::worker::JobWorker::new(worker_state);
+			worker.run_forever().await;
+		});
+
+		let listener = TcpListener::bind("127.0.0.1:0").await.expect("bind");
+		let addr = listener.local_addr().expect("local addr");
+
+		let (tx, rx) = tokio::sync::oneshot::channel::<()>();
+
+		tokio::spawn(async move {
+			let serve = axum::serve(listener, app);
+			let _ = tokio::select! {
+				_ = serve => {},
+				_ = rx => {},
+			};
+		});
+
+		let client = reqwest::Client::builder().cookie_store(true).build().expect("reqwest client");
+
+		Self {
+			addr,
+			client,
+			_db,
+			_storage_dir,
+			_shutdown: Some(tx),
+		}
+	}
+}
+
+pub struct FakeSmtpServer {
+	pub port: u16,
+	_shutdown: tokio::sync::oneshot::Sender<()>,
+	pub received: std::sync::Arc<std::sync::Mutex<Vec<String>>>,
+}
+
+impl FakeSmtpServer {
+	pub async fn start() -> Self {
+		let received: std::sync::Arc<std::sync::Mutex<Vec<String>>> = Default::default();
+		let r = received.clone();
+		let listener = TcpListener::bind("127.0.0.1:0").await.expect("fake smtp bind");
+		let port = listener.local_addr().unwrap().port();
+		let (tx, mut rx) = tokio::sync::oneshot::channel::<()>();
+
+		tokio::spawn(async move {
+			loop {
+				tokio::select! {
+					_ = &mut rx => break,
+					result = listener.accept() => {
+						if let Ok((mut stream, _)) = result {
+							use tokio::io::{AsyncReadExt, AsyncWriteExt};
+							let _ = stream.write_all(b"220 fake-smtp BookVault Test\r\n").await;
+							let mut buf = [0u8; 4096];
+							let mut conversation = String::new();
+							let mut in_data = false;
+							let mut auth_phase = 0;
+							loop {
+								match stream.read(&mut buf).await {
+									Ok(0) => break,
+									Ok(n) => {
+										let data = String::from_utf8_lossy(&buf[..n]).to_string();
+										conversation.push_str(&data);
+										let upper = data.to_uppercase();
+
+										if in_data {
+											if data.contains("\r\n.\r\n") {
+												let _ = stream.write_all(b"250 OK: queued\r\n").await;
+												in_data = false;
+											}
+											continue;
+										}
+
+										if upper.contains("QUIT") {
+											let _ = stream.write_all(b"221 Bye\r\n").await;
+											break;
+										}
+										if upper.contains("EHLO") || upper.contains("HELO") {
+											let _ = stream.write_all(b"250-fake-smtp\r\n250 AUTH LOGIN PLAIN\r\n").await;
+										} else if upper.contains("AUTH LOGIN") {
+											auth_phase = 1;
+											let _ = stream.write_all(b"334 VXNlcm5hbWU6\r\n").await;
+										} else if auth_phase == 1 {
+											auth_phase = 2;
+											let _ = stream.write_all(b"334 UGFzc3dvcmQ6\r\n").await;
+										} else if auth_phase == 2 {
+											auth_phase = 0;
+											let _ = stream.write_all(b"235 2.7.0 Authentication successful\r\n").await;
+										} else if upper.contains("AUTH PLAIN") {
+											let _ = stream.write_all(b"235 2.7.0 Authentication successful\r\n").await;
+										} else if upper.contains("DATA") {
+											in_data = true;
+											let _ = stream.write_all(b"354 Send data, end with CRLF.CRLF\r\n").await;
+										} else {
+											let _ = stream.write_all(b"250 OK\r\n").await;
+										}
+									}
+									Err(_) => break,
+								}
+							}
+							r.lock().unwrap().push(conversation);
+						}
+					}
+				}
+			}
+		});
+
+		Self { port, _shutdown: tx, received }
+	}
+}
+
+impl TestApp {
 	pub async fn try_download(url: &str, timeout: Duration) -> Option<Vec<u8>> {
 		match tokio::time::timeout(timeout, async {
 			reqwest::get(url).await.ok()?.bytes().await.ok().map(|b| b.to_vec())

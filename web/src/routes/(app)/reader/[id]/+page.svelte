@@ -157,7 +157,20 @@
 	let scrollRestoreTimer: ReturnType<typeof setTimeout> | undefined;
 
 	$effect(() => {
-		if (!restoreAfterLoad || scrolledToRestore || spine.length === 0) return;
+		if (spine.length === 0) return;
+		const hash = page.url.hash;
+		if (hash && hash.startsWith("#section-")) {
+			const sectionId = hash.replace("#section-", "");
+			setTimeout(() => {
+				const el = document.getElementById(`section-${sectionId}`);
+				if (el) {
+					el.scrollIntoView({ behavior: "instant" });
+					scrolledToRestore = true;
+				}
+			}, 300);
+			return;
+		}
+		if (!restoreAfterLoad || scrolledToRestore) return;
 		scrollRestoreTimer = setTimeout(() => {
 			const idx = spine.findIndex((s) => s.id === restoreAfterLoad!.sectionId);
 			if (idx >= 0) {

@@ -9,6 +9,7 @@
 	import MessageSquareText from "@lucide/svelte/icons/message-square-text";
 	import Trash2 from "@lucide/svelte/icons/trash-2";
 	import ExternalLink from "@lucide/svelte/icons/external-link";
+	import { SvelteMap, SvelteSet } from "svelte/reactivity";
 
 	type Annotation = {
 		id: string;
@@ -31,6 +32,7 @@
 
 	let annotations = $state<Annotation[]>([]);
 	let books = $state<Map<string, BookMeta>>(new Map());
+	let textSnippets = $state<Map<string, string>>(new Map());
 	let loading = $state(true);
 	let error = $state("");
 	let selectedBook = $state<string | null>(null);
@@ -63,11 +65,60 @@
 			);
 		}
 		if (annotationsResult.isOk()) {
-			annotations = annotationsResult.value as unknown as Annotation[];
+			const anns = annotationsResult.value as unknown as Annotation[];
+			annotations = anns;
+			loadTextSnippets(anns);
 		} else {
 			error = annotationsResult.error.message;
 		}
 		loading = false;
+	}
+
+	async function loadTextSnippets(anns: Annotation[]) {
+		const seen = new SvelteSet<string>();
+		const promises: Promise<void>[] = [];
+		for (const a of anns) {
+			const key = `${a.book_id}:${a.section_id}`;
+			if (seen.has(key)) continue;
+			seen.add(key);
+			promises.push(loadSectionBlocks(a.book_id, a.section_id));
+		}
+		await Promise.all(promises);
+	}
+
+	async function loadSectionBlocks(bookId: string, sectionId: string) {
+		const r = await api.readSection(bookId, sectionId);
+		if (!r.isOk()) return;
+		const blocks = r.value as unknown as Array<Record<string, unknown>>;
+		for (const ann of annotations.filter(
+			(a) => a.book_id === bookId && a.section_id === sectionId
+		)) {
+			const block = blocks[ann.block_index];
+			if (!block) continue;
+			const text = getBlockText(block);
+			const start = Math.max(0, Math.min(ann.start_offset, text.length));
+			const end = Math.max(start, Math.min(ann.end_offset, text.length));
+			const snippet = text.slice(start, end).substring(0, 200);
+			textSnippets = new SvelteMap(textSnippets).set(ann.id, snippet || "(empty selection)");
+		}
+	}
+
+	function getBlockText(block: Record<string, unknown>): string {
+		const entry = Object.entries(block)[0];
+		if (!entry) return "";
+		const [, value] = entry;
+		if (
+			Array.isArray(value) &&
+			value.length &&
+			typeof value[0] === "object" &&
+			"text" in value[0]
+		) {
+			return (value as Array<{ text: string }>).map((s) => s.text).join("");
+		}
+		if (typeof value === "object" && value !== null && "spans" in value) {
+			return (value as { spans: Array<{ text: string }> }).spans.map((s) => s.text).join("");
+		}
+		return JSON.stringify(value);
 	}
 
 	async function handleDelete(annotationId: string) {
@@ -206,10 +257,18 @@
 						</div>
 					{/if}
 
-					<div class={["inline rounded-lg px-3 py-1 text-sm", colorClass(annotation.color)]}>
-						<Highlighter size={12} class="mr-1 inline" />
-						Highlight
-					</div>
+					{#if textSnippets.has(annotation.id)}
+						<div
+							class={["rounded-lg px-4 py-3 text-sm leading-relaxed", colorClass(annotation.color)]}
+						>
+							<Highlighter size={12} class="mr-1.5 inline shrink-0" />
+							<span class="font-body">"{textSnippets.get(annotation.id)}"</span>
+						</div>
+					{:else}
+						<div class="text-on-surface-variant/50 rounded-lg px-4 py-3 text-sm italic">
+							Loading text...
+						</div>
+					{/if}
 				</div>
 			{/each}
 		</div>

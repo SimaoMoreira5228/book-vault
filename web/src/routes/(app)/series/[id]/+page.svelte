@@ -15,7 +15,18 @@
 		author: string | null;
 		read_status: string;
 		series_id: string | null;
+		series_index: number | null;
 	};
+
+	function readStatusLabel(status: string): string {
+		const map: Record<string, string> = {
+			unread: m.book_detail_read_status_unread(),
+			reading: m.book_detail_read_status_reading(),
+			finished: m.book_detail_read_status_finished(),
+			pending: m.book_detail_read_status_pending()
+		};
+		return map[status] ?? status;
+	}
 
 	let series = $state<SeriesDetail | null>(null);
 	let books = $state<Book[]>([]);
@@ -103,9 +114,14 @@
 					>
 						<BookCover bookId={book.id} class="h-14 w-10 shrink-0 rounded-lg" />
 						<div class="min-w-0 flex-1">
-							<p class="font-display text-headline-sm truncate">{book.title}</p>
+							<p class="font-display text-headline-sm truncate">
+								{#if book.series_index != null}
+									<span class="text-on-surface-variant/50 mr-1.5">#{book.series_index}</span>
+								{/if}
+								{book.title}
+							</p>
 							<p class="font-label text-label-sm text-on-surface-variant">
-								{book.author ?? "—"} · {book.read_status}
+								{book.author ?? "—"} · {readStatusLabel(book.read_status)}
 							</p>
 						</div>
 					</a>

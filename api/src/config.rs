@@ -115,6 +115,46 @@ pub struct LoggingConfig {
 pub struct IntegrationsConfig {
 	#[serde(default)]
 	pub hardcover_api_key: String,
+	#[serde(default)]
+	pub email: EmailConfig,
+}
+
+#[derive(Clone, Debug, Deserialize)]
+pub struct EmailConfig {
+	#[serde(default = "default_email_enabled")]
+	pub enabled: bool,
+	#[serde(default = "default_email_host")]
+	pub host: String,
+	#[serde(default = "default_email_port")]
+	pub port: u16,
+	#[serde(default)]
+	pub username: String,
+	#[serde(default)]
+	pub password: String,
+	#[serde(default = "default_email_from")]
+	pub from: String,
+	#[serde(default = "default_email_tls")]
+	pub tls_required: bool,
+}
+
+fn default_email_enabled() -> bool { false }
+fn default_email_host() -> String { "localhost".to_string() }
+fn default_email_port() -> u16 { 587 }
+fn default_email_from() -> String { "bookvault@localhost".to_string() }
+fn default_email_tls() -> bool { true }
+
+impl Default for EmailConfig {
+	fn default() -> Self {
+		Self {
+			enabled: default_email_enabled(),
+			host: default_email_host(),
+			port: default_email_port(),
+			username: String::new(),
+			password: String::new(),
+			from: default_email_from(),
+			tls_required: default_email_tls(),
+		}
+	}
 }
 
 fn default_host() -> String {

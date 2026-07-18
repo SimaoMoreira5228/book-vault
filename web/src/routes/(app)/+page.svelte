@@ -90,7 +90,23 @@
 		loading = true;
 		offset = 0;
 		await Promise.all([loadBooks(true), loadShelves()]);
+		await loadProgress();
 		loading = false;
+	}
+
+	async function loadProgress() {
+		const reading = books.filter((b) => b.read_status === "reading");
+		if (reading.length === 0) {
+			progressMap = {};
+			return;
+		}
+		const results = await Promise.all(reading.map((b) => api.progress.get(b.id)));
+		const map: Record<string, number> = {};
+		for (let i = 0; i < results.length; i++) {
+			const r = results[i];
+			if (r.isOk() && r.value) map[reading[i].id] = r.value.percentage;
+		}
+		progressMap = map;
 	}
 
 	async function loadShelves() {

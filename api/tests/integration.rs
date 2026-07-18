@@ -54,3 +54,6 @@ mod opds {
 mod koreader_sync {
 	include!("../test_modules/koreader_sync.rs");
 }
+mod email {
+	include!("../test_modules/email.rs");
+}

@@ -89,6 +89,8 @@
 		removing = null;
 	}
 
+	let showDeleteConfirm = $state(false);
+
 	async function handleDeleteShelf() {
 		if (!shelf) return;
 		deleting = true;
@@ -228,11 +230,10 @@
 					</button>
 				{/if}
 				<button
-					onclick={handleDeleteShelf}
-					disabled={deleting}
-					class="font-label text-label-md text-error hover:text-error/80 inline-flex items-center gap-1.5 rounded-lg px-4 py-2 transition-colors disabled:opacity-50"
+					onclick={() => (showDeleteConfirm = true)}
+					class="font-label text-label-md text-error hover:text-error/80 inline-flex items-center gap-1.5 rounded-lg px-4 py-2 transition-colors"
 				>
-					<Trash2 size={16} />{deleting ? "..." : m.shelf_title()}
+					<Trash2 size={16} />{m.shelf_delete()}
 				</button>
 			</div>
 		</div>
@@ -289,6 +290,51 @@
 						</div>
 					</div>
 				{/each}
+			</div>
+		{/if}
+
+		{#if showDeleteConfirm}
+			<div
+				class="bg-primary/40 fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
+				role="dialog"
+				aria-modal="true"
+				tabindex="-1"
+				onclick={() => (showDeleteConfirm = false)}
+				onkeydown={(e) => {
+					if (e.key === "Escape") showDeleteConfirm = false;
+				}}
+			>
+				<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+				<div
+					class="bg-surface mx-auto w-full max-w-md rounded-2xl p-8 shadow-2xl"
+					role="document"
+					tabindex="-1"
+					onclick={(e) => e.stopPropagation()}
+					onkeydown={(e) => {
+						if (e.key === "Escape") showDeleteConfirm = false;
+					}}
+				>
+					<h4 class="font-display text-headline-sm text-primary mb-4">
+						{m.shelf_confirm_delete()}
+					</h4>
+					<p class="font-body text-body-md text-on-surface-variant mb-6">
+						{m.shelf_delete_confirm({ name: shelf.name })}
+					</p>
+					<div class="flex justify-end gap-3">
+						<button
+							onclick={() => (showDeleteConfirm = false)}
+							class="font-label text-label-md text-on-surface-variant px-4 py-2"
+							>{m.book_detail_cancel()}</button
+						>
+						<button
+							onclick={handleDeleteShelf}
+							disabled={deleting}
+							class="font-label text-label-md bg-error inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-white transition-colors hover:opacity-90 disabled:opacity-50"
+						>
+							<Trash2 size={16} />{deleting ? "..." : m.shelf_delete()}
+						</button>
+					</div>
+				</div>
 			</div>
 		{/if}
 

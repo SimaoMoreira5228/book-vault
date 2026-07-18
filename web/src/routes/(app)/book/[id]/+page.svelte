@@ -18,7 +18,10 @@
 	import RefreshCw from "@lucide/svelte/icons/refresh-cw";
 	import Lock from "@lucide/svelte/icons/lock";
 	import Unlock from "@lucide/svelte/icons/unlock";
-	import { Select } from "bits-ui";
+	import { DropdownMenu, Select } from "bits-ui";
+	import ChevronDown from "@lucide/svelte/icons/chevron-down";
+	import Mail from "@lucide/svelte/icons/mail";
+	import Send from "@lucide/svelte/icons/send";
 	import X from "@lucide/svelte/icons/x";
 
 	let book = $state<BookResponse | null>(null);
@@ -49,6 +52,13 @@
 	let deleting = $state(false);
 	let showDeleteConfirm = $state(false);
 
+	let emailEnabled = $state(false);
+	let showEmailModal = $state(false);
+	let emailTo = $state("");
+	let emailFormat = $state("epub");
+	let sendingEmail = $state(false);
+	let emailResult = $state("");
+
 	$effect(() => {
 		if (!authState.isAuthenticated) {
 			goto(resolve("/login"));
@@ -68,9 +78,10 @@
 			return;
 		}
 
-		const [bookResult, metaResult] = await Promise.all([
+		const [bookResult, metaResult, emailStatusResult] = await Promise.all([
 			api.books.get(bookId),
-			api.metadata.get(bookId)
+			api.metadata.get(bookId),
+			api.emailStatus()
 		]);
 
 		if (bookResult.isErr()) {
@@ -80,6 +91,7 @@
 		}
 		book = bookResult.value;
 		if (metaResult.isOk()) meta = metaResult.value;
+		if (emailStatusResult.isOk()) emailEnabled = emailStatusResult.value.enabled;
 		resetEdit();
 		loading = false;
 	}
@@ -213,6 +225,20 @@
 		return map[fmt] ?? fmt.toUpperCase();
 	}
 
+	async function handleSendEmail() {
+		if (!book || !emailTo.trim()) return;
+		sendingEmail = true;
+		emailResult = "";
+		const r = await api.books.sendEmail(book.id, { to: emailTo.trim(), format: emailFormat });
+		if (r.isOk()) {
+			emailResult = "sent";
+			emailTo = "";
+		} else {
+			emailResult = r.error.message;
+		}
+		sendingEmail = false;
+	}
+
 	function formatDate(d: string | undefined): string {
 		return d ? d.split("T")[0] : "—";
 	}
@@ -305,13 +331,45 @@
 					<BookOpen size={16} />
 					{m.book_detail_reader_link()}
 				</a>
-				<button
-					onclick={() => book && api.export(book.id, "epub")}
-					class="font-label text-label-md text-on-surface-variant hover:text-primary inline-flex items-center gap-1.5 rounded-lg border border-[rgba(0,31,63,0.1)] px-4 py-2 transition-colors"
-				>
-					<FileDown size={16} />
-					{m.reader_export()}
-				</button>
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger
+						class="font-label text-label-md text-on-surface-variant hover:text-primary inline-flex items-center gap-1.5 rounded-lg border border-[rgba(0,31,63,0.1)] px-4 py-2 transition-colors"
+					>
+						<FileDown size={16} />
+						{m.reader_export()}
+						<ChevronDown size={14} />
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Portal>
+						<DropdownMenu.Content
+							class="bg-surface border-outline/10 data-[state=open]:animate-in data-[state=closed]:animate-out z-50 min-w-[140px] rounded-xl border p-1.5 shadow-lg"
+						>
+							<DropdownMenu.Item
+								onclick={() => book && api.export(book.id, "epub")}
+								class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-4 py-2 text-left transition-colors focus-visible:outline-none"
+								>EPUB</DropdownMenu.Item
+							>
+							<DropdownMenu.Item
+								onclick={() => book && api.export(book.id, "pdf")}
+								class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-4 py-2 text-left transition-colors focus-visible:outline-none"
+								>PDF</DropdownMenu.Item
+							>
+							<DropdownMenu.Item
+								onclick={() => book && api.export(book.id, "md")}
+								class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-4 py-2 text-left transition-colors focus-visible:outline-none"
+								>Markdown</DropdownMenu.Item
+							>
+						</DropdownMenu.Content>
+					</DropdownMenu.Portal>
+				</DropdownMenu.Root>
+				{#if emailEnabled}
+					<button
+						onclick={() => (showEmailModal = true)}
+						class="font-label text-label-md text-on-surface-variant hover:text-primary inline-flex items-center gap-1.5 rounded-lg border border-[rgba(0,31,63,0.1)] px-4 py-2 transition-colors"
+					>
+						<Mail size={16} />
+						{m.email_send()}
+					</button>
+				{/if}
 				<button
 					onclick={() => {
 						editing = !editing;
@@ -670,6 +728,100 @@
 				</div>
 			</div>
 		</div>
+
+		{#if showEmailModal}
+			<div
+				class="bg-primary/40 fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
+				role="dialog"
+				aria-modal="true"
+				tabindex="-1"
+				onclick={() => (showEmailModal = false)}
+				onkeydown={(e) => {
+					if (e.key === "Escape") showEmailModal = false;
+				}}
+			>
+				<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+				<div
+					class="bg-surface mx-auto w-full max-w-md rounded-2xl p-8 shadow-2xl"
+					role="document"
+					tabindex="-1"
+					onclick={(e) => e.stopPropagation()}
+					onkeydown={(e) => {
+						if (e.key === "Escape") showEmailModal = false;
+					}}
+				>
+					<div class="mb-6 flex items-center justify-between">
+						<h3 class="font-display text-headline-sm text-primary">{m.email_send()}</h3>
+						<button
+							onclick={() => (showEmailModal = false)}
+							class="text-on-surface-variant/50 hover:text-on-surface-variant p-1"
+						>
+							<X size={20} />
+						</button>
+					</div>
+					<p class="font-body text-body-md text-on-surface-variant mb-5">
+						{m.email_book_desc({ title: book?.title ?? "" })}
+					</p>
+					<div class="space-y-5">
+						<div>
+							<label
+								for="email-to"
+								class="font-label text-label-sm text-on-surface-variant mb-1.5 block tracking-widest uppercase"
+								>{m.email_recipient()}</label
+							>
+							<input
+								id="email-to"
+								type="email"
+								bind:value={emailTo}
+								class="input-minimal"
+								placeholder={m.email_placeholder()}
+							/>
+						</div>
+						<div>
+							<label
+								for="email-format"
+								class="font-label text-label-sm text-on-surface-variant mb-1.5 block tracking-widest uppercase"
+								>{m.email_format()}</label
+							>
+							<select
+								id="email-format"
+								bind:value={emailFormat}
+								class="bg-surface-container-low border-outline/10 font-label text-label-md text-primary w-full rounded-xl border px-4 py-3 outline-none"
+							>
+								<option value="epub">EPUB</option>
+								<option value="pdf">PDF</option>
+							</select>
+						</div>
+						{#if emailResult}
+							<div
+								class={[
+									"font-label text-label-sm rounded-lg px-4 py-3",
+									emailResult === "sent"
+										? "bg-secondary/10 text-secondary"
+										: "text-error bg-error-container/20"
+								]}
+							>
+								{emailResult === "sent" ? m.email_success() : emailResult}
+							</div>
+						{/if}
+						<div class="flex justify-end gap-3 pt-2">
+							<button
+								onclick={() => (showEmailModal = false)}
+								class="font-label text-label-md text-on-surface-variant px-4 py-2"
+								>{m.book_detail_cancel()}</button
+							>
+							<button
+								onclick={handleSendEmail}
+								disabled={sendingEmail || !emailTo.trim()}
+								class="btn-primary"
+							>
+								<Send size={16} />{sendingEmail ? "..." : m.email_send()}
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		{/if}
 
 		{#if showDeleteConfirm}
 			<div
