@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { Popover } from "bits-ui";
+
 	let {
 		show = $bindable(false),
 		x = 0,
@@ -13,34 +15,40 @@
 		children?: import("svelte").Snippet;
 	} = $props();
 
-	function close() {
-		show = false;
+	let anchorEl = $state<HTMLSpanElement>();
+
+	function handleOpenChange(o: boolean) {
+		if (!o) show = false;
 	}
+
+	const side = $derived(position === "center" ? "top" : position);
+
+	const contentClass = $derived(
+		position === "center"
+			? ""
+			: "z-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
+	);
 </script>
 
 {#if show}
-	<div
-		class="fixed inset-0 z-50"
-		onclick={close}
-		onkeydown={(e) => {
-			if (e.key === "Escape") close();
-		}}
-		role="presentation"
-	>
-		<div
-			class={[
-				"fixed z-50",
-				position === "center"
-					? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-					: position === "bottom"
-						? "-translate-x-1/2"
-						: "-translate-x-1/2 -translate-y-full"
-			]}
-			style={position !== "center" ? `left: ${x}px; top: ${y}px;` : ""}
-			role="presentation"
-			onclick={(e) => e.stopPropagation()}
-		>
-			{#if children}{@render children()}{/if}
-		</div>
-	</div>
+	<span
+		bind:this={anchorEl}
+		style="position: fixed; left: {x}px; top: {y}px; width: 1px; height: 1px; pointer-events: none;"
+	></span>
 {/if}
+<Popover.Root open={show} onOpenChange={handleOpenChange}>
+	<Popover.Trigger>
+		<span></span>
+	</Popover.Trigger>
+	<Popover.Content
+		customAnchor={anchorEl}
+		{side}
+		align="center"
+		class={contentClass}
+		onInteractOutside={(e) => e.preventDefault()}
+	>
+		{#if children}
+			{@render children()}
+		{/if}
+	</Popover.Content>
+</Popover.Root>

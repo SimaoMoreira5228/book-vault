@@ -15,8 +15,7 @@
 	import CircleX from "@lucide/svelte/icons/circle-x";
 	import Pencil from "@lucide/svelte/icons/pencil";
 	import Sun from "@lucide/svelte/icons/sun";
-	import Minus from "@lucide/svelte/icons/minus";
-	import Plus from "@lucide/svelte/icons/plus";
+	import { Slider } from "bits-ui";
 
 	type SessionInfo = {
 		id: string;
@@ -362,63 +361,61 @@
 			</div>
 
 			<div>
-				<p class="font-label text-label-sm text-on-surface-variant mb-3 tracking-widest uppercase">
-					{m.settings_reader_font_size()}: {readerFontSize}px
-				</p>
-				<div class="flex items-center gap-3">
-					<button
-						onclick={() => {
-							readerFontSize = Math.max(12, readerFontSize - 2);
-							saveReaderPrefs();
-						}}
-						class="bg-surface-container-low hover:bg-surface-container-high rounded-lg p-2 transition-colors"
-						><Minus size={16} /></button
-					>
-					<div class="bg-surface-container-low h-2 flex-1 overflow-hidden rounded-full">
-						<div
-							class="bg-secondary h-full rounded-full transition-all"
-							style="width: {((readerFontSize - 12) / 24) * 100}%"
-						></div>
-					</div>
-					<button
-						onclick={() => {
-							readerFontSize = Math.min(36, readerFontSize + 2);
-							saveReaderPrefs();
-						}}
-						class="bg-surface-container-low hover:bg-surface-container-high rounded-lg p-2 transition-colors"
-						><Plus size={16} /></button
-					>
+				<div class="mb-2 flex items-center justify-between">
+					<p class="font-label text-label-sm text-on-surface-variant tracking-widest uppercase">
+						{m.settings_reader_font_size()}
+					</p>
+					<span class="font-label text-label-sm text-on-surface-variant">{readerFontSize}px</span>
 				</div>
+				<Slider.Root
+					type="single"
+					bind:value={readerFontSize}
+					min={12}
+					max={36}
+					step={2}
+					onValueCommit={saveReaderPrefs}
+					class="bg-surface-container-low relative flex h-2 w-full items-center rounded-full"
+				>
+					<Slider.Range class="bg-secondary absolute h-full rounded-full" />
+					<Slider.Thumb index={0}>
+						{#snippet child({ props })}
+							<span
+								{...props}
+								class="bg-secondary border-surface focus-visible:ring-primary/20 block h-5 w-5 rounded-full border-2 shadow-sm focus-visible:ring-2 focus-visible:outline-none"
+							></span>
+						{/snippet}
+					</Slider.Thumb>
+				</Slider.Root>
 			</div>
 
 			<div>
-				<p class="font-label text-label-sm text-on-surface-variant mb-3 tracking-widest uppercase">
-					{m.settings_reader_line_height()}: {readerLineHeight.toFixed(1)}
-				</p>
-				<div class="flex items-center gap-3">
-					<button
-						onclick={() => {
-							readerLineHeight = Math.max(1.2, +(readerLineHeight - 0.2).toFixed(1));
-							saveReaderPrefs();
-						}}
-						class="bg-surface-container-low hover:bg-surface-container-high rounded-lg p-2 transition-colors"
-						><Minus size={16} /></button
-					>
-					<div class="bg-surface-container-low h-2 flex-1 overflow-hidden rounded-full">
-						<div
-							class="bg-secondary h-full rounded-full transition-all"
-							style="width: {((readerLineHeight - 1.2) / 1.8) * 100}%"
-						></div>
-					</div>
-					<button
-						onclick={() => {
-							readerLineHeight = Math.min(3.0, +(readerLineHeight + 0.2).toFixed(1));
-							saveReaderPrefs();
-						}}
-						class="bg-surface-container-low hover:bg-surface-container-high rounded-lg p-2 transition-colors"
-						><Plus size={16} /></button
+				<div class="mb-2 flex items-center justify-between">
+					<p class="font-label text-label-sm text-on-surface-variant tracking-widest uppercase">
+						{m.settings_reader_line_height()}
+					</p>
+					<span class="font-label text-label-sm text-on-surface-variant"
+						>{readerLineHeight.toFixed(1)}</span
 					>
 				</div>
+				<Slider.Root
+					type="single"
+					bind:value={readerLineHeight}
+					min={1.2}
+					max={3.0}
+					step={0.2}
+					onValueCommit={saveReaderPrefs}
+					class="bg-surface-container-low relative flex h-2 w-full items-center rounded-full"
+				>
+					<Slider.Range class="bg-secondary absolute h-full rounded-full" />
+					<Slider.Thumb index={0}>
+						{#snippet child({ props })}
+							<span
+								{...props}
+								class="bg-secondary border-surface focus-visible:ring-primary/20 block h-5 w-5 rounded-full border-2 shadow-sm focus-visible:ring-2 focus-visible:outline-none"
+							></span>
+						{/snippet}
+					</Slider.Thumb>
+				</Slider.Root>
 			</div>
 		</div>
 	</div>

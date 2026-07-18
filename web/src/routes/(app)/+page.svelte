@@ -34,6 +34,7 @@
 	import Trash2 from "@lucide/svelte/icons/trash-2";
 	import ChevronRight from "@lucide/svelte/icons/chevron-right";
 	import Info from "@lucide/svelte/icons/info";
+	import { DropdownMenu } from "bits-ui";
 	import ArrowUpDown from "@lucide/svelte/icons/arrow-up-down";
 	import ChevronDown from "@lucide/svelte/icons/chevron-down";
 
@@ -64,7 +65,6 @@
 	let offset = $state(0);
 	let total = $state(0);
 	let loadingMore = $state(false);
-	let showSortMenu = $state(false);
 
 	const PAGE = 24;
 
@@ -126,7 +126,6 @@
 			sortBy = field;
 			sortOrder = "desc";
 		}
-		showSortMenu = false;
 		offset = 0;
 		await loadBooks(true);
 	}
@@ -148,7 +147,7 @@
 	const forYou = $derived(
 		books.filter((b: LibBook) => {
 			if (filterStatus) return b.read_status === filterStatus;
-			return b.read_status !== "reading";
+			return true;
 		})
 	);
 
@@ -429,34 +428,33 @@
 							]}>{opt.label}</button
 						>
 					{/each}
-					<div class="relative">
-						<button
-							onclick={() => (showSortMenu = !showSortMenu)}
-							class="font-label text-label-sm text-on-surface-variant hover:text-primary border-outline/10 flex items-center gap-1 rounded-lg border px-3 py-1.5 transition-all"
-							><ArrowUpDown size={14} />{sortLabels[sortBy] ?? sortBy}<ChevronDown
-								size={12}
-							/></button
+					<DropdownMenu.Root>
+						<DropdownMenu.Trigger
+							class="font-label text-label-sm text-on-surface-variant hover:text-primary border-outline/10 focus-visible:ring-primary/20 flex items-center gap-1 rounded-lg border px-3 py-1.5 transition-all focus-visible:ring-2 focus-visible:outline-none"
 						>
-						{#if showSortMenu}
-							<div
-								class="bg-surface border-outline/10 absolute top-9 right-0 z-50 min-w-[160px] rounded-xl border p-1.5 shadow-lg"
+							<ArrowUpDown size={14} />{sortLabels[sortBy] ?? sortBy}<ChevronDown size={12} />
+						</DropdownMenu.Trigger>
+						<DropdownMenu.Portal>
+							<DropdownMenu.Content
+								class="bg-surface border-outline/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 z-50 min-w-[160px] rounded-xl border p-1.5 shadow-lg"
 							>
 								{#each ["title", "author", "created_at", "updated_at"] as field (field)}
-									<button
+									<DropdownMenu.Item
 										onclick={() => handleSort(field)}
 										class={[
-											"font-label text-label-md w-full rounded-lg px-4 py-2 text-left transition-colors",
+											"font-label text-label-md w-full cursor-pointer rounded-lg px-4 py-2 text-left transition-colors",
 											sortBy === field
 												? "bg-secondary/5 text-secondary"
 												: "text-on-surface-variant hover:text-primary hover:bg-surface-container-low"
 										]}
-										>{sortLabels[field]}
-										{sortBy === field ? (sortOrder === "asc" ? "↑" : "↓") : ""}</button
 									>
+										{sortLabels[field]}
+										{sortBy === field ? (sortOrder === "asc" ? "↑" : "↓") : ""}
+									</DropdownMenu.Item>
 								{/each}
-							</div>
-						{/if}
-					</div>
+							</DropdownMenu.Content>
+						</DropdownMenu.Portal>
+					</DropdownMenu.Root>
 				</div>
 			</header>
 

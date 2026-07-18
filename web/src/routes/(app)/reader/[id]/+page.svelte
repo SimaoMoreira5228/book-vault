@@ -14,7 +14,6 @@
 	import ComicViewer from "$lib/components/reader/ComicViewer.svelte";
 	import ExportMenu from "$lib/components/reader/ExportMenu.svelte";
 	import BookOpen from "@lucide/svelte/icons/book-open";
-	import FileDown from "@lucide/svelte/icons/file-down";
 	import Bookmark from "@lucide/svelte/icons/bookmark";
 	import Download from "@lucide/svelte/icons/download";
 
@@ -46,9 +45,9 @@
 		startOffset: number;
 		endOffset: number;
 	} | null>(null);
+	let popupSectionId = $state<string | null>(null);
 	let tooltipAnn = $state<Annotation | null>(null);
 	let bookmarks = $state<Array<{ id: string; section_id: string }>>([]);
-	let showExport = $state(false);
 
 	let saveTimer: ReturnType<typeof setInterval> | undefined;
 
@@ -226,8 +225,17 @@
 	}
 
 	function onTextSelect() {
-		tooltipAnn = null;
 		const sel = window.getSelection();
+		if (sel && sel.rangeCount > 0) {
+			const container = sel.getRangeAt(0).startContainer;
+			if (container instanceof Element && !container.closest("[data-book-content]")) {
+				return;
+			}
+			if (container?.parentElement && !container.parentElement.closest("[data-book-content]")) {
+				return;
+			}
+		}
+		tooltipAnn = null;
 		if (!sel || sel.isCollapsed || !sel.rangeCount) {
 			popup = null;
 			return;
@@ -248,6 +256,15 @@
 			return;
 		}
 		const blockIndex = parseInt((node as HTMLElement).dataset.blockIndex ?? "");
+
+		let sectionNode: Node | null = range.startContainer;
+		while (
+			sectionNode &&
+			(!(sectionNode as HTMLElement).dataset || !(sectionNode as HTMLElement).dataset.sectionId)
+		) {
+			sectionNode = sectionNode.parentElement;
+		}
+		popupSectionId = (sectionNode as HTMLElement)?.dataset?.sectionId ?? findVisibleSection();
 
 		const blockEl = node as HTMLElement;
 		const walker = document.createTreeWalker(blockEl, NodeFilter.SHOW_TEXT);
@@ -284,15 +301,30 @@
 
 	async function createAnnotation(color: string) {
 		if (!popup) return;
-		const sid = findVisibleSection();
-		if (!sid) return;
+		const sid = popupSectionId ?? findVisibleSection();
+		if (!sid) {
+			console.warn("annotate: no visible section");
+			return;
+		}
 		const blocks = loadedBlocks[sid] ?? [];
 		const block = blocks[popup.blockIndex] as Record<string, unknown> | undefined;
-		if (!block) return;
+		if (!block) {
+			console.warn("annotate: block not found", {
+				sid,
+				blockIndex: popup.blockIndex,
+				blocksLen: blocks.length
+			});
+			return;
+		}
 		const blockText = getBlockText(block);
 		const startOffset = Math.max(0, Math.min(popup.startOffset, blockText.length));
 		const endOffset = Math.max(startOffset, Math.min(popup.endOffset, blockText.length));
 		if (startOffset >= endOffset) {
+			console.warn("annotate: invalid offsets", {
+				startOffset,
+				endOffset,
+				blockTextLen: blockText.length
+			});
 			popup = null;
 			return;
 		}
@@ -307,7 +339,10 @@
 		if (r.isOk()) {
 			const fetched = await api.annotations.list(bookId);
 			if (fetched.isOk()) annotations = fetched.value as unknown as Annotation[];
+		} else {
+			console.warn("annotate: api failed", r.error);
 		}
+		popupSectionId = null;
 		popup = null;
 		window.getSelection()?.removeAllRanges();
 	}
@@ -374,16 +409,7 @@
 			</div>
 		{/if}
 		{#if showDownload}
-			<div class="relative">
-				<button
-					onclick={() => (showExport = !showExport)}
-					class="p-2 transition-transform duration-200 hover:opacity-80 active:scale-95"
-					title={m.reader_export()}
-				>
-					<FileDown size={20} class="text-on-surface-variant" />
-				</button>
-				<ExportMenu bind:show={showExport} {bookId} />
-			</div>
+			<ExportMenu {bookId} />
 		{/if}
 		<button
 			onclick={toggleBookmark}

@@ -18,6 +18,7 @@
 	import RefreshCw from "@lucide/svelte/icons/refresh-cw";
 	import Lock from "@lucide/svelte/icons/lock";
 	import Unlock from "@lucide/svelte/icons/unlock";
+	import { Select } from "bits-ui";
 	import X from "@lucide/svelte/icons/x";
 
 	let book = $state<BookResponse | null>(null);
@@ -401,20 +402,46 @@
 					</div>
 					<div>
 						<label
-							for="edit-status"
+							for="edit-read-status"
 							class="font-label text-label-sm text-on-surface-variant mb-1.5 block tracking-widest uppercase"
 							>{m.book_detail_field_read_status()}</label
 						>
-						<select
-							id="edit-status"
-							bind:value={editReadStatus}
-							class="bg-surface-container-low border-outline/10 font-label text-label-md text-primary w-full rounded-xl border px-4 py-3"
-						>
-							<option value="unread">{m.book_detail_read_status_unread()}</option>
-							<option value="reading">{m.book_detail_read_status_reading()}</option>
-							<option value="finished">{m.book_detail_read_status_finished()}</option>
-							<option value="pending">{m.book_detail_read_status_pending()}</option>
-						</select>
+						<Select.Root type="single" bind:value={editReadStatus}>
+							<Select.Trigger
+								id="edit-read-status"
+								class="bg-surface-container-low border-outline/10 font-label text-label-md text-primary focus-visible:ring-primary/20 flex w-full items-center justify-between rounded-xl border px-4 py-3 focus-visible:ring-2 focus-visible:outline-none"
+							>
+								<Select.Value placeholder={m.book_detail_field_read_status()} />
+							</Select.Trigger>
+							<Select.Portal>
+								<Select.Content
+									class="bg-surface border-outline/10 z-50 rounded-xl border p-1 shadow-lg"
+								>
+									<Select.Viewport class="flex flex-col gap-0.5">
+										<Select.Item
+											value="unread"
+											class="font-label text-label-md text-on-surface-variant hover:bg-surface-container-low w-full rounded-lg px-4 py-2 text-left transition-colors"
+											>{m.book_detail_read_status_unread()}</Select.Item
+										>
+										<Select.Item
+											value="reading"
+											class="font-label text-label-md text-on-surface-variant hover:bg-surface-container-low w-full rounded-lg px-4 py-2 text-left transition-colors"
+											>{m.book_detail_read_status_reading()}</Select.Item
+										>
+										<Select.Item
+											value="finished"
+											class="font-label text-label-md text-on-surface-variant hover:bg-surface-container-low w-full rounded-lg px-4 py-2 text-left transition-colors"
+											>{m.book_detail_read_status_finished()}</Select.Item
+										>
+										<Select.Item
+											value="pending"
+											class="font-label text-label-md text-on-surface-variant hover:bg-surface-container-low w-full rounded-lg px-4 py-2 text-left transition-colors"
+											>{m.book_detail_read_status_pending()}</Select.Item
+										>
+									</Select.Viewport>
+								</Select.Content>
+							</Select.Portal>
+						</Select.Root>
 					</div>
 					<div class="flex justify-end gap-3 pt-2">
 						<button

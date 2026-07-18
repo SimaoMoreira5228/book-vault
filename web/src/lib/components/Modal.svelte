@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Dialog } from "bits-ui";
 	import X from "@lucide/svelte/icons/x";
 
 	let {
@@ -21,51 +22,37 @@
 		lg: "max-w-lg",
 		xl: "max-w-xl"
 	};
-
-	function close() {
-		show = false;
-	}
 </script>
 
-{#if show}
-	<div
-		class="bg-primary/40 fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
-		role="dialog"
-		aria-modal="true"
-		tabindex="-1"
-		onclick={close}
-		onkeydown={(e) => {
-			if (e.key === "Escape") close();
-		}}
-	>
-		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-		<div
-			class={["bg-surface mx-auto w-full rounded-2xl p-8 shadow-2xl", widths[maxWidth]]}
-			role="document"
-			tabindex="-1"
-			onclick={(e) => e.stopPropagation()}
-			onkeydown={(e) => {
-				if (e.key === "Escape") close();
-			}}
+<Dialog.Root bind:open={show}>
+	<Dialog.Portal>
+		<Dialog.Overlay
+			class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/40 backdrop-blur-sm"
+		/>
+		<Dialog.Content
+			class="bg-surface data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-1/2 left-1/2 z-50 mx-auto w-full -translate-x-1/2 -translate-y-1/2 rounded-2xl p-8 shadow-2xl {widths[
+				maxWidth
+			]} outline-hidden"
 		>
 			{#if title || showClose}
 				<div class="mb-6 flex items-center justify-between">
 					{#if title}
-						<h3 class="font-display text-headline-sm text-primary">{title}</h3>
+						<Dialog.Title class="font-display text-headline-sm text-primary m-0"
+							>{title}</Dialog.Title
+						>
 					{/if}
 					{#if showClose}
-						<button
-							onclick={close}
-							class="text-on-surface-variant/50 hover:text-on-surface-variant p-1 transition-colors"
+						<Dialog.Close
+							class="text-on-surface-variant/50 hover:text-on-surface-variant focus-visible:ring-primary/20 rounded-md p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
 						>
 							<X size={20} />
-						</button>
+						</Dialog.Close>
 					{/if}
 				</div>
 			{/if}
 			{#if children}
 				{@render children()}
 			{/if}
-		</div>
-	</div>
-{/if}
+		</Dialog.Content>
+	</Dialog.Portal>
+</Dialog.Root>

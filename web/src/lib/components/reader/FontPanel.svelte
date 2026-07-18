@@ -1,6 +1,5 @@
 <script lang="ts">
-	import Minus from "@lucide/svelte/icons/minus";
-	import Plus from "@lucide/svelte/icons/plus";
+	import { Slider } from "bits-ui";
 
 	let {
 		fontSize = $bindable(18),
@@ -9,32 +8,57 @@
 		fontSize?: number;
 		lineHeight?: number;
 	} = $props();
-
-	function changeFontSize(delta: number) {
-		const next = fontSize + delta;
-		if (next >= 12 && next <= 36) fontSize = next;
-	}
-
-	function changeLineHeight(delta: number) {
-		const next = parseFloat((lineHeight + delta).toFixed(1));
-		if (next >= 1.2 && next <= 3.0) lineHeight = next;
-	}
 </script>
 
 <div
-	class="bg-surface border-outline/10 fixed top-20 right-4 z-50 flex items-center gap-4 rounded-xl border px-4 py-3 shadow-lg"
+	class="bg-surface border-outline/10 fixed top-20 right-4 z-50 flex min-w-[200px] flex-col gap-4 rounded-xl border px-5 py-4 shadow-lg"
 >
-	<button onclick={() => changeFontSize(-2)} class="p-1 hover:opacity-70"
-		><Minus size={16} /></button
-	>
-	<span class="font-label text-label-sm min-w-[3ch] text-center">{fontSize}</span>
-	<button onclick={() => changeFontSize(2)} class="p-1 hover:opacity-70"><Plus size={16} /></button>
-	<div class="bg-outline-variant/30 mx-2 h-6 w-px"></div>
-	<button onclick={() => changeLineHeight(-0.2)} class="p-1 hover:opacity-70"
-		><Minus size={16} /></button
-	>
-	<span class="font-label text-label-sm min-w-[3ch] text-center">{lineHeight.toFixed(1)}</span>
-	<button onclick={() => changeLineHeight(0.2)} class="p-1 hover:opacity-70"
-		><Plus size={16} /></button
-	>
+	<div class="flex flex-col gap-2">
+		<div class="flex items-center justify-between">
+			<span class="font-label text-label-sm text-on-surface-variant">Font</span>
+			<span class="font-label text-label-sm min-w-[3ch] text-right">{fontSize}px</span>
+		</div>
+		<Slider.Root
+			type="single"
+			bind:value={fontSize}
+			min={12}
+			max={36}
+			step={2}
+			class="bg-surface-container-low relative flex h-1.5 w-full items-center rounded-full"
+		>
+			<Slider.Range class="bg-secondary absolute h-full rounded-full" />
+			<Slider.Thumb index={0}>
+				{#snippet child({ props })}
+					<span
+						{...props}
+						class="bg-secondary border-surface focus-visible:ring-primary/20 block size-4 rounded-full border-2 shadow-sm focus-visible:ring-2 focus-visible:outline-none"
+					></span>
+				{/snippet}
+			</Slider.Thumb>
+		</Slider.Root>
+	</div>
+	<div class="flex flex-col gap-2">
+		<div class="flex items-center justify-between">
+			<span class="font-label text-label-sm text-on-surface-variant">Line H</span>
+			<span class="font-label text-label-sm min-w-[3ch] text-right">{lineHeight.toFixed(1)}</span>
+		</div>
+		<Slider.Root
+			type="single"
+			bind:value={lineHeight}
+			min={1.2}
+			max={3.0}
+			step={0.2}
+			class="bg-surface-container-low relative flex h-1.5 w-full items-center rounded-full"
+		>
+			<Slider.Range class="bg-secondary absolute h-full rounded-full" />
+			<Slider.Thumb index={0}>
+				{#snippet child({ props })}
+					<span
+						{...props}
+						class="bg-secondary border-surface focus-visible:ring-primary/20 block size-4 rounded-full border-2 shadow-sm focus-visible:ring-2 focus-visible:outline-none"
+					></span>
+				{/snippet}
+			</Slider.Thumb>
+		</Slider.Root>
+	</div>
 </div>

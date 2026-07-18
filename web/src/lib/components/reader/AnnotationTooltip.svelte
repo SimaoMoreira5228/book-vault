@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import Popup from "$lib/components/Popup.svelte";
+	import { Dialog } from "bits-ui";
 	import { api } from "$lib/api/client.svelte";
 	import { COLORS } from "$lib/ir/renderer";
 	import type { Annotation } from "$lib/ir/renderer";
@@ -44,68 +44,78 @@
 	}
 </script>
 
-<Popup show={!!annotation} position="center">
-	{@const ann = annotation}
-	{#if ann}
-		<div class="bg-surface border-outline/10 w-80 rounded-xl border p-5 shadow-2xl">
-			<div class="mb-4 flex items-start justify-between">
-				<div class="flex items-center gap-2">
-					<div
-						class="h-4 w-4 rounded-full"
-						style="background: {COLORS[ann.color ?? 'yellow']};"
-					></div>
-					<span class="font-label text-label-sm text-on-surface-variant"
-						>{m.reader_annotation_color()}</span
+<Dialog.Root
+	open={!!annotation}
+	onOpenChange={(o) => {
+		if (!o) close();
+	}}
+>
+	<Dialog.Portal>
+		<Dialog.Overlay
+			class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/40 backdrop-blur-sm"
+		/>
+		<Dialog.Content
+			class="bg-surface border-outline/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-1/2 left-1/2 z-50 w-80 -translate-x-1/2 -translate-y-1/2 rounded-xl border p-5 shadow-2xl outline-hidden"
+		>
+			{@const ann = annotation}
+			{#if ann}
+				<div class="mb-4 flex items-start justify-between">
+					<div class="flex items-center gap-2">
+						<div
+							class="h-4 w-4 rounded-full"
+							style="background: {COLORS[ann.color ?? 'yellow']};"
+						></div>
+						<span class="font-label text-label-sm text-on-surface-variant"
+							>{m.reader_annotation_color()}</span
+						>
+					</div>
+					<Dialog.Close
+						class="text-on-surface-variant/50 hover:text-on-surface-variant focus-visible:ring-primary/20 rounded-md p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
 					>
+						<X size={16} />
+					</Dialog.Close>
 				</div>
-				<button
-					onclick={close}
-					class="text-on-surface-variant/50 hover:text-on-surface-variant p-1"
-				>
-					<X size={16} />
-				</button>
-			</div>
-			{#if editNoteId === ann.id}
-				<textarea
-					bind:value={noteDraft}
-					class="bg-surface-container-low border-outline/10 font-body text-body-md text-primary mb-3 h-24 w-full resize-none rounded-xl border p-3 focus:outline-none"
-					placeholder={m.reader_add_note()}></textarea>
-				<div class="flex gap-2">
-					<button
-						onclick={() => (editNoteId = null)}
-						class="font-label text-label-sm text-on-surface-variant px-3 py-1.5 transition-colors"
-						>{m.book_detail_cancel()}</button
-					>
-					<button onclick={() => saveNote(ann.id)} class="btn-primary text-label-sm px-3 py-1.5"
-						>{m.reader_save_note()}</button
-					>
-				</div>
-			{:else}
-				{#if ann.note}
-					<div class="bg-surface-container-low mb-3 flex items-start gap-2 rounded-lg p-3">
-						<MessageSquareText size={14} class="text-on-surface-variant/50 mt-0.5 shrink-0" />
-						<p class="font-body text-body-md text-primary">{ann.note}</p>
+				{#if editNoteId === ann.id}
+					<textarea
+						bind:value={noteDraft}
+						class="bg-surface-container-low border-outline/10 font-body text-body-md text-primary mb-3 h-24 w-full resize-none rounded-xl border p-3 focus:outline-none"
+						placeholder={m.reader_add_note()}></textarea>
+					<div class="flex gap-2">
+						<button
+							onclick={() => (editNoteId = null)}
+							class="font-label text-label-sm text-on-surface-variant px-3 py-1.5 transition-colors"
+							>{m.book_detail_cancel()}</button
+						>
+						<button onclick={() => saveNote(ann.id)} class="btn-primary text-label-sm px-3 py-1.5"
+							>{m.reader_save_note()}</button
+						>
 					</div>
 				{:else}
-					<p class="font-body text-body-md text-on-surface-variant mb-3 italic">
-						{m.reader_add_note()}
-					</p>
+					{#if ann.note}
+						<div class="bg-surface-container-low mb-3 flex items-start gap-2 rounded-lg p-3">
+							<MessageSquareText size={14} class="text-on-surface-variant/50 mt-0.5 shrink-0" />
+							<p class="font-body text-body-md text-primary">{ann.note}</p>
+						</div>
+					{:else}
+						<p class="font-body text-body-md text-on-surface-variant mb-3 italic">
+							{m.reader_add_note()}
+						</p>
+					{/if}
+					<div class="flex gap-2">
+						<button
+							onclick={() => startEditNote(ann)}
+							class="font-label text-label-sm text-secondary hover:text-secondary/80 transition-colors"
+							>{m.reader_add_note()}</button
+						>
+						<button
+							onclick={() => deleteAnnotation(ann.id)}
+							disabled={deleting === ann.id}
+							class="font-label text-label-sm text-error hover:text-error/80 ml-auto transition-colors disabled:opacity-50"
+							>{deleting === ann.id ? "..." : m.reader_annotation_delete()}</button
+						>
+					</div>
 				{/if}
-				<div class="flex gap-2">
-					<button
-						onclick={() => startEditNote(ann)}
-						class="font-label text-label-sm text-secondary hover:text-secondary/80 transition-colors"
-						>{m.reader_add_note()}</button
-					>
-					<button
-						onclick={() => deleteAnnotation(ann.id)}
-						disabled={deleting === ann.id}
-						class="font-label text-label-sm text-error hover:text-error/80 ml-auto transition-colors disabled:opacity-50"
-					>
-						{deleting === ann.id ? "..." : m.reader_annotation_delete()}
-					</button>
-				</div>
 			{/if}
-		</div>
-	{/if}
-</Popup>
+		</Dialog.Content>
+	</Dialog.Portal>
+</Dialog.Root>

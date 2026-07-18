@@ -49,6 +49,7 @@
 	},
 	"dependencies": {
 		"@lucide/svelte": "^1.25.0",
+		"bits-ui": "^2.18.1",
 		"valibot": "^1.4.2"
 	}
 }
