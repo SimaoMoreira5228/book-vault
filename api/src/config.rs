@@ -117,7 +117,17 @@ pub struct IntegrationsConfig {
 	pub hardcover_api_key: String,
 	#[serde(default)]
 	pub email: EmailConfig,
+	#[serde(default)]
+	pub hosted_services: HostedServicesConfig,
 }
+
+#[derive(Clone, Debug, Deserialize)]
+#[derive(Default)]
+pub struct HostedServicesConfig {
+	#[serde(default)]
+	pub libretranslate_url: String,
+}
+
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct EmailConfig {

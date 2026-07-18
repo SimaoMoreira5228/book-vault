@@ -21,6 +21,10 @@ mod m20260717_011706_create_shelves;
 mod m20260717_011707_add_keep_source;
 mod m20260717_011708_create_book_metadata;
 mod m20260718_add_user_preferences;
+mod m20260718_create_linguistic_annotations;
+mod m20260718_create_vocabulary_entries;
+mod m20260719_create_vocab_example_sentences;
+mod m20260719_create_dictionary_cache;
 
 pub struct Migrator;
 
@@ -49,6 +53,10 @@ impl MigratorTrait for Migrator {
 			Box::new(m20250717_create_series::Migration),
 			Box::new(m20250717_add_series_id_to_books::Migration),
 			Box::new(m20260718_add_user_preferences::Migration),
+			Box::new(m20260718_create_linguistic_annotations::Migration),
+			Box::new(m20260718_create_vocabulary_entries::Migration),
+			Box::new(m20260719_create_vocab_example_sentences::Migration),
+			Box::new(m20260719_create_dictionary_cache::Migration),
 		]
 	}
 }

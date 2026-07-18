@@ -14,6 +14,7 @@
 	import FontPanel from "$lib/components/reader/FontPanel.svelte";
 	import ComicViewer from "$lib/components/reader/ComicViewer.svelte";
 	import ExportMenu from "$lib/components/reader/ExportMenu.svelte";
+	import LookupPopover from "$lib/components/reader/LookupPopover.svelte";
 	import BookOpen from "@lucide/svelte/icons/book-open";
 	import Bookmark from "@lucide/svelte/icons/bookmark";
 	import Download from "@lucide/svelte/icons/download";
@@ -36,6 +37,11 @@
 	let showToc = $state(false);
 	let showFontPanel = $state(false);
 	let prefsLoaded = $state(false);
+
+	let lookupText = $state("");
+	let lookupContext = $state("");
+	let lookupPos = $state({ x: 0, y: 0 });
+	let showLookup = $state(false);
 
 	let annotations = $state<Annotation[]>([]);
 	let popup = $state<{
@@ -250,12 +256,17 @@
 		if (sel && sel.rangeCount > 0) {
 			const container = sel.getRangeAt(0).startContainer;
 			if (container instanceof Element && !container.closest("[data-book-content]")) {
+				showLookup = false;
+				popup = null;
 				return;
 			}
 			if (container?.parentElement && !container.parentElement.closest("[data-book-content]")) {
+				showLookup = false;
+				popup = null;
 				return;
 			}
 		}
+		showLookup = false;
 		tooltipAnn = null;
 		if (!sel || sel.isCollapsed || !sel.rangeCount) {
 			popup = null;
@@ -318,6 +329,43 @@
 			startOffset,
 			endOffset
 		};
+	}
+
+	function handleLookup() {
+		if (!popup) return;
+		tooltipAnn = null;
+		const fullText = popup.text;
+		const words = fullText.split(/\s+/).filter(Boolean);
+		lookupText = words.length === 1 ? words[0] : fullText;
+		lookupContext = findContextSentence();
+		lookupPos = { x: popup.x, y: popup.y };
+		showLookup = true;
+		popup = null;
+		popupSectionId = null;
+		window.getSelection()?.removeAllRanges();
+	}
+
+	function findContextSentence(): string {
+		const sel = window.getSelection();
+		if (!sel || !sel.rangeCount) return "";
+		let node: Node | null = sel.getRangeAt(0).startContainer;
+		while (
+			node &&
+			!(
+				node instanceof HTMLParagraphElement ||
+				node instanceof HTMLHeadingElement ||
+				node instanceof HTMLQuoteElement
+			)
+		) {
+			node = node.parentElement;
+		}
+		if (!node) {
+			const blockEl = popup
+				? document.querySelector(`[data-block-index="${popup.blockIndex}"]`)
+				: null;
+			return blockEl?.textContent ?? "";
+		}
+		return node.textContent ?? "";
 	}
 
 	async function createAnnotation(color: string) {
@@ -729,5 +777,13 @@
 	x={popup?.x ?? 0}
 	y={popup?.y ?? 0}
 	onCreateColor={createAnnotation}
+	onLookup={handleLookup}
+/>
+<LookupPopover
+	bind:show={showLookup}
+	x={lookupPos.x}
+	y={lookupPos.y}
+	text={lookupText}
+	context={lookupContext}
 />
 <AnnotationTooltip bind:annotation={tooltipAnn} onUpdate={loadAnnotations} />

@@ -16,6 +16,7 @@ pub mod ingest;
 pub mod ir;
 pub mod jobs;
 pub mod koreader;
+pub mod language;
 pub mod metadata;
 pub mod opds;
 pub mod routes;
@@ -36,6 +37,8 @@ pub struct AppState {
 	pub metadata_service: metadata::service::MetadataService,
 	pub rate_limiter: auth::rate_limit::RateLimiter,
 	pub search_engine: search::engine::SearchEngine,
+	pub dictionary_provider: Option<Box<dyn language::dictionary::DictionaryProvider>>,
+	pub translation_provider: Option<Box<dyn language::dictionary::TranslationProvider>>,
 }
 
 pub fn build_router(state: SharedState) -> Router {

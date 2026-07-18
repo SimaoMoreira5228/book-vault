@@ -18,6 +18,8 @@
 	import LibraryBig from "@lucide/svelte/icons/library-big";
 	import Users from "@lucide/svelte/icons/users";
 	import BookMarked from "@lucide/svelte/icons/book-marked";
+	import GraduationCap from "@lucide/svelte/icons/graduation-cap";
+	import RefreshCw from "@lucide/svelte/icons/refresh-cw";
 	import Plus from "@lucide/svelte/icons/plus";
 
 	let { children } = $props();
@@ -33,7 +35,16 @@
 	const isReader = $derived(path.startsWith("/reader"));
 
 	type NavItem = {
-		href: "/" | "/search" | "/studio" | "/notes" | "/authors" | "/series" | "/settings";
+		href:
+			| "/"
+			| "/search"
+			| "/studio"
+			| "/notes"
+			| "/authors"
+			| "/series"
+			| "/vocabulary"
+			| "/review"
+			| "/settings";
 		icon:
 			| typeof LibraryBig
 			| typeof Search
@@ -41,6 +52,8 @@
 			| typeof ScrollText
 			| typeof Users
 			| typeof BookMarked
+			| typeof GraduationCap
+			| typeof RefreshCw
 			| typeof Settings;
 		label: string;
 		match: string;
@@ -59,7 +72,9 @@
 		{ href: "/studio", icon: PenSquare, label: m.nav_studio(), match: "/studio" },
 		{ href: "/notes", icon: ScrollText, label: m.nav_notes(), match: "/notes" },
 		{ href: "/authors", icon: Users, label: m.authors_title(), match: "/authors" },
-		{ href: "/series", icon: BookMarked, label: m.series_title(), match: "/series" }
+		{ href: "/series", icon: BookMarked, label: m.series_title(), match: "/series" },
+		{ href: "/vocabulary", icon: GraduationCap, label: m.vocab_title(), match: "/vocabulary" },
+		{ href: "/review", icon: RefreshCw, label: m.review_title(), match: "/review" }
 	];
 
 	function isActive(item: { match: string }): boolean {

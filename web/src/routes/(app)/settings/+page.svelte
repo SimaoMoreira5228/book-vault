@@ -3,8 +3,7 @@
 	import { api, apiBase, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
 	import { resolve } from "$app/paths";
-	import { locales, localizeUrl } from "$lib/paraglide/runtime";
-	import { page } from "$app/state";
+	import { locales, setLocale, getLocale } from "$lib/paraglide/runtime";
 	import Languages from "@lucide/svelte/icons/languages";
 	import Monitor from "@lucide/svelte/icons/monitor";
 	import Smartphone from "@lucide/svelte/icons/smartphone";
@@ -164,18 +163,13 @@
 
 	const user = $derived(authState.user);
 
-	const currentLocale = $derived(
-		locales.find((l) => page.url.pathname.startsWith(`/${l}`)) ?? "en"
-	);
-
 	const localeLabels: Record<string, string> = {
 		en: m.locale_en(),
 		"pt-PT": m["locale_pt-PT"]()
 	};
 
-	function handleLocaleChange(locale: "en" | "pt-PT") {
-		// eslint-disable-next-line svelte/no-navigation-without-resolve
-		goto(localizeUrl(page.url.pathname, { locale }));
+	function handleLocaleChange(l: "en" | "pt-PT") {
+		setLocale(l);
 	}
 </script>
 
@@ -290,7 +284,7 @@
 					onclick={() => handleLocaleChange(locale)}
 					class={[
 						"font-label text-label-sm inline-flex items-center gap-2 rounded-xl px-5 py-3 transition-all",
-						locale === currentLocale
+						locale === getLocale()
 							? "bg-primary text-white shadow-sm"
 							: "bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container-high border border-transparent"
 					]}

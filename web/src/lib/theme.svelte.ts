@@ -12,8 +12,9 @@ function apply(t: AppTheme) {
 
 if (browser) {
 	const saved = localStorage.getItem("bookvault-theme") as AppTheme | null;
-	if (saved === "light" || saved === "dark") current = saved;
-	apply(current);
+	const initial: AppTheme = saved === "light" || saved === "dark" ? saved : "light";
+	current = initial;
+	apply(initial);
 }
 
 export function getTheme(): AppTheme {

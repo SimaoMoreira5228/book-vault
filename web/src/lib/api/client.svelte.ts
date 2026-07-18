@@ -601,6 +601,80 @@ export const api = {
 			}>("GET", `/api/v1/jobs/${id}`, undefined, { dedupe: false })
 	},
 
+	vocabulary: {
+		list: (params?: { language?: string; state?: string; due?: boolean }) => {
+			const q =
+				params && Object.keys(params).length > 0
+					? "?" +
+						Object.entries(params)
+							.filter(([, v]) => v !== undefined)
+							.map(([k, v]) => `${k}=${encodeURIComponent(String(v))}`)
+							.join("&")
+					: "";
+			return request<Array<Record<string, unknown>>>("GET", `/api/v1/vocabulary${q}`);
+		},
+		lookup: (data: { word: string; context: string; language: string }) =>
+			request<{ entries: Array<Record<string, unknown>>; cached: boolean }>(
+				"POST",
+				"/api/v1/vocabulary/lookup",
+				data,
+				{ dedupe: false }
+			),
+		add: (data: {
+			language: string;
+			lemma: string;
+			sense_label?: string;
+			sense_id?: string;
+			definition?: string;
+			sentence_snippet?: string;
+			context_sentence?: string;
+			source?: string;
+		}) => request<Record<string, unknown>>("POST", "/api/v1/vocabulary", data, { dedupe: false }),
+		update: (
+			id: string,
+			data: {
+				state?: string;
+				sense_label?: string;
+				sense_id?: string;
+				definition?: string;
+				srs_interval_days?: number;
+				srs_ease_factor?: number;
+			}
+		) =>
+			request<Record<string, unknown>>("PUT", `/api/v1/vocabulary/${id}`, data, { dedupe: false }),
+		delete: (id: string) =>
+			request<void>("DELETE", `/api/v1/vocabulary/${id}`, undefined, { dedupe: false }),
+		reviewCards: (params?: { language?: string; due?: boolean }) => {
+			const q =
+				params && Object.keys(params).length > 0
+					? "?" +
+						Object.entries(params)
+							.filter(([, v]) => v !== undefined)
+							.map(([k, v]) => `${k}=${encodeURIComponent(String(v))}`)
+							.join("&")
+					: "";
+			return request<Array<Record<string, unknown>>>("GET", `/api/v1/vocabulary/review${q}`);
+		},
+		submitReview: (id: string, quality: number) =>
+			request<Record<string, unknown>>(
+				"POST",
+				`/api/v1/vocabulary/${id}/review`,
+				{ quality },
+				{ dedupe: false }
+			),
+		sentences: {
+			list: (entryId: string) =>
+				request<Array<Record<string, unknown>>>("GET", `/api/v1/vocabulary/${entryId}/sentences`),
+			add: (
+				entryId: string,
+				data: { sentence: string; source?: string; book_id?: string; book_title?: string }
+			) =>
+				request<Record<string, unknown>>("POST", `/api/v1/vocabulary/${entryId}/sentences`, data, {
+					dedupe: false
+				})
+		}
+	},
+
 	admin: {
 		jobs: () =>
 			request<

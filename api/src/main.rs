@@ -35,6 +35,20 @@ async fn main() {
 	let engine = book_vault::search::engine::SearchEngine::new();
 	engine.rebuild(&db);
 
+	let dictionary_provider: Option<Box<dyn book_vault::language::dictionary::DictionaryProvider>> =
+		Some(Box::new(book_vault::language::dictionary::FreeDictionaryProvider));
+
+	let translation_provider: Option<Box<dyn book_vault::language::dictionary::TranslationProvider>> = {
+		let lt_url = &config.integrations.hosted_services.libretranslate_url;
+		if lt_url.is_empty() {
+			None
+		} else {
+			Some(Box::new(book_vault::language::dictionary::LibreTranslateProvider {
+				api_url: lt_url.clone(),
+			}))
+		}
+	};
+
 	let state: SharedState = Arc::new(AppState {
 		metadata_service: book_vault::metadata::service::MetadataService::new(&config),
 		config: config.clone(),
@@ -42,6 +56,8 @@ async fn main() {
 		storage,
 		rate_limiter: book_vault::auth::rate_limit::RateLimiter::new(5, 900),
 		search_engine: engine,
+		dictionary_provider,
+		translation_provider,
 	});
 
 	let worker_state = state.clone();

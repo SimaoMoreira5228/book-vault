@@ -51,3 +51,22 @@ allowed_origin = "*"
 
 [logging]
 level = "info"
+
+[integrations]
+# Optional: API key for Hardcover.app metadata enrichment
+hardcover_api_key = ""
+
+[integrations.email]
+# Enable to send books via email/Kindle
+enabled = false
+host = "smtp.gmail.com"
+port = 587
+username = ""
+password = ""
+from = "bookvault@example.com"
+tls_required = true
+
+[integrations.hosted_services]
+# Optional: URL of a LibreTranslate instance for in-app word translations
+# If left empty, translation features will be disabled
+libretranslate_url = ""

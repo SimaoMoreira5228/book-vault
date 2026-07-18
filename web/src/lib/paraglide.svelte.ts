@@ -1,28 +1,21 @@
-import type { Locale as _Locale } from "$lib/paraglide/runtime";
-import { browser } from "$app/env";
-import { goto } from "$app/navigation";
-import { page } from "$app/state";
+import { browser } from "$app/environment";
+import { baseLocale, overwriteGetLocale, overwriteSetLocale } from "$lib/paraglide/runtime";
 
-import {
-	baseLocale,
-	localizeUrl,
-	overwriteGetLocale,
-	overwriteSetLocale,
-	toLocale
-} from "$lib/paraglide/runtime";
+type AppLocale = "en" | "pt-PT";
 
 export class Locale {
-	#current: _Locale = $state(
-		toLocale(browser && document.querySelector("html")?.lang) ?? baseLocale
-	);
+	#current = $state<AppLocale>(baseLocale as AppLocale);
 
 	constructor() {
+		if (!browser) return;
+		const saved = localStorage.getItem("PARAGLIDE_LOCALE");
+		if (saved === "en" || saved === "pt-PT") {
+			this.#current = saved;
+		}
 		overwriteGetLocale(() => this.#current);
-
-		overwriteSetLocale((locale) => {
-			this.#current = locale;
-			// eslint-disable-next-line svelte/no-navigation-without-resolve
-			goto(localizeUrl(page.url.pathname, { locale }));
+		overwriteSetLocale((l) => {
+			this.#current = l;
+			localStorage.setItem("PARAGLIDE_LOCALE", l);
 		});
 	}
 }

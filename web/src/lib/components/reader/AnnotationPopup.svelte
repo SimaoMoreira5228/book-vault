@@ -1,17 +1,21 @@
 <script lang="ts">
+	import * as m from "$lib/paraglide/messages";
 	import Popup from "$lib/components/Popup.svelte";
 	import { COLORS, COLOR_NAMES } from "$lib/ir/renderer";
+	import BookOpen from "@lucide/svelte/icons/book-open";
 
 	let {
 		show = $bindable(false),
 		x = 0,
 		y = 0,
-		onCreateColor
+		onCreateColor,
+		onLookup
 	}: {
 		show?: boolean;
 		x?: number;
 		y?: number;
 		onCreateColor: (color: string) => void;
+		onLookup?: () => void;
 	} = $props();
 </script>
 
@@ -27,5 +31,14 @@
 				title={color}
 			></button>
 		{/each}
+		<span class="bg-outline-variant/30 mx-1 block h-6 w-px"></span>
+		<button
+			onclick={onLookup}
+			class="text-on-surface-variant hover:text-primary flex items-center gap-1 rounded-md px-2 py-1 text-xs transition-colors"
+			title={m.reader_lookup()}
+		>
+			<BookOpen size={14} />
+			{m.reader_lookup()}
+		</button>
 	</div>
 </Popup>

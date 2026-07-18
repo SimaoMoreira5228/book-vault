@@ -33,7 +33,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SQL", "pg_isready", "-U", "bookvault"]
+      test: ["CMD-SHELL", "pg_isready", "-U", "bookvault"]
       interval: 5s
       timeout: 3s
       retries: 5
@@ -54,7 +54,7 @@ services:
     volumes:
       - minio-data:/data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      test: ["CMD", "mc", "ready", "local"]
       interval: 5s
       timeout: 3s
       retries: 5
@@ -62,22 +62,17 @@ services:
       - s3
       - full
 
-  # Uncomment if you want a separate reverse-proxy container
-  # caddy:
-  #   image: caddy:2-alpine
-  #   restart: unless-stopped
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   volumes:
-  #     - ./Caddyfile:/etc/caddy/Caddyfile:ro
-  #     - caddy-data:/data
-  #   profiles:
-  #     - proxy
+  libretranslate:
+    image: libretranslate/libretranslate:latest
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    profiles:
+      - translate
+      - full
 
 volumes:
   bookvault-data:
   bookvault-storage:
   postgres-data:
   minio-data:
-  caddy-data:

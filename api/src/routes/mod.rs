@@ -33,6 +33,8 @@ pub fn build_routes() -> Router<crate::SharedState> {
 		.nest("/books", studio::routes())
 		.nest("/books", email::book_routes())
 		.nest("/email", email::status_routes())
+		.nest("/books", super::language::routes())
+		.nest("/vocabulary", super::language::vocab_routes())
 		.nest("/revisions", studio::routes())
 		.nest("/events", events::routes())
 		.nest("/series", series::series_routes())
