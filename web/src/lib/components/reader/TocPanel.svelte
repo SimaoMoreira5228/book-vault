@@ -1,17 +1,17 @@
 <script lang="ts">
-	import type { Section } from "$lib/api/generated";
-
 	let {
 		sections,
 		show = $bindable(false),
 		onNavigate
 	}: {
-		sections: Section[];
+		sections: Array<{ id: string; title: string | null }>;
 		show?: boolean;
 		onNavigate: (sectionId: string) => void;
 	} = $props();
 
-	const tocEntries = $derived(sections.filter((s) => s.title));
+	const tocEntries = $derived(
+		sections.filter((s): s is { id: string; title: string } => !!s.title)
+	);
 </script>
 
 {#if show && tocEntries.length > 0}

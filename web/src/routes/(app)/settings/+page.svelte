@@ -3,6 +3,9 @@
 	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
 	import { resolve } from "$app/paths";
+	import { locales, localizeUrl } from "$lib/paraglide/runtime";
+	import { page } from "$app/state";
+	import Languages from "@lucide/svelte/icons/languages";
 	import Monitor from "@lucide/svelte/icons/monitor";
 	import Smartphone from "@lucide/svelte/icons/smartphone";
 	import Laptop from "@lucide/svelte/icons/laptop";
@@ -130,6 +133,20 @@
 	}
 
 	const user = $derived(authState.user);
+
+	const currentLocale = $derived(
+		locales.find((l) => page.url.pathname.startsWith(`/${l}`)) ?? "en"
+	);
+
+	const localeLabels: Record<string, string> = {
+		en: m.locale_en(),
+		"pt-PT": m["locale_pt-PT"]()
+	};
+
+	function handleLocaleChange(locale: "en" | "pt-PT") {
+		// eslint-disable-next-line svelte/no-navigation-without-resolve
+		goto(localizeUrl(page.url.pathname, { locale }));
+	}
 </script>
 
 <svelte:head><title>{m.settings_title()} — Book Vault</title></svelte:head>
@@ -228,6 +245,31 @@
 				</div>
 			</div>
 		{/if}
+	</div>
+
+	<div class="paper-card mb-10 rounded-xl p-8">
+		<div class="mb-6 flex items-center justify-between">
+			<h3 class="font-display text-headline-sm text-primary">{m.settings_language()}</h3>
+		</div>
+		<p class="font-label text-label-sm text-on-surface-variant mb-4 tracking-widest uppercase">
+			{m.settings_language_subtitle()}
+		</p>
+		<div class="flex flex-wrap gap-2">
+			{#each locales as locale (locale)}
+				<button
+					onclick={() => handleLocaleChange(locale)}
+					class={[
+						"font-label text-label-sm inline-flex items-center gap-2 rounded-xl px-5 py-3 transition-all",
+						locale === currentLocale
+							? "bg-primary text-white shadow-sm"
+							: "bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container-high border border-transparent"
+					]}
+				>
+					<Languages size={16} />
+					{localeLabels[locale] ?? locale}
+				</button>
+			{/each}
+		</div>
 	</div>
 
 	<div class="paper-card mb-10 rounded-xl p-8">

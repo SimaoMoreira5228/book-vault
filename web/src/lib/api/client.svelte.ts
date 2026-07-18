@@ -27,6 +27,8 @@ export type ListBooksParams = {
 	search?: string;
 };
 
+export type SpineItem = { id: string; title: string | null; sequence_index: number };
+
 export class ApiError {
 	constructor(
 		public status: number,
@@ -85,8 +87,11 @@ async function doRequest<T>(
 		});
 
 		if (res.status === 401) {
-			authState.handleUnauthorized();
-			return err(new ApiError(401, "Session expired"));
+			const text = await res.text().catch(() => "");
+			if (path.startsWith("/api/v1/auth/") || text.toLowerCase().includes("unauthorized")) {
+				authState.handleUnauthorized();
+			}
+			return err(new ApiError(401, text || "Session expired"));
 		}
 
 		if (!res.ok) {
@@ -280,6 +285,13 @@ export const api = {
 	search: (q: string) => request<SearchResult>("GET", `/api/v1/search?q=${encodeURIComponent(q)}`),
 
 	read: (id: string) => request<{ book: unknown }>("GET", `/api/v1/books/${id}/read`),
+	readSpine: (id: string) =>
+		request<Array<{ id: string; title: string | null; sequence_index: number }>>(
+			"GET",
+			`/api/v1/books/${id}/read/spine`
+		),
+	readSection: (id: string, sectionId: string) =>
+		request<Array<Record<string, unknown>>>("GET", `/api/v1/books/${id}/read/section/${sectionId}`),
 
 	export: (id: string, format: string) => {
 		window.open(`${apiBase}/api/v1/books/${id}/export?format=${format}`, "_blank");

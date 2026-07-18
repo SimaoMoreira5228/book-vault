@@ -1,6 +1,4 @@
 <script lang="ts">
-	import type { ResolvedPathname } from "$app/types";
-
 	let {
 		text = "",
 		marks = 0,
@@ -8,13 +6,14 @@
 	}: {
 		text: string;
 		marks?: number;
-		href?: ResolvedPathname;
+		href?: string;
 	} = $props();
 </script>
 
 {#if href}
+	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 	<a
-		{href}
+		{...{ href }}
 		target="_blank"
 		rel="noreferrer"
 		class="underline decoration-dotted underline-offset-2 hover:decoration-solid"

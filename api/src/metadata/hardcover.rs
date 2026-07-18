@@ -13,6 +13,7 @@ impl HardcoverProvider {
 		Self {
 			client: reqwest::Client::builder()
 				.user_agent("BookVault/0.1")
+				.timeout(std::time::Duration::from_secs(15))
 				.build()
 				.expect("reqwest client"),
 			api_key: api_key.to_string(),

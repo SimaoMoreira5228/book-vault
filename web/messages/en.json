@@ -222,5 +222,9 @@
 	"series_description": "Description",
 	"series_save": "Save",
 	"series_cancel": "Cancel",
-	"series_books": "Books in this series"
+	"series_books": "Books in this series",
+	"settings_language": "Language",
+	"settings_language_subtitle": "Interface Language",
+	"locale_en": "English",
+	"locale_pt-PT": "Português (Portugal)"
 }

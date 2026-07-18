@@ -2,9 +2,10 @@
 	import * as m from "$lib/paraglide/messages";
 	import { api, apiBase } from "$lib/api/client.svelte";
 	import { page } from "$app/state";
-	import type { BookIr, BookResponse } from "$lib/api/generated";
+	import type { Block, BookResponse } from "$lib/api/generated";
 	import type { Annotation, ReaderTheme } from "$lib/ir/renderer";
 	import { getBlockText } from "$lib/ir/renderer";
+	import type { SpineItem } from "$lib/api/client.svelte";
 	import ReaderLayout from "$lib/components/reader/ReaderLayout.svelte";
 	import BlockRenderer from "$lib/components/reader/BlockRenderer.svelte";
 	import AnnotationPopup from "$lib/components/reader/AnnotationPopup.svelte";
@@ -23,8 +24,9 @@
 
 	const bookId = $derived(page.params.id ?? "");
 
-	let bookData = $state<{ book: BookIr } | null>(null);
 	let meta = $state<BookResponse | null>(null);
+	let spine = $state<SpineItem[]>([]);
+	let sectionBlocks = $state<Record<string, Block[]>>({});
 	let loading = $state(true);
 	let progress = $state(0);
 	let pdfMode = $state<"text" | "pdf">("text");
@@ -57,10 +59,11 @@
 	const formatsWithDownload = $derived(["pdf", "mobi_raw", "epub"]);
 	const showDownload = $derived(meta ? formatsWithDownload.includes(meta.format) : false);
 
+	const currentBlocks = $derived((sectionBlocks[sectionId] ?? []) as Block[]);
+
 	$effect(() => {
 		if (bookId) {
-			loadBook();
-			loadProgress();
+			loadSpine();
 		}
 		return () => {
 			if (saveTimer) clearInterval(saveTimer);
@@ -68,21 +71,48 @@
 	});
 
 	$effect(() => {
-		if (bookData && sectionId) saveTimer = setInterval(() => saveProgressNow(), 15000);
+		if (sectionId) {
+			if (saveTimer) clearInterval(saveTimer);
+			saveTimer = setInterval(() => saveProgressNow(), 15000);
+			return () => clearInterval(saveTimer);
+		}
 	});
 
-	async function loadBook() {
+	async function loadSpine() {
 		loading = true;
-		const [metaResult, readResult] = await Promise.all([api.books.get(bookId), api.read(bookId)]);
+		const [metaResult, spineResult, progressResult] = await Promise.all([
+			api.books.get(bookId),
+			api.readSpine(bookId),
+			api.progress.get(bookId)
+		]);
 		if (metaResult.isOk()) meta = metaResult.value;
-		if (readResult.isOk()) {
-			bookData = readResult.value as { book: BookIr };
-			const firstSection = (readResult.value as { book: BookIr }).book.spine[0];
-			if (firstSection) sectionId = firstSection.id;
+		if (spineResult.isOk()) spine = spineResult.value as SpineItem[];
+		if (progressResult.isOk() && progressResult.value) {
+			progress = Math.round(progressResult.value.percentage);
+			sectionId = progressResult.value.section_id;
 		}
 		if (metaResult.isOk() && metaResult.value.format === "cbz") loadComicPages();
+		if (!sectionId && spine.length > 0) sectionId = spine[0].id;
+		if (sectionId) await loadSection(sectionId);
 		loading = false;
 		await Promise.all([loadAnnotations(), loadBookmarks()]);
+	}
+
+	async function loadSection(sid: string) {
+		if (sectionBlocks[sid]) return;
+		const result = await api.readSection(bookId, sid);
+		if (result.isOk()) {
+			sectionBlocks = { ...sectionBlocks, [sid]: result.value as Block[] };
+			prefetchNextSection(sid);
+		}
+	}
+
+	function prefetchNextSection(sid: string) {
+		const idx = spine.findIndex((s) => s.id === sid);
+		if (idx < spine.length - 1) {
+			const next = spine[idx + 1].id;
+			if (!sectionBlocks[next]) loadSection(next);
+		}
 	}
 
 	async function loadAnnotations() {
@@ -100,22 +130,21 @@
 		if (result.isOk()) comicPages = result.value;
 	}
 
-	async function loadProgress() {
-		const result = await api.progress.get(bookId);
-		if (result.isOk() && result.value) {
-			progress = Math.round(result.value.percentage);
-			sectionId = result.value.section_id;
-		}
-	}
-
 	async function saveProgressNow() {
 		if (!sectionId) return;
-		api.progress.save(bookId, {
+		const idx = spine.findIndex((s) => s.id === sectionId);
+		const total = spine.length;
+		const block_index = Math.min(
+			currentBlocks.length - 1,
+			Math.round(progress / (100 / Math.max(1, currentBlocks.length)))
+		);
+		const r = await api.progress.save(bookId, {
 			section_id: sectionId,
-			block_index: Math.round(progress / 10),
+			block_index,
 			char_offset: 0,
-			percentage: progress
+			percentage: total > 0 ? Math.round(((idx + progress / 100) / total) * 100) : 0
 		});
+		if (r.isErr()) console.warn("Failed to save progress:", r.error.message);
 	}
 
 	async function toggleBookmark() {
@@ -203,9 +232,8 @@
 
 	async function createAnnotation(color: string) {
 		if (!popup) return;
-		const section = bookData?.book.spine.find((s) => s.id === sectionId);
-		if (!section) return;
-		const block = section.blocks[popup.blockIndex] as Record<string, unknown>;
+		const block = currentBlocks[popup.blockIndex] as Record<string, unknown>;
+		if (!block) return;
 		const blockText = getBlockText(block);
 		const startOffset = Math.max(0, Math.min(popup.startOffset, blockText.length));
 		const endOffset = Math.max(startOffset, Math.min(popup.endOffset, blockText.length));
@@ -229,24 +257,20 @@
 		window.getSelection()?.removeAllRanges();
 	}
 
-	function scrollToSection(sid: string) {
-		const el = document.querySelector(`[data-section-id="${sid}"]`);
-		if (el) {
-			el.scrollIntoView({ behavior: "smooth" });
-			sectionId = sid;
-		}
+	async function scrollToSection(sid: string) {
+		await loadSection(sid);
+		sectionId = sid;
 		showToc = false;
 	}
 
 	function goToPrevSection() {
-		const idx = bookData?.book.spine.findIndex((s) => s.id === sectionId) ?? -1;
-		if (idx > 0) scrollToSection(bookData!.book.spine[idx - 1].id);
+		const idx = spine.findIndex((s) => s.id === sectionId);
+		if (idx > 0) scrollToSection(spine[idx - 1].id);
 	}
 
 	function goToNextSection() {
-		const idx = bookData?.book.spine.findIndex((s) => s.id === sectionId) ?? -1;
-		if (idx < (bookData?.book.spine.length ?? 1) - 1)
-			scrollToSection(bookData!.book.spine[idx + 1].id);
+		const idx = spine.findIndex((s) => s.id === sectionId);
+		if (idx < spine.length - 1) scrollToSection(spine[idx + 1].id);
 	}
 
 	$effect(() => {
@@ -263,7 +287,7 @@
 		tooltipAnn = ann;
 	}
 
-	const tocSections = $derived(bookData?.book.spine ?? []);
+	const tocSections = $derived(spine);
 	const rawUrl = $derived(bookId ? `${apiBase}/api/v1/books/${bookId}/raw` : "");
 </script>
 
@@ -274,7 +298,7 @@
 	{progress}
 	bind:showToc
 	bind:showFontPanel
-	title={meta?.title ?? bookData?.book.spine[0]?.title ?? m.reader_loading()}
+	title={meta?.title ?? spine[0]?.title ?? m.reader_loading()}
 >
 	{#snippet headerExtra()}
 		{#if meta?.format === "pdf"}
@@ -328,7 +352,9 @@
 	{/snippet}
 
 	<TocPanel sections={tocSections} bind:show={showToc} onNavigate={scrollToSection} />
-	<FontPanel bind:fontSize bind:lineHeight />
+	{#if showFontPanel}
+		<FontPanel bind:fontSize bind:lineHeight />
+	{/if}
 
 	{#if loading}
 		<div class="flex items-center justify-center py-32">
@@ -361,32 +387,39 @@
 				><Download size={20} /> {m.reader_download()}</button
 			>
 		</div>
-	{:else if bookData}
+	{:else if spine.length > 0}
+		{@const section = spine.find((s) => s.id === sectionId)}
 		<article
 			data-book-content
 			class="space-y-8"
 			style="font-size: {fontSize}px; line-height: {lineHeight};"
 		>
-			{#each bookData.book.spine as section (section.id)}
-				<div data-section-id={section.id}>
-					{#if section.title}
-						<h2 class="font-display text-headline-md text-primary mb-12 text-center">
-							{section.title}
-						</h2>
-					{/if}
-					{#each section.blocks as block, blockIdx (blockIdx)}
+			<div data-section-id={sectionId}>
+				{#if section?.title}
+					<h2 class="font-display text-headline-md text-primary mb-12 text-center">
+						{section.title}
+					</h2>
+				{/if}
+				{#if currentBlocks.length > 0}
+					{#each currentBlocks as block, blockIdx (blockIdx)}
 						<BlockRenderer
 							{block}
 							{blockIdx}
-							sectionId={section.id}
+							{sectionId}
 							{annotations}
 							{theme}
 							onAnnotationClick={handleAnnotationClick}
 							{onTextSelect}
 						/>
 					{/each}
-				</div>
-			{/each}
+				{:else}
+					<div class="flex items-center justify-center py-32">
+						<div
+							class="border-secondary h-8 w-8 animate-spin rounded-full border-2 border-t-transparent"
+						></div>
+					</div>
+				{/if}
+			</div>
 		</article>
 	{/if}
 </ReaderLayout>
