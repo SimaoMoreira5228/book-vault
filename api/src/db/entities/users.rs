@@ -13,6 +13,7 @@ pub struct Model {
 	pub password_hash: String,
 	pub display_name: String,
 	pub is_admin: bool,
+	pub preferences: Option<serde_json::Value>,
 	pub created_at: DateTimeWithTimeZone,
 	pub updated_at: DateTimeWithTimeZone,
 }

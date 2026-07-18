@@ -14,6 +14,9 @@
 	import LogOut from "@lucide/svelte/icons/log-out";
 	import CircleX from "@lucide/svelte/icons/circle-x";
 	import Pencil from "@lucide/svelte/icons/pencil";
+	import Sun from "@lucide/svelte/icons/sun";
+	import Minus from "@lucide/svelte/icons/minus";
+	import Plus from "@lucide/svelte/icons/plus";
 
 	type SessionInfo = {
 		id: string;
@@ -41,6 +44,32 @@
 	let confirmPassword = $state("");
 	let savingPassword = $state(false);
 	let passwordError = $state("");
+
+	let readerTheme = $state("light");
+	let readerFontSize = $state(18);
+	let readerLineHeight = $state(1.8);
+
+	$effect(() => {
+		if (authState.isAuthenticated) loadReaderPrefs();
+	});
+
+	async function loadReaderPrefs() {
+		const r = await api.auth.getPreferences();
+		if (r.isOk() && r.value.reader) {
+			const p = r.value.reader as Record<string, unknown>;
+			if (typeof p.theme === "string") readerTheme = p.theme;
+			if (typeof p.fontSize === "number") readerFontSize = p.fontSize;
+			if (typeof p.lineHeight === "number") readerLineHeight = p.lineHeight;
+		}
+	}
+
+	async function saveReaderPrefs() {
+		const r = await api.auth.updatePreferences({
+			reader: { theme: readerTheme, fontSize: readerFontSize, lineHeight: readerLineHeight }
+		});
+		if (r.isOk()) success = m.settings_profile_saved();
+		else error = r.error.message;
+	}
 
 	$effect(() => {
 		if (!authState.isAuthenticated) {
@@ -269,6 +298,128 @@
 					{localeLabels[locale] ?? locale}
 				</button>
 			{/each}
+		</div>
+	</div>
+
+	<div class="paper-card mb-10 rounded-xl p-8">
+		<div class="mb-6 flex items-center justify-between">
+			<h3 class="font-display text-headline-sm text-primary">{m.settings_reader()}</h3>
+		</div>
+		<p class="font-label text-label-sm text-on-surface-variant mb-4 tracking-widest uppercase">
+			{m.settings_reader_subtitle()}
+		</p>
+
+		<div class="space-y-6">
+			<div>
+				<p class="font-label text-label-sm text-on-surface-variant mb-3 tracking-widest uppercase">
+					{m.settings_reader_theme()}
+				</p>
+				<div class="flex gap-2">
+					<button
+						onclick={() => {
+							readerTheme = "light";
+							saveReaderPrefs();
+						}}
+						class={[
+							"font-label text-label-sm rounded-xl px-5 py-3 transition-all",
+							readerTheme === "light"
+								? "bg-primary text-white shadow-sm"
+								: "bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container-high"
+						]}
+					>
+						<Sun size={16} class="inline" />
+						{m.settings_reader_theme_light()}
+					</button>
+					<button
+						onclick={() => {
+							readerTheme = "sepia";
+							saveReaderPrefs();
+						}}
+						class={[
+							"font-label text-label-sm rounded-xl px-5 py-3 transition-all",
+							readerTheme === "sepia"
+								? "bg-primary text-white shadow-sm"
+								: "bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container-high"
+						]}
+					>
+						{m.settings_reader_theme_sepia()}
+					</button>
+					<button
+						onclick={() => {
+							readerTheme = "dark";
+							saveReaderPrefs();
+						}}
+						class={[
+							"font-label text-label-sm rounded-xl px-5 py-3 transition-all",
+							readerTheme === "dark"
+								? "bg-primary text-white shadow-sm"
+								: "bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container-high"
+						]}
+					>
+						{m.settings_reader_theme_dark()}
+					</button>
+				</div>
+			</div>
+
+			<div>
+				<p class="font-label text-label-sm text-on-surface-variant mb-3 tracking-widest uppercase">
+					{m.settings_reader_font_size()}: {readerFontSize}px
+				</p>
+				<div class="flex items-center gap-3">
+					<button
+						onclick={() => {
+							readerFontSize = Math.max(12, readerFontSize - 2);
+							saveReaderPrefs();
+						}}
+						class="bg-surface-container-low hover:bg-surface-container-high rounded-lg p-2 transition-colors"
+						><Minus size={16} /></button
+					>
+					<div class="bg-surface-container-low h-2 flex-1 overflow-hidden rounded-full">
+						<div
+							class="bg-secondary h-full rounded-full transition-all"
+							style="width: {((readerFontSize - 12) / 24) * 100}%"
+						></div>
+					</div>
+					<button
+						onclick={() => {
+							readerFontSize = Math.min(36, readerFontSize + 2);
+							saveReaderPrefs();
+						}}
+						class="bg-surface-container-low hover:bg-surface-container-high rounded-lg p-2 transition-colors"
+						><Plus size={16} /></button
+					>
+				</div>
+			</div>
+
+			<div>
+				<p class="font-label text-label-sm text-on-surface-variant mb-3 tracking-widest uppercase">
+					{m.settings_reader_line_height()}: {readerLineHeight.toFixed(1)}
+				</p>
+				<div class="flex items-center gap-3">
+					<button
+						onclick={() => {
+							readerLineHeight = Math.max(1.2, +(readerLineHeight - 0.2).toFixed(1));
+							saveReaderPrefs();
+						}}
+						class="bg-surface-container-low hover:bg-surface-container-high rounded-lg p-2 transition-colors"
+						><Minus size={16} /></button
+					>
+					<div class="bg-surface-container-low h-2 flex-1 overflow-hidden rounded-full">
+						<div
+							class="bg-secondary h-full rounded-full transition-all"
+							style="width: {((readerLineHeight - 1.2) / 1.8) * 100}%"
+						></div>
+					</div>
+					<button
+						onclick={() => {
+							readerLineHeight = Math.min(3.0, +(readerLineHeight + 0.2).toFixed(1));
+							saveReaderPrefs();
+						}}
+						class="bg-surface-container-low hover:bg-surface-container-high rounded-lg p-2 transition-colors"
+						><Plus size={16} /></button
+					>
+				</div>
+			</div>
 		</div>
 	</div>
 

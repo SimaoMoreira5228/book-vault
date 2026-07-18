@@ -204,7 +204,15 @@ export const api = {
 		updateProfile: (data: { display_name?: string }) =>
 			request<UserResponse>("PUT", "/api/v1/auth/profile", data, { dedupe: false }),
 		changePassword: (data: { current_password: string; new_password: string }) =>
-			request<Record<string, unknown>>("PUT", "/api/v1/auth/password", data, { dedupe: false })
+			request<Record<string, unknown>>("PUT", "/api/v1/auth/password", data, { dedupe: false }),
+		getPreferences: () => request<Record<string, unknown>>("GET", "/api/v1/auth/preferences"),
+		updatePreferences: (preferences: Record<string, unknown>) =>
+			request<Record<string, unknown>>(
+				"PUT",
+				"/api/v1/auth/preferences",
+				{ preferences },
+				{ dedupe: false }
+			)
 	},
 
 	books: {

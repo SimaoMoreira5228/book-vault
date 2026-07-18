@@ -79,16 +79,17 @@ fn clear_session_cookie() -> String {
 	"bv_session=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0".to_string()
 }
 
-pub fn routes() -> Router<SharedState> {
-	Router::new()
-		.route("/login", post(login_handler))
-		.route("/logout", post(logout_handler))
-		.route("/register", post(register_handler))
-		.route("/profile", get(get_profile).put(update_profile))
-		.route("/password", put(change_password))
-		.route("/sessions", get(list_sessions))
-		.route("/sessions/{id}", delete(revoke_session))
-}
+	pub fn routes() -> Router<SharedState> {
+		Router::new()
+			.route("/login", post(login_handler))
+			.route("/logout", post(logout_handler))
+			.route("/register", post(register_handler))
+			.route("/profile", get(get_profile).put(update_profile))
+			.route("/password", put(change_password))
+			.route("/preferences", get(get_preferences).put(update_preferences))
+			.route("/sessions", get(list_sessions))
+			.route("/sessions/{id}", delete(revoke_session))
+	}
 
 async fn login_handler(
 	State(state): State<SharedState>,
@@ -189,6 +190,7 @@ async fn register_handler(
 		password_hash: Set(password_hash),
 		display_name: Set(req.display_name),
 		is_admin: Set(false),
+		preferences: Set(None),
 		created_at: Set(now),
 		updated_at: Set(now),
 	};
@@ -305,6 +307,48 @@ async fn update_profile(
 struct ChangePasswordRequest {
 	current_password: String,
 	new_password: String,
+}
+
+async fn get_preferences(
+	State(state): State<SharedState>,
+	headers: HeaderMap,
+) -> Result<Json<serde_json::Value>, AppError> {
+	let token = extract_session_cookie(&headers).ok_or_else(|| AppError::Unauthorized("No session cookie".into()))?;
+	let current = SessionManager::validate_session(&state.db, &token).await?;
+
+	let user = Users::find_by_id(current.user_id)
+		.one(&state.db)
+		.await?
+		.ok_or_else(|| AppError::NotFound("User not found".into()))?;
+
+	Ok(Json(user.preferences.unwrap_or(serde_json::Value::Object(serde_json::Map::new()))))
+}
+
+#[derive(Deserialize)]
+struct UpdatePreferencesRequest {
+	preferences: serde_json::Value,
+}
+
+async fn update_preferences(
+	State(state): State<SharedState>,
+	headers: HeaderMap,
+	Json(req): Json<UpdatePreferencesRequest>,
+) -> Result<Json<serde_json::Value>, AppError> {
+	let token = extract_session_cookie(&headers).ok_or_else(|| AppError::Unauthorized("No session cookie".into()))?;
+	let current = SessionManager::validate_session(&state.db, &token).await?;
+
+	let user = Users::find_by_id(current.user_id)
+		.one(&state.db)
+		.await?
+		.ok_or_else(|| AppError::NotFound("User not found".into()))?;
+
+	let mut active: users::ActiveModel = user.into();
+	let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+	active.preferences = Set(Some(req.preferences));
+	active.updated_at = Set(now);
+	active.update(&state.db).await?;
+
+	Ok(Json(serde_json::json!({ "message": "preferences updated" })))
 }
 
 async fn change_password(

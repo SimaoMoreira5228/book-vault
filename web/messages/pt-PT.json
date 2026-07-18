@@ -225,6 +225,14 @@
 	"series_books": "Livros nesta colecção",
 	"settings_language": "Idioma",
 	"settings_language_subtitle": "Idioma da Interface",
+	"settings_reader": "Leitor",
+	"settings_reader_subtitle": "Preferências de Leitura",
+	"settings_reader_theme": "Tema",
+	"settings_reader_theme_light": "Claro",
+	"settings_reader_theme_sepia": "Sépia",
+	"settings_reader_theme_dark": "Escuro",
+	"settings_reader_font_size": "Tamanho da Fonte",
+	"settings_reader_line_height": "Altura da Linha",
 	"locale_en": "English",
 	"locale_pt-PT": "Português (Portugal)"
 }

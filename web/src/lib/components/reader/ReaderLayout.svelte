@@ -88,19 +88,10 @@
 	</header>
 
 	<main
+		data-reader-main
 		class="px-margin-mobile min-h-screen pt-32 pb-40 transition-colors duration-300 md:px-0"
 		style="max-width: 800px; margin: 0 auto;"
 	>
 		{#if children}{@render children()}{/if}
 	</main>
-
-	<footer
-		class="px-margin-mobile bg-surface/80 fixed bottom-0 left-0 flex w-full items-center justify-between py-6 backdrop-blur-sm"
-	>
-		<div></div>
-		<div class="font-label text-label-md text-on-surface-variant/60 tracking-widest">
-			{m.reader_complete({ progress })}
-		</div>
-		<div></div>
-	</footer>
 </div>

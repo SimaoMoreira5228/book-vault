@@ -20,6 +20,7 @@ mod m20260717_011706_create_shelf_entries;
 mod m20260717_011706_create_shelves;
 mod m20260717_011707_add_keep_source;
 mod m20260717_011708_create_book_metadata;
+mod m20260718_add_user_preferences;
 
 pub struct Migrator;
 
@@ -47,6 +48,7 @@ impl MigratorTrait for Migrator {
 			Box::new(m20250717_add_author_id_to_books::Migration),
 			Box::new(m20250717_create_series::Migration),
 			Box::new(m20250717_add_series_id_to_books::Migration),
+			Box::new(m20260718_add_user_preferences::Migration),
 		]
 	}
 }

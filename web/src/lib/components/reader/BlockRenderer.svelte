@@ -8,11 +8,13 @@
 		THEME_CONTENT_STYLES
 	} from "$lib/ir/renderer";
 	import SpanText from "$lib/components/SpanText.svelte";
+	import { env } from "$env/dynamic/public";
 
 	let {
 		block,
 		blockIdx,
 		sectionId,
+		bookId,
 		annotations,
 		theme,
 		onAnnotationClick,
@@ -21,6 +23,7 @@
 		block: Block;
 		blockIdx: number;
 		sectionId: string;
+		bookId: string;
 		annotations: Annotation[];
 		theme: ReaderTheme;
 		onAnnotationClick: (ann: Annotation) => void;
@@ -32,7 +35,8 @@
 	);
 
 	function getAssetUrl(assetId: string): string {
-		return `${import.meta.env.VITE_PUBLIC_API_URL || ""}/api/v1/books/${sectionId}/assets/${assetId}`;
+		const base = (env.PUBLIC_API_URL || "").replace(/\/+$/, "");
+		return `${base}/api/v1/books/${bookId}/assets/${assetId}`;
 	}
 </script>
 

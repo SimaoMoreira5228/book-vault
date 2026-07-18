@@ -225,6 +225,14 @@
 	"series_books": "Books in this series",
 	"settings_language": "Language",
 	"settings_language_subtitle": "Interface Language",
+	"settings_reader": "Reader",
+	"settings_reader_subtitle": "Reading Preferences",
+	"settings_reader_theme": "Theme",
+	"settings_reader_theme_light": "Light",
+	"settings_reader_theme_sepia": "Sepia",
+	"settings_reader_theme_dark": "Dark",
+	"settings_reader_font_size": "Font Size",
+	"settings_reader_line_height": "Line Height",
 	"locale_en": "English",
 	"locale_pt-PT": "Português (Portugal)"
 }

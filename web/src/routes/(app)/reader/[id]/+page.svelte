@@ -5,7 +5,6 @@
 	import type { Block, BookResponse } from "$lib/api/generated";
 	import type { Annotation, ReaderTheme } from "$lib/ir/renderer";
 	import { getBlockText } from "$lib/ir/renderer";
-	import type { SpineItem } from "$lib/api/client.svelte";
 	import ReaderLayout from "$lib/components/reader/ReaderLayout.svelte";
 	import BlockRenderer from "$lib/components/reader/BlockRenderer.svelte";
 	import AnnotationPopup from "$lib/components/reader/AnnotationPopup.svelte";
@@ -14,32 +13,29 @@
 	import FontPanel from "$lib/components/reader/FontPanel.svelte";
 	import ComicViewer from "$lib/components/reader/ComicViewer.svelte";
 	import ExportMenu from "$lib/components/reader/ExportMenu.svelte";
-	import SpanText from "$lib/components/SpanText.svelte";
 	import BookOpen from "@lucide/svelte/icons/book-open";
 	import FileDown from "@lucide/svelte/icons/file-down";
 	import Bookmark from "@lucide/svelte/icons/bookmark";
 	import Download from "@lucide/svelte/icons/download";
-	import ChevronLeft from "@lucide/svelte/icons/chevron-left";
-	import ChevronRight from "@lucide/svelte/icons/chevron-right";
 
 	const bookId = $derived(page.params.id ?? "");
 
 	let meta = $state<BookResponse | null>(null);
-	let spine = $state<SpineItem[]>([]);
-	let sectionBlocks = $state<Record<string, Block[]>>({});
+	let spine = $state<Array<{ id: string; title: string | null }>>([]);
+	let loadedBlocks = $state<Record<string, Block[]>>({});
 	let loading = $state(true);
 	let progress = $state(0);
 	let pdfMode = $state<"text" | "pdf">("text");
 
 	let comicPages = $state<Array<{ page: number; asset_id: string; mime_type: string }>>([]);
 	let comicCurrentPage = $state(1);
-	let sectionId = $state("");
 
 	let theme = $state<ReaderTheme>("light");
 	let fontSize = $state(18);
 	let lineHeight = $state(1.8);
 	let showToc = $state(false);
 	let showFontPanel = $state(false);
+	let prefsLoaded = $state(false);
 
 	let annotations = $state<Annotation[]>([]);
 	let popup = $state<{
@@ -59,26 +55,38 @@
 	const formatsWithDownload = $derived(["pdf", "mobi_raw", "epub"]);
 	const showDownload = $derived(meta ? formatsWithDownload.includes(meta.format) : false);
 
-	const currentBlocks = $derived((sectionBlocks[sectionId] ?? []) as Block[]);
-
 	$effect(() => {
 		if (bookId) {
-			loadSpine();
+			loadBook();
+			loadPreferences();
 		}
 		return () => {
 			if (saveTimer) clearInterval(saveTimer);
+			if (prefSaveTimer) clearTimeout(prefSaveTimer);
+		};
+	});
+
+	let prefSaveTimer: ReturnType<typeof setTimeout> | undefined;
+	$effect(() => {
+		if (!prefsLoaded) return;
+		if (prefSaveTimer) clearTimeout(prefSaveTimer);
+		prefSaveTimer = setTimeout(async () => {
+			const r = await api.auth.updatePreferences({ reader: { theme, fontSize, lineHeight } });
+			if (r.isErr()) console.warn("Failed to save prefs:", r.error.message);
+		}, 2000);
+		return () => {
+			if (prefSaveTimer) clearTimeout(prefSaveTimer);
 		};
 	});
 
 	$effect(() => {
-		if (sectionId) {
-			if (saveTimer) clearInterval(saveTimer);
-			saveTimer = setInterval(() => saveProgressNow(), 15000);
-			return () => clearInterval(saveTimer);
-		}
+		saveTimer = setInterval(() => saveProgressNow(), 15000);
+		return () => clearInterval(saveTimer);
 	});
 
-	async function loadSpine() {
+	let restoreAfterLoad = $state<{ sectionId: string; percentage: number } | null>(null);
+
+	async function loadBook() {
 		loading = true;
 		const [metaResult, spineResult, progressResult] = await Promise.all([
 			api.books.get(bookId),
@@ -86,38 +94,46 @@
 			api.progress.get(bookId)
 		]);
 		if (metaResult.isOk()) meta = metaResult.value;
-		if (spineResult.isOk()) spine = spineResult.value as SpineItem[];
-		if (progressResult.isOk() && progressResult.value) {
-			progress = Math.round(progressResult.value.percentage);
-			sectionId = progressResult.value.section_id;
+		if (spineResult.isOk()) {
+			spine = spineResult.value.map((s) => ({ id: s.id, title: s.title }));
+			if (progressResult.isOk() && progressResult.value) {
+				restoreAfterLoad = {
+					sectionId: progressResult.value.section_id,
+					percentage: progressResult.value.percentage
+				};
+			}
+			loadSectionBlocks(0);
 		}
 		if (metaResult.isOk() && metaResult.value.format === "cbz") loadComicPages();
-		if (!sectionId && spine.length > 0) sectionId = spine[0].id;
-		if (sectionId) await loadSection(sectionId);
 		loading = false;
 		await Promise.all([loadAnnotations(), loadBookmarks()]);
 	}
 
-	async function loadSection(sid: string) {
-		if (sectionBlocks[sid]) return;
-		const result = await api.readSection(bookId, sid);
-		if (result.isOk()) {
-			sectionBlocks = { ...sectionBlocks, [sid]: result.value as Block[] };
-			prefetchNextSection(sid);
+	async function loadSectionBlocks(index: number) {
+		const section = spine[index];
+		if (!section || loadedBlocks[section.id]) return;
+		const r = await api.readSection(bookId, section.id);
+		if (r.isOk()) {
+			loadedBlocks[section.id] = r.value as unknown as Block[];
+		} else {
+			console.warn("Failed to load section", section.id, r.error);
 		}
 	}
 
-	function prefetchNextSection(sid: string) {
-		const idx = spine.findIndex((s) => s.id === sid);
-		if (idx < spine.length - 1) {
-			const next = spine[idx + 1].id;
-			if (!sectionBlocks[next]) loadSection(next);
+	async function loadPreferences() {
+		const r = await api.auth.getPreferences();
+		if (r.isOk() && r.value.reader) {
+			const p = r.value.reader as Record<string, unknown>;
+			if (typeof p.theme === "string") theme = p.theme as ReaderTheme;
+			if (typeof p.fontSize === "number") fontSize = p.fontSize;
+			if (typeof p.lineHeight === "number") lineHeight = p.lineHeight;
 		}
+		prefsLoaded = true;
 	}
 
 	async function loadAnnotations() {
-		const result = await api.annotations.list(bookId);
-		if (result.isOk()) annotations = result.value as unknown as Annotation[];
+		const r = await api.annotations.list(bookId);
+		if (r.isOk()) annotations = r.value as unknown as Annotation[];
 	}
 
 	async function loadBookmarks() {
@@ -126,51 +142,87 @@
 	}
 
 	async function loadComicPages() {
-		const result = await api.comic.pages(bookId);
-		if (result.isOk()) comicPages = result.value;
+		const r = await api.comic.pages(bookId);
+		if (r.isOk()) comicPages = r.value;
 	}
 
+	let scrolledToRestore = false;
+	let scrollRestoreTimer: ReturnType<typeof setTimeout> | undefined;
+
+	$effect(() => {
+		if (!restoreAfterLoad || scrolledToRestore || spine.length === 0) return;
+		scrollRestoreTimer = setTimeout(() => {
+			const idx = spine.findIndex((s) => s.id === restoreAfterLoad!.sectionId);
+			if (idx >= 0) {
+				const el = document.getElementById(`section-${restoreAfterLoad!.sectionId}`);
+				if (el) {
+					el.scrollIntoView({ behavior: "instant" });
+					scrolledToRestore = true;
+				}
+			}
+		}, 300);
+		return () => {
+			if (scrollRestoreTimer) clearTimeout(scrollRestoreTimer);
+		};
+	});
+
 	async function saveProgressNow() {
-		if (!sectionId) return;
-		const idx = spine.findIndex((s) => s.id === sectionId);
-		const total = spine.length;
-		const block_index = Math.min(
-			currentBlocks.length - 1,
-			Math.round(progress / (100 / Math.max(1, currentBlocks.length)))
-		);
+		const visible = findVisibleSection();
+		if (!visible) return;
+		const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+		const pct = maxScroll > 0 ? Math.round((window.scrollY / maxScroll) * 100) : 0;
 		const r = await api.progress.save(bookId, {
-			section_id: sectionId,
-			block_index,
+			section_id: visible,
+			block_index: 0,
 			char_offset: 0,
-			percentage: total > 0 ? Math.round(((idx + progress / 100) / total) * 100) : 0
+			percentage: pct
 		});
 		if (r.isErr()) console.warn("Failed to save progress:", r.error.message);
 	}
 
+	function findVisibleSection(): string | null {
+		const viewportMid = window.scrollY + window.innerHeight / 2;
+		let bestId: string | null = null;
+		let bestDist = Infinity;
+		for (const s of spine) {
+			const el = document.getElementById(`section-${s.id}`);
+			if (!el) continue;
+			const top = el.offsetTop;
+			const bottom = top + el.offsetHeight;
+			const mid = (top + bottom) / 2;
+			const dist = Math.abs(mid - viewportMid);
+			if (dist < bestDist) {
+				bestDist = dist;
+				bestId = s.id;
+			}
+		}
+		return bestId;
+	}
+
 	async function toggleBookmark() {
-		const existing = bookmarks.find((b) => b.section_id === sectionId);
+		const sid = findVisibleSection();
+		if (!sid) return;
+		const existing = bookmarks.find((b) => b.section_id === sid);
 		if (existing) {
 			await api.bookmarks.delete(existing.id);
-			bookmarks = bookmarks.filter((b) => b.section_id !== sectionId);
+			bookmarks = bookmarks.filter((b) => b.section_id !== sid);
 		} else {
 			const r = await api.bookmarks.create({
 				book_id: bookId,
-				section_id: sectionId,
-				block_index: Math.round(progress / 10)
+				section_id: sid,
+				block_index: 0
 			});
 			if (r.isOk())
 				bookmarks = [
 					...bookmarks,
-					{ id: (r.value as unknown as { id: string }).id, section_id: sectionId }
+					{ id: (r.value as unknown as { id: string }).id, section_id: sid }
 				];
 		}
 	}
 
-	function onScroll(e: Event) {
-		const el = e.target as HTMLElement;
-		const scrollTop = el.scrollTop;
-		const scrollHeight = el.scrollHeight - el.clientHeight;
-		progress = scrollHeight > 0 ? Math.min(100, Math.round((scrollTop / scrollHeight) * 100)) : 0;
+	function onScroll() {
+		const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+		progress = maxScroll > 0 ? Math.min(100, Math.round((window.scrollY / maxScroll) * 100)) : 0;
 	}
 
 	function onTextSelect() {
@@ -232,7 +284,10 @@
 
 	async function createAnnotation(color: string) {
 		if (!popup) return;
-		const block = currentBlocks[popup.blockIndex] as Record<string, unknown>;
+		const sid = findVisibleSection();
+		if (!sid) return;
+		const blocks = loadedBlocks[sid] ?? [];
+		const block = blocks[popup.blockIndex] as Record<string, unknown> | undefined;
 		if (!block) return;
 		const blockText = getBlockText(block);
 		const startOffset = Math.max(0, Math.min(popup.startOffset, blockText.length));
@@ -242,14 +297,14 @@
 			return;
 		}
 
-		const result = await api.annotations.create(bookId, {
-			section_id: sectionId,
+		const r = await api.annotations.create(bookId, {
+			section_id: sid,
 			block_index: popup.blockIndex,
 			start_offset: startOffset,
 			end_offset: endOffset,
 			color
 		});
-		if (result.isOk()) {
+		if (r.isOk()) {
 			const fetched = await api.annotations.list(bookId);
 			if (fetched.isOk()) annotations = fetched.value as unknown as Annotation[];
 		}
@@ -257,41 +312,36 @@
 		window.getSelection()?.removeAllRanges();
 	}
 
-	async function scrollToSection(sid: string) {
-		await loadSection(sid);
-		sectionId = sid;
-		showToc = false;
-	}
-
-	function goToPrevSection() {
-		const idx = spine.findIndex((s) => s.id === sectionId);
-		if (idx > 0) scrollToSection(spine[idx - 1].id);
-	}
-
-	function goToNextSection() {
-		const idx = spine.findIndex((s) => s.id === sectionId);
-		if (idx < spine.length - 1) scrollToSection(spine[idx + 1].id);
-	}
-
-	$effect(() => {
-		const el = document.querySelector("main");
-		if (!el) return;
-		const handler = (e: Event) => onScroll(e);
-		el.addEventListener("scroll", handler);
-		return () => el.removeEventListener("scroll", handler);
-	});
-
 	function handleAnnotationClick(ann: Annotation) {
 		popup = null;
 		window.getSelection()?.removeAllRanges();
 		tooltipAnn = ann;
 	}
 
-	const tocSections = $derived(spine);
+	function observeSection(node: HTMLElement, sectionIdx: number) {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						loadSectionBlocks(sectionIdx);
+						observer.unobserve(node);
+					}
+				}
+			},
+			{ rootMargin: "400px" }
+		);
+		observer.observe(node);
+		return {
+			destroy() {
+				observer.disconnect();
+			}
+		};
+	}
+
 	const rawUrl = $derived(bookId ? `${apiBase}/api/v1/books/${bookId}/raw` : "");
 </script>
 
-<svelte:window onselectionchange={onTextSelect} />
+<svelte:window onscroll={onScroll} onselectionchange={onTextSelect} />
 
 <ReaderLayout
 	bind:theme
@@ -338,20 +388,36 @@
 		<button
 			onclick={toggleBookmark}
 			class="p-2 transition-transform duration-200 hover:opacity-80 active:scale-95"
-			title={bookmarks.find((b) => b.section_id === sectionId)
-				? m.reader_bookmark_remove()
-				: m.reader_bookmark_add()}
+			title={(() => {
+				const sid = findVisibleSection();
+				return sid && bookmarks.find((b) => b.section_id === sid)
+					? m.reader_bookmark_remove()
+					: m.reader_bookmark_add();
+			})()}
 		>
 			<Bookmark
 				size={20}
-				class={bookmarks.find((b) => b.section_id === sectionId)
-					? "text-secondary"
-					: "text-on-surface-variant"}
+				class={(() => {
+					const sid = findVisibleSection();
+					return sid && bookmarks.find((b) => b.section_id === sid)
+						? "text-secondary"
+						: "text-on-surface-variant";
+				})()}
 			/>
 		</button>
 	{/snippet}
 
-	<TocPanel sections={tocSections} bind:show={showToc} onNavigate={scrollToSection} />
+	<TocPanel
+		sections={spine}
+		bind:show={showToc}
+		onNavigate={(sectionId) => {
+			const el = document.getElementById(`section-${sectionId}`);
+			if (el) {
+				el.scrollIntoView({ behavior: "smooth" });
+				showToc = false;
+			}
+		}}
+	/>
 	{#if showFontPanel}
 		<FontPanel bind:fontSize bind:lineHeight />
 	{/if}
@@ -371,8 +437,9 @@
 		>
 			<p class="font-body text-body-md text-on-surface-variant py-16 text-center">
 				Your browser does not support PDF embedding.
-				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-				<a href={rawUrl} class="text-secondary underline" target="_blank">Download instead</a>.
+				<a href={rawUrl} class="text-secondary underline" target="_blank" rel="external"
+					>Download instead</a
+				>.
 			</p>
 		</object>
 	{:else if meta?.format === "cbz"}
@@ -388,38 +455,45 @@
 			>
 		</div>
 	{:else if spine.length > 0}
-		{@const section = spine.find((s) => s.id === sectionId)}
 		<article
 			data-book-content
-			class="space-y-8"
+			class="space-y-16"
 			style="font-size: {fontSize}px; line-height: {lineHeight};"
 		>
-			<div data-section-id={sectionId}>
-				{#if section?.title}
-					<h2 class="font-display text-headline-md text-primary mb-12 text-center">
-						{section.title}
-					</h2>
-				{/if}
-				{#if currentBlocks.length > 0}
-					{#each currentBlocks as block, blockIdx (blockIdx)}
-						<BlockRenderer
-							{block}
-							{blockIdx}
-							{sectionId}
-							{annotations}
-							{theme}
-							onAnnotationClick={handleAnnotationClick}
-							{onTextSelect}
-						/>
-					{/each}
-				{:else}
-					<div class="flex items-center justify-center py-32">
-						<div
-							class="border-secondary h-8 w-8 animate-spin rounded-full border-2 border-t-transparent"
-						></div>
-					</div>
-				{/if}
-			</div>
+			{#each spine as section, sectionIdx (section.id)}
+				<section
+					id="section-{section.id}"
+					data-section-id={section.id}
+					use:observeSection={sectionIdx}
+				>
+					{#if section.title}
+						<h2 class="font-display text-headline-md text-primary mb-12 text-center">
+							{section.title}
+						</h2>
+					{/if}
+					{#if loadedBlocks[section.id]}
+						{@const blocks = loadedBlocks[section.id]!}
+						{#each blocks as block, blockIdx (blockIdx)}
+							<BlockRenderer
+								{block}
+								{blockIdx}
+								sectionId={section.id}
+								{bookId}
+								{annotations}
+								{theme}
+								onAnnotationClick={handleAnnotationClick}
+								{onTextSelect}
+							/>
+						{/each}
+					{:else}
+						<div class="bg-surface-container/50 flex items-center justify-center rounded-xl py-16">
+							<div
+								class="border-secondary h-6 w-6 animate-spin rounded-full border-2 border-t-transparent"
+							></div>
+						</div>
+					{/if}
+				</section>
+			{/each}
 		</article>
 	{/if}
 </ReaderLayout>
@@ -431,28 +505,3 @@
 	onCreateColor={createAnnotation}
 />
 <AnnotationTooltip bind:annotation={tooltipAnn} onUpdate={loadAnnotations} />
-
-<footer
-	class="px-margin-mobile bg-surface/80 fixed bottom-0 left-0 flex w-full items-center justify-between py-6 backdrop-blur-sm"
-	style="z-index: 40;"
->
-	<div class="flex items-center gap-2">
-		<button
-			onclick={goToPrevSection}
-			class="font-label text-label-sm text-on-surface-variant hover:text-primary flex items-center gap-1 p-2 transition-colors"
-		>
-			<ChevronLeft size={14} />{m.reader_prev()}
-		</button>
-	</div>
-	<div class="font-label text-label-md text-on-surface-variant/60 tracking-widest">
-		{m.reader_complete({ progress })}
-	</div>
-	<div class="flex items-center gap-2">
-		<button
-			onclick={goToNextSection}
-			class="font-label text-label-sm text-on-surface-variant hover:text-primary flex items-center gap-1 p-2 transition-colors"
-		>
-			{m.reader_next()}<ChevronRight size={14} />
-		</button>
-	</div>
-</footer>
