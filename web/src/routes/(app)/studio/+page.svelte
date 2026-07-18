@@ -139,7 +139,7 @@
 	{:else}
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each drafts as draft (draft.id)}
-				<a href={resolve(`/reader/${draft.id}`)} class="group cursor-pointer">
+				<a href={resolve(`/studio/${draft.id}`)} class="group cursor-pointer">
 					<div
 						class="bg-surface-container relative mb-4 aspect-[3/4] overflow-hidden rounded-xl shadow-lg transition-transform duration-500 group-hover:-translate-y-2"
 					>

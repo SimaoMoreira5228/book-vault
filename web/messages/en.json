@@ -56,6 +56,8 @@
 	"studio_new_manuscript": "New Manuscript",
 	"studio_start_masterpiece": "Start your next masterpiece",
 	"studio_draft_badge": "Draft",
+	"studio_new_section": "New Chapter",
+	"studio_untitled_section": "Untitled",
 	"shelf_delete": "Delete shelf",
 	"shelf_confirm_delete": "Are you sure you want to delete \"{name}\"?",
 	"admin_title": "Admin Panel",
