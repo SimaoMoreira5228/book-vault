@@ -44,8 +44,7 @@ async fn export_book(
 		.await?
 		.ok_or_else(|| AppError::NotFound("Book IR not found".into()))?;
 
-	let ir: crate::ir::BookIr =
-		rmp_serde::from_slice(&ir_row.payload).map_err(|e| AppError::Internal(format!("Failed to decode IR: {}", e)))?;
+	let ir: crate::ir::BookIr = crate::ingest::deserialize_ir(&ir_row.payload)?;
 
 	let fmt = params.format.as_deref().unwrap_or("bvir");
 

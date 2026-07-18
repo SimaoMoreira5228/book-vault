@@ -4,7 +4,8 @@
 	import { page } from "$app/state";
 	import type { Block, BookResponse } from "$lib/api/generated";
 	import type { Annotation, ReaderTheme } from "$lib/ir/renderer";
-	import { getBlockText } from "$lib/ir/renderer";
+	import { ContextMenu } from "bits-ui";
+	import { getBlockText, COLOR_NAMES, COLORS } from "$lib/ir/renderer";
 	import ReaderLayout from "$lib/components/reader/ReaderLayout.svelte";
 	import BlockRenderer from "$lib/components/reader/BlockRenderer.svelte";
 	import AnnotationPopup from "$lib/components/reader/AnnotationPopup.svelte";
@@ -48,6 +49,13 @@
 	let popupSectionId = $state<string | null>(null);
 	let tooltipAnn = $state<Annotation | null>(null);
 	let bookmarks = $state<Array<{ id: string; section_id: string }>>([]);
+
+	let contextMenuOpen = $state(false);
+	let contextType = $state<"text" | "annotation" | "code" | "image" | "none">("none");
+	let contextAnnId = $state<string | null>(null);
+	let contextCodeText = $state("");
+	let contextImageUrl = $state("");
+	let anchorEl = $state<HTMLSpanElement>();
 
 	let saveTimer: ReturnType<typeof setInterval> | undefined;
 
@@ -373,6 +381,87 @@
 		};
 	}
 
+	function handleContextMenu(e: MouseEvent) {
+		const target = e.target as HTMLElement;
+
+		contextAnnId = null;
+		contextCodeText = "";
+		contextImageUrl = "";
+
+		const annEl = target.closest("[data-annotation-id]");
+		if (annEl instanceof HTMLElement && annEl.dataset.annotationId) {
+			contextType = "annotation";
+			contextAnnId = annEl.dataset.annotationId;
+		} else if (target.closest("pre")) {
+			const pre = target.closest("pre")!;
+			contextType = "code";
+			contextCodeText = pre.textContent ?? "";
+		} else if (target.closest("img")) {
+			const img = target.closest("img")! as HTMLImageElement;
+			contextType = "image";
+			contextImageUrl = img.src;
+		} else if (window.getSelection() && !window.getSelection()?.isCollapsed) {
+			contextType = "text";
+		} else {
+			contextType = "none";
+			return;
+		}
+
+		e.preventDefault();
+		anchorEl?.remove();
+		const span = document.createElement("span");
+		span.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:1px;height:1px;pointer-events:none;`;
+		document.body.appendChild(span);
+		anchorEl = span;
+		contextMenuOpen = true;
+	}
+
+	function closeContextMenu() {
+		contextMenuOpen = false;
+		anchorEl?.remove();
+		anchorEl = undefined;
+	}
+
+	function handleContextCopy() {
+		const sel = window.getSelection();
+		if (sel && !sel.isCollapsed) navigator.clipboard.writeText(sel.toString());
+		closeContextMenu();
+	}
+
+	function handleContextCopyCode() {
+		if (contextCodeText) navigator.clipboard.writeText(contextCodeText);
+		closeContextMenu();
+	}
+
+	function handleContextViewImage() {
+		if (contextImageUrl) window.open(contextImageUrl, "_blank");
+		closeContextMenu();
+	}
+
+	async function handleContextChangeColor(color: string) {
+		if (!contextAnnId) return;
+		const r = await api.annotations.update(contextAnnId, { color });
+		if (r.isOk()) {
+			const fetched = await api.annotations.list(bookId);
+			if (fetched.isOk()) annotations = fetched.value as unknown as Annotation[];
+		}
+		closeContextMenu();
+	}
+
+	async function handleContextRemoveHighlight() {
+		if (!contextAnnId) return;
+		const r = await api.annotations.delete(contextAnnId);
+		if (r.isOk()) annotations = annotations.filter((a) => a.id !== contextAnnId);
+		closeContextMenu();
+	}
+
+	function handleContextEditNote() {
+		if (!contextAnnId) return;
+		const ann = annotations.find((a) => a.id === contextAnnId);
+		if (ann) tooltipAnn = ann;
+		closeContextMenu();
+	}
+
 	const rawUrl = $derived(bookId ? `${apiBase}/api/v1/books/${bookId}/raw` : "");
 </script>
 
@@ -485,6 +574,7 @@
 			data-book-content
 			class="space-y-16"
 			style="font-size: {fontSize}px; line-height: {lineHeight};"
+			oncontextmenu={handleContextMenu}
 		>
 			{#each spine as section, sectionIdx (section.id)}
 				<section
@@ -523,6 +613,98 @@
 		</article>
 	{/if}
 </ReaderLayout>
+
+<ContextMenu.Root
+	open={contextMenuOpen}
+	onOpenChange={(o) => {
+		if (!o) closeContextMenu();
+	}}
+>
+	<ContextMenu.Portal>
+		<ContextMenu.Content
+			customAnchor={anchorEl}
+			class="bg-surface border-outline/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 z-50 min-w-[180px] rounded-xl border p-1.5 shadow-lg"
+			sideOffset={4}
+		>
+			{#if contextType === "text"}
+				<ContextMenu.Sub>
+					<ContextMenu.SubTrigger
+						class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors focus-visible:outline-none"
+					>
+						{m.reader_annotation_color()}
+					</ContextMenu.SubTrigger>
+					<ContextMenu.SubContent
+						class="bg-surface border-outline/10 z-50 ml-1 rounded-xl border p-1.5 shadow-lg"
+					>
+						{#each COLOR_NAMES as color (color)}
+							<ContextMenu.Item
+								onclick={() => {
+									createAnnotation(color);
+									closeContextMenu();
+								}}
+								class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors focus-visible:outline-none"
+							>
+								<span class="inline-block h-3 w-3 rounded-full" style="background: {COLORS[color]};"
+								></span>
+								<span class="capitalize">{color}</span>
+							</ContextMenu.Item>
+						{/each}
+					</ContextMenu.SubContent>
+				</ContextMenu.Sub>
+				<ContextMenu.Item
+					onclick={handleContextCopy}
+					class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors focus-visible:outline-none"
+					>Copy</ContextMenu.Item
+				>
+			{:else if contextType === "annotation"}
+				<ContextMenu.Sub>
+					<ContextMenu.SubTrigger
+						class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors focus-visible:outline-none"
+					>
+						{m.reader_annotation_color()}
+					</ContextMenu.SubTrigger>
+					<ContextMenu.SubContent
+						class="bg-surface border-outline/10 z-50 ml-1 rounded-xl border p-1.5 shadow-lg"
+					>
+						{#each COLOR_NAMES as color (color)}
+							<ContextMenu.Item
+								onclick={() => handleContextChangeColor(color)}
+								class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors focus-visible:outline-none"
+							>
+								<span class="inline-block h-3 w-3 rounded-full" style="background: {COLORS[color]};"
+								></span>
+								<span class="capitalize">{color}</span>
+							</ContextMenu.Item>
+						{/each}
+					</ContextMenu.SubContent>
+				</ContextMenu.Sub>
+				<ContextMenu.Item
+					onclick={handleContextEditNote}
+					class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors focus-visible:outline-none"
+					>{m.reader_add_note()}</ContextMenu.Item
+				>
+				<ContextMenu.Separator class="bg-outline-variant/30 -mx-1 my-1 block h-px" />
+				<ContextMenu.Item
+					onclick={handleContextRemoveHighlight}
+					class="font-label text-label-md data-highlighted:bg-surface-container-low text-error flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors focus-visible:outline-none"
+					>{m.reader_annotation_delete()}</ContextMenu.Item
+				>
+			{:else if contextType === "code"}
+				<ContextMenu.Item
+					onclick={handleContextCopyCode}
+					class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors focus-visible:outline-none"
+					>Copy Code</ContextMenu.Item
+				>
+			{:else if contextType === "image"}
+				<ContextMenu.Item
+					onclick={handleContextViewImage}
+					class="font-label text-label-md data-highlighted:bg-surface-container-low flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors focus-visible:outline-none"
+					>View Full Size</ContextMenu.Item
+				>
+			{/if}
+		</ContextMenu.Content>
+	</ContextMenu.Portal>
+</ContextMenu.Root>
 
 <AnnotationPopup
 	show={popup !== null}
