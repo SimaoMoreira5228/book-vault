@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { api, authState } from "$lib/api/client.svelte";
+	import { api, apiBase, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
 	import { resolve } from "$app/paths";
 	import { locales, localizeUrl } from "$lib/paraglide/runtime";
@@ -544,5 +544,49 @@
 				{/each}
 			</div>
 		{/if}
+	</div>
+
+	<div class="paper-card rounded-xl p-8">
+		<div class="mb-6 flex items-center justify-between">
+			<h3 class="font-display text-headline-sm text-primary">{m.settings_integrations()}</h3>
+		</div>
+
+		<div class="space-y-5">
+			<div>
+				<p
+					class="font-label text-label-sm text-on-surface-variant mb-1.5 tracking-widest uppercase"
+				>
+					{m.settings_opds_title()}
+				</p>
+				<p class="font-body text-body-md text-on-surface-variant mb-2">
+					{m.settings_opds_desc()}
+				</p>
+				<div class="bg-surface-container-low flex items-center gap-3 rounded-xl px-4 py-3">
+					<code class="text-primary flex-1 font-mono text-sm break-all">{apiBase}/opds</code>
+					<button
+						onclick={() => navigator.clipboard.writeText(`${apiBase}/opds`)}
+						class="font-label text-label-sm text-secondary hover:text-secondary/80 shrink-0 transition-colors"
+					>
+						{m.settings_copy()}
+					</button>
+				</div>
+			</div>
+
+			<div>
+				<p
+					class="font-label text-label-sm text-on-surface-variant mb-1.5 tracking-widest uppercase"
+				>
+					{m.settings_koreader_title()}
+				</p>
+				<p class="font-body text-body-md text-on-surface-variant mb-2">
+					{m.settings_koreader_desc()}
+				</p>
+				<div class="bg-surface-container-low flex items-center gap-3 rounded-xl px-4 py-3">
+					<code class="text-primary flex-1 font-mono text-sm break-all"
+						>{apiBase}/api/v1/koreader/progress</code
+					>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>

@@ -48,3 +48,9 @@ mod tenant_isolation {
 mod workflow {
 	include!("../test_modules/workflow.rs");
 }
+mod opds {
+	include!("../test_modules/opds.rs");
+}
+mod koreader_sync {
+	include!("../test_modules/koreader_sync.rs");
+}

@@ -15,7 +15,9 @@ pub mod export;
 pub mod ingest;
 pub mod ir;
 pub mod jobs;
+pub mod koreader;
 pub mod metadata;
+pub mod opds;
 pub mod routes;
 pub mod search;
 pub mod shelves;
@@ -53,6 +55,8 @@ pub fn build_router(state: SharedState) -> Router {
 
 	Router::new()
 		.nest("/api/v1", routes::build_routes())
+		.nest("/api/v1", koreader::routes())
+		.nest("/opds", opds::routes())
 		.layer(TraceLayer::new_for_http())
 		.layer(cors)
 		.with_state(state)
