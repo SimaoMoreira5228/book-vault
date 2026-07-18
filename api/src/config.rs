@@ -16,6 +16,8 @@ pub struct Config {
 	pub cors: CorsConfig,
 	#[serde(default)]
 	pub logging: LoggingConfig,
+	#[serde(default)]
+	pub integrations: IntegrationsConfig,
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -107,6 +109,12 @@ pub struct CorsConfig {
 pub struct LoggingConfig {
 	#[serde(default = "default_log_level")]
 	pub level: String,
+}
+
+#[derive(Clone, Debug, Deserialize, Default)]
+pub struct IntegrationsConfig {
+	#[serde(default)]
+	pub hardcover_api_key: String,
 }
 
 fn default_host() -> String {

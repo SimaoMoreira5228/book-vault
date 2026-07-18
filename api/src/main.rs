@@ -36,7 +36,7 @@ async fn main() {
 	engine.rebuild(&db);
 
 	let state: SharedState = Arc::new(AppState {
-		metadata_service: book_vault::metadata::service::MetadataService::new(),
+		metadata_service: book_vault::metadata::service::MetadataService::new(&config),
 		config: config.clone(),
 		db,
 		storage,

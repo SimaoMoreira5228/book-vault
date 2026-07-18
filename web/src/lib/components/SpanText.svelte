@@ -12,7 +12,7 @@
 
 {#if href}
 	<a
-		href={href}
+		{href}
 		target="_blank"
 		rel="noreferrer"
 		class="underline decoration-dotted underline-offset-2 hover:decoration-solid"

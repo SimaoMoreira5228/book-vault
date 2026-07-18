@@ -1,14 +1,16 @@
 use sea_orm::{ColumnTrait, EntityTrait, ExprTrait, QueryFilter, Set};
 use uuid::Uuid;
 
-use crate::AppError;
 use crate::db::entities::prelude::*;
 use crate::db::entities::{book_metadata, books, metadata_cache};
 use crate::metadata::amazon::AmazonProvider;
 use crate::metadata::goodreads::GoodReadsProvider;
 use crate::metadata::google_books::GoogleBooksProvider;
+use crate::metadata::hardcover::HardcoverProvider;
 use crate::metadata::openlibrary::OpenLibraryProvider;
+use crate::metadata::wikipedia::WikipediaProvider;
 use crate::metadata::{MetadataField, MetadataProvider, MetadataQuery, ProspectiveMetadata};
+use crate::{AppError, Config};
 
 const CACHE_TTL_HOURS: i64 = 24;
 
@@ -17,13 +19,15 @@ pub struct MetadataService {
 }
 
 impl MetadataService {
-	pub fn new() -> Self {
+	pub fn new(config: &Config) -> Self {
 		Self {
 			providers: vec![
-				Box::new(AmazonProvider::new()),
+				Box::new(WikipediaProvider::new()),
 				Box::new(OpenLibraryProvider::new()),
 				Box::new(GoogleBooksProvider::new()),
 				Box::new(GoodReadsProvider::new()),
+				Box::new(AmazonProvider::new()),
+				Box::new(HardcoverProvider::new(&config.integrations.hardcover_api_key)),
 			],
 		}
 	}
@@ -483,6 +487,6 @@ async fn update_cache(
 
 impl Default for MetadataService {
 	fn default() -> Self {
-		Self::new()
+		Self::new(&Config::default())
 	}
 }

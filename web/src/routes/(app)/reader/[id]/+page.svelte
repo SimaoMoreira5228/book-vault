@@ -200,21 +200,33 @@
 		return segments;
 	}
 
-	function getBlockSpans(block: unknown): Array<{ text: string; marks: number; href: string | null }> {
+	function getBlockSpans(
+		block: unknown
+	): Array<{ text: string; marks: number; href: string | null }> {
 		if (typeof block !== "object" || block === null) return [];
 		const b = block as Record<string, unknown>;
-		if ("Paragraph" in b) return (b.Paragraph as Array<{ text: string; marks: number; href: string | null }>);
-		if ("Heading" in b) return (b.Heading as { spans: Array<{ text: string; marks: number; href: string | null }> }).spans;
+		if ("Paragraph" in b)
+			return b.Paragraph as Array<{ text: string; marks: number; href: string | null }>;
+		if ("Heading" in b)
+			return (b.Heading as { spans: Array<{ text: string; marks: number; href: string | null }> })
+				.spans;
 		return [];
 	}
 
 	function getAnnotatedSegments(
 		spans: Array<{ text: string; marks: number; href: string | null }>,
 		blockAnnotations: Annotation[]
-	): Array<{ text: string; marks: number; href: string | null; annotationId?: string; color?: string }> {
-		if (!blockAnnotations.length) return spans.map(s => ({ text: s.text, marks: s.marks, href: s.href }));
+	): Array<{
+		text: string;
+		marks: number;
+		href: string | null;
+		annotationId?: string;
+		color?: string;
+	}> {
+		if (!blockAnnotations.length)
+			return spans.map((s) => ({ text: s.text, marks: s.marks, href: s.href }));
 
-		const flatText = spans.map(s => s.text).join("");
+		const flatText = spans.map((s) => s.text).join("");
 		const charMarks: number[] = [];
 		const charHref: (string | null)[] = [];
 		for (const span of spans) {
@@ -224,12 +236,22 @@
 			}
 		}
 
-		const segments: Array<{ text: string; marks: number; href: string | null; annotationId?: string; color?: string }> = [];
+		const segments: Array<{
+			text: string;
+			marks: number;
+			href: string | null;
+			annotationId?: string;
+			color?: string;
+		}> = [];
 		let pos = 0;
 		const sorted = [...blockAnnotations].sort((a, b) => a.start_offset - b.start_offset);
 		for (const ann of sorted) {
 			if (ann.start_offset > pos) {
-				segments.push({ text: flatText.slice(pos, ann.start_offset), marks: charMarks[pos] ?? 0, href: charHref[pos] ?? null });
+				segments.push({
+					text: flatText.slice(pos, ann.start_offset),
+					marks: charMarks[pos] ?? 0,
+					href: charHref[pos] ?? null
+				});
 			}
 			if (ann.start_offset < flatText.length && ann.end_offset > 0) {
 				const end = Math.min(flatText.length, ann.end_offset);
@@ -245,7 +267,11 @@
 			pos = Math.max(pos, ann.end_offset);
 		}
 		if (pos < flatText.length) {
-			segments.push({ text: flatText.slice(pos), marks: charMarks[pos] ?? 0, href: charHref[pos] ?? null });
+			segments.push({
+				text: flatText.slice(pos),
+				marks: charMarks[pos] ?? 0,
+				href: charHref[pos] ?? null
+			});
 		}
 		return segments;
 	}
@@ -843,11 +869,9 @@
 															annotations.find((a) => a.id === seg.annotationId)!
 														);
 													}}
-													class="cursor-pointer rounded-sm"><SpanText
-														text={seg.text}
-														marks={seg.marks}
-														href={seg.href}
-													/></mark>
+													class="cursor-pointer rounded-sm"
+													><SpanText text={seg.text} marks={seg.marks} href={seg.href} /></mark
+												>
 											{:else}
 												<SpanText text={seg.text} marks={seg.marks} href={seg.href} />
 											{/if}

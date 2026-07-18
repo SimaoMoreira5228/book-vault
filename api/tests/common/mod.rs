@@ -32,7 +32,7 @@ impl TestApp {
 
 		let config = Config::default();
 		let state = Arc::new(AppState {
-			metadata_service: book_vault::metadata::service::MetadataService::new(),
+			metadata_service: book_vault::metadata::service::MetadataService::new(&config),
 			config,
 			db: db_conn,
 			storage,
