@@ -24,7 +24,7 @@ impl WikipediaProvider {
 	}
 
 	fn urlencode(s: &str) -> String {
-		s.split(' ').map(|part| urlencoding(part)).collect::<Vec<_>>().join("+")
+		s.split(' ').map(urlencoding).collect::<Vec<_>>().join("+")
 	}
 
 	async fn fetch_summary(&self, title: &str) -> Result<Option<ProspectiveMetadata>, AppError> {
@@ -45,7 +45,7 @@ impl WikipediaProvider {
 		};
 		let extract = data["extract"].as_str().map(|s| s.to_string());
 		let cover_url = data["thumbnail"]["source"].as_str().map(|s| s.to_string());
-		let wiki_url = data["content_urls"]["desktop"]["page"].as_str().map(|s| s.to_string());
+		let _wiki_url = data["content_urls"]["desktop"]["page"].as_str().map(|s| s.to_string());
 		let description = data["description"].as_str().map(|s| s.to_string());
 
 		let page_id = data["pageid"].as_u64().unwrap_or(0);

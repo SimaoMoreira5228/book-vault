@@ -2,6 +2,7 @@
 	import * as m from "$lib/paraglide/messages";
 	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import Monitor from "@lucide/svelte/icons/monitor";
 	import Smartphone from "@lucide/svelte/icons/smartphone";
 	import Laptop from "@lucide/svelte/icons/laptop";
@@ -40,7 +41,7 @@
 
 	$effect(() => {
 		if (!authState.isAuthenticated) {
-			goto("/login");
+			goto(resolve("/login"));
 			return;
 		}
 		loadSessions();
@@ -65,7 +66,7 @@
 
 	async function handleLogoutEverywhere() {
 		await authState.logout();
-		goto("/login");
+		goto(resolve("/login"));
 	}
 
 	async function handleSaveProfile() {

@@ -2,7 +2,7 @@ use axum::extract::{Path, State};
 use axum::http::{HeaderMap, header};
 use axum::routing::{delete, get, post, put};
 use axum::{Json, Router};
-use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, ModelTrait, QueryFilter, Set};
+use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, Set};
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
 use uuid::Uuid;
@@ -114,7 +114,7 @@ async fn login_handler(
 		Err(e) => return Err(AppError::Db(e)),
 	};
 
-	if let Err(_) = SessionManager::verify_password(&user.password_hash, &req.password) {
+	if SessionManager::verify_password(&user.password_hash, &req.password).is_err() {
 		state.rate_limiter.record_failure_ip(&ip);
 		state.rate_limiter.record_failure_email(&req.email);
 		return Err(AppError::Unauthorized("Invalid email or password".into()));

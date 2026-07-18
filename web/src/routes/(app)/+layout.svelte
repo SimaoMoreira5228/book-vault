@@ -3,6 +3,7 @@
 	import { authState } from "$lib/api/client.svelte";
 	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import BookOpen from "@lucide/svelte/icons/book-open";
 	import Search from "@lucide/svelte/icons/search";
 	import PenSquare from "@lucide/svelte/icons/pen-square";
@@ -16,7 +17,7 @@
 
 	$effect(() => {
 		if (!authState.restoring && !authState.isAuthenticated) {
-			goto("/login");
+			goto(resolve("/login"));
 		}
 	});
 
@@ -42,7 +43,10 @@
 			<button class="text-primary transition-opacity hover:opacity-80 active:scale-95">
 				<Bell size={20} />
 			</button>
-			<a href="/settings" class="text-primary transition-opacity hover:opacity-80 active:scale-95">
+			<a
+				href={resolve("/settings")}
+				class="text-primary transition-opacity hover:opacity-80 active:scale-95"
+			>
 				<Settings size={20} />
 			</a>
 		</div>
@@ -56,7 +60,7 @@
 		class="bg-surface px-margin-mobile fixed bottom-0 z-50 flex h-20 w-full items-center justify-around shadow-[0_-4px_16px_rgba(0,31,63,0.02)]"
 	>
 		<a
-			href="/"
+			href={resolve("/")}
 			class={[
 				"flex flex-col items-center justify-center px-4 py-1 transition-colors active:scale-90",
 				isCurrent("/library")
@@ -68,7 +72,7 @@
 			<span class="font-label text-label-sm mt-1">{m.nav_library()}</span>
 		</a>
 		<a
-			href="/search"
+			href={resolve("/search")}
 			class={[
 				"flex flex-col items-center justify-center px-4 py-1 transition-colors active:scale-90",
 				isCurrent("/search")
@@ -80,7 +84,7 @@
 			<span class="font-label text-label-sm mt-1">{m.nav_search()}</span>
 		</a>
 		<a
-			href="/studio"
+			href={resolve("/studio")}
 			class={[
 				"flex flex-col items-center justify-center px-4 py-1 transition-colors active:scale-90",
 				isCurrent("/studio")
@@ -92,7 +96,7 @@
 			<span class="font-label text-label-sm mt-1">{m.nav_studio()}</span>
 		</a>
 		<a
-			href="/notes"
+			href={resolve("/notes")}
 			class={[
 				"flex flex-col items-center justify-center px-4 py-1 transition-colors active:scale-90",
 				isCurrent("/notes")

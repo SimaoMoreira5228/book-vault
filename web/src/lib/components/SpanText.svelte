@@ -1,12 +1,14 @@
 <script lang="ts">
+	import type { ResolvedPathname } from "$app/types";
+
 	let {
 		text = "",
 		marks = 0,
-		href = ""
+		href
 	}: {
 		text: string;
 		marks?: number;
-		href?: string;
+		href?: ResolvedPathname;
 	} = $props();
 </script>
 

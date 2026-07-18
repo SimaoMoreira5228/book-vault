@@ -71,7 +71,6 @@ impl GoodReadsProvider {
 		let published_date = book["details"]["publicationTime"].as_i64().map(|ts| {
 			let secs = ts / 1000;
 			let days = secs / 86400;
-			let y = 1970i64;
 			let mut remaining = days;
 			let mut year = 1970i64;
 			loop {
@@ -184,13 +183,11 @@ impl MetadataProvider for GoodReadsProvider {
 				let end = row_html[s..].find('"')?;
 				Some(row_html[s..s + end].to_string())
 			});
-			let (provider_id, numeric_id) = href
+			let provider_id = href
 				.as_ref()
 				.and_then(|u| u.split("/book/show/").nth(1))
 				.map(|slug| {
-					let cleaned = slug.split('?').next().unwrap_or(slug).to_string();
-					let numeric: String = cleaned.chars().take_while(|c| c.is_ascii_digit()).collect();
-					(cleaned, numeric)
+					slug.split('?').next().unwrap_or(slug).to_string()
 				})
 				.unwrap_or_default();
 			if provider_id.is_empty() {
@@ -227,7 +224,7 @@ impl MetadataProvider for GoodReadsProvider {
 			};
 
 			let rating = extract_field(row_html, r#"class="minirating""#).and_then(|r| {
-				let cleaned = r.split("—").next().unwrap_or(&r).trim();
+				let cleaned = r.split("—").next().unwrap_or(r).trim();
 				cleaned.split_whitespace().next().and_then(|n| n.parse::<f32>().ok())
 			});
 

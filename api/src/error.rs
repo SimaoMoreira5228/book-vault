@@ -70,5 +70,3 @@ impl From<zip::result::ZipError> for AppError {
 		AppError::Internal(format!("Zip error: {}", err))
 	}
 }
-
-pub type AppResult<T> = Result<T, AppError>;

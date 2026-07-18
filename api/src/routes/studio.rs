@@ -1,7 +1,7 @@
 use axum::extract::{Path, State};
 use axum::routing::{get, post, put};
 use axum::{Json, Router};
-use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, QueryOrder, QuerySelect, Set};
+use sea_orm::{ColumnTrait, EntityTrait, QueryFilter, QueryOrder, QuerySelect, Set};
 use serde::Serialize;
 use uuid::Uuid;
 

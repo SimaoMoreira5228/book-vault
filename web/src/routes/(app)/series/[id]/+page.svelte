@@ -2,6 +2,7 @@
 	import * as m from "$lib/paraglide/messages";
 	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import { page } from "$app/state";
 	import BookCover from "$lib/components/BookCover.svelte";
 	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
@@ -23,7 +24,7 @@
 
 	$effect(() => {
 		if (!authState.isAuthenticated) {
-			goto("/login");
+			goto(resolve("/login"));
 			return;
 		}
 		if (page.params.id) loadSeries();
@@ -53,7 +54,7 @@
 <section>
 	<div class="mb-6">
 		<a
-			href="/series"
+			href={resolve("/series")}
 			class="font-label text-label-md text-on-surface-variant hover:text-primary inline-flex items-center gap-1.5 transition-colors"
 			><ArrowLeft size={16} />{m.series_title()}</a
 		>
@@ -97,7 +98,7 @@
 			<div class="space-y-3">
 				{#each books as book (book.id)}
 					<a
-						href="/reader/{book.id}"
+						href={resolve(`/reader/${book.id}`)}
 						class="paper-card flex items-center gap-5 rounded-xl p-5 transition-all hover:shadow-md"
 					>
 						<BookCover bookId={book.id} class="h-14 w-10 shrink-0 rounded-lg" />

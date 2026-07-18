@@ -3,6 +3,7 @@
 	import * as v from "valibot";
 	import { authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import { RegisterSchema } from "$lib/validation";
 	import type { RegisterFormData } from "$lib/validation";
 
@@ -41,7 +42,7 @@
 		});
 
 		if (result.isOk()) {
-			goto("/");
+			goto(resolve("/"));
 		} else {
 			apiError = result.error.message || "Registration failed";
 		}
@@ -133,7 +134,7 @@
 	<p class="font-label text-label-sm text-on-surface-variant text-center">
 		{m.auth_register_has_account()}
 		<a
-			href="/login"
+			href={resolve("/login")}
 			class="text-secondary border-secondary/30 hover:border-secondary border-b transition-all"
 			>{m.auth_register_link_login()}</a
 		>

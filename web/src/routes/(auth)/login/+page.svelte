@@ -3,6 +3,7 @@
 	import * as v from "valibot";
 	import { authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import { LoginSchema } from "$lib/validation";
 	import type { LoginFormData } from "$lib/validation";
 
@@ -36,7 +37,7 @@
 		const result = await authState.login({ email: data.email, password: data.password });
 
 		if (result.isOk()) {
-			goto("/");
+			goto(resolve("/"));
 		} else {
 			apiError = result.error.message || "Login failed";
 		}
@@ -106,7 +107,7 @@
 	<p class="font-label text-label-sm text-on-surface-variant text-center">
 		{m.auth_login_no_account()}
 		<a
-			href="/register"
+			href={resolve("/register")}
 			class="text-secondary border-secondary/30 hover:border-secondary border-b transition-all"
 			>{m.auth_login_link_register()}</a
 		>

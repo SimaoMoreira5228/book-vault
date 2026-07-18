@@ -2,6 +2,7 @@
 	import * as m from "$lib/paraglide/messages";
 	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import { page } from "$app/state";
 	import type { ShelfResponse, BookResponse } from "$lib/api/generated";
 	import BookCover from "$lib/components/BookCover.svelte";
@@ -38,7 +39,7 @@
 
 	$effect(() => {
 		if (!authState.isAuthenticated) {
-			goto("/login");
+			goto(resolve("/login"));
 			return;
 		}
 		loadShelf();
@@ -93,7 +94,7 @@
 		deleting = true;
 		const result = await api.shelves.delete(shelf.id);
 		if (result.isOk()) {
-			goto("/");
+			goto(resolve("/"));
 		} else {
 			error = result.error.message;
 			deleting = false;
@@ -159,7 +160,7 @@
 <section>
 	<div class="mb-6">
 		<a
-			href="/"
+			href={resolve("/")}
 			class="font-label text-label-md text-on-surface-variant hover:text-primary inline-flex items-center gap-1.5 transition-colors"
 		>
 			<ArrowLeft size={16} />
@@ -258,7 +259,7 @@
 						<BookCover bookId={book.book_id} class="h-14 w-10 shrink-0 rounded-lg" />
 						<div class="min-w-0 flex-1">
 							<a
-								href="/reader/{book.book_id}"
+								href={resolve(`/reader/${book.book_id}`)}
 								class="font-display text-headline-sm text-primary hover:text-secondary mb-0.5 block transition-colors"
 							>
 								{book.title}
@@ -269,7 +270,7 @@
 						</div>
 						<div class="flex items-center gap-2">
 							<a
-								href="/book/{book.book_id}"
+								href={resolve(`/book/${book.book_id}`)}
 								class="font-label text-label-sm text-on-surface-variant/50 hover:text-primary px-2 py-1 transition-colors"
 								title="Details"
 							>
@@ -302,6 +303,7 @@
 					if (e.key === "Escape") showAddModal = false;
 				}}
 			>
+				<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 				<div
 					class="bg-surface mx-auto w-full max-w-lg rounded-2xl p-8 shadow-2xl"
 					role="document"

@@ -37,6 +37,7 @@
 						: "-translate-x-1/2 -translate-y-full"
 			]}
 			style={position !== "center" ? `left: ${x}px; top: ${y}px;` : ""}
+			role="presentation"
 			onclick={(e) => e.stopPropagation()}
 		>
 			{#if children}{@render children()}{/if}

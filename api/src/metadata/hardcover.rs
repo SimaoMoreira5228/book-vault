@@ -53,7 +53,7 @@ impl HardcoverProvider {
 
 		let rating = data["ratings"]["average"].as_f64().map(|r| r as f32);
 
-		let description = data["description"].as_str().map(|s| strip_html(s));
+		let description = data["description"].as_str().map(strip_html);
 
 		let authors: Vec<String> = data["authors"]
 			.as_array()

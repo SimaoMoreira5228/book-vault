@@ -3,19 +3,13 @@ use axum::http::{StatusCode, header};
 use axum::response::IntoResponse;
 use axum::routing::get;
 use axum::{Json, Router};
-use sea_orm::{ColumnTrait, EntityTrait};
-use serde::Deserialize;
+use sea_orm::EntityTrait;
 use uuid::Uuid;
 
 use crate::auth::middleware::AuthenticatedUser;
 use crate::db::entities::prelude::*;
 use crate::storage::AssetService;
 use crate::{AppError, SharedState};
-
-#[derive(Deserialize)]
-pub struct PageQuery {
-	page: Option<u32>,
-}
 
 pub fn routes() -> Router<SharedState> {
 	Router::new()

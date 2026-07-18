@@ -2,6 +2,7 @@
 	import * as m from "$lib/paraglide/messages";
 	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import type { ListBooksParams } from "$lib/api/client.svelte";
 
 	type LibBook = {
@@ -226,7 +227,7 @@
 				<header class="mb-6 flex items-end justify-between">
 					<h3 class="font-display text-headline-sm">{m.library_reading_title()}</h3>
 					<a
-						href="/search"
+						href={resolve("/search")}
 						class="font-label text-label-md text-secondary hover:border-secondary border-b border-transparent transition-all"
 						>{m.library_reading_view_all()}</a
 					>
@@ -234,7 +235,7 @@
 				<div class="gap-gutter grid grid-cols-1 md:grid-cols-2">
 					{#each currentlyReading as book (book.id)}
 						<a
-							href="/reader/{book.id}"
+							href={resolve(`/reader/${book.id}`)}
 							class="paper-card flex h-full flex-col overflow-hidden rounded-xl transition-all hover:shadow-lg sm:flex-row"
 						>
 							<BookCover
@@ -252,7 +253,7 @@
 										<button
 											onclick={(e) => {
 												e.preventDefault();
-												goto(`/book/${book.id}`);
+												goto(resolve(`/book/${book.id}`));
 											}}
 											class="text-on-surface-variant/40 hover:text-secondary ml-auto cursor-pointer transition-colors"
 											title="Details"><Info size={14} /></button
@@ -283,7 +284,6 @@
 			</div>
 		{/if}
 
-		<!-- Shelves -->
 		<section class="mb-section-gap">
 			<header class="mb-6 flex items-center justify-between">
 				<h3 class="font-display text-headline-sm">{m.shelf_title()}</h3>
@@ -361,7 +361,7 @@
 				<div class="gap-gutter grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 					{#each shelves as shelf (shelf.id)}
 						<a
-							href="/shelves/{shelf.id}"
+							href={resolve(`/shelves/${shelf.id}`)}
 							class="paper-card group block rounded-xl p-6 transition-all hover:shadow-lg"
 						>
 							<div class="mb-4 flex items-start justify-between">
@@ -402,7 +402,6 @@
 			{/if}
 		</section>
 
-		<!-- All Books -->
 		<section>
 			<header class="mb-6 flex flex-wrap items-center justify-between gap-3">
 				<div class="flex items-center gap-2">
@@ -410,7 +409,6 @@
 					<span class="font-label text-label-sm text-on-surface-variant/50">({total})</span>
 				</div>
 				<div class="flex flex-wrap items-center gap-2">
-					<!-- Filter chips -->
 					<button
 						onclick={() => handleFilter("")}
 						class={[
@@ -431,7 +429,6 @@
 							]}>{opt.label}</button
 						>
 					{/each}
-					<!-- Sort -->
 					<div class="relative">
 						<button
 							onclick={() => (showSortMenu = !showSortMenu)}
@@ -473,7 +470,7 @@
 			{:else}
 				<div class="gap-gutter grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 					{#each forYou as book (book.id)}
-						<a href="/reader/{book.id}" class="group cursor-pointer">
+						<a href={resolve(`/reader/${book.id}`)} class="group cursor-pointer">
 							<BookCover
 								bookId={book.id}
 								class="paper-card bg-surface-container mb-4 aspect-[2/3] rounded-xl border-none"

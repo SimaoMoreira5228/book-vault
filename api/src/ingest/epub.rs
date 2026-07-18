@@ -1,6 +1,6 @@
 use std::io::Read;
 
-use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, Set};
+use sea_orm::{ColumnTrait, EntityTrait, QueryFilter, Set};
 use tracing::warn;
 use uuid::Uuid;
 
@@ -48,7 +48,7 @@ pub async fn ingest(state: &crate::SharedState, job: &job_queue::Model) -> Resul
 			let mut data = Vec::new();
 			if file.read_to_end(&mut data).is_ok() && !data.is_empty() {
 				let mime = guess_image_mime(cover_path);
-				let _ = crate::cover::store_cover(&state.db, &*state.storage, book_id, &data, &mime).await;
+				let _ = crate::cover::store_cover(&state.db, &*state.storage, book_id, &data, mime).await;
 			}
 		}
 	} else if let Ok(Some((cover_data, mime))) = crate::cover::extract_from_epub(&mut archive) {
@@ -110,11 +110,10 @@ pub fn parse_epub(data: &[u8]) -> Result<BookIr, AppError> {
 
 fn parse_archive(archive: &mut zip::ZipArchive<std::io::Cursor<&[u8]>>) -> Result<(BookIr, OpfMeta), AppError> {
 	let opf_path = find_opf_path(archive)?;
-	let (meta, manifest, spine_ids) = parse_opf(archive, &opf_path)?;
+	let (meta, _manifest, spine_ids) = parse_opf(archive, &opf_path)?;
 
 	let mut spine = Vec::new();
-	let mut section_index = 0u32;
-	for item_id in &spine_ids {
+	for (sequence_index, item_id) in spine_ids.iter().enumerate() {
 		let href = resolve_href(&opf_path, item_id);
 		let content = read_file_from_archive(archive, &href)?;
 		let blocks = xhtml_to_blocks(&content, &href)?;
@@ -122,10 +121,9 @@ fn parse_archive(archive: &mut zip::ZipArchive<std::io::Cursor<&[u8]>>) -> Resul
 		spine.push(Section {
 			id: Uuid::now_v7(),
 			title: section_title,
-			sequence_index: section_index,
+			sequence_index: sequence_index as u32,
 			blocks,
 		});
-		section_index += 1;
 	}
 
 	Ok((BookIr { version: 1, spine }, meta))
@@ -241,10 +239,12 @@ fn find_opf_path(archive: &mut zip::ZipArchive<std::io::Cursor<&[u8]>>) -> Resul
 	Err(AppError::Internal("No OPF found in EPUB".into()))
 }
 
+type OpfResult = (OpfMeta, Vec<(String, String)>, Vec<String>);
+
 fn parse_opf(
 	archive: &mut zip::ZipArchive<std::io::Cursor<&[u8]>>,
 	opf_path: &str,
-) -> Result<(OpfMeta, Vec<(String, String)>, Vec<String>), AppError> {
+) -> Result<OpfResult, AppError> {
 	use quick_xml::events::Event;
 	let opf_xml = read_file_from_archive(archive, opf_path)?;
 	let mut reader = quick_xml::Reader::from_str(&opf_xml);
@@ -358,9 +358,7 @@ fn parse_opf(
 							.find(|a| a.key.as_ref() == b"media-type")
 							.and_then(|a| String::from_utf8(a.value.to_vec()).ok());
 						if let (Some(id), Some(href), Some(mt)) = (&id, &href, &mt) {
-							if mt.starts_with("image/") {
-								manifest.push((id.clone(), href.clone()));
-							} else if mt.contains("xhtml") || mt.contains("html") {
+							if mt.starts_with("image/") || mt.contains("xhtml") || mt.contains("html") {
 								manifest.push((id.clone(), href.clone()));
 							}
 						}

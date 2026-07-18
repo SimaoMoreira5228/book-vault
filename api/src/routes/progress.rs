@@ -2,7 +2,7 @@ use axum::extract::{Path, State};
 use axum::http::StatusCode;
 use axum::routing::{delete, get, post, put};
 use axum::{Json, Router};
-use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, ModelTrait, QueryFilter, QueryOrder, Set};
+use sea_orm::{ColumnTrait, EntityTrait, ModelTrait, QueryFilter, QueryOrder, Set};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 

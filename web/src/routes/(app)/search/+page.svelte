@@ -6,6 +6,7 @@
 	import SearchX from "@lucide/svelte/icons/search-x";
 	import BookCover from "$lib/components/BookCover.svelte";
 	import FileText from "@lucide/svelte/icons/file-text";
+	import { resolve } from "$app/paths";
 	import { SvelteMap, SvelteSet } from "svelte/reactivity";
 
 	let query = $state("");
@@ -103,7 +104,7 @@
 					<div class="space-y-3">
 						{#each bookResults as hit (hit.id)}
 							<a
-								href="/reader/{hit.id}"
+								href={resolve(`/reader/${hit.id}`)}
 								class="paper-card flex items-center gap-5 rounded-xl p-5 transition-all hover:shadow-md"
 							>
 								<div
@@ -138,7 +139,7 @@
 						{#each contentResults as hit (hit.book_id + hit.section_id + hit.block_index)}
 							{@const meta = bookMeta.get(hit.book_id)}
 							<a
-								href="/reader/{hit.book_id}"
+								href={resolve(`/reader/${hit.book_id}`)}
 								class="paper-card block rounded-xl p-5 transition-all hover:shadow-md"
 							>
 								<div class="mb-2 flex items-center gap-2">

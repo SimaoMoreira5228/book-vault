@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
 	import { api } from "$lib/api/client.svelte";
+	import { resolve } from "$app/paths";
 	import type { BookResponse } from "$lib/api/generated";
 	import Plus from "@lucide/svelte/icons/plus";
 	import ChevronDown from "@lucide/svelte/icons/chevron-down";
@@ -138,7 +139,7 @@
 	{:else}
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each drafts as draft (draft.id)}
-				<a href="/reader/{draft.id}" class="group cursor-pointer">
+				<a href={resolve(`/reader/${draft.id}`)} class="group cursor-pointer">
 					<div
 						class="bg-surface-container relative mb-4 aspect-[3/4] overflow-hidden rounded-xl shadow-lg transition-transform duration-500 group-hover:-translate-y-2"
 					>

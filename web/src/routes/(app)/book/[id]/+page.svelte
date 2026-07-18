@@ -2,6 +2,7 @@
 	import * as m from "$lib/paraglide/messages";
 	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import { page } from "$app/state";
 	import type { BookResponse, ProspectiveMetadata } from "$lib/api/generated";
 	import FieldDisplay from "$lib/components/FieldDisplay.svelte";
@@ -49,7 +50,7 @@
 
 	$effect(() => {
 		if (!authState.isAuthenticated) {
-			goto("/login");
+			goto(resolve("/login"));
 			return;
 		}
 		loadBook();
@@ -128,7 +129,7 @@
 		deleting = true;
 		const result = await api.books.delete(book.id);
 		if (result.isOk()) {
-			goto("/");
+			goto(resolve("/"));
 		} else {
 			error = result.error.message;
 			deleting = false;
@@ -241,7 +242,7 @@
 <section>
 	<div class="mb-6">
 		<a
-			href="/"
+			href={resolve("/")}
 			class="font-label text-label-md text-on-surface-variant hover:text-primary inline-flex items-center gap-1.5 transition-colors"
 		>
 			<ArrowLeft size={16} />
@@ -297,7 +298,7 @@
 			</div>
 			<div class="flex flex-wrap gap-2">
 				<a
-					href="/reader/{book.id}"
+					href={resolve(`/reader/${book.id}`)}
 					class="btn-primary text-label-md inline-flex items-center gap-1.5"
 				>
 					<BookOpen size={16} />
@@ -654,6 +655,7 @@
 					if (e.key === "Escape") showDeleteConfirm = false;
 				}}
 			>
+				<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 				<div
 					class="bg-surface mx-auto w-full max-w-md rounded-2xl p-8 shadow-2xl"
 					role="document"

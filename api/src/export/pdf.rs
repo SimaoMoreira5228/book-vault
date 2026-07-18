@@ -164,8 +164,7 @@ impl Exporter for PdfExporter {
 			let mut content = Content::new();
 			let mut y = PAGE_H - MARGIN;
 
-			for line_idx in start..end {
-				let line = &lines[line_idx];
+			for line in &lines[start..end] {
 				if line.text.is_empty() {
 					y -= LINE_HEIGHT;
 					continue;

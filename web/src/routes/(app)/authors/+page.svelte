@@ -2,6 +2,7 @@
 	import * as m from "$lib/paraglide/messages";
 	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import UserPen from "@lucide/svelte/icons/user-pen";
 	import BookOpen from "@lucide/svelte/icons/book-open";
 	import Plus from "@lucide/svelte/icons/plus";
@@ -18,7 +19,7 @@
 
 	$effect(() => {
 		if (!authState.isAuthenticated) {
-			goto("/login");
+			goto(resolve("/login"));
 			return;
 		}
 		loadAuthors();
@@ -61,7 +62,7 @@
 		<div class="gap-gutter grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 			{#each authors as author (author.id)}
 				<a
-					href="/authors/{author.id}"
+					href={resolve(`/authors/${author.id}`)}
 					class="paper-card group rounded-xl p-6 transition-all hover:shadow-lg"
 				>
 					<div class="mb-4 flex items-start gap-4">

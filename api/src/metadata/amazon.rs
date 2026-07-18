@@ -80,7 +80,7 @@ impl AmazonProvider {
 
 		let rating = Self::extract_between(html, "\"averageRating\":\"", "\"")
 			.or_else(|| Self::extract_between(html, "\"ratingValue\"", "\""))
-			.and_then(|r| r.split('"').last().unwrap_or(&r).parse::<f32>().ok());
+			.and_then(|r| r.split('"').next_back().unwrap_or(&r).parse::<f32>().ok());
 
 		let page_count = Self::extract_between(html, " pages", "<")
 			.and_then(|s| {

@@ -87,8 +87,8 @@ async fn parse_pdf(state: &crate::SharedState, book: &books::Model, data: &[u8])
 
 		let mut blocks: Vec<Block> = Vec::new();
 
-		for i in start..end {
-			blocks.push(Block::Paragraph(vec![Span::new(lines[i].to_string())]));
+		for line in &lines[start..end] {
+			blocks.push(Block::Paragraph(vec![Span::new(line.to_string())]));
 		}
 
 		if let Ok(images) = extract_page_images(&doc, *page_num) {

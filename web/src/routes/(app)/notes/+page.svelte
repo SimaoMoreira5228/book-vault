@@ -2,6 +2,7 @@
 	import * as m from "$lib/paraglide/messages";
 	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import ScrollText from "@lucide/svelte/icons/scroll-text";
 	import BookOpen from "@lucide/svelte/icons/book-open";
 	import Highlighter from "@lucide/svelte/icons/highlighter";
@@ -41,7 +42,7 @@
 
 	$effect(() => {
 		if (!authState.isAuthenticated) {
-			goto("/login");
+			goto(resolve("/login"));
 			return;
 		}
 		loadData();
@@ -174,7 +175,7 @@
 					<div class="mb-3 flex items-start justify-between gap-4">
 						<div class="min-w-0 flex-1">
 							<a
-								href="/reader/{annotation.book_id}"
+								href={resolve(`/reader/${annotation.book_id}`)}
 								class="font-label text-label-md text-secondary hover:text-secondary/80 mb-1 flex items-center gap-1.5 transition-colors"
 							>
 								<BookOpen size={14} />

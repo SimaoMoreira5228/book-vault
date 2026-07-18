@@ -2,6 +2,7 @@
 	import * as m from "$lib/paraglide/messages";
 	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import Bookmark from "@lucide/svelte/icons/bookmark";
 
 	type Series = { id: string; name: string; description: string | null; book_count: number };
@@ -11,7 +12,7 @@
 
 	$effect(() => {
 		if (!authState.isAuthenticated) {
-			goto("/login");
+			goto(resolve("/login"));
 			return;
 		}
 		loadSeries();
@@ -50,7 +51,7 @@
 		<div class="gap-gutter grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 			{#each series as s (s.id)}
 				<a
-					href="/series/{s.id}"
+					href={resolve(`/series/${s.id}`)}
 					class="paper-card group rounded-xl p-6 transition-all hover:shadow-lg"
 				>
 					<div class="mb-4 flex items-start gap-4">
