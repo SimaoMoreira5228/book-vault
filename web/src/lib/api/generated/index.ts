@@ -15,3 +15,4 @@ export type { TableCell } from "./TableCell";
 export type { ProspectiveMetadata } from "./ProspectiveMetadata";
 export type { MetadataQuery } from "./MetadataQuery";
 export type { PaginatedBooks } from "./PaginatedBooks";
+export type { SeriesResponse } from "./SeriesResponse";

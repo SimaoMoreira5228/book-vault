@@ -6,8 +6,8 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::auth::middleware::AuthenticatedUser;
-use crate::db::entities::prelude::*;
 use crate::db::entities::authors;
+use crate::db::entities::prelude::*;
 use crate::{AppError, SharedState};
 
 #[derive(Serialize)]
@@ -226,7 +226,10 @@ async fn delete_author(
 		.ok_or_else(|| AppError::NotFound("Author not found".into()))?;
 
 	Books::update_many()
-		.col_expr(crate::db::entities::books::Column::AuthorId, migration::Expr::null())
+		.col_expr(
+			crate::db::entities::books::Column::AuthorId,
+			sea_orm::sea_query::Expr::val(Option::<Uuid>::None),
+		)
 		.filter(crate::db::entities::books::Column::AuthorId.eq(Some(existing.id)))
 		.exec(&state.db)
 		.await?;

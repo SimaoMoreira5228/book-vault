@@ -1,6 +1,6 @@
-mod common;
 
-use common::TestApp;
+
+use crate::common::TestApp;
 use serde_json::json;
 
 #[tokio::test]

@@ -112,6 +112,7 @@ async fn parse_pdf(state: &crate::SharedState, book: &books::Model, data: &[u8])
 								Block::Image {
 									asset_ref: asset_id,
 									alt: Some(format!("Page {} image", idx + 1)),
+									src: None,
 								},
 							);
 						}
@@ -136,6 +137,7 @@ async fn parse_pdf(state: &crate::SharedState, book: &books::Model, data: &[u8])
 							blocks.push(Block::Image {
 								asset_ref: asset_id,
 								alt: Some(format!("Page {} image", idx + 1)),
+								src: None,
 							});
 						}
 						Err(e) => {

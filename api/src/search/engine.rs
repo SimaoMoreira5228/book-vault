@@ -24,9 +24,9 @@ pub struct SearchEngine {
 }
 
 impl Default for SearchEngine {
-    fn default() -> Self {
-        Self::new()
-    }
+	fn default() -> Self {
+		Self::new()
+	}
 }
 
 impl SearchEngine {

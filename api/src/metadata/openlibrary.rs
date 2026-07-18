@@ -9,9 +9,9 @@ pub struct OpenLibraryProvider {
 }
 
 impl Default for OpenLibraryProvider {
-    fn default() -> Self {
-        Self::new()
-    }
+	fn default() -> Self {
+		Self::new()
+	}
 }
 
 impl OpenLibraryProvider {

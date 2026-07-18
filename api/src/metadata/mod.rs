@@ -1,3 +1,5 @@
+pub mod amazon;
+pub mod goodreads;
 pub mod google_books;
 pub mod openlibrary;
 pub mod service;

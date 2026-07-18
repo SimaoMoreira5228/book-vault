@@ -62,7 +62,7 @@ fn render_block(block: &Block) -> String {
 			let l = (*level).clamp(1, 6);
 			format!("<h{l}>{}</h{l}>", render_spans(spans))
 		}
-		Block::Image { asset_ref, alt } => {
+		Block::Image { asset_ref, alt, .. } => {
 			let alt_text = escape_html(alt.as_deref().unwrap_or(""));
 			format!("<img src=\"{asset_ref}\" alt=\"{alt_text}\" />")
 		}

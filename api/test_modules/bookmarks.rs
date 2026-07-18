@@ -1,6 +1,6 @@
-mod common;
 
-use common::TestApp;
+
+use crate::common::TestApp;
 
 #[tokio::test]
 async fn bookmarks_list_empty() {

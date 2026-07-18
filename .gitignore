@@ -3,3 +3,4 @@ target/
 bookvault.db
 data
 bookvault.toml
+api/storage

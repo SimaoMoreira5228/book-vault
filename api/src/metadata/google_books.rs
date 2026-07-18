@@ -9,9 +9,9 @@ pub struct GoogleBooksProvider {
 }
 
 impl Default for GoogleBooksProvider {
-    fn default() -> Self {
-        Self::new()
-    }
+	fn default() -> Self {
+		Self::new()
+	}
 }
 
 impl GoogleBooksProvider {

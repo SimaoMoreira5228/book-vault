@@ -1,6 +1,6 @@
-mod common;
 
-use common::TestApp;
+
+use crate::common::TestApp;
 
 #[tokio::test]
 async fn register_create_book_then_annotate() {
@@ -42,25 +42,25 @@ async fn full_lifecycle() {
 	let app = TestApp::new().await;
 	let (_email, _pw, _user) = app.register_and_login("lifecycle").await;
 
-	// Create a static shelf
+	
 	let shelf = app.create_shelf("My Favorites", "static", None).await;
 	let shelf_id = shelf["id"].as_str().unwrap().to_string();
 
-	// Create two books
+	
 	let book1 = app.create_book("Lifecycle Book 1", Some("Author A")).await;
 	let book2 = app.create_book("Lifecycle Book 2", Some("Author B")).await;
 	let book1_id = book1["id"].as_str().unwrap().to_string();
 	let book2_id = book2["id"].as_str().unwrap().to_string();
 
-	// Add one to shelf
+	
 	app.add_book_to_shelf(&shelf_id, &book1_id).await;
 
-	// Verify shelf count
+	
 	let shelves = app.list_shelves().await;
 	let s = shelves.as_array().unwrap().iter().find(|s| s["id"] == shelf_id).unwrap();
 	assert_eq!(s["book_count"], 1, "shelf should have 1 book");
 
-	// Update book
+	
 	let (status, updated) = app
 		.raw_put(
 			&format!("/api/v1/books/{}", book1_id),
@@ -70,11 +70,11 @@ async fn full_lifecycle() {
 	assert_eq!(status, 200);
 	assert_eq!(updated["read_status"], "reading");
 
-	// Delete book2
+	
 	let (status, _) = app.raw_delete(&format!("/api/v1/books/{}", book2_id)).await;
 	assert_eq!(status, 200);
 
-	// Verify list
+	
 	let list = app.list_books().await;
 	let ids: Vec<&str> = list["books"].as_array().unwrap().iter().map(|b| b["id"].as_str().unwrap()).collect();
 	assert!(ids.contains(&book1_id.as_str()));

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { api } from "$lib/api/client";
+	import { api } from "$lib/api/client.svelte";
 	import type { BookHit, ContentHit } from "$lib/api/generated";
 	import Search from "@lucide/svelte/icons/search";
 	import SearchX from "@lucide/svelte/icons/search-x";

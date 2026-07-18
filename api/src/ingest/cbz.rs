@@ -111,6 +111,7 @@ async fn parse_cbz(state: &crate::SharedState, book: &books::Model, data: &[u8])
 		blocks.push(Block::Image {
 			asset_ref: asset_id,
 			alt: Some(format!("Page {}", idx + 1)),
+			src: None,
 		});
 	}
 

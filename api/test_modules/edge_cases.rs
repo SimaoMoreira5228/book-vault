@@ -1,6 +1,6 @@
-mod common;
 
-use common::TestApp;
+
+use crate::common::TestApp;
 
 #[tokio::test]
 async fn admin_non_admin_gets_403() {

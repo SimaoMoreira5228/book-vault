@@ -35,7 +35,7 @@ fn render_block(block: &Block) -> String {
 			let prefix = "#".repeat((*level).clamp(1, 6) as usize);
 			format!("{prefix} {}", render_spans(spans))
 		}
-		Block::Image { asset_ref, alt } => {
+		Block::Image { asset_ref, alt, .. } => {
 			let alt_text = alt.as_deref().unwrap_or("");
 			format!("![{alt_text}]({asset_ref})")
 		}

@@ -1,10 +1,11 @@
-use axum::extract::{Multipart, Path, Query, State};
+use axum::extract::{DefaultBodyLimit, Multipart, Path, Query, State};
 use axum::http::StatusCode;
 use axum::routing::{delete, get, post, put};
 use axum::{Json, Router};
 use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, ModelTrait, QueryFilter, QueryOrder, QuerySelect, Set};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use tracing::error;
 use ts_rs::TS;
 use uuid::Uuid;
 
@@ -31,6 +32,7 @@ pub struct BookResponse {
 	pub format: String,
 	pub created_at: String,
 	pub author_id: Option<Uuid>,
+	pub series_id: Option<Uuid>,
 	pub updated_at: String,
 }
 
@@ -85,6 +87,7 @@ impl From<books::Model> for BookResponse {
 			rating: b.rating,
 			format: b.format,
 			author_id: b.author_id,
+			series_id: b.series_id,
 			created_at: b.created_at.to_string(),
 			updated_at: b.updated_at.to_string(),
 		}
@@ -124,11 +127,12 @@ pub fn routes() -> Router<SharedState> {
 	Router::new()
 		.route("/", get(list_books))
 		.route("/", post(create_book))
-		.route("/upload", post(upload_book))
+		.route("/upload", post(upload_book).layer(DefaultBodyLimit::disable()))
 		.route("/{id}", get(get_book))
 		.route("/{id}", put(update_book))
 		.route("/{id}", delete(delete_book))
 		.route("/{id}/link-author", put(link_author))
+		.route("/{id}/link-series", put(link_series))
 }
 
 #[derive(Deserialize)]
@@ -251,6 +255,7 @@ async fn create_book(
 		keep_source: Set(None),
 		sequence_index: Set(None),
 		author_id: Set(None),
+		series_id: Set(None),
 		created_at: Set(now),
 		updated_at: Set(now),
 	};
@@ -275,11 +280,21 @@ async fn upload_book(
 	while let Ok(Some(field)) = multipart.next_field().await {
 		let name = field.file_name().unwrap_or("file").to_string();
 		filename = name;
-		let data = field
-			.bytes()
-			.await
-			.map_err(|_| AppError::BadRequest("Failed to read file".into()))?;
-		file_data = data.to_vec();
+		let data = match field.bytes().await {
+			Ok(d) => d.to_vec(),
+			Err(e) => {
+				let mut chain = format!("{e}");
+				let mut src: &dyn std::error::Error = &e;
+				while let Some(s) = std::error::Error::source(src) {
+					chain.push_str(": ");
+					chain.push_str(&s.to_string());
+					src = s;
+				}
+				error!("Upload error: {chain}");
+				return Err(AppError::BadRequest(format!("Failed to read file: {chain}")));
+			}
+		};
+		file_data = data;
 	}
 
 	if file_data.is_empty() {
@@ -296,7 +311,7 @@ async fn upload_book(
 
 	state.storage.put(&book_id.to_string(), &file_data).await?;
 
-	let title = filename.rsplit('.').next().unwrap_or(&filename).to_string();
+	let title = filename.rsplitn(2, '.').last().unwrap_or(&filename).to_string();
 	let keep_source = matches!(fmt, "pdf" | "mobi" | "mobi_raw" | "azw");
 	books::Entity::insert(books::ActiveModel {
 		id: Set(book_id),
@@ -316,6 +331,7 @@ async fn upload_book(
 		keep_source: Set(Some(keep_source)),
 		sequence_index: Set(None),
 		author_id: Set(None),
+		series_id: Set(None),
 		created_at: Set(now),
 		updated_at: Set(now),
 	})
@@ -439,4 +455,27 @@ async fn link_author(
 	let updated = active.update(&state.db).await?;
 
 	Ok(Json(serde_json::json!({ "author_id": updated.author_id })))
+}
+
+#[derive(Deserialize)]
+struct LinkSeriesRequest {
+	series_id: Option<Uuid>,
+}
+
+async fn link_series(
+	State(state): State<SharedState>,
+	auth: AuthenticatedUser,
+	Path(book_id): Path<Uuid>,
+	Json(req): Json<LinkSeriesRequest>,
+) -> Result<Json<Value>, AppError> {
+	let library_ids = get_user_library_ids(&state.db, auth.user_id).await?;
+	let book = Books::find_by_id(book_id)
+		.one(&state.db)
+		.await?
+		.filter(|b| library_ids.contains(&b.library_id))
+		.ok_or_else(|| AppError::NotFound("Book not found".into()))?;
+	let mut active: books::ActiveModel = book.into();
+	active.series_id = Set(req.series_id);
+	let updated = active.update(&state.db).await?;
+	Ok(Json(serde_json::json!({ "series_id": updated.series_id })))
 }

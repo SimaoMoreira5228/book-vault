@@ -11,9 +11,9 @@ use crate::db::entities::sessions;
 pub struct SessionManager;
 
 impl Default for SessionManager {
-    fn default() -> Self {
-        Self::new()
-    }
+	fn default() -> Self {
+		Self::new()
+	}
 }
 
 impl SessionManager {

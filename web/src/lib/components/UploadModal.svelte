@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { api } from "$lib/api/client";
+	import { api } from "$lib/api/client.svelte";
 	import Modal from "./Modal.svelte";
 	import Upload from "@lucide/svelte/icons/upload";
 	import CheckCircle from "@lucide/svelte/icons/check-circle";
@@ -57,29 +57,22 @@
 		const maxPolls = 30;
 		for (let i = 0; i < maxPolls; i++) {
 			await new Promise((r) => setTimeout(r, 2000));
-			const jobsResult = await api.admin.jobs();
-			if (jobsResult.isOk()) {
-				const jobs = jobsResult.value as unknown as Array<{
-					id: string;
-					status: string;
-					error: string | null;
-				}>;
-				const job = jobs.find((j) => j.id === job_id);
-				if (job) {
-					if (job.status === "completed") {
-						status = "completed";
-						setTimeout(() => {
-							show = false;
-							status = "idle";
-							onComplete();
-						}, 1500);
-						return;
-					}
-					if (job.status === "failed" || job.status === "dead_letter") {
-						status = "error";
-						errorMsg = job.error ?? m.upload_job_failed();
-						return;
-					}
+			const jobResult = await api.jobs.get(job_id);
+			if (jobResult.isOk()) {
+				const job = jobResult.value;
+				if (job.status === "completed") {
+					status = "completed";
+					setTimeout(() => {
+						show = false;
+						status = "idle";
+						onComplete();
+					}, 1500);
+					return;
+				}
+				if (job.status === "failed" || job.status === "dead_letter") {
+					status = "error";
+					errorMsg = job.error ?? m.upload_job_failed();
+					return;
 				}
 			}
 		}

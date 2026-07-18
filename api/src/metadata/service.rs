@@ -4,6 +4,8 @@ use uuid::Uuid;
 use crate::AppError;
 use crate::db::entities::prelude::*;
 use crate::db::entities::{book_metadata, books, metadata_cache};
+use crate::metadata::amazon::AmazonProvider;
+use crate::metadata::goodreads::GoodReadsProvider;
 use crate::metadata::google_books::GoogleBooksProvider;
 use crate::metadata::openlibrary::OpenLibraryProvider;
 use crate::metadata::{MetadataField, MetadataProvider, MetadataQuery, ProspectiveMetadata};
@@ -17,7 +19,12 @@ pub struct MetadataService {
 impl MetadataService {
 	pub fn new() -> Self {
 		Self {
-			providers: vec![Box::new(OpenLibraryProvider::new()), Box::new(GoogleBooksProvider::new())],
+			providers: vec![
+				Box::new(AmazonProvider::new()),
+				Box::new(OpenLibraryProvider::new()),
+				Box::new(GoogleBooksProvider::new()),
+				Box::new(GoodReadsProvider::new()),
+			],
 		}
 	}
 
@@ -126,10 +133,9 @@ impl MetadataService {
 				book_active.title = Set(title.clone());
 			}
 		}
-		if !locked_fields.contains(&"author".to_string())
-			&& !candidate.authors.is_empty() {
-				book_active.author = Set(Some(candidate.authors.join(", ")));
-			}
+		if !locked_fields.contains(&"author".to_string()) && !candidate.authors.is_empty() {
+			book_active.author = Set(Some(candidate.authors.join(", ")));
+		}
 		if !locked_fields.contains(&"isbn".to_string()) {
 			if let Some(ref isbn13) = candidate.isbn13 {
 				book_active.isbn = Set(Some(isbn13.clone()));
@@ -235,10 +241,9 @@ impl MetadataService {
 				book_active.title = Set(title.clone());
 			}
 		}
-		if !locked_fields.contains(&"author".to_string())
-			&& !merged.authors.is_empty() {
-				book_active.author = Set(Some(merged.authors.join(", ")));
-			}
+		if !locked_fields.contains(&"author".to_string()) && !merged.authors.is_empty() {
+			book_active.author = Set(Some(merged.authors.join(", ")));
+		}
 		if !locked_fields.contains(&"isbn".to_string()) {
 			if let Some(ref isbn13) = merged.isbn13 {
 				book_active.isbn = Set(Some(isbn13.clone()));

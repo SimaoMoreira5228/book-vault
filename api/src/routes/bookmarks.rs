@@ -6,8 +6,8 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::auth::middleware::AuthenticatedUser;
-use crate::db::entities::prelude::*;
 use crate::db::entities::bookmarks;
+use crate::db::entities::prelude::*;
 use crate::{AppError, SharedState};
 
 #[derive(Serialize)]

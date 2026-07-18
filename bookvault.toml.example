@@ -17,7 +17,7 @@ docker compose --profile full up
 ## Configuration reference
 [server]
 host = "0.0.0.0"
-port = 8080
+port = 3761
 
 [database]
 # SQLite: url = "sqlite:///data/bookvault.db?mode=rwc"

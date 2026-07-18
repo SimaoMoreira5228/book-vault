@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { api } from "$lib/api/client";
+	import { api } from "$lib/api/client.svelte";
 	import type { BookResponse } from "$lib/api/generated";
 	import Plus from "@lucide/svelte/icons/plus";
 	import ChevronDown from "@lucide/svelte/icons/chevron-down";

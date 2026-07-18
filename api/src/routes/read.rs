@@ -35,7 +35,7 @@ async fn read_book(
 		.ok_or_else(|| AppError::NotFound("Book IR not found".into()))?;
 
 	let decoded: crate::ir::BookIr =
-		rmp_serde::from_slice(&ir.payload).map_err(|e| AppError::Internal(format!("Failed to decode IR: {}", e)))?;
+		crate::ingest::deserialize_ir(&ir.payload).map_err(|e| AppError::Internal(format!("Failed to decode IR: {}", e)))?;
 
 	Ok(Json(serde_json::json!({ "book": decoded })))
 }

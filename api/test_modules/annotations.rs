@@ -1,6 +1,6 @@
-mod common;
 
-use common::TestApp;
+
+use crate::common::TestApp;
 
 #[tokio::test]
 async fn annotations_list_returns_empty_for_new_book() {

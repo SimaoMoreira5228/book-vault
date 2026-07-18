@@ -1,9 +1,10 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { api } from "$lib/api/client";
+	import { api, apiBase } from "$lib/api/client.svelte";
 	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
 	import type { BookIr, BookResponse, Span } from "$lib/api/generated";
+	import SpanText from "$lib/components/SpanText.svelte";
 	import Popup from "$lib/components/Popup.svelte";
 	import Modal from "$lib/components/Modal.svelte";
 	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
@@ -199,10 +200,61 @@
 		return segments;
 	}
 
-	function getBlockText(block: Record<string, unknown>): string {
-		if ("Paragraph" in block) return (block.Paragraph as Span[]).map((s) => s.text).join("");
-		if ("Heading" in block)
-			return (block.Heading as { spans: Span[] }).spans.map((s) => s.text).join("");
+	function getBlockSpans(block: unknown): Array<{ text: string; marks: number; href: string | null }> {
+		if (typeof block !== "object" || block === null) return [];
+		const b = block as Record<string, unknown>;
+		if ("Paragraph" in b) return (b.Paragraph as Array<{ text: string; marks: number; href: string | null }>);
+		if ("Heading" in b) return (b.Heading as { spans: Array<{ text: string; marks: number; href: string | null }> }).spans;
+		return [];
+	}
+
+	function getAnnotatedSegments(
+		spans: Array<{ text: string; marks: number; href: string | null }>,
+		blockAnnotations: Annotation[]
+	): Array<{ text: string; marks: number; href: string | null; annotationId?: string; color?: string }> {
+		if (!blockAnnotations.length) return spans.map(s => ({ text: s.text, marks: s.marks, href: s.href }));
+
+		const flatText = spans.map(s => s.text).join("");
+		const charMarks: number[] = [];
+		const charHref: (string | null)[] = [];
+		for (const span of spans) {
+			for (let i = 0; i < span.text.length; i++) {
+				charMarks.push(span.marks);
+				charHref.push(span.href ?? null);
+			}
+		}
+
+		const segments: Array<{ text: string; marks: number; href: string | null; annotationId?: string; color?: string }> = [];
+		let pos = 0;
+		const sorted = [...blockAnnotations].sort((a, b) => a.start_offset - b.start_offset);
+		for (const ann of sorted) {
+			if (ann.start_offset > pos) {
+				segments.push({ text: flatText.slice(pos, ann.start_offset), marks: charMarks[pos] ?? 0, href: charHref[pos] ?? null });
+			}
+			if (ann.start_offset < flatText.length && ann.end_offset > 0) {
+				const end = Math.min(flatText.length, ann.end_offset);
+				const segText = flatText.slice(Math.max(0, ann.start_offset), end);
+				segments.push({
+					text: segText,
+					marks: charMarks[Math.max(0, ann.start_offset)] ?? 0,
+					href: charHref[Math.max(0, ann.start_offset)] ?? null,
+					annotationId: ann.id,
+					color: ann.color ?? "yellow"
+				});
+			}
+			pos = Math.max(pos, ann.end_offset);
+		}
+		if (pos < flatText.length) {
+			segments.push({ text: flatText.slice(pos), marks: charMarks[pos] ?? 0, href: charHref[pos] ?? null });
+		}
+		return segments;
+	}
+
+	function getBlockText(block: unknown): string {
+		if (typeof block !== "object" || block === null) return "";
+		const b = block as Record<string, unknown>;
+		if ("Paragraph" in b) return (b.Paragraph as Span[]).map((s) => s.text).join("");
+		if ("Heading" in b) return (b.Heading as { spans: Span[] }).spans.map((s) => s.text).join("");
 		return "";
 	}
 
@@ -357,8 +409,10 @@
 		tooltip = null;
 	}
 
-	const rawUrl = $derived(bookId ? `/api/v1/books/${bookId}/raw` : "");
-	const currentComicUrl = $derived(bookId ? `/api/v1/books/${bookId}/comic/page/${comicPage}` : "");
+	const rawUrl = $derived(bookId ? `${apiBase}/api/v1/books/${bookId}/raw` : "");
+	const currentComicUrl = $derived(
+		bookId ? `${apiBase}/api/v1/books/${bookId}/comic/page/${comicPage}` : ""
+	);
 	function getAssetUrl(assetId: string) {
 		return api.asset(bookId, assetId);
 	}
@@ -734,83 +788,96 @@
 							</h2>
 						{/if}
 						{#each section.blocks as block, blockIdx (blockIdx)}
-							{@const b = block as Record<string, unknown>}
-							{@const blockText = getBlockText(b)}
-							{@const blockAnnotations = getBlockAnnotations(sectionIdx, blockIdx, section.id)}
-							{#if "Paragraph" in b}
-								<p
-									data-block-index={blockIdx}
-									class={[
-										"font-body mb-8 leading-relaxed transition-colors",
-										themeContentStyles[theme]
-									]}
-									onclick={() => {
-										tooltip = null;
+							{#if typeof block === "object" && block !== null}
+								{@const b = block as Record<string, unknown>}
+								{@const spans = getBlockSpans(b)}
+								{@const blockAnnotations = getBlockAnnotations(sectionIdx, blockIdx, section.id)}
+								{@const segs = getAnnotatedSegments(spans, blockAnnotations)}
+								{#if "Paragraph" in b}
+									<p
+										data-block-index={blockIdx}
+										class={[
+											"font-body mb-8 leading-relaxed transition-colors",
+											themeContentStyles[theme]
+										]}
+										onclick={() => {
+											tooltip = null;
+										}}
+									>
+										{#each segs as seg, segIdx (seg.annotationId ?? `${seg.text}_${segIdx}`)}
+											{#if seg.annotationId}
+												<mark
+													data-annotation-id={seg.annotationId}
+													onclick={(e) => {
+														e.stopPropagation();
+														handleAnnotationClick(
+															annotations.find((a) => a.id === seg.annotationId)!
+														);
+													}}
+													class="cursor-pointer rounded-sm"
+													style="background: {COLORS[seg.color ?? 'yellow']};"
+												>
+													<SpanText text={seg.text} marks={seg.marks} href={seg.href} />
+												</mark>
+											{:else}
+												<SpanText text={seg.text} marks={seg.marks} href={seg.href} />
+											{/if}
+										{/each}
+									</p>
+								{:else if "Heading" in b}
+									<h3
+										data-block-index={blockIdx}
+										class={[
+											"font-display text-headline-sm mt-12 mb-6 transition-colors",
+											theme === "light" ? "text-primary" : "text-inherit"
+										]}
+									>
+										{#each segs as seg, segIdx (seg.annotationId ?? `${seg.text}_${segIdx}`)}
+											{#if seg.annotationId}
+												<mark
+													data-annotation-id={seg.annotationId}
+													style="background: {COLORS[seg.color ?? 'yellow']};"
+													onclick={(e) => {
+														e.stopPropagation();
+														handleAnnotationClick(
+															annotations.find((a) => a.id === seg.annotationId)!
+														);
+													}}
+													class="cursor-pointer rounded-sm"><SpanText
+														text={seg.text}
+														marks={seg.marks}
+														href={seg.href}
+													/></mark>
+											{:else}
+												<SpanText text={seg.text} marks={seg.marks} href={seg.href} />
+											{/if}
+										{/each}
+									</h3>
+								{:else if "Image" in b}
+									{@const img = b.Image as { asset_ref: string; alt: string | null }}
+									<div
+										class="border-on-surface/5 bg-surface-container my-16 overflow-hidden rounded-xl border"
+									>
+										<img
+											src={getAssetUrl(img.asset_ref)}
+											alt={img.alt ?? ""}
+											class="h-auto w-full"
+											loading="lazy"
+										/>
+									</div>
+								{:else if "CodeBlock" in b}
+									{@const cb = b.CodeBlock as {
+										language: string | null;
+										content: string;
 									}}
-								>
-									{#each splitTextAtAnnotations(blockText, blockAnnotations) as seg (seg.annotationId ?? seg.text.slice(0, 20))}
-										{#if seg.annotationId}
-											<mark
-												data-annotation-id={seg.annotationId}
-												onclick={(e) => {
-													e.stopPropagation();
-													handleAnnotationClick(
-														annotations.find((a) => a.id === seg.annotationId)!
-													);
-												}}
-												class="cursor-pointer rounded-sm"
-												style="background: {COLORS[seg.color ?? 'yellow']};"
-											>
-												{seg.text}</mark
-											>
-										{:else}
-											{seg.text}
-										{/if}
-									{/each}
-								</p>
-							{:else if "Heading" in b}
-								<h3
-									data-block-index={blockIdx}
-									class={[
-										"font-display text-headline-sm mt-12 mb-6 transition-colors",
-										theme === "light" ? "text-primary" : "text-inherit"
-									]}
-								>
-									{#each splitTextAtAnnotations(blockText, blockAnnotations) as seg (seg.annotationId ?? seg.text.slice(0, 20))}
-										{#if seg.annotationId}
-											<mark
-												data-annotation-id={seg.annotationId}
-												style="background: {COLORS[seg.color ?? 'yellow']};"
-												onclick={(e) => {
-													e.stopPropagation();
-													handleAnnotationClick(
-														annotations.find((a) => a.id === seg.annotationId)!
-													);
-												}}
-												class="cursor-pointer rounded-sm">{seg.text}</mark
-											>
-										{:else}{seg.text}{/if}
-									{/each}
-								</h3>
-							{:else if "Image" in b}
-								{@const img = b.Image as { asset_ref: string; alt: string | null }}
-								<div
-									class="border-on-surface/5 bg-surface-container my-16 overflow-hidden rounded-xl border"
-								>
-									<img
-										src={getAssetUrl(img.asset_ref)}
-										alt={img.alt ?? ""}
-										class="h-auto w-full"
-										loading="lazy"
-									/>
-								</div>
-							{:else if "CodeBlock" in b}
-								{@const cb = b.CodeBlock as { language: string | null; content: string }}
-								<pre
-									class="bg-surface-container-high mb-8 overflow-x-auto rounded-xl p-6 font-mono text-sm"><code
-										>{cb.content}</code
-									></pre>
-							{:else if "HorizontalRule" in b}
+									<pre
+										class="bg-surface-container-high mb-8 overflow-x-auto rounded-xl p-6 font-mono text-sm"><code
+											>{cb.content}</code
+										></pre>
+								{:else if "HorizontalRule" in b}
+									<hr class="border-outline-variant my-12" />
+								{/if}
+							{:else if block === "HorizontalRule"}
 								<hr class="border-outline-variant my-12" />
 							{/if}
 						{/each}

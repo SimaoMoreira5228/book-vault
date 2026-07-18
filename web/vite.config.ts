@@ -2,7 +2,7 @@ import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vitest/config";
 import { playwright } from "@vitest/browser-playwright";
-import adapter from "@sveltejs/adapter-static";
+import adapter from "@sveltejs/adapter-cloudflare";
 import { sveltekit } from "@sveltejs/kit/vite";
 
 export default defineConfig({
@@ -10,12 +10,11 @@ export default defineConfig({
 		tailwindcss(),
 		sveltekit({
 			compilerOptions: {
-				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes("node_modules") ? undefined : true,
 				experimental: { async: true }
 			},
-			adapter: adapter({ fallback: "index.html" }),
+			adapter: adapter(),
 			experimental: { remoteFunctions: true }
 		}),
 

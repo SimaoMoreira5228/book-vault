@@ -1,6 +1,6 @@
-mod common;
 
-use common::TestApp;
+
+use crate::common::TestApp;
 
 #[tokio::test]
 async fn content_search_returns_metadata_hits() {

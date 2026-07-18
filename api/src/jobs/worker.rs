@@ -51,7 +51,7 @@ impl JobWorker {
 				}
 				Err(_) => break,
 			}
-			tokio::time::sleep(Duration::from_millis(500)).await;
+			tokio::time::sleep(Duration::from_secs(5)).await;
 		}
 	}
 
@@ -221,8 +221,8 @@ impl JobWorker {
 			.await?
 			.ok_or_else(|| AppError::NotFound("Book IR not found".into()))?;
 
-		let ir: crate::ir::BookIr =
-			rmp_serde::from_slice(&row.payload).map_err(|e| AppError::Internal(format!("Failed to decode IR: {e}")))?;
+		let ir: crate::ir::BookIr = crate::ingest::deserialize_ir(&row.payload)
+			.map_err(|e| AppError::Internal(format!("Failed to decode IR: {e}")))?;
 
 		Ok(ir)
 	}

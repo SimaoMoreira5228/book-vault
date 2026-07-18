@@ -26,6 +26,7 @@ pub struct Model {
 	pub keep_source: Option<bool>,
 	pub sequence_index: Option<i64>,
 	pub author_id: Option<Uuid>,
+	pub series_id: Option<Uuid>,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

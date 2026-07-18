@@ -13,6 +13,7 @@ pub use super::job_queue::Entity as JobQueue;
 pub use super::libraries::Entity as Libraries;
 pub use super::metadata_cache::Entity as MetadataCache;
 pub use super::reading_progress::Entity as ReadingProgress;
+pub use super::series::Entity as Series;
 pub use super::sessions::Entity as Sessions;
 pub use super::shelf_entries::Entity as ShelfEntries;
 pub use super::shelves::Entity as Shelves;

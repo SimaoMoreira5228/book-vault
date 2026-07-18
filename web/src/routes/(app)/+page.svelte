@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	import { api, authState } from "$lib/api/client";
+	import { api, authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
-	import type { ListBooksParams } from "$lib/api/client";
+	import type { ListBooksParams } from "$lib/api/client.svelte";
 
 	type LibBook = {
 		id: string;
@@ -67,23 +67,49 @@
 
 	const PAGE = 24;
 
+	let initialLoadStarted = false;
+	let booksAbort: AbortController | null = null;
+	let shelvesAbort: AbortController | null = null;
+
 	$effect(() => {
-		if (authState.isAuthenticated) loadAll();
+		if (authState.restoring || initialLoadStarted) return;
+		if (!authState.isAuthenticated) return;
+		initialLoadStarted = true;
+		loadAll();
+	});
+
+	$effect(() => {
+		return () => {
+			booksAbort?.abort();
+			shelvesAbort?.abort();
+		};
 	});
 
 	async function loadAll() {
 		loading = true;
 		offset = 0;
-		await loadBooks(true);
-		const [shelvesResult] = await Promise.all([api.shelves.list()]);
-		if (shelvesResult.isOk()) shelves = shelvesResult.value as unknown as ShelfInfo[];
+		await Promise.all([loadBooks(true), loadShelves()]);
 		loading = false;
 	}
 
+	async function loadShelves() {
+		shelvesAbort?.abort();
+		const controller = new AbortController();
+		shelvesAbort = controller;
+		const r = await api.shelves.list({ signal: controller.signal });
+		if (controller.signal.aborted) return;
+		if (r.isOk()) shelves = r.value as unknown as ShelfInfo[];
+	}
+
 	async function loadBooks(reset = false) {
+		booksAbort?.abort();
+		const controller = new AbortController();
+		booksAbort = controller;
+
 		const params: ListBooksParams = { limit: PAGE, offset, sortBy, sortOrder };
 		if (filterStatus) params.readStatus = filterStatus;
-		const r = await api.books.list(params);
+		const r = await api.books.list(params, { signal: controller.signal });
+		if (controller.signal.aborted) return;
 		if (r.isOk()) {
 			const data = r.value as { books: LibBook[]; total: number };
 			total = data.total;

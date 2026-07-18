@@ -140,7 +140,7 @@ async fn list_revisions(
 async fn get_revision(
 	State(state): State<SharedState>,
 	auth: AuthenticatedUser,
-	Path(revision_id ): Path<Uuid>,
+	Path(revision_id): Path<Uuid>,
 ) -> Result<Json<serde_json::Value>, AppError> {
 	let revision = BookRevisions::find_by_id(revision_id)
 		.one(&state.db)
@@ -169,7 +169,7 @@ async fn get_revision(
 async fn restore_revision(
 	State(state): State<SharedState>,
 	auth: AuthenticatedUser,
-	Path(revision_id ): Path<Uuid>,
+	Path(revision_id): Path<Uuid>,
 ) -> Result<Json<SectionRestoreResponse>, AppError> {
 	let revision = BookRevisions::find_by_id(revision_id)
 		.one(&state.db)

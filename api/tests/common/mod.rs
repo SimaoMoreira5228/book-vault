@@ -1,5 +1,6 @@
 use std::net::SocketAddr;
 use std::sync::Arc;
+use std::time::Duration;
 
 use book_vault::storage::LocalFsProvider;
 use book_vault::{AppState, Config, SharedState, build_router, db, search};
@@ -30,7 +31,7 @@ impl TestApp {
 		let storage = Arc::new(LocalFsProvider::new(_storage_dir.path().to_path_buf()));
 
 		let config = Config::default();
-		let state: SharedState = Arc::new(AppState {
+		let state = Arc::new(AppState {
 			metadata_service: book_vault::metadata::service::MetadataService::new(),
 			config,
 			db: db_conn,
@@ -39,7 +40,13 @@ impl TestApp {
 			search_engine: search::engine::SearchEngine::new(),
 		});
 
-		let app = build_router(state);
+		let app = build_router(state.clone());
+
+		let worker_state = state;
+		tokio::spawn(async move {
+			let worker = book_vault::jobs::worker::JobWorker::new(worker_state);
+			worker.run_forever().await;
+		});
 
 		let listener = TcpListener::bind("127.0.0.1:0").await.expect("bind");
 		let addr = listener.local_addr().expect("local addr");
@@ -255,6 +262,77 @@ impl TestApp {
 		let s = resp.status().as_u16();
 		let j: Value = resp.json().await.unwrap_or(Value::Null);
 		(s, j)
+	}
+
+	pub async fn upload_file(&self, filename: &str, data: &[u8]) -> Value {
+		let mime = if filename.ends_with(".pdf") {
+			"application/pdf"
+		} else if filename.ends_with(".cbz") {
+			"application/vnd.comicbook+zip"
+		} else if filename.ends_with(".mobi") || filename.ends_with(".azw") {
+			"application/x-mobipocket-ebook"
+		} else {
+			"application/epub+zip"
+		};
+		let part = reqwest::multipart::Part::bytes(data.to_vec())
+			.file_name(filename.to_string())
+			.mime_str(mime)
+			.expect("mime");
+		let form = reqwest::multipart::Form::new().part("file", part);
+		let resp = self
+			.client
+			.post(self.url("/api/v1/books/upload"))
+			.multipart(form)
+			.send()
+			.await
+			.expect("upload file");
+		let status = resp.status();
+		let json: Value = resp.json().await.expect("upload file json");
+		assert!(
+			status == 202 || status.as_u16() == 200,
+			"upload file failed: status={status} json={json}"
+		);
+		json
+	}
+
+	pub async fn get_job(&self, job_id: &str) -> Value {
+		let resp = self
+			.client
+			.get(self.url(&format!("/api/v1/jobs/{job_id}")))
+			.send()
+			.await
+			.expect("get job");
+		let status = resp.status();
+		let json: Value = resp.json().await.expect("get job json");
+		assert!(status.is_success(), "get job failed: status={status} json={json}");
+		json
+	}
+
+	pub async fn wait_for_job(&self, job_id: &str, timeout: Duration) -> Value {
+		let start = std::time::Instant::now();
+		loop {
+			let job = self.get_job(job_id).await;
+			let status = job["status"].as_str().unwrap_or("").to_string();
+			if status == "completed" || status == "dead_letter" || status == "failed" {
+				return job;
+			}
+			assert!(
+				start.elapsed() < timeout,
+				"Job {job_id} did not complete within {timeout:?} (last status: {status})"
+			);
+			tokio::time::sleep(Duration::from_millis(500)).await;
+		}
+	}
+
+	pub async fn try_download(url: &str, timeout: Duration) -> Option<Vec<u8>> {
+		match tokio::time::timeout(timeout, async {
+			reqwest::get(url).await.ok()?.bytes().await.ok().map(|b| b.to_vec())
+		})
+		.await
+		{
+			Ok(Some(data)) if data.len() > 100 => Some(data),
+			_ => None,
+		}
 	}
 }
 

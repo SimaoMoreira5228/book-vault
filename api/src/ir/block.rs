@@ -23,6 +23,7 @@ pub enum Block {
 	Image {
 		asset_ref: Uuid,
 		alt: Option<String>,
+		src: Option<String>,
 	},
 	BlockQuote(Vec<Block>),
 	CodeBlock {

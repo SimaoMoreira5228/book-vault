@@ -5,7 +5,7 @@ import type { TableCell } from "./TableCell";
 export type Block =
 	| { Paragraph: Array<Span> }
 	| { Heading: { level: number; spans: Array<Span> } }
-	| { Image: { asset_ref: string; alt: string | null } }
+	| { Image: { asset_ref: string; alt: string | null; src: string | null } }
 	| { BlockQuote: Array<Block> }
 	| { CodeBlock: { language: string | null; content: string } }
 	| { OrderedList: Array<Array<Block>> }

@@ -2,8 +2,7 @@ use std::path::PathBuf;
 
 use serde::Deserialize;
 
-#[derive(Clone, Debug, Deserialize)]
-#[derive(Default)]
+#[derive(Clone, Debug, Deserialize, Default)]
 pub struct Config {
 	#[serde(default)]
 	pub server: ServerConfig,
@@ -205,4 +204,3 @@ impl Config {
 		}
 	}
 }
-

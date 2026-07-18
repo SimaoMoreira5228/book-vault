@@ -1,8 +1,8 @@
 use axum::extract::{Path, State};
 use axum::http::{HeaderMap, header};
-use axum::routing::{delete, get, post};
+use axum::routing::{delete, get, post, put};
 use axum::{Json, Router};
-use sea_orm::{ColumnTrait, EntityTrait, QueryFilter, Set};
+use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, ModelTrait, QueryFilter, Set};
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
 use uuid::Uuid;
@@ -84,6 +84,8 @@ pub fn routes() -> Router<SharedState> {
 		.route("/login", post(login_handler))
 		.route("/logout", post(logout_handler))
 		.route("/register", post(register_handler))
+		.route("/profile", get(get_profile).put(update_profile))
+		.route("/password", put(change_password))
 		.route("/sessions", get(list_sessions))
 		.route("/sessions/{id}", delete(revoke_session))
 }
@@ -255,4 +257,82 @@ async fn revoke_session(
 
 	SessionManager::revoke_session(&state.db, session_id).await?;
 	Ok(Json(serde_json::json!({ "message": "session revoked" })))
+}
+
+#[derive(Deserialize)]
+struct UpdateProfileRequest {
+	display_name: Option<String>,
+}
+
+async fn get_profile(State(state): State<SharedState>, headers: HeaderMap) -> Result<Json<UserResponse>, AppError> {
+	let token = extract_session_cookie(&headers).ok_or_else(|| AppError::Unauthorized("No session cookie".into()))?;
+	let session = SessionManager::validate_session(&state.db, &token).await?;
+
+	let user = Users::find_by_id(session.user_id)
+		.one(&state.db)
+		.await?
+		.ok_or_else(|| AppError::NotFound("User not found".into()))?;
+
+	Ok(Json(user.into()))
+}
+
+async fn update_profile(
+	State(state): State<SharedState>,
+	headers: HeaderMap,
+	Json(req): Json<UpdateProfileRequest>,
+) -> Result<Json<UserResponse>, AppError> {
+	let token = extract_session_cookie(&headers).ok_or_else(|| AppError::Unauthorized("No session cookie".into()))?;
+	let current = SessionManager::validate_session(&state.db, &token).await?;
+
+	let user = Users::find_by_id(current.user_id)
+		.one(&state.db)
+		.await?
+		.ok_or_else(|| AppError::NotFound("User not found".into()))?;
+
+	let mut active: users::ActiveModel = user.into();
+	let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+	active.updated_at = Set(now);
+	if let Some(name) = req.display_name {
+		if !name.trim().is_empty() {
+			active.display_name = Set(name.trim().to_string());
+		}
+	}
+	let updated = active.update(&state.db).await?;
+	Ok(Json(updated.into()))
+}
+
+#[derive(Deserialize)]
+struct ChangePasswordRequest {
+	current_password: String,
+	new_password: String,
+}
+
+async fn change_password(
+	State(state): State<SharedState>,
+	headers: HeaderMap,
+	Json(req): Json<ChangePasswordRequest>,
+) -> Result<Json<serde_json::Value>, AppError> {
+	if req.new_password.len() < 6 {
+		return Err(AppError::BadRequest("Password must be at least 6 characters".into()));
+	}
+
+	let token = extract_session_cookie(&headers).ok_or_else(|| AppError::Unauthorized("No session cookie".into()))?;
+	let current = SessionManager::validate_session(&state.db, &token).await?;
+
+	let user = Users::find_by_id(current.user_id)
+		.one(&state.db)
+		.await?
+		.ok_or_else(|| AppError::NotFound("User not found".into()))?;
+
+	SessionManager::verify_password(&user.password_hash, &req.current_password)?;
+
+	let new_hash = SessionManager::hash_password(&req.new_password)?;
+
+	let mut active: users::ActiveModel = user.into();
+	let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+	active.password_hash = Set(new_hash);
+	active.updated_at = Set(now);
+	active.update(&state.db).await?;
+
+	Ok(Json(serde_json::json!({ "message": "password changed" })))
 }

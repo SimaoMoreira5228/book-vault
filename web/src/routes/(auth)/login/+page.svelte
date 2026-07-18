@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as m from "$lib/paraglide/messages";
 	import * as v from "valibot";
-	import { authState } from "$lib/api/client";
+	import { authState } from "$lib/api/client.svelte";
 	import { goto } from "$app/navigation";
 	import { LoginSchema } from "$lib/validation";
 	import type { LoginFormData } from "$lib/validation";

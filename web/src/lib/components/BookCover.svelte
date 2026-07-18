@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { apiBase } from "$lib/api/client.svelte";
 	import BookOpen from "@lucide/svelte/icons/book-open";
 
 	let {
@@ -26,7 +27,7 @@
 <div class={["relative overflow-hidden", className]}>
 	{#if !error}
 		<img
-			src="/api/v1/books/{bookId}/cover"
+			src="{apiBase}/api/v1/books/{bookId}/cover"
 			alt="Cover"
 			class={["h-full w-full object-cover", !loaded ? "opacity-0" : "opacity-100", coverClass]}
 			onload={onLoad}
