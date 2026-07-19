@@ -101,6 +101,15 @@ fn detect_format(data: &[u8], filename: &str) -> &'static str {
 	if data.len() > 2 && data[0..2] == [0x1f, 0x8b] {
 		return "bvir";
 	}
+	if data.len() > 7 && &data[..7] == b"Rar!\x1a\x07\x00" {
+		return "cbr";
+	}
+	if data.len() > 7 && &data[..7] == b"Rar!\x1a\x07\x01" {
+		return "cbr";
+	}
+	if data.len() > 6 && &data[0..6] == b"7z\xbc\xaf\x27\x1c" {
+		return "cb7";
+	}
 	if data.len() > 4 {
 		if let Ok(header) = std::str::from_utf8(&data[0..4]) {
 			if header == "PK\x03\x04" {

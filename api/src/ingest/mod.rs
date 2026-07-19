@@ -1,3 +1,4 @@
+pub mod cbr;
 pub mod cbz;
 pub mod epub;
 pub mod mobi;

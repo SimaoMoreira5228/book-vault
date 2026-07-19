@@ -60,3 +60,6 @@ mod email {
 mod kobo_sync {
 	include!("../test_modules/kobo_sync.rs");
 }
+mod cbr_ingestion {
+	include!("../test_modules/cbr_ingestion.rs");
+}

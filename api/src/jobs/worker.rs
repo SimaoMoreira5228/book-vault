@@ -193,6 +193,7 @@ impl JobWorker {
 			"ingest_epub" => crate::ingest::epub::ingest(state, job).await,
 			"ingest_pdf" => crate::ingest::pdf::ingest(state, job).await,
 			"ingest_cbz" => crate::ingest::cbz::ingest(state, job).await,
+			"ingest_cbr" => crate::ingest::cbr::ingest(state, job).await,
 			"ingest_mobi" => crate::ingest::mobi::ingest(state, job).await,
 			other => Err(AppError::Internal(format!("Unknown job kind: {other}"))),
 		};
