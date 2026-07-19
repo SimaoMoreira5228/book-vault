@@ -49,6 +49,12 @@ mode = "open"
 # Use "*" for development, specific origin for production
 allowed_origin = "*"
 
+[http]
+# Optional: HTTP proxy for all outbound requests (Wiktionary, metadata providers, etc.)
+# Useful when the server's IP is blocked by third-party APIs.
+# proxy_url = "http://user:pass@proxy.example.com:8080"
+# no_proxy = ["localhost", "127.0.0.1", "10.0.0.0/8"]
+
 [logging]
 level = "info"
 

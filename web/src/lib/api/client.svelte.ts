@@ -613,18 +613,47 @@ export const api = {
 					: "";
 			return request<Array<Record<string, unknown>>>("GET", `/api/v1/vocabulary${q}`);
 		},
-		lookup: (data: {
+		// We use a fallback mechanism here because some hosting
+		// providers are blocked by Wikimedia networks. The backend tries
+		// first; if it returns empty, the browser fetches raw wikitext directly
+		// from Wiktionary and sends it to the backend for parsing.
+		lookup: async (data: {
 			word: string;
 			context: string;
 			language: string;
 			definition_language?: string;
-		}) =>
-			request<{ entries: Array<Record<string, unknown>>; cached: boolean }>(
-				"POST",
-				"/api/v1/vocabulary/lookup",
-				data,
-				{ dedupe: false }
-			),
+		}) => {
+			const result = await request<{
+				entries: Array<Record<string, unknown>>;
+				cached: boolean;
+			}>("POST", "/api/v1/vocabulary/lookup", data, { dedupe: false });
+
+			if (result.isOk() && result.value.entries.length > 0) {
+				return result;
+			}
+
+			try {
+				const subdomain = data.definition_language || data.language;
+				const baseLang = subdomain.slice(0, 2);
+				const wiktUrl = `https://${baseLang}.wiktionary.org/w/rest.php/v1/page/${encodeURIComponent(data.word)}`;
+				const wiktResp = await fetch(wiktUrl);
+				const wiktJson = await wiktResp.json();
+				const wikitext: string | undefined = wiktJson.source;
+				if (!wikitext) {
+					return result;
+				}
+
+				return await request<{
+					entries: Array<Record<string, unknown>>;
+					cached: boolean;
+				}>("POST", "/api/v1/vocabulary/lookup-with-wikitext", {
+					...data,
+					wikitext
+				}, { dedupe: false });
+			} catch {
+				return result;
+			}
+		},
 		add: (data: {
 			language: string;
 			lemma: string;

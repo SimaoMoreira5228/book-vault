@@ -17,6 +17,8 @@ pub struct Config {
 	#[serde(default)]
 	pub logging: LoggingConfig,
 	#[serde(default)]
+	pub http: HttpConfig,
+	#[serde(default)]
 	pub integrations: IntegrationsConfig,
 }
 
@@ -194,6 +196,16 @@ fn default_auth_mode() -> String {
 fn default_cors_origin() -> String {
 	"*".to_string()
 }
+#[derive(Clone, Debug, Deserialize)]
+#[derive(Default)]
+pub struct HttpConfig {
+	#[serde(default)]
+	pub proxy_url: Option<String>,
+	#[serde(default)]
+	pub no_proxy: Option<Vec<String>>,
+}
+
+
 fn default_log_level() -> String {
 	"info".to_string()
 }

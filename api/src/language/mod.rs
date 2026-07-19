@@ -97,6 +97,15 @@ pub struct LookupRequest {
 	pub definition_language: Option<String>,
 }
 
+#[derive(Deserialize)]
+pub struct LookupWithWikitextRequest {
+	pub word: String,
+	pub context: String,
+	pub language: String,
+	pub definition_language: Option<String>,
+	pub wikitext: String,
+}
+
 #[derive(Serialize)]
 pub struct LookupResponse {
 	pub entries: Vec<dictionary::DictionaryEntry>,
@@ -115,6 +124,7 @@ pub fn vocab_routes() -> Router<SharedState> {
 		.route("/", get(list_vocabulary))
 		.route("/", post(add_vocabulary))
 		.route("/lookup", post(lookup_word))
+		.route("/lookup-with-wikitext", post(lookup_word_with_wikitext))
 		.route("/review", get(get_review_cards))
 		.route("/{id}", put(update_vocabulary))
 		.route("/{id}/review", post(submit_review))
@@ -166,7 +176,13 @@ async fn lookup_word(
 	};
 
 	let entries = if let Some(provider) = state.dictionary_service.find_provider(word_lang) {
-		provider.lookup(&query).await.unwrap_or_default()
+		match provider.lookup(&query).await {
+			Ok(entries) => entries,
+			Err(e) => {
+				tracing::warn!("Dictionary lookup failed for {}: {:?}", word, e);
+				Vec::new()
+			}
+		}
 	} else {
 		vec![dictionary::DictionaryEntry {
 			word: word.clone(),
@@ -208,6 +224,70 @@ async fn lookup_word(
 	.await;
 
 	Ok(Json(LookupResponse { entries, cached: false, translation }))
+}
+
+/// Fallback endpoint: the frontend fetches raw wikitext from wiktionary.org directly
+/// (needed when the server IP is blocked by Wikimedia)
+/// and sends it here for parsing + caching.
+async fn lookup_word_with_wikitext(
+	State(state): State<SharedState>,
+	_auth: AuthenticatedUser,
+	Json(req): Json<LookupWithWikitextRequest>,
+) -> Result<Json<LookupResponse>, AppError> {
+	let word = req.word.trim().to_lowercase();
+	if word.is_empty() {
+		return Err(AppError::BadRequest("Empty word".into()));
+	}
+
+	let definition_language = req.definition_language.clone().unwrap_or_else(|| req.language.clone());
+	let word_lang = &req.language[..req.language.len().min(2)];
+	let def_lang = &definition_language[..definition_language.len().min(2)];
+
+	// Use an offline WiktionaryProvider that only parses, never fetches
+	let provider = dictionary::WiktionaryProvider::new_offline();
+	let raw_defs = provider.parse_wikitext(&req.wikitext, word_lang, &word, def_lang);
+
+	let mut entries: Vec<dictionary::DictionaryEntry> = Vec::new();
+	if let Some(base_lemma) = dictionary::WiktionaryProvider::extract_base_lemma(&raw_defs) {
+		if base_lemma != word {
+			// For form-of definitions, we can't re-query without network — 
+			// just use the raw definitions as-is
+		}
+	}
+
+	for d in raw_defs {
+		entries.push(dictionary::DictionaryEntry {
+			word: word.clone(),
+			lemma: word.clone(),
+			sense_label: d.sense_label,
+			sense_id: None,
+			part_of_speech: d.part_of_speech,
+			definition: d.definition,
+			example_sentences: d.examples,
+			pronunciation: None,
+			frequency_rank: None,
+		});
+	}
+
+	let context_hash = blake3::hash(req.context.as_bytes()).to_hex().to_string();
+	let cache_key = format!("{}:{}:{}:{}", word, word_lang, def_lang, &context_hash[..16]);
+	let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+	let expires = now + chrono::Duration::hours(48);
+	let json = serde_json::to_string(&entries).unwrap_or_default();
+
+	let _ = crate::db::entities::dictionary_cache::Entity::insert(crate::db::entities::dictionary_cache::ActiveModel {
+		id: Set(Uuid::now_v7()),
+		word: Set(word.clone()),
+		language: Set(req.language.clone()),
+		context_hash: Set(cache_key),
+		response_json: Set(json),
+		created_at: Set(now),
+		expires_at: Set(expires),
+	})
+	.exec(&state.db)
+	.await;
+
+	Ok(Json(LookupResponse { entries, cached: false, translation: None }))
 }
 
 async fn get_review_cards(

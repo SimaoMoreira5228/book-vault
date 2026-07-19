@@ -146,44 +146,92 @@ impl DictionaryProvider for FreeDictionaryProvider {
 	}
 }
 
-pub struct WiktionaryProvider {
-	parser: crate::language::wiktionary_parser::WiktionaryParser,
+pub fn build_http_client(
+	timeout_secs: u64,
+	http_config: &crate::config::HttpConfig,
+) -> Result<reqwest::Client, crate::AppError> {
+	let mut builder = reqwest::Client::builder().timeout(std::time::Duration::from_secs(timeout_secs));
+
+	if let Some(ref proxy_url) = http_config.proxy_url {
+		let mut proxy =
+			reqwest::Proxy::all(proxy_url).map_err(|e| crate::AppError::Internal(format!("Invalid proxy URL: {}", e)))?;
+		if let Some(ref no_proxy) = http_config.no_proxy {
+			for np in no_proxy {
+				proxy = proxy.no_proxy(reqwest::NoProxy::from_string(np));
+			}
+		}
+		builder = builder.proxy(proxy);
+	}
+
+	builder
+		.build()
+		.map_err(|e| crate::AppError::Internal(format!("HTTP client: {}", e)))
 }
 
-impl Default for WiktionaryProvider {
-	fn default() -> Self {
-		Self::new()
-	}
+pub struct WiktionaryProvider {
+	parser: crate::language::wiktionary_parser::WiktionaryParser,
+	client: reqwest::Client,
 }
 
 impl WiktionaryProvider {
-	pub fn new() -> Self {
+	pub fn new(http_config: &crate::config::HttpConfig) -> Self {
+		let client = build_http_client(8, http_config).unwrap_or_else(|_| {
+			reqwest::Client::builder()
+				.user_agent(
+					"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+				)
+				.default_headers({
+					let mut h = reqwest::header::HeaderMap::new();
+					h.insert("Accept", "application/json".parse().unwrap());
+					h.insert("Accept-Encoding", "gzip, deflate, br".parse().unwrap());
+					h
+				})
+				.timeout(std::time::Duration::from_secs(8))
+				.build()
+				.unwrap()
+		});
 		Self {
 			parser: crate::language::wiktionary_parser::WiktionaryParser::new(),
+			client,
 		}
 	}
 
-	async fn fetch_wikitext(subdomain: &str, word: &str) -> Result<String, crate::AppError> {
+	pub fn new_offline() -> Self {
+		Self {
+			parser: crate::language::wiktionary_parser::WiktionaryParser::new(),
+			client: reqwest::Client::builder()
+				.user_agent(
+					"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+				)
+				.default_headers({
+					let mut h = reqwest::header::HeaderMap::new();
+					h.insert("Accept", "application/json".parse().unwrap());
+					h.insert("Accept-Encoding", "gzip, deflate, br".parse().unwrap());
+					h
+				})
+				.timeout(std::time::Duration::from_secs(1))
+				.build()
+				.unwrap(),
+		}
+	}
+
+	pub fn parse_wikitext(&self, wikitext: &str, word_lang: &str, _word: &str, def_lang: &str) -> Vec<ParsedDefinition> {
+		let is_immersion = word_lang == def_lang;
+		if is_immersion {
+			self.parser.parse(wikitext, word_lang)
+		} else {
+			self.parser.parse_en_wiktionary(wikitext, word_lang)
+		}
+	}
+
+	async fn fetch_wikitext(&self, subdomain: &str, word: &str) -> Result<String, crate::AppError> {
 		let url = format!(
 			"https://{}.wiktionary.org/w/rest.php/v1/page/{}",
 			subdomain,
 			Self::urlencode(word)
 		);
-		let client = reqwest::Client::builder()
-			.user_agent(
-				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
-			)
-			.default_headers({
-				let mut h = reqwest::header::HeaderMap::new();
-				h.insert("Accept", "application/json".parse().unwrap());
-				h.insert("Accept-Encoding", "gzip, deflate, br".parse().unwrap());
-				h
-			})
-			.timeout(std::time::Duration::from_secs(8))
-			.build()
-			.map_err(|e| crate::AppError::Internal(format!("HTTP client: {}", e)))?;
 
-		let resp = match client.get(&url).send().await {
+		let resp = match self.client.get(&url).send().await {
 			Ok(r) if r.status().is_success() => r,
 			Ok(r) if r.status().as_u16() == 429 => {
 				return Err(crate::AppError::Internal("Wiktionary rate limited".into()));
@@ -202,11 +250,11 @@ impl WiktionaryProvider {
 			.ok_or_else(|| crate::AppError::Internal("No 'source' field in Wiktionary response".into()))
 	}
 
-		fn urlencode(s: &str) -> String {
+	fn urlencode(s: &str) -> String {
 		s.replace(' ', "%20").replace('&', "%26").replace('?', "%3F")
 	}
 
-	fn extract_base_lemma(definitions: &[ParsedDefinition]) -> Option<String> {
+	pub fn extract_base_lemma(definitions: &[ParsedDefinition]) -> Option<String> {
 		for d in definitions {
 			let lower = d.definition.to_lowercase();
 			if let Some(idx) = lower.rfind("of ") {
@@ -219,11 +267,23 @@ impl WiktionaryProvider {
 			if let Some(idx) = lower.rfind("de ") {
 				let after = &lower[idx + 3..];
 				let word = after.trim_end_matches('.').trim().to_string();
-				if !word.is_empty() && word.len() > 1 && !word.contains(' ') && !lower.contains("de uma") && !lower.contains("de um") {
-					let is_form_of = lower.contains("pessoa") || lower.contains("singular") || lower.contains("plural")
-						|| lower.contains("presente") || lower.contains("pretérito") || lower.contains("indicativo")
-						|| lower.contains("conjuntivo") || lower.contains("imperativo") || lower.contains("infinitivo")
-						|| lower.contains("gerúndio") || lower.contains("particípio");
+				if !word.is_empty()
+					&& word.len() > 1
+					&& !word.contains(' ')
+					&& !lower.contains("de uma")
+					&& !lower.contains("de um")
+				{
+					let is_form_of = lower.contains("pessoa")
+						|| lower.contains("singular")
+						|| lower.contains("plural")
+						|| lower.contains("presente")
+						|| lower.contains("pretérito")
+						|| lower.contains("indicativo")
+						|| lower.contains("conjuntivo")
+						|| lower.contains("imperativo")
+						|| lower.contains("infinitivo")
+						|| lower.contains("gerúndio")
+						|| lower.contains("particípio");
 					if is_form_of {
 						return Some(word);
 					}
@@ -251,10 +311,10 @@ impl DictionaryProvider for WiktionaryProvider {
 
 		let raw_defs = if is_immersion {
 			let subdomain = self.parser.subdomain_for(word_lang);
-			match Self::fetch_wikitext(subdomain, &query.word).await {
+			match self.fetch_wikitext(subdomain, &query.word).await {
 				Ok(wikitext) => self.parser.parse(&wikitext, word_lang),
 				Err(_) => {
-					if let Ok(en_wikitext) = Self::fetch_wikitext("en", &query.word).await {
+					if let Ok(en_wikitext) = self.fetch_wikitext("en", &query.word).await {
 						self.parser.parse_en_wiktionary(&en_wikitext, word_lang)
 					} else {
 						Vec::new()
@@ -262,7 +322,7 @@ impl DictionaryProvider for WiktionaryProvider {
 				}
 			}
 		} else {
-			match Self::fetch_wikitext("en", &query.word).await {
+			match self.fetch_wikitext("en", &query.word).await {
 				Ok(wikitext) => self.parser.parse_en_wiktionary(&wikitext, word_lang),
 				Err(_) => Vec::new(),
 			}
