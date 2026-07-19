@@ -57,3 +57,6 @@ mod koreader_sync {
 mod email {
 	include!("../test_modules/email.rs");
 }
+mod kobo_sync {
+	include!("../test_modules/kobo_sync.rs");
+}

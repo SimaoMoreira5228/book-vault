@@ -7,6 +7,7 @@ pub mod email;
 pub mod events;
 pub mod export_routes;
 pub mod jobs;
+pub mod kobo;
 pub mod metadata_routes;
 pub mod progress;
 pub mod read;

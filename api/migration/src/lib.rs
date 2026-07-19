@@ -25,6 +25,7 @@ mod m20260718_create_linguistic_annotations;
 mod m20260718_create_vocabulary_entries;
 mod m20260719_create_vocab_example_sentences;
 mod m20260719_create_dictionary_cache;
+mod m20260720_create_kobo_tokens;
 
 pub struct Migrator;
 
@@ -57,6 +58,7 @@ impl MigratorTrait for Migrator {
 			Box::new(m20260718_create_vocabulary_entries::Migration),
 			Box::new(m20260719_create_vocab_example_sentences::Migration),
 			Box::new(m20260719_create_dictionary_cache::Migration),
+			Box::new(m20260720_create_kobo_tokens::Migration),
 		]
 	}
 }

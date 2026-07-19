@@ -60,6 +60,8 @@ pub fn build_router(state: SharedState) -> Router {
 	Router::new()
 		.nest("/api/v1", routes::build_routes())
 		.nest("/api/v1", koreader::routes())
+		.nest("/api/v1/admin", routes::kobo::admin_routes())
+		.nest("/api/kobo", routes::kobo::routes())
 		.nest("/opds", opds::routes())
 		.layer(TraceLayer::new_for_http())
 		.layer(cors)

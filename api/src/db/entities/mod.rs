@@ -12,6 +12,7 @@ pub mod bookmarks;
 pub mod books;
 pub mod comic_ir;
 pub mod job_queue;
+pub mod kobo_tokens;
 pub mod libraries;
 pub mod dictionary_cache;
 pub mod linguistic_annotations;

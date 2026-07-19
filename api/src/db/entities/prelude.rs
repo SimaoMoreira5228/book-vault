@@ -10,6 +10,7 @@ pub use super::bookmarks::Entity as Bookmarks;
 pub use super::books::Entity as Books;
 pub use super::comic_ir::Entity as ComicIr;
 pub use super::job_queue::Entity as JobQueue;
+pub use super::kobo_tokens::Entity as KoboTokens;
 pub use super::dictionary_cache::Entity as DictionaryCache;
 pub use super::linguistic_annotations::Entity as LinguisticAnnotations;
 pub use super::vocab_example_sentences::Entity as VocabExampleSentences;
