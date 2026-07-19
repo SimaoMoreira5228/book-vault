@@ -66,21 +66,21 @@
 			<button
 				onclick={toggleToc}
 				class="p-2 transition-transform duration-200 hover:opacity-80 active:scale-95"
-				title="Table of Contents"
+				aria-label={m.reader_toc_contents()}
 			>
 				<List size={20} class="text-on-surface-variant" />
 			</button>
 			<button
 				onclick={handleCycleTheme}
 				class="p-2 transition-transform duration-200 hover:opacity-80 active:scale-95"
-				title="Toggle theme"
+				aria-label={m.reader_toggle_theme()}
 			>
 				<Sun size={20} class="text-on-surface-variant" />
 			</button>
 			<button
 				onclick={toggleFont}
 				class="p-2 transition-transform duration-200 hover:opacity-80 active:scale-95"
-				title="Font settings"
+				aria-label={m.reader_font_settings()}
 			>
 				<Type size={20} class="text-on-surface-variant" />
 			</button>

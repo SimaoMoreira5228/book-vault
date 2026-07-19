@@ -31,7 +31,7 @@
 
 <div class="flex h-full flex-col">
 	<div class="mb-6 flex items-center justify-between px-6">
-		<h3 class="font-display text-headline-sm text-primary">Chapters</h3>
+		<h3 class="font-display text-headline-sm text-primary">{m.studio_chapters()}</h3>
 		<button
 			onclick={onAddSection}
 			class="text-secondary hover:text-secondary/80 inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm transition-colors"

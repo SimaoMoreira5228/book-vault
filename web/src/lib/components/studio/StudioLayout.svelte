@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from "$lib/paraglide/messages";
 	import { page } from "$app/state";
 	import { resolve } from "$app/paths";
 	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
@@ -24,7 +25,7 @@
 	let mobileSidebarOpen = $state(false);
 </script>
 
-<div class="flex h-screen flex-col bg-[#fbf9f5]">
+<div class="flex h-screen flex-col bg-[#fbf9f5] dark:bg-[#121212]">
 	<header
 		class="bg-surface/90 fixed top-0 z-50 flex h-14 w-full items-center justify-between border-b border-[rgba(0,31,63,0.05)] px-4 shadow-sm backdrop-blur-md"
 	>
@@ -64,12 +65,9 @@
 			>
 				<Eye size={20} />
 			</a>
-			<button
-				disabled={saving}
-				class="font-label text-label-md bg-primary inline-flex items-center gap-1.5 rounded-xl px-5 py-2 text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-50"
-			>
+			<button disabled={saving} class="btn-primary">
 				<Save size={16} />
-				{saving ? "Saving..." : "Save"}
+				{saving ? m.studio_saving() : m.studio_save()}
 			</button>
 		</div>
 	</header>

@@ -46,7 +46,7 @@
 <section>
 	<header class="mb-8">
 		<span class="font-label text-label-sm text-secondary mb-2 block tracking-widest uppercase"
-			>System</span
+			>{m.admin_system()}</span
 		>
 		<h2 class="font-display text-headline-md">{m.admin_title()}</h2>
 	</header>
@@ -90,7 +90,7 @@
 			</div>
 		{:else if jobs.length === 0}
 			<div class="bg-surface-container-low rounded-xl p-12 text-center">
-				<p class="font-body text-body-md text-on-surface-variant">No jobs found</p>
+				<p class="font-body text-body-md text-on-surface-variant">{m.admin_no_jobs()}</p>
 			</div>
 		{:else}
 			<div class="space-y-3">

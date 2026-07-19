@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from "$lib/paraglide/messages";
 	import { Slider } from "bits-ui";
 
 	let {
@@ -15,7 +16,7 @@
 >
 	<div class="flex flex-col gap-2">
 		<div class="flex items-center justify-between">
-			<span class="font-label text-label-sm text-on-surface-variant">Font</span>
+			<span class="font-label text-label-sm text-on-surface-variant">{m.reader_font_title()}</span>
 			<span class="font-label text-label-sm min-w-[3ch] text-right">{fontSize}px</span>
 		</div>
 		<Slider.Root
@@ -39,7 +40,9 @@
 	</div>
 	<div class="flex flex-col gap-2">
 		<div class="flex items-center justify-between">
-			<span class="font-label text-label-sm text-on-surface-variant">Line H</span>
+			<span class="font-label text-label-sm text-on-surface-variant"
+				>{m.reader_font_line_height()}</span
+			>
 			<span class="font-label text-label-sm min-w-[3ch] text-right">{lineHeight.toFixed(1)}</span>
 		</div>
 		<Slider.Root

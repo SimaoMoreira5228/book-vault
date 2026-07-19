@@ -22,6 +22,7 @@
 	const bookId = $derived(page.params.id ?? "");
 
 	let meta = $state<BookResponse | null>(null);
+	let loadError = $state("");
 	let spine = $state<Array<{ id: string; title: string | null }>>([]);
 	let loadedBlocks = $state<Record<string, Block[]>>({});
 	let loading = $state(true);
@@ -101,12 +102,23 @@
 
 	async function loadBook() {
 		loading = true;
+		loadError = "";
 		const [metaResult, spineResult, progressResult] = await Promise.all([
 			api.books.get(bookId),
 			api.readSpine(bookId),
 			api.progress.get(bookId)
 		]);
-		if (metaResult.isOk()) meta = metaResult.value;
+		if (metaResult.isErr()) {
+			loadError = metaResult.error.message;
+			loading = false;
+			return;
+		}
+		meta = metaResult.value;
+		if (spineResult.isErr()) {
+			loadError = spineResult.error.message;
+			loading = false;
+			return;
+		}
 		if (spineResult.isOk()) {
 			spine = spineResult.value.map((s) => ({ id: s.id, title: s.title }));
 			if (progressResult.isOk() && progressResult.value) {
@@ -608,6 +620,16 @@
 			<div
 				class="border-secondary h-8 w-8 animate-spin rounded-full border-2 border-t-transparent"
 			></div>
+		</div>
+	{:else if loadError}
+		<div class="flex flex-col items-center justify-center gap-4 py-32">
+			<p class="font-body text-body-md text-error">{loadError}</p>
+			<button
+				onclick={loadBook}
+				class="font-label text-label-md text-secondary underline transition-colors hover:opacity-80"
+			>
+				Try again
+			</button>
 		</div>
 	{:else if meta?.format === "pdf" && pdfMode === "pdf"}
 		<object

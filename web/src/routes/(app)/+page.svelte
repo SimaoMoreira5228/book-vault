@@ -480,25 +480,27 @@
 				<div class="border-outline-variant/30 rounded-xl border-2 border-dashed p-12 text-center">
 					<LibraryBig size={32} class="text-on-surface-variant/30 mb-4 block" />
 					<p class="font-body text-body-md text-on-surface-variant">
-						{filterStatus ? "No books match this filter" : m.library_for_you_empty()}
+						{filterStatus ? m.library_no_match() : m.library_for_you_empty()}
 					</p>
 				</div>
 			{:else}
 				<div class="gap-gutter grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 					{#each forYou as book (book.id)}
 						<a href={resolve(`/reader/${book.id}`)} class="group cursor-pointer">
-							<BookCover
-								bookId={book.id}
-								class="paper-card bg-surface-container mb-4 aspect-[2/3] rounded-xl border-none"
-							/>
-							{#if book.format === "mobi_raw" || book.format === "cbz"}
-								<div class="absolute top-2 right-2">
-									<span
-										class="font-label text-primary rounded bg-white/90 px-2 py-0.5 text-[10px] tracking-wider uppercase backdrop-blur"
-										>{formatBadge(book.format)}</span
-									>
-								</div>
-							{/if}
+							<div class="relative mb-4">
+								<BookCover
+									bookId={book.id}
+									class="paper-card bg-surface-container aspect-[2/3] rounded-xl border-none"
+								/>
+								{#if book.format === "mobi_raw" || book.format === "cbz"}
+									<div class="absolute top-2 right-2">
+										<span
+											class="font-label text-primary rounded bg-white/90 px-2 py-0.5 text-[10px] tracking-wider uppercase backdrop-blur dark:bg-gray-800/90 dark:text-gray-200"
+											>{formatBadge(book.format)}</span
+										>
+									</div>
+								{/if}
+							</div>
 							<h4
 								class="font-label text-label-md text-primary group-hover:text-secondary mb-1 transition-colors"
 							>

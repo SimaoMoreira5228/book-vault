@@ -27,7 +27,7 @@
 		Title: m.book_detail_field_title(),
 		Author: m.book_detail_field_author(),
 		Description: m.metadata_field_description(),
-		Cover: "Cover",
+		Cover: m.metadata_field_cover(),
 		Genres: m.metadata_field_genres(),
 		PageCount: m.book_detail_field_page_count(),
 		Isbn: m.book_detail_field_isbn(),

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import * as m from "$lib/paraglide/messages";
+
 	let {
 		sections,
 		show = $bindable(false),
@@ -19,7 +21,7 @@
 		class="bg-surface border-outline/10 fixed top-16 right-0 z-40 h-[calc(100vh-4rem)] w-72 overflow-y-auto border-l shadow-lg"
 	>
 		<div class="p-6">
-			<h3 class="font-display text-headline-sm text-primary mb-6">Contents</h3>
+			<h3 class="font-display text-headline-sm text-primary mb-6">{m.reader_toc_contents()}</h3>
 			<nav class="space-y-3">
 				{#each tocEntries as entry (entry.id)}
 					<button
