@@ -37,8 +37,7 @@ pub struct AppState {
 	pub metadata_service: metadata::service::MetadataService,
 	pub rate_limiter: auth::rate_limit::RateLimiter,
 	pub search_engine: search::engine::SearchEngine,
-	pub dictionary_provider: Option<Box<dyn language::dictionary::DictionaryProvider>>,
-	pub translation_provider: Option<Box<dyn language::dictionary::TranslationProvider>>,
+	pub dictionary_service: language::dictionary::DictionaryService,
 }
 
 pub fn build_router(state: SharedState) -> Router {

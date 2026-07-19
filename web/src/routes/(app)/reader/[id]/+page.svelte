@@ -41,6 +41,7 @@
 
 	let lookupText = $state("");
 	let lookupContext = $state("");
+	let lookupLanguage = $state("en");
 	let lookupPos = $state({ x: 0, y: 0 });
 	let showLookup = $state(false);
 
@@ -114,6 +115,7 @@
 			return;
 		}
 		meta = metaResult.value;
+		lookupLanguage = meta.language ?? "en";
 		if (spineResult.isErr()) {
 			loadError = spineResult.error.message;
 			loading = false;
@@ -598,6 +600,20 @@
 				})()}
 			/>
 		</button>
+		{#if !meta?.language}
+			<select
+				bind:value={lookupLanguage}
+				class="bg-surface-container-high font-label text-label-sm text-on-surface-variant mr-2 rounded-lg border-0 px-2 py-1.5 outline-none"
+				aria-label="Lookup language"
+			>
+				<option value="en">EN</option>
+				<option value="pt">PT</option>
+				<option value="es">ES</option>
+				<option value="fr">FR</option>
+				<option value="de">DE</option>
+				<option value="it">IT</option>
+			</select>
+		{/if}
 	{/snippet}
 
 	<TocPanel
@@ -807,5 +823,6 @@
 	y={lookupPos.y}
 	text={lookupText}
 	context={lookupContext}
+	language={lookupLanguage}
 />
 <AnnotationTooltip bind:annotation={tooltipAnn} onUpdate={loadAnnotations} />

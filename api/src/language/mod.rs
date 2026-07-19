@@ -99,6 +99,7 @@ pub struct LookupRequest {
 pub struct LookupResponse {
 	pub entries: Vec<dictionary::DictionaryEntry>,
 	pub cached: bool,
+	pub translation: Option<String>,
 }
 
 pub fn routes() -> Router<SharedState> {
@@ -147,7 +148,7 @@ async fn lookup_word(
 		let _now_utc: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 		if cached.expires_at > _now_utc {
 			let entries: Vec<dictionary::DictionaryEntry> = serde_json::from_str(&cached.response_json).unwrap_or_default();
-			return Ok(Json(LookupResponse { entries, cached: true }));
+			return Ok(Json(LookupResponse { entries, cached: true, translation: None }));
 		}
 	}
 
@@ -157,12 +158,12 @@ async fn lookup_word(
 		language: req.language.clone(),
 	};
 
-	let entries = if let Some(ref provider) = state.dictionary_provider {
+	let entries = if let Some(provider) = state.dictionary_service.find_provider(&req.language) {
 		provider.lookup(&query).await.unwrap_or_default()
 	} else {
 		vec![dictionary::DictionaryEntry {
 			word: word.clone(),
-			lemma: segment::simple_lemmatize(&word),
+			lemma: segment::lemmatize(&word, &req.language),
 			sense_label: None,
 			sense_id: None,
 			part_of_speech: None,
@@ -171,6 +172,16 @@ async fn lookup_word(
 			pronunciation: None,
 			frequency_rank: None,
 		}]
+	};
+
+	let translation = if let Some(ref translator) = state.dictionary_service.translator {
+		if req.language != "en" {
+			translator.translate(&req.context, &req.language, "en").await.unwrap_or(None)
+		} else {
+			None
+		}
+	} else {
+		None
 	};
 
 	let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
@@ -189,7 +200,7 @@ async fn lookup_word(
 	.exec(&state.db)
 	.await;
 
-	Ok(Json(LookupResponse { entries, cached: false }))
+	Ok(Json(LookupResponse { entries, cached: false, translation }))
 }
 
 async fn get_review_cards(
@@ -374,7 +385,7 @@ async fn annotate_book_language(
 	for section in &ir.spine {
 		for (block_idx, block) in section.blocks.iter().enumerate() {
 			if let Some(text) = extract_text(block) {
-				let tokens = segment::tokenize(&text);
+				let tokens = segment::tokenize(&text, &req.language);
 				for token in &tokens {
 					let existing = crate::db::entities::linguistic_annotations::Entity::find()
 						.filter(

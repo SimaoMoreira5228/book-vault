@@ -35,19 +35,16 @@ async fn main() {
 	let engine = book_vault::search::engine::SearchEngine::new();
 	engine.rebuild(&db);
 
-	let dictionary_provider: Option<Box<dyn book_vault::language::dictionary::DictionaryProvider>> =
-		Some(Box::new(book_vault::language::dictionary::FreeDictionaryProvider));
+	let mut dict_service = book_vault::language::dictionary::DictionaryService::new();
+	dict_service.register(Box::new(book_vault::language::dictionary::FreeDictionaryProvider));
+	dict_service.register(Box::new(book_vault::language::dictionary::WiktionaryProvider));
 
-	let translation_provider: Option<Box<dyn book_vault::language::dictionary::TranslationProvider>> = {
-		let lt_url = &config.integrations.hosted_services.libretranslate_url;
-		if lt_url.is_empty() {
-			None
-		} else {
-			Some(Box::new(book_vault::language::dictionary::LibreTranslateProvider {
-				api_url: lt_url.clone(),
-			}))
-		}
-	};
+	let lt_url = &config.integrations.hosted_services.libretranslate_url;
+	if !lt_url.is_empty() {
+		dict_service.set_translator(Box::new(book_vault::language::dictionary::LibreTranslateProvider {
+			api_url: lt_url.clone(),
+		}));
+	}
 
 	let state: SharedState = Arc::new(AppState {
 		metadata_service: book_vault::metadata::service::MetadataService::new(&config),
@@ -56,8 +53,7 @@ async fn main() {
 		storage,
 		rate_limiter: book_vault::auth::rate_limit::RateLimiter::new(5, 900),
 		search_engine: engine,
-		dictionary_provider,
-		translation_provider,
+		dictionary_service: dict_service,
 	});
 
 	let worker_state = state.clone();

@@ -38,8 +38,7 @@ impl TestApp {
 			storage,
 			rate_limiter: book_vault::auth::rate_limit::RateLimiter::new(100, 900),
 			search_engine: search::engine::SearchEngine::new(),
-			dictionary_provider: None,
-			translation_provider: None,
+			dictionary_service: book_vault::language::dictionary::DictionaryService::new(),
 		});
 
 		let app = build_router(state.clone());
@@ -357,8 +356,7 @@ impl TestApp {
 			storage,
 			rate_limiter: book_vault::auth::rate_limit::RateLimiter::new(100, 900),
 			search_engine: search::engine::SearchEngine::new(),
-			dictionary_provider: None,
-			translation_provider: None,
+			dictionary_service: book_vault::language::dictionary::DictionaryService::new(),
 		});
 
 		let app = build_router(state.clone());
@@ -470,7 +468,11 @@ impl FakeSmtpServer {
 			}
 		});
 
-		Self { port, _shutdown: tx, received }
+		Self {
+			port,
+			_shutdown: tx,
+			received,
+		}
 	}
 }
 

@@ -24,16 +24,16 @@
 
 	let loaded = $state(false);
 	let fieldLabels: Record<string, string> = {
-		Title: m.book_detail_field_title(),
-		Author: m.book_detail_field_author(),
-		Description: m.metadata_field_description(),
-		Cover: m.metadata_field_cover(),
-		Genres: m.metadata_field_genres(),
-		PageCount: m.book_detail_field_page_count(),
-		Isbn: m.book_detail_field_isbn(),
-		Publisher: m.book_detail_field_publisher(),
-		PublishedDate: m.metadata_field_published_date(),
-		Subtitle: m.metadata_field_subtitle()
+		title: m.book_detail_field_title(),
+		author: m.book_detail_field_author(),
+		description: m.metadata_field_description(),
+		cover: m.metadata_field_cover(),
+		genres: m.metadata_field_genres(),
+		page_count: m.book_detail_field_page_count(),
+		isbn: m.book_detail_field_isbn(),
+		publisher: m.book_detail_field_publisher(),
+		published_date: m.metadata_field_published_date(),
+		subtitle: m.metadata_field_subtitle()
 	};
 
 	const metadataFields = Object.keys(fieldLabels);

@@ -18,21 +18,30 @@
 		frequency_rank: number | null;
 	};
 
+	type LookupResponse = {
+		entries: DictEntry[];
+		cached: boolean;
+		translation: string | null;
+	};
+
 	let {
 		show = $bindable(false),
 		x = 0,
 		y = 0,
 		text = "",
-		context = ""
+		context = "",
+		language = "en"
 	}: {
 		show?: boolean;
 		x?: number;
 		y?: number;
 		text?: string;
 		context?: string;
+		language?: string;
 	} = $props();
 
 	let entries = $state<DictEntry[]>([]);
+	let translation = $state<string | null>(null);
 	let loading = $state(false);
 	let added = $state<string | null>(null);
 	let err = $state("");
@@ -46,9 +55,12 @@
 		loading = true;
 		err = "";
 		entries = [];
-		const r = await api.vocabulary.lookup({ word: text, context, language: "en" });
+		translation = null;
+		const r = await api.vocabulary.lookup({ word: text, context, language });
 		if (r.isOk()) {
-			entries = r.value.entries as unknown as DictEntry[];
+			const data = r.value as unknown as LookupResponse;
+			entries = data.entries;
+			translation = data.translation ?? null;
 			if (entries.length === 0) err = m.vocab_no_definitions();
 		} else {
 			err = r.error.message;
@@ -59,7 +71,7 @@
 	async function addToVocab(entry: DictEntry) {
 		added = entry.lemma + (entry.sense_label ?? "");
 		await api.vocabulary.add({
-			language: "en",
+			language,
 			lemma: entry.lemma,
 			sense_label: entry.sense_label ?? undefined,
 			definition: entry.definition,
@@ -134,6 +146,13 @@
 					</div>
 				</div>
 			{/each}
+
+			{#if translation}
+				<div class="border-outline-variant/30 mt-3 border-t pt-3">
+					<span class="font-label text-label-sm text-on-surface-variant/60 block mb-1">Translation</span>
+					<p class="font-body text-body-md text-on-surface-variant">{translation}</p>
+				</div>
+			{/if}
 		{/if}
 	</div>
 </Popup>
