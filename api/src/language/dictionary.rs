@@ -1,6 +1,8 @@
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 
+use crate::language::wiktionary_parser::ParsedDefinition;
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct DictionaryEntry {
 	pub word: String,
@@ -19,6 +21,7 @@ pub struct DictionaryQuery {
 	pub word: String,
 	pub context: String,
 	pub language: String,
+	pub definition_language: String,
 }
 
 #[async_trait]
@@ -41,14 +44,17 @@ pub struct DictionaryService {
 }
 
 impl Default for DictionaryService {
-    fn default() -> Self {
-        Self::new()
-    }
+	fn default() -> Self {
+		Self::new()
+	}
 }
 
 impl DictionaryService {
 	pub fn new() -> Self {
-		Self { providers: Vec::new(), translator: None }
+		Self {
+			providers: Vec::new(),
+			translator: None,
+		}
 	}
 
 	pub fn register(&mut self, provider: Box<dyn DictionaryProvider>) {
@@ -59,13 +65,13 @@ impl DictionaryService {
 		self.translator = Some(translator);
 	}
 
-	pub fn find_provider(&self, lang: &str) -> Option<&Box<dyn DictionaryProvider>> {
+	pub fn find_provider(&self, lang: &str) -> Option<&dyn DictionaryProvider> {
 		for p in &self.providers {
 			if p.supports(lang) {
-				return Some(p);
+				return Some(&**p);
 			}
 		}
-		self.providers.iter().find(|p| p.supports("en"))
+		self.providers.iter().find(|p| p.supports("en")).map(|p| &**p)
 	}
 }
 
@@ -73,8 +79,12 @@ pub struct FreeDictionaryProvider;
 
 #[async_trait]
 impl DictionaryProvider for FreeDictionaryProvider {
-	fn id(&self) -> &'static str { "freedictionary" }
-	fn supports(&self, lang: &str) -> bool { lang == "en" || lang.starts_with("en-") }
+	fn id(&self) -> &'static str {
+		"freedictionary"
+	}
+	fn supports(&self, lang: &str) -> bool {
+		lang == "en" || lang.starts_with("en-")
+	}
 
 	async fn lookup(&self, query: &DictionaryQuery) -> Result<Vec<DictionaryEntry>, crate::AppError> {
 		let url = format!("https://api.dictionaryapi.dev/api/v2/entries/en/{}", urlencoding(&query.word));
@@ -93,14 +103,26 @@ impl DictionaryProvider for FreeDictionaryProvider {
 		}
 
 		#[derive(Deserialize)]
-		struct FreeApiResponse { word: String, phonetic: Option<String>, meanings: Vec<Meaning> }
+		struct FreeApiResponse {
+			word: String,
+			phonetic: Option<String>,
+			meanings: Vec<Meaning>,
+		}
 		#[derive(Deserialize)]
-		struct Meaning { part_of_speech: String, definitions: Vec<Def> }
+		struct Meaning {
+			part_of_speech: String,
+			definitions: Vec<Def>,
+		}
 		#[derive(Deserialize)]
-		struct Def { definition: String, example: Option<String> }
+		struct Def {
+			definition: String,
+			example: Option<String>,
+		}
 
 		let data: Vec<FreeApiResponse> = resp.json().await.unwrap_or_default();
-		if data.is_empty() { return Ok(vec![fallback_entry(query)]); }
+		if data.is_empty() {
+			return Ok(vec![fallback_entry(query)]);
+		}
 
 		let mut entries = Vec::new();
 		for entry in &data {
@@ -124,138 +146,159 @@ impl DictionaryProvider for FreeDictionaryProvider {
 	}
 }
 
-pub struct WiktionaryProvider;
-
-fn clean_html(html: &str) -> String {
-	use scraper::Html;
-	Html::parse_fragment(html)
-		.root_element()
-		.text()
-		.collect::<Vec<_>>()
-		.join(" ")
-		.split_whitespace()
-		.collect::<Vec<_>>()
-		.join(" ")
-		.trim()
-		.to_string()
+pub struct WiktionaryProvider {
+	parser: crate::language::wiktionary_parser::WiktionaryParser,
 }
 
-fn extract_lemma_from_form_of(definition: &str) -> Option<String> {
-	let lower = definition.to_lowercase();
-	if lower.contains("of") {
-		if let Some(idx) = lower.rfind("of ") {
-			let after = &lower[idx + 3..];
-			let word = after.trim_end_matches('.').trim().to_string();
-			if !word.is_empty() && word.len() > 1 {
-				return Some(word);
-			}
-		}
+impl Default for WiktionaryProvider {
+	fn default() -> Self {
+		Self::new()
 	}
-	None
 }
 
-fn extract_examples(def: &serde_json::Value) -> Vec<String> {
-	let mut examples = Vec::new();
-	if let Some(parsed) = def.get("parsedExamples").and_then(|v| v.as_array()) {
-		for e in parsed {
-			if let Some(text) = e["example"].as_str() {
-				let clean = clean_html(text);
-				if !clean.is_empty() { examples.push(clean); }
-			}
+impl WiktionaryProvider {
+	pub fn new() -> Self {
+		Self {
+			parser: crate::language::wiktionary_parser::WiktionaryParser::new(),
 		}
 	}
 
-	if examples.is_empty() {
-		if let Some(raw) = def.get("examples").and_then(|v| v.as_array()) {
-			for e in raw {
-				if let Some(text) = e.as_str() {
-					let clean = clean_html(text);
-					if !clean.is_empty() { examples.push(clean); }
-				}
-			}
-		}
-	}
-	examples
-}
-
-#[async_trait]
-impl DictionaryProvider for WiktionaryProvider {
-	fn id(&self) -> &'static str { "wiktionary" }
-	fn supports(&self, _lang: &str) -> bool { true }
-
-	async fn lookup(&self, query: &DictionaryQuery) -> Result<Vec<DictionaryEntry>, crate::AppError> {
-		let url = format!("https://en.wiktionary.org/api/rest_v1/page/definition/{}", urlencoding(&query.word));
+	async fn fetch_wikitext(subdomain: &str, word: &str) -> Result<String, crate::AppError> {
+		let url = format!(
+			"https://{}.wiktionary.org/w/rest.php/v1/page/{}",
+			subdomain,
+			Self::urlencode(word)
+		);
 		let client = reqwest::Client::builder()
-			.user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36")
+			.user_agent(
+				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+			)
+			.default_headers({
+				let mut h = reqwest::header::HeaderMap::new();
+				h.insert("Accept", "application/json".parse().unwrap());
+				h.insert("Accept-Encoding", "gzip, deflate, br".parse().unwrap());
+				h
+			})
 			.timeout(std::time::Duration::from_secs(8))
 			.build()
 			.map_err(|e| crate::AppError::Internal(format!("HTTP client: {}", e)))?;
 
 		let resp = match client.get(&url).send().await {
 			Ok(r) if r.status().is_success() => r,
-			Ok(r) if r.status().as_u16() == 429 => return Err(crate::AppError::Internal("Wiktionary rate limited".into())),
-			_ => return Ok(Vec::new()),
+			Ok(r) if r.status().as_u16() == 429 => {
+				return Err(crate::AppError::Internal("Wiktionary rate limited".into()));
+			}
+			_ => return Err(crate::AppError::NotFound("Wiktionary page not found".into())),
 		};
 
 		let body: serde_json::Value = match resp.json().await {
 			Ok(v) => v,
-			Err(_) => return Ok(Vec::new()),
+			Err(_) => return Err(crate::AppError::Internal("Failed to parse Wiktionary response".into())),
 		};
 
-		let mut entries = Vec::new();
-		let mut extracted_lemma: Option<String> = None;
-		let lang = &query.language[..query.language.len().min(2)];
+		body["source"]
+			.as_str()
+			.map(|s| s.to_string())
+			.ok_or_else(|| crate::AppError::Internal("No 'source' field in Wiktionary response".into()))
+	}
 
-		for &try_lang in &[lang, "en"] {
-			if let Some(defs) = body.get(try_lang).and_then(|v| v.as_array()) {
-				for def in defs {
-					let pos = def["partOfSpeech"].as_str().unwrap_or("").to_string();
-					let pos_opt = if pos.is_empty() { None } else { Some(pos) };
-					if let Some(defs_arr) = def["definitions"].as_array() {
-						for d in defs_arr {
-							let raw = d["definition"].as_str().unwrap_or("");
-							if raw.is_empty() { continue; }
-							let definition = clean_html(raw);
-							if definition.is_empty() { continue; }
+		fn urlencode(s: &str) -> String {
+		s.replace(' ', "%20").replace('&', "%26").replace('?', "%3F")
+	}
 
-							if extracted_lemma.is_none() {
-								extracted_lemma = extract_lemma_from_form_of(&definition);
-							}
-
-							let examples = extract_examples(d);
-							entries.push(DictionaryEntry {
-								word: query.word.clone(),
-								lemma: query.word.to_lowercase(),
-								sense_label: pos_opt.clone(),
-								sense_id: None,
-								part_of_speech: pos_opt.clone(),
-								definition,
-								example_sentences: examples,
-								pronunciation: None,
-								frequency_rank: None,
-							});
-						}
+	fn extract_base_lemma(definitions: &[ParsedDefinition]) -> Option<String> {
+		for d in definitions {
+			let lower = d.definition.to_lowercase();
+			if let Some(idx) = lower.rfind("of ") {
+				let after = &lower[idx + 3..];
+				let word = after.trim_end_matches('.').trim().to_string();
+				if !word.is_empty() && word.len() > 1 && !word.contains(' ') {
+					return Some(word);
+				}
+			}
+			if let Some(idx) = lower.rfind("de ") {
+				let after = &lower[idx + 3..];
+				let word = after.trim_end_matches('.').trim().to_string();
+				if !word.is_empty() && word.len() > 1 && !word.contains(' ') && !lower.contains("de uma") && !lower.contains("de um") {
+					let is_form_of = lower.contains("pessoa") || lower.contains("singular") || lower.contains("plural")
+						|| lower.contains("presente") || lower.contains("pretérito") || lower.contains("indicativo")
+						|| lower.contains("conjuntivo") || lower.contains("imperativo") || lower.contains("infinitivo")
+						|| lower.contains("gerúndio") || lower.contains("particípio");
+					if is_form_of {
+						return Some(word);
 					}
 				}
-				if !entries.is_empty() { break; }
+			}
+		}
+		None
+	}
+}
+
+#[async_trait]
+impl DictionaryProvider for WiktionaryProvider {
+	fn id(&self) -> &'static str {
+		"wiktionary"
+	}
+	fn supports(&self, _lang: &str) -> bool {
+		true
+	}
+
+	async fn lookup(&self, query: &DictionaryQuery) -> Result<Vec<DictionaryEntry>, crate::AppError> {
+		let word_lang = &query.language[..query.language.len().min(2)];
+		let def_lang = &query.definition_language[..query.definition_language.len().min(2)];
+
+		let is_immersion = word_lang == def_lang;
+
+		let raw_defs = if is_immersion {
+			let subdomain = self.parser.subdomain_for(word_lang);
+			match Self::fetch_wikitext(subdomain, &query.word).await {
+				Ok(wikitext) => self.parser.parse(&wikitext, word_lang),
+				Err(_) => {
+					if let Ok(en_wikitext) = Self::fetch_wikitext("en", &query.word).await {
+						self.parser.parse_en_wiktionary(&en_wikitext, word_lang)
+					} else {
+						Vec::new()
+					}
+				}
+			}
+		} else {
+			match Self::fetch_wikitext("en", &query.word).await {
+				Ok(wikitext) => self.parser.parse_en_wiktionary(&wikitext, word_lang),
+				Err(_) => Vec::new(),
+			}
+		};
+
+		let mut entries: Vec<DictionaryEntry> = Vec::new();
+		if let Some(base_lemma) = Self::extract_base_lemma(&raw_defs) {
+			if base_lemma != query.word.to_lowercase() {
+				let base_query = DictionaryQuery {
+					word: base_lemma.clone(),
+					context: query.context.clone(),
+					language: query.language.clone(),
+					definition_language: query.definition_language.clone(),
+				};
+				if let Ok(base_entries) = self.lookup(&base_query).await {
+					for mut e in base_entries {
+						e.word = query.word.clone();
+						entries.push(e);
+					}
+				}
 			}
 		}
 
-		if let Some(base) = extracted_lemma {
-			if base != query.word.to_lowercase() {
-				let base_q = DictionaryQuery {
-					word: base,
-					context: query.context.clone(),
-					language: query.language.clone(),
-				};
-				if let Ok(mut base_entries) = self.lookup(&base_q).await {
-					if !base_entries.is_empty() {
-						for e in &mut base_entries { e.word = query.word.clone(); }
-						let mut merged = base_entries;
-						merged.extend(entries);
-						return Ok(merged);
-					}
-				}
+		if entries.is_empty() {
+			for d in raw_defs {
+				entries.push(DictionaryEntry {
+					word: query.word.clone(),
+					lemma: query.word.to_lowercase(),
+					sense_label: d.sense_label,
+					sense_id: None,
+					part_of_speech: d.part_of_speech,
+					definition: d.definition,
+					example_sentences: d.examples,
+					pronunciation: None,
+					frequency_rank: None,
+				});
 			}
 		}
 
@@ -269,8 +312,12 @@ pub struct LibreTranslateProvider {
 
 #[async_trait]
 impl TranslationProvider for LibreTranslateProvider {
-	fn id(&self) -> &'static str { "libretranslate" }
-	fn supports(&self, _from: &str, _to: &str) -> bool { true }
+	fn id(&self) -> &'static str {
+		"libretranslate"
+	}
+	fn supports(&self, _from: &str, _to: &str) -> bool {
+		true
+	}
 
 	async fn translate(&self, text: &str, from: &str, to: &str) -> Result<Option<String>, crate::AppError> {
 		let url = format!("{}/translate", self.api_url.trim_end_matches('/'));
@@ -285,12 +332,22 @@ impl TranslationProvider for LibreTranslateProvider {
 			Err(_) => return Ok(None),
 		};
 
-		if !resp.status().is_success() { return Ok(None); }
+		if !resp.status().is_success() {
+			return Ok(None);
+		}
 
 		#[derive(Deserialize)]
-		struct TranslateResponse { translated_text: String }
-		let data: TranslateResponse = resp.json().await.unwrap_or(TranslateResponse { translated_text: String::new() });
-		if data.translated_text.is_empty() { Ok(None) } else { Ok(Some(data.translated_text)) }
+		struct TranslateResponse {
+			translated_text: String,
+		}
+		let data: TranslateResponse = resp.json().await.unwrap_or(TranslateResponse {
+			translated_text: String::new(),
+		});
+		if data.translated_text.is_empty() {
+			Ok(None)
+		} else {
+			Ok(Some(data.translated_text))
+		}
 	}
 }
 

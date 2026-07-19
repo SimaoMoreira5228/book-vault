@@ -1,0 +1,212 @@
+[[Imagem:Gray501.png|thumb|right|250px|{{centro|Esquema do coração humano}}]]
+
+={{-pt-}}=
+==Substantivo==
+{{flex.pt|ms=coração|mp=corações|ms-div=co.ra.<u>ção</u>|mp-div=co.ra.<u>ções</u>}}
+{{oxítona|co|ra|ção}}, {{gramática|m}} {{datação|1278|pt}}
+# [[órgão]] muscular que [[bombear|bombeia]] o [[sangue]] de certos [[animal|animais]]
+#* ''Mais de cem casos agudos da doença, que pode afetar o '''coração''' e matar, foram registrados, a maioria no Pará, pelo consumo de açaí.'' {{OESP|2008|abril|28}}
+# o [[âmago]], o [[centro]]
+#* ''É como se eu conseguisse entrar no '''coração''' dessas máquinas.'' {{OESP|2008|maio|01}}
+# [[caráter]]
+#* ''Rosemarie, que não deve ser muito esperta, mas tem um bom '''coração''', acolheu as três crianças. E ocupou-se delas.'' {{OESP|2008|abril|30}}
+# [[amor]]
+#* ''"Estou com o '''coração''' dividido", admitiu.'' {{OESP|2008|abril|05}}
+# [[copas]] ([[naipe]] vermelho do baralho em desenho de coração)
+
+===Aumentativos===
+* [[coraçãozão]]
+
+===Diminutivos===
+{{verTambém.Ini}}
+* [[coraçãozinho]]
+{{verTambém.NovaColuna}}
+* [[coraçãozito]]
+{{verTambém.Fim}}
+
+===Tradução===
+{{tradini|De 1 (órgão)}}
+* {{trad|af|hart}}
+* {{trad|ay|lluqu}}
+* {{trad|sq|zemër|zemra}}
+* {{t|de|Herz|n}}
+* {{t|am|ልብ|m|ləbb}}
+* {{trad|ar|قلْب|قلب}}
+* {{trad|an|corazón}}
+* {{trad|hy|սիրտ}}
+* {{trad|ast|coral}}
+* {{trad|az|qəlb|ürək}}
+* {{trad|eu|bihotz}}
+* {{t|my|နှလုံး||hna.lum:}}
+* {{trad|bs|srce}}
+* {{trad|br|kalon}}
+* {{trad|bg|сърце}}
+* {{trad|ca|cor}}
+* {{trad|kk|жүрек}}
+* {{trad|ce|дог}}
+* {{trad|cs|srdce}}
+* {{trad|zh|心|心臟}}
+* {{trad|sn|mwoyo}}
+* {{trad|ko|심장}}
+* {{trad|hr|srce}}
+* {{trad|ku|dil|qelb}}
+* {{trad|da|hjerte}}
+* {{trad|egy|ḥȝty}}
+* {{trad|sk|srdce}}
+* {{trad|sl|srce}}
+* {{t|es|corazón|m}}
+* {{trad|eo|koro}}
+* {{trad|et|süda}}
+* {{trad|fo|hjarta}}
+* {{trad|fi|sydän}}
+* {{trad|vls|hart|erte}}
+* {{trad|fr|cœur|coeur}}
+* {{trad|ksh|Hätz}}
+* {{trad|fy|hert}}
+* {{t|fur|cûr|m}}
+* {{trad|gd|cridhe}}
+* {{trad|gl|corazón}}
+* {{trad|cy|calon}}
+* {{trad|gll|qoerr}}
+* {{trad|ka|გული}}
+* {{trad|el|καρδιά}} (cardiá)
+* {{trad|grc|καρδία}}
+* {{trad|gn|ñe'ã|korasõ}}
+* {{trad|gu|હૃદય|દિલ}}
+* {{trad|ht|kè}}
+* {{trad|he|לב}}
+* {{trad|hi|हृदय|दिल|जिगर}}
+* {{trad|hit|kardi}}
+* {{t|nl|hart|n}}
+* {{trad|hu|szív}}
+* {{trad|io|kordio}}
+* {{trad|yi|האַרץ}}
+* {{trad|ine|kerd}}
+* {{trad|id|hati|jantung}}
+* {{trad|en|heart}}
+* {{trad|ia|corde}}
+* {{trad|ga|croí}}
+* {{trad|is|hjarta}}
+* {{t|it|cuore|m}}
+* {{trad|lad|korason}}
+* {{trad|ja|心|心臓}}
+* {{t|jv|ꦗꦤ꧀ꦠꦸꦁ||[[jantung]]}}
+* {{t|lo|ໃຈ||chai}}
+{{tradmeio}}
+* {{trad|la|cor}}
+* {{trad|lv|sirds}}
+* {{trad|li|hert}}
+* {{trad|ln|motema}}
+* {{trad|lt|širdis}}
+* {{trad|lmo|coeur|cör}}
+* {{trad|lb|Häerz}}
+* {{trad|mk|срце}}
+* {{trad|ml|ഹൃദയം}}
+* {{trad|ms|jantung}}
+* {{trad|mg|fo}}
+* {{trad|mt|qalb}}
+* {{trad|mi|manawa}}
+* {{trad|mr|हृदय|ह्रुदय}}
+* {{trad|mas|oltau}}
+* {{trad|min|jantuang}}
+* {{trad|mwl|coraçon}}
+* {{trad|mdf|sedi}}
+* {{trad|mn|зүрх}}
+* {{trad|nah|yōllōtl}}
+* {{trad|nap|core}}
+* {{t|aii|ܠܒܐ||libbā}} {{m}}
+* {{trad|roa-nor|tchoeu}}
+* {{t|no|hjerte|n}}
+* {{t|nn|hjarte|n}}
+* {{trad|plq|kart}}
+* {{t|pi|hadaya|n}}
+* {{trad|ps|زړه}}
+* {{trad|fa|قلب}}
+* {{trad|pms|cheur}}
+* {{trad|pl|serce}}
+* {{trad|pa|ਦਿਲ}}
+* {{trad|qu|sunqu|sonqo}}
+* {{trad|kmb|muxima}}
+* {{trad|ky|жүрөк}}
+* {{trad|ro|inimă}}
+* {{t|ru|сердце|n|serdtse}}
+* {{trad|smn|váimu}}
+* {{trad|sjd|кӯттҍк}}
+* {{trad|se|váibmu}}
+* {{trad|sm|fatu}}
+* {{trad|sg|bē}}
+* {{trad|sa|हृदयं}}
+* {{trad|sro|coru}}
+* {{trad|sr|срце}}
+* {{trad|scn|cori}}
+* {{trad|sid|wodana}}
+* {{trad|sw|moyo}}
+* {{trad|sv|hjärta}}
+* {{trad|su|jantung}}
+* {{trad|tl|puso}}
+* {{trad|th|หัวใจ}}
+* {{trad|ta|இதயம்}}
+* {{trad|tet|fuan}}
+* {{trad|tn|pelo}}
+* {{trad|tr|kalp|yürek|gönül}}
+* {{trad|tk|йүрек}}
+* {{t|uk|серце||sertse}}
+* {{trad|ug|يۈرەك}}
+* {{trad|umb|utima}}
+* {{trad|ur|قلب}}
+* {{trad|uz|юрак|yurak}}
+* {{trad|wa|coûr}}
+* {{trad|vec|còre}}
+* {{trad|vi|tim}}
+* {{trad|vo|lad}}
+{{tradfim}}
+
+=={{etimologia|pt}}==
+{{etimo2|roa-gpm|coraçon|pt|ponto=não}} (ou {{etimo|roa-gpm|coraçom}}) através do latim vulgar *corātiō, *corātiōne ou *coraceōne, de uma derivação do {{etm|la|pt}} ''[[cor#latim|cor]]'' (“coração”) com o sufixo ''[[-ção#português|-ção]]'', do proto-itálico *kord, do proto-indo-europeu *ḱḗr ~ *ḱr̥d-.
+: Cognatos incluem o espanhol ''[[corazón#espanhol|corazón]]'', francês ''[[cœur#francês|cœur]]'', italiano ''[[cuore#italiano|cuore]]'', romeno ''cord'', inglês ''[[heart#inglês|heart]]'', alemão ''[[Herz#alemão|Herz]]'', islandês ''[[hjarta#islandês|hjarta]]'', grego antigo ''[[καρδία#grego antigo|καρδία]]'' (''kardía''), sânscrito ''हृद्'' (''hṛ́d''), galês ''craidd'' (“centro”), armênio ''սիրտ'' (''sirt''), russo ''се́рдце'' (''sérdce'') e lituano ''širdis''.
+
+===Grafia histórica===
+* {{escopo2|Galego-Português}} [[coraçon]] / [[coraçom]]
+
+==Ver também==
+===No Wikcionário===
+{{verTambém.Ini}}
+* [[apertar]]
+* [[artéria]]
+* [[bater]]
+* [[cardial]]
+* [[cardiologista]]
+* [[cardioscópio]]
+{{verTambém.NovaColuna}}
+* [[cardiotirotoxicose]]
+* [[cardiólogo]]
+* [[coração-de-pomba]]
+* [[corações]]
+* [[eletrocardiografia]]
+* [[eletrocardiógrafo]]
+{{verTambém.NovaColuna}}
+* [[eletrocardiograma]]
+* [[fibrilação atrial]]
+* [[órgão]]
+* [[tefe-tefe]]
+* [[veia]]
+{{verTambém.Fim}}
+
+===Na Wikipédia===
+* {{interwiki|w|pt|coração}}
+
+===No Wikiquote===
+* {{interwiki|q|pt|coração}}
+
+==Ligações externas==
+* {{Aulete}}
+* {{Michaelis}}
+* {{DicioAberto}}
+* {{DLPO}}
+* {{Infopédia}}
+* {{PLP}}
+* {{VOLPABL}}
+
+[[Categoria:Substantivo (Português)]]
+[[Categoria:Anatomia (Português)]]
+[[Categoria:Entrada com imagem (Português)]]

@@ -1,0 +1,72 @@
+[[File:Banque Populaire Strasbourg.JPG|thumb|l'esterno di una  banca; a destra della fotografia si nota un cliente che preleva da un [[bancomat]]]]
+== {{-it-}} ==
+{{-sost-|it}}
+{{Pn | w}} ''f simg'' {{Linkp|banche}}
+# {{Term|diritto|it}} {{Term|economia|it}} {{Term|commercio|it}} {{Term|finanza|it}} [[impresa]] [[commerciale]] [[pubblica]] o [[privata]] con l'[[obiettivo]] di [[raccogliere]]  e [[cedere]], in [[cambio]] di [[interessi]] e [[commissioni]], [[valori]] e [[risparmi]] in [[forma]] di [[pagamenti]] e [[prestiti]]
+# {{Est}} {{Nodef|it}} 
+#  [[mobile]] per sedersi
+
+{{-sill-}}
+; bàn | ca
+
+{{-pron-}}
+{{IPA|/ˈbaŋka/}}
+
+{{-etim-}}
+dal [[germanico]] ''[[bank]]'' ossia [[panca]]
+
+{{-sin-}}
+* [[banco]], cassa di risparmio, [[istituto di credito]], istituto finanziario, [[monte]]
+*[[archivio]], [[deposito]], [[raccolta]]
+
+{{-der-}}
+* [[bancassicurativo]]
+
+{{-rel-}}
+* [[posta]]
+
+{{-prov-}}
+*''banca dati'': archivio informatico
+*''biglietto di banca'': banconota
+
+{{-trad-}}
+{{Trad1|istituzione finanziaria}}
+:*{{ar}}:  [[بنك]] (benk)
+:*{{cs}}:  [[banka]] ''f''
+:*{{da}}:  [[bank]] ''c''
+:*{{ku}}:  [[banq]]
+:*{{fr}}:  [[banque]] ''f''
+:*{{io}}:  [[banko]]
+:*{{en}}:  [[bank]]
+:* {{la}}: [[argentaria]]
+:*{{kk}}:  [[жаға]]
+:*{{kk-lat}}: [[jağa]]
+{{mid}}
+:*{{nl}}:  [[bank]]
+:*{{fa}}: [[بانک]] (bank)
+:*{{pt}}:  [[banco#Portoghese|banco]] ''m''
+:*{{ru}}:  [[банк]] ''m''
+:*{{sk}}:  [[banka]] ''f''
+:*{{sl}}:  [[banka]] ''f''
+:*{{es}}:  [[banco#Spagnolo|banco]] ''m''
+:*{{sv}}:  [[bank]] ''c''
+:*{{de}}:  [[Bank]] ''f''
+:*{{hu}}:  [[bank]]
+{{Trad2}}
+
+{{-ref-}}
+* {{Fonte|trec}}
+* Enciclopedia [http://www.treccani.it/enciclopedia/ricerca/Banca/ Treccani]
+* {{Fonte|gar}}
+* {{Fonte|sape}}
+* {{Fonte|eti}}
+* {{Fonte|hoep}}
+* {{Fonte|sabco }}
+* {{Fonte|dizit}}
+* {{Fonte|itfd}}
+* {{Fonte|dem}}
+* {{Fonte|rep}}
+* AA.VV, ''Dizionario sinonimi e contrari'', Mariotti, 2006, pagina 78
+
+== Altri progetti ==
+{{Interprogetto|w|q|preposizione=sulla|commons=Category:Banks}}

@@ -137,7 +137,7 @@
 			></pre>
 	{:else if "BlockQuote" in b}
 		<blockquote class="border-secondary/30 mb-8 border-l-4 pl-6">
-			{#each (b.BlockQuote as Array<Record<string, unknown>>) as subBlock, subIdx (subIdx)}
+			{#each b.BlockQuote as Array<Record<string, unknown>> as subBlock, subIdx (subIdx)}
 				{@const subSpans = getBlockSpans(subBlock)}
 				<p class="font-body text-body-md text-on-surface-variant mb-2 italic">
 					{#each subSpans as span (span.text + subIdx)}

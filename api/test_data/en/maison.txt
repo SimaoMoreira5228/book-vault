@@ -1,0 +1,119 @@
+{{also|Maison|maîson}}
+==French==
+
+===Alternative forms===
+* {{alt|fr|maisonne||Missouri}}
+
+===Etymology===
+{{inh+|fr|frm|-}}, from {{inh|fr|fro|maisun}}, {{m|fro|meson}}, inherited from {{inh|fr|la|mānsiō|mānsiōnem|t=abode, home, dwelling}}, from {{m|la|maneō|t=remain, stay}} (whence also {{m+|fr|manoir}}).
+
+{{doublet|fr|mansion}}, a borrowing.
+
+===Pronunciation===
+* {{fr-IPA}}
+* {{audio|fr|Fr-une maison-fr-ouest.ogg|a=France,West}}
+* {{audio|fr|LL-Q150 (fra)-LoquaxFR-maison.wav|a=<<France>> (<<Vosges>>)}}
+* {{audio|fr|LL-Q150 (fra)-Poslovitch-maison.wav|a=<<France>> (<<Vosges>>)}}
+* {{audio|fr|LL-Q150 (fra)-WikiLucas00-maison.wav|a=<<France>> (<<Lyon>>)}}
+* {{audio|fr|LL-Q150 (fra)-Jérémy-Günther-Heinz Jähnick-maison.wav|a=<<France>> (<<Somain>>)}}
+* {{rhymes|fr|ɔ̃|s=2}}
+* {{homophones|fr|maisons}}
+* {{hyph|fr|mai|son}}
+
+===Noun===
+{{fr-noun|f}}
+
+# [[house]]
+
+====Derived terms====
+{{col3|fr
+|à la maison
+|aux frais de la maison
+|employé de maison
+|fait maison
+|gros comme une maison
+|Maison Blanche
+|maison close
+|maison d'arrêt
+|maison d'hôte
+|maison d'édition
+|maison de campagne
+|maison de correction
+|maison de cour
+|maison de crapaud
+|maison de disque
+|maison de disques
+|maison de jeu
+|maison de maître
+|maison de passe
+|maison de presse
+|maison de redressement
+|maison de repos
+|maison de retraite
+|maison de tolérance
+|maison du tourisme
+|maison en bande
+|maison mère
+|maisonnette
+|maisonnée
+|maître de maison
+|maîtresse de maison
+|parler de corde dans la maison d'un pendu
+|pâté de maisons
+|société à maison
+|vin de maison
+}}
+
+====See also====
+{{col3|fr|demeure|domicile}}
+
+===Adjective===
+{{fr-adj|inv=1}}
+
+# [[homemade]]
+#: {{syn|fr|domestique|fait maison}}
+#: {{uxi|fr|une grande tarte '''maison'''|a big '''home-made''' pie}}
+#: {{uxi|fr|spécialité '''maison'''|speciality '''of the house'''}}
+# {{lb|fr|employment}} [[in-house]]
+#: {{uxi|fr|La compagnie a un département de traduction '''maison'''.|The company has an '''in-house''' translation department.}}
+# {{lb|fr|colloquial|intensifier}} [[first-rate]], [[top-notch]]
+#: {{uxi|fr|une engueulade '''maison'''|a '''hell of a''' telling off}}
+
+===Further reading===
+* {{R:fr:TLFi}}
+
+===Anagrams===
+* {{anagrams|fr|a=aimnos|aimons}}
+
+{{C|fr|Home|Housing}}
+
+==Middle French==
+
+===Etymology===
+From {{inh|frm|fro|maisun}}, {{m|fro|meson}}.
+
+===Noun===
+{{frm-noun|f}}
+
+# [[house]] (building intended to be lived in)
+# [[house]]; [[dynasty]]
+#* {{quote-book|frm|year=1488|author=Jean Dupré|title=Lancelot du Lac|passage=il dist qu'il estoit de la '''maison''' au Roy Artus|page=[http://gallica.bnf.fr/ark:/12148/bpt6k111060r/f31.item.zoom 31]|translation=he says he was from the '''House''' of King Arthur}}
+
+====Descendants====
+* {{desc|fr|maison}}
+
+==Spanish==
+
+===Etymology===
+{{ety|es|:ubor|fr:maison|text=+|tree=1}} {{doublet|es|mansión}}.
+
+===Pronunciation===
+{{es-pr|mesón|hyph=+}}
+
+===Noun===
+{{es-noun|f|maisons}}
+
+# [[fashion house]]
+
+====Usage notes====
+{{es-unadapted}}

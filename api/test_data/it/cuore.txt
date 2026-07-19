@@ -1,0 +1,160 @@
+== {{-it-}} ==
+[[File:Heart rotating.gif|thumb|animazione che raffigura la posizione del  cuore]]
+[[File:Anatomy Heart English Tiesworks.jpg|480px|thumb|il cuore]]
+
+{{-sost-|it}}
+{{Pn|w}} ''m sing'' {{Linkp|cuori}}
+
+[[File:01 of hearts A.svg|thumb|150px|un [[asso]] di '''cuori''']]
+# {{Term|anatomia|it}} [[organo]] [[muscolare]], nei [[vertebrati]], [[cavo]] e a forma di [[cono]] situato nell'[[uomo]] tra i [[polmoni]], [[sterno]] e [[diaframma]], con la [[punta]] volta verso [[sinistra]] che contraendosi [[ritmicamente]] è [[centro]] [[motore]] dell'[[apparato]] [[circolatorio]]
+#* ''battito del {{Pn}}''
+#* ''malattia al {{Pn}}'' 
+# {{Fig}} parte del [[petto]] dove è situato il cuore
+#* ''stringersi qualcuno sul {{Pn}}''
+#* ''giurando, portò la mano al {{Pn}}''
+# {{Term|gastronomia|it}} [[muscolo]] [[cardiaco]] degli animali abbattuti fornito come [[alimento]]
+# {{Fig}} [[dimora]] dei [[sentimenti]], dei [[moti]] dell'animo, parte più [[intima]] dell'[[animo]] [[umano]]
+#* ''persona di {{Pn}}'', [[persona]] [[buona]] d'[[animo]], [[generosa]]
+#* ''a {{Pn}} aperto'', con tutta [[sincerità]]
+#* ''aprire il '''cuore''''', compiere [[buone]] [[azioni]] oppure [[passione]]
+#* ''toccare il {{Pn}}'', [[commuoversi]], [[intenerirsi]] 
+#* ''avere il {{Pn}} di ghiaccio'', non lasciarsi [[intenerire]]
+#* ''mettersi il {{Pn}} in pace'', [[arrendersi]], [[rassegnarsi]]
+#* ''avvertire un tuffo al {{Pn}}'', provare un'[[intensa]] e [[inaspettata]] [[emozione]]
+# {{Est}} [[oggetto]] della forma [[analoga]] a quella del cuore
+#* ''anello a {{Pn}}''
+# {{Fig}} [[centro]], parte più interna ed [[essenziale]] di qualcosa
+#* ''il [[w:Mitte|Mitte]] è il {{Pn}} di [[w:Berlino|Berlino]]''
+#* ''il {{Pn}} dell'estate'', nel [[pieno]] di questa [[stagione]]
+# {{Fig}} [[incoraggiare]] qualcuno, avere [[fierezza]], [[forza]] [[morale]]
+#* ''avere un {{Pn}} di leone'', essere molto [[coraggioso]]
+#* ''non avere il {{Pn}} di fare qualcosa'', non avere il [[coraggio]] di fare qualcosa
+#* ''dare {{Pn}}'', [[incoraggiare]]
+# {{Glossa|specialmente al plurale}} uno dei quattro [[semi]] delle [[carte]] da [[gioco]] francesi, [[rappresentato]] da un cuore di [[colore]] [[rosso]]
+#* ''asso di '''cuori'''''
+# {{Fig}} [[tenacia]], utilizzato principalmente nel [[linguaggio]] [[sportivo]]
+#*dare il {{Pn}}, fare di tutto per qualcosa
+# {{Fig}} [[sede]] di [[aspettative]], [[desideri]], [[speranze]]
+#* ''avere in {{Pn}} di fare una cosa'', avere desiderio di fare una cosa
+# {{Fig}} [[persona]] alla quale si dà [[attributi]]
+#* ''{{Pn}} solitario'', [[persona]] che non ha un [[compagno]] di [[vita]]
+#* '''''cuore''''' ''semplice'', [[animo]] [[innocente]], [[ingenuo]]
+# {{Term|medicina|it}} [[cardiopatie]], [[malattie]] del cuore, [[cardiaco]], chi soffre di [[cardiopatia]], [[cardiologico]]
+#* ''{{Pn}} artificiale'', [[ingegno]] sostituente del cuore
+# {{Term|religione|it}} [[sacro]] [[cuore]] del [[Cristo]] e divenuto, per i [[Cattolici]], [[simbolo]] del suo [[amore]] per l'[[umanità]]
+# {{Term|araldica|it}} posizione corrispondente al punto centrale dello [[scudo]]: [[abisso]] 
+[[File:Campbell of Glenlyon arms.svg|thumb|150px|[[uno]] [[stemma]] [[araldico]] avente un '''cuore''' nella [[posizione]] del '''cuore''']]
+
+{{-sill-}}
+; cuò | re
+
+{{-pron-}}
+{{Audio|LL-Q652 (ita)-LangPao-cuore.wav|/ˈkwɔːre/}}
+
+{{-etim-}}
+dal [[latino]] ''[[cor|cŏr]]''
+
+{{-quote-}}
+{{Quote
+|Beati i puri di '''cuore''', perché vedranno Dio.|[[w:Vangelo secondo Matteo|Vangelo secondo Matteo]] {{Passo biblico|Mt|5,8}}, testo CEI 2008}}
+{{Quote
+|Il cuore ha le sue ragioni che la ragione non conosce|[[q:Blaise Pascal|Blaise Pascal]]}}
+
+{{-sin-}}
+* muscolo cardiaco
+* {{Est}} [[petto]], [[seno]]
+*{{Fig}} [[ardire]], [[coraggio]], [[nobiltà]]
+* [[amore]],  [[bontà]], [[carità]],  [[generosità]], [[pietà]], [[sensibilità]], [[sentimento]], [[umanità]]
+*[[anima]], [[animo]], [[coscienza]], [[mente]]
+* {{Fig}}     [[compassione]],  
+* [[affetto]], ;  [[ardimento]]
+*''(di oggetto, alimento, città)'' [[nucleo]], [[centro]], [[nocciolo]], [[sostanza]], [[essenza]], parte vitale
+* {{Term|araldica|it}} [[abisso]]
+
+{{-ant-}}
+* {{Fig}} [[vigliaccheria]], [[viltà]]
+*[[cattiveria]], [[crudeltà]], [[fedddezza]], [[ragione]], [[spietatezza]]
+* {{Fig}} [[indifferenza]], [[insensibilità]], [[durezza]]
+* [[paura]]
+*''(di oggetto, alimento, città)''  parte esterna, [[superficie]], [[periferia]]
+
+{{-der-}}
+*[[accordare]], [[batticuore]], [[coraggio]], [[coraggiosamente]], [[coraggioso]], [[corata]],  [[coratella ]], [[cordiale]], [[cordialità]], [[cordialmente]], [[cordoglio]],  [[cuorcontento]], [[cuoriforme]], [[mini-cuore]], [[strappacuore]], [[tremacuore]]
+* {{Est}} [[cardiaco]]
+
+{{-var-}}
+* {{Term|popolare|it}} {{Term|poetico|it}} [[core]]
+
+{{-alter-}}
+* {{Dim}} [[cuoricino]]
+ 
+{{-prov-}}
+* ''affari di cuore''
+* ''aprire il cuore''
+* ''avere in cuore''
+*''[[avere una spina nel cuore]]''
+* ''[[colpo al cuore]]'': sensazione intensa e [[imprevista]]
+*''[[mettersi il cuore in pace]]'': smettere di sperare
+*''parlare con il cuore in mano''
+*''[[prendere a cuore]]'': occuparsi di un problema altrui
+*''[[spezzare il cuore]]''
+*''[[stare a cuore]]'': [[premere]], [[interessare]]
+*''[[toccare il cuore]]''
+*''[[tuffo al cuore]]'':  un [[trasalimento]]
+* ''[[cuore  del legno]] '': [[durame]],   gli "intarsi naturali" del legno o proprio il "nucleo" più interno del tronco degli alberi
+* ''al {{Pn}} non si comanda'': i [[sentimenti]] sono irrazionali, in particolare quelli d'amore
+* ''[[senza cuore]]'': senza considerazione né premura per gli altri, indifferente
+* ''te lo dico di tutto {{Pn}}...'': secondo un giudizio critico, in modo deciso, dire apertamente qualcosa a qualcuno che non si è comportato correttamente... in alternativa derivandone un'espressione con l'avverbio "''[dire qualcosa a qualcuno] [[spassionatamente]]''", però con indifferenza e talvolta persino disprezzo
+
+{{-trad-}}
+{{Trad1|{{Term|anatomia|it}} organo muscolare}}
+:*{{ar}}: [[القلب]]
+:*{{br}}: [[kalon]] ''f''
+:*{{cs}}: [[srdce]] ''n''
+:*{{zh}}: [[心脏]]
+:*{{da}}: [[hjerte]] ''n''
+:*{{et}}: [[süda]]
+:*{{fi}}: [[sydän]]
+:*{{fr}}: [[coeur]] ''m''
+:*{{ja}}: [[中心]]
+:*{{grc}}: [[καρδία]]
+:*{{en}}: [[heart]]
+{{mid}}
+:*{{la}}: [[cor]]
+:*{{lmo}}: [[coeur]]
+:*{{nl}}: [[hart]]
+:*{{pl}}: [[serce]]
+:*{{pt}}: [[coração]] ''m''
+:*{{ru}}: [[сердце]]
+:*{{scn}}: [[cori#Siciliano|cori]] ''m''
+:*{{es}}: [[corazón]] ''m''
+:*{{sv}}: [[hjärt]] ''n''
+:*{{de}}: [[Herz]] ''n''
+:*{{tr}}: [[kalp]]
+{{Trad2}}
+
+{{Trad1|{{Fig}} [[centro]], [[nucleo]]}}
+:*{{cs}}: [[srdce]] ''n''
+:* {{en}}:[[core]], [[kernel]], [[essence]], [[gist]]
+{{Trad2}}
+
+{{-ref-}}
+* {{Fonte|link=http://web.archive.org/web/20121028161417/http://www.ok-salute.it/dizionario/medico/cuore.shtml|opera=Dizionario medico su Oggi.it, consulenza scientifica Fondazione Umberto Veronesi, archiviato su web.archive.org|testo=cuore}}
+* {{Fonte|dizit}}
+* {{Fonte|sabco}}
+* {{Fonte|sin-co}}
+* {{Fonte|hoep}}
+* {{Fonte|eti}}
+* {{Fonte|trec}}
+* {{Fonte|trec-enc}}
+* {{Fonte|sape}}
+* {{Fonte|gar}}
+*Devoto/Oli, ''Il dizionario della lingua italiana'', edizione cartacea 2000-2001 , Le Moniier, pagina 567
+*AA.VV., ''Dizionario sinonimi e contrari'',  Mariotti, 206, pagina 161
+* {{Term|araldica|it}} ''Dizionario araldico, di Piero Guelfi Camajani - edito a Milano nel 1940''
+* {{Term|araldica|it}} ''[http://www.archiviodistato.firenze.it/ceramellipapiani/static/figure.htm Glossario dell'Archivio di Stato di Firenze]''
+** {{Fonte|itfd}}
+
+== Altri progetti ==
+{{Interprogetto|w1|commons1=Heart|q|q_preposizione=sul
+|w2=Cuore (araldica)|etichetta2=cuore (araldica)}}

@@ -1,0 +1,74 @@
+==Galician==
+
+===Noun===
+{{gl-reinteg-noun|m}}
+
+# {{gl-reinteg sp|corazón}}
+
+===References===
+* {{R:gl:Estraviz}}
+
+==Portuguese==
+{{wp|pt:}}
+
+[[Image:Heart numlabels.svg|thumb|Diagrama do coração humano.]]
+[[Image:Corazón.svg|thumb|Símbolo do coração.]]
+
+===Etymology 1===
+From {{inh|pt|roa-opt|coraçon}}, from {{inh|pt|la-vul|*corāceōnem}}, derived from {{der|pt|la|cor}}, from {{der|pt|itc-pro|*kord}}, from {{der|pt|ine-pro|*ḱḗr}} ~ {{m|ine-pro||*ḱr̥d-}}.
+
+Compare {{cog|gl,es|corazón}}, {{cog|mxi|ڧرجون|tr=qurəjūn}}.
+
+====Pronunciation====
+{{pt-IPA}}
+* {{IPA|pt|/kɔ.ɾaˈsɐ̃w̃/|a=Northeast Brazil}}
+* {{IPA|pt|/ku.ɾaˈsɐ̃w̃/|a=Rural Central Brazil}}
+* {{audio|pt|pt-br-coração.ogg|a=Brazil}}
+* {{audio|pt|pt-pt-coração.ogg|a=Portugal}}
+* {{rhymes|pt|ɐ̃w̃}}
+* {{hyph|pt|co|ra|ção}}
+* {{hmp|pt|curação|qq1=Portugal|Curação|qq2=Portugal}}
+
+====Noun====
+{{pt-noun|m}}
+
+# [[heart]] {{gloss|organ of the body}}
+#* {{quote-book|pt|year=2003|author=w:J. K. Rowling; w:Lia Wyler|title=Harry Potter e a Ordem da Fênix|publisher=Rocco|page=434
+|passage=O '''coração''' de Harry batia acelerado agora.|t=Now, Harry's '''heart''' was beating very fast.}}
+# {{lb|pt|figurative}} [[heart]], [[emotions]], [[kindness]], [[spirit]]
+# {{lb|pt|figurative}} [[center]], [[core]]
+# {{lb|pt|vocatively}} [[sweetheart]] {{gl|term of endearment}}
+#* {{quote-song|pt|author=w:Caetano Veloso|title=Muitos Carnavais|album=w:Muitos Carnavais|format=LP, K7|publisher={{w|Phonogram Inc.|Phonogram}}|year=1977|text={{q-g|Vamos}} carnavalizar a vida, '''coração'''|t={{q-g|Let’s}} make life into {{m|pt||Carnaval}}, '''sweetheart'''}}
+
+=====Quotations=====
+{{see citations|pt}}
+
+=====Descendants=====
+* {{desc|pov|korson}}
+* {{desc|kea|kurason}}
+* {{desc|idb|corção|ll=Daman and Diu}}
+* {{desc|pap|kurason}}
+* {{desc|kok|कुरासांव|bor=1}}
+
+===Etymology 2===
+{{ety|pt|:af|corar<t:to paint, to dye><alt:corar>|-ção|text=+|tree=1}}
+
+====Pronunciation====
+{{pt-IPA|còração}}
+* {{hyphenation|pt|co|ra|ção}}
+
+====Noun====
+{{pt-noun|f}}
+
+# [[blushing]]
+# [[bleaching]]
+# [[coloration]]
+
+=====Quotations=====
+{{see citations|pt}}
+
+===Further reading===
+* {{R:pt:Aulete}}
+* {{R:pt:Priberam}}
+
+{{C|pt|Anatomy}}

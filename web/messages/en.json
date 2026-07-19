@@ -280,6 +280,7 @@
 	"vocab_no_definitions": "No definitions found.",
 	"vocab_add": "Add to Vocabulary",
 	"vocab_added": "Added!",
+	"vocab_definition_language_auto": "Auto",
 	"reader_lookup": "Look up",
 	"review_title": "Review",
 	"review_subtitle": "Spaced Repetition",

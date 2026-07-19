@@ -1,0 +1,162 @@
+== {{lengua|es}} ==
+{{pron-graf|1audio1=LL-Q1321 (spa)-Rodrigo5260-hablar.wav|1aunota1=Perú}}
+[[Archivo:Real-time MRI - Speaking (English).ogv|thumb|[1]]]
+[[Categoría:ES:Voces de animales]]
+
+=== Etimología 1 ===
+{{etimología|osp|fablar}}, y este {{etim|la|fabulor|alt=fābulor, fābulārī}} ("[[conversar]]", "[[fabular]]"),  {{etim|la|fabula}}, derivado  {{etim|la|for}}, en última instancia  {{etim|ine-pro|*bʰeh₂-}} ("hablar"). Compárese el asturiano, gallego y portugués {{l+|pt|falar}}.
+
+==== {{verbo intransitivo|es}} ====
+;1: {{plm|expresar}} algo usando [[palabra]]s de viva voz.
+{{relacionado|articular|decir|declarar|enunciar|comunicar|manifestar|proferir|pronunciar}}.
+;2: Emitir las [[ave]]s [[w:Psittacidae|psitácidas]] (como el loro o papagayo) un sonido similar a la voz humana..
+;3: {{plm|referirse}} a algo y desarrollar un tema, sea por escrito, o intercambiando comunicación sobre un tema.
+{{sinónimos|tratar}}.
+{{relacionado|charlar|comentar|conversar|dialogar|disertar|platicar|razonar}}.
+{{ejemplo|El libro ''habla'' de la vida rural.}}
+{{ejemplo|Estuvimos ''hablando'' de política.}}
+;4: Ponerse [[de acuerdo]] en algo a través del [[diálogo]].
+{{uso|utcp}}: ''[[hablarse]]''.
+{{relacionado|acordar|concertar|convenir|discutir}}.
+{{ejemplo|(pronominal) Los enemigos ''se hablaron'' y firmaron la paz.}}
+{{ejemplo|(intransitivo) Volvieron a la huelga porque la empresa no cumplió lo que ''se había hablado'' en la concertación.}}
+;5: {{plm|manifestar}} una impresión general o [[emitir]] un juicio sobre algo o alguien.
+{{relacionado|conceptuar|criticar|opinar|juzgar|murmurar}}.
+{{ejemplo|No es buena idea ''hablar'' mal de la gente.}}
+{{ejemplo|Me ''habló'' muy bien de ti.}}
+;6: {{plm|dirigirse}} a alguien, [[comunicar]] algo a alguien verbalmente.
+{{ejemplo|La profesora habló a sus estudiantes.}}
+;7: Tener determinado nivel de eficacia o estilo en el uso del idioma. {{plm|comunicarse}} de cierta manera.
+{{sinónimo|expresarse|nota=bien o mal}}.
+{{ejemplo|La senadora ''habla'' bien y por eso convence.}}
+{{ejemplo|Este niño ''habla'' como los pícaros.}}
+;8: Comunicarse con alguien con poder en favor o de parte de otra persona.
+{{uso|a menudo va seguido de la preposición ''por''}}
+{{relacionado|abogar|interceder|representar|rogar}}.
+{{ejemplo|La abogada ''habló'' por su defendido.}}
+;9: Dar a entender algo usando cualquier medio.
+{{relacionado|explicarse|expresarse}}.
+{{ejemplo|Me ''habló'' por señas.}}
+;10: Llevar relaciones [[romántico|románticas]] o [[sexual]]es con otra persona.<ref name="drae">{{DRAE2001}}</ref>
+;11: {{impropia|Se emplea para indicar la eficacia expresiva de un medio artístico, como hacer sonar un instrumento musical o manejar bien los colores}}.
+{{uso|figurado}}.
+{{ejemplo|Hace ''hablar'' al piano con su virtuosismo.}}
+{{ejemplo|Sus pinturas ''hablan'' por la fuerza del color.}}
+
+==== {{verbo transitivo|es}} ====
+;12: Usar un [[idioma]] para comunicarse.
+{{relacionado|saber|nota=un idioma}}.
+{{ejemplo|María ''habla'' italiano.}}
+;13: {{plm|decir}} ciertas cosas de modo prolongado o frecuente.
+{{ejemplo|Mi vecino ''habla'' maravillas de su trabajo, pero ''habla'' pestes de su jefe.}}
+
+==== Locuciones ====
+{{trad-arriba|Locuciones con «hablar»}}
+* [[dar que hablar]]
+* [[hablando del rey de Roma]]
+* [[hablar a bocanadas]]
+* [[hablar a borbotones]]
+* [[hablar a chorretadas]]
+* [[hablar a chorros]]
+* [[hablar a coros]]
+* [[hablar a la mano]]
+* [[hablar al caso]]
+* [[hablar al gusto]]
+* [[hablar al paladar]]
+* [[hablar alto]]
+* [[hablar bien criado]]
+* [[hablar claro]]
+* [[hablar como una cotorra]]
+* [[hablar como un libro]]
+* [[hablar como un loro]]
+* [[hablar como un perico]]
+* [[hablar con Dios]]
+* [[hablar con los ojos]]
+* [[hablar consigo]]
+* [[hablar de broma]]
+* [[hablar de bueyes perdidos]]
+* [[hablar de burlas]]
+* [[hablar de hilván]]
+* [[hablar de la mar]]
+* [[hablar de manos]]
+* [[hablar de memoria]]
+* {{l|es|hablar de papo}}
+* [[hablar de veras]]
+* [[hablar de volatería]]
+* [[hablar en común]]
+* [[hablar en cristiano]]
+* [[hablar en broma]]
+* [[hablar en general]]
+* [[hablar en parábolas]]
+* [[hablar en plata]]
+* [[hablar en romance]]
+* [[hablar entre dientes]]
+* [[hablar entre sí]]
+* [[hablar fuerte]]
+* [[hablar gordo]]
+* [[hablar hasta por los codos]]
+* [[hablar incendios]]
+* [[hablar las paredes]]
+* [[hablar las piedras]]
+* [[hablar paja]]
+* [[hablar periquitos]]
+* {{l|es|hablar por demás}}
+* {{l|es|hablar por el campeonato}}
+* {{l|es|hablar por hablar}}
+* [[hablar por la mano]]
+* [[hablar por las espaldas]]
+* [[hablar por los codos]]
+* [[hablar recio]]
+* [[mentir más que hablar]]
+* [[ni hablar]]
+* [[ni hablar del peluquín]]
+{{trad-abajo}}
+
+==== Conjugación ====
+{{es.v}}
+
+==== Información adicional ====
+{{cognados|fábula|confabular}}
+{{derivad|bienhablado|habla|hablada|habladera|hablado|hablador|habladuría|hablanchín|hablante|hablantina|hablantinoso|hablantín|hablilla|hablista|hablistán|malhablado}}.
+
+==== Véase también ====
+* [[hablarse]]
+{{w}}
+{{Wikiquote}}
+
+==== Traducciones ====
+{{trad-arriba}}
+{{t|de|a1=1,12|t1=sprechen|a2=1|t2=reden}}
+{{t|da|a1=1,12|t1=tale}}
+{{t|ast|a1=1,12|t1=falar}}
+{{t|bg|a1=1|t1=говоря|tl1=[[govorya]]|t2=разговарям|t3=приказвам}}
+{{t|rmq|a1=1|t1=naquerar}}
+{{t|ca|a1=1,12|t1=parlar}}
+{{t|sl|a1=1,12|t1=govoriti}}
+{{t|eo|t1=paroli}}
+{{t|eu|a1=1,12|t1=hitz egin}}
+{{t|ext|a1=1,12|t1=palral|t2=habral}}
+{{t|fr|a1=1,12|t1=parler}}
+{{t|gl|a1=1,12|t1=falar}}
+{{t|el|a1=1|t1=μιλάω|t2=μιλώ}}
+{{t|he|t1=דבר}}
+{{t|hu|t1=beszél|t2=szól}}
+{{t|en|a1=1, 3-6|t1=talk|a2=1,12|t2=speak}}
+{{t|ia|a1=1,12|t1=parlar}}
+{{t|is|t1=tala}}
+{{t|it|a1=1,12|t1=parlare}}
+{{t|ja|a1=1,12|t1=話す|tl1=hanasu}}
+{{t|lad|a1=1,12|t1=favlar|a2=1|t2=avlar}}
+{{t|arn|a1=1,12|t1=dungun}}
+{{t|yua|a1=1|t1=tʼaan|a2=12|t2=tʼan}}
+{{t|mn|i1=s|t1=ярих}}
+{{t|nb|a1=1,12|t1=snakke}}
+{{t|pl|a1=1-12|t1=mówić}}
+{{t|pt|a1=1,12|t1=falar}}
+{{t|rap|i1=s|t1=vananga}}
+{{t|sa|i1=s|t1=वदति|t2=भाषते|t3=भाषति}}
+{{t|sv|a1=1|t1=tala}}
+{{trad-abajo}}
+
+== Referencias y notas ==
+<references />

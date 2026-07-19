@@ -37,7 +37,7 @@ async fn main() {
 
 	let mut dict_service = book_vault::language::dictionary::DictionaryService::new();
 	dict_service.register(Box::new(book_vault::language::dictionary::FreeDictionaryProvider));
-	dict_service.register(Box::new(book_vault::language::dictionary::WiktionaryProvider));
+	dict_service.register(Box::new(book_vault::language::dictionary::WiktionaryProvider::new()));
 
 	let lt_url = &config.integrations.hosted_services.libretranslate_url;
 	if !lt_url.is_empty() {

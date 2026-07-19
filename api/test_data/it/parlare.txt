@@ -1,0 +1,138 @@
+== {{-it-}} ==
+{{-sost-|it}}
+{{Pn}}  '' m inv''
+# [[maniera]] di comunicare a voce ciò che si pensa
+#* '' è un bel {{Pn}}, ma dobbiamo fare i conti con la realtà''
+# {{Est}} [[esprimere]] uno o più [[significati]] grazie all'[[uso]] della [[parola]]
+#* '''''parlando''' con loro ho [[dimostrato]] la mia [[vicinanza]]''
+# [[dialettica]] [[verbale]], in [[monologo]] oppure con [[dialogo]]
+#* ''malgrado alcune [[difficoltà]], {{Pn}} in [[famiglia]] è necessario per [[elevarsi]]''
+
+{{-verb-|it}}
+{{Intransitivo|it}}
+{{Pn|c}}
+
+# [[pronunciare]] [[parole]] esprimendo i propri pensieri
+
+{{-sill-}}
+; par | là | re
+
+{{-pron-}}
+{{IPA|/parlaːre/}}
+
+{{-etim-}}
+dal {{la}} volgare ''[[paraulare]]'', a sua volta da ''[[parabolare]]'', infinito presente di ''[[parabolo]]''
+
+{{-quote-}}
+{{Quote
+|È difficilissimo parlare molto senza dire qualcosa di troppo.
+|[[q:Luigi XIV di Francia|Luigi XIV di Francia]]}}
+{{Quote
+|Allora invocherai e il Signore ti risponderà, implorerai aiuto ed egli dirà:" Eccomi! Se toglierai di mezzo a te l'oppressione, il puntare il dito e il '''parlare''' empio, se aprirai il tuo cuore all'affamato, se sazierai l'afflitto di cuore, allora brillerà fra le tenebre la tua luce, la tua tenebra sarà come il meriggio.
+|[[w:Libro di Isaia|Libro di Isaia]] {{Passo biblico|Is|58,9-10}}, testo CEI 2008}}
+{{Quote
+|Non se ne parlerà più per molto tempo...
+|[[anonimo|Anonimo]]}}
+
+{{Quote
+|il parlare in modo impreciso non è soltanto sconcio in se stesso, ma nuoce anche all'anima.
+|[[q:Platone|Platone]], attribuita a [[q:Socrate|Socrate]]}}
+
+{{-sin-}}
+*'''(sostantivo)''' [[parlata]], [[lingua]], [[linguaggio]], [[dialetto]], [[idioma]]
+* [[cadenza]], [[accento]]
+* [[discorso]]
+* [[vernacolo]], [[gergo]] 
+*'''(verbo)''' articolare parole, [[asserire]], [[esprimersi]], [[comunicare]], [[diffondere]], [[dire]], [[esprimere]], [[favellare]],  [[fiatare]], [[intrattenersi]], [[parlottare]], [[proferire]], [[pronunciare]],      
+* ''(in pubblico)'' aprir bocca, [[arringare]], [[conferire]], [[predicare]], [[prendere la parola]], [[intervenire]], [[interloquire]]
+* {{Fig}}''(di occhi, atteggiamenti)'' essere vivace, essere espressivo, [[commuovere]], [[toccare]]
+*  [[ipotizzare]], [[pensare]],  [[ragionare]],
+* ''(di notizia, giornale)''  [[alludere]], [[riferirsi]], [[vociferare]]
+*[[chiacchierare]], [[colloquiare]], [[confabulare]], [[conversare]], [[dialogare]], [[discorrere]], [[parlottare]]
+* {{Spreg}} [[blaterare]], [[cianciare]], [[ciarlare]], [[farneticare]], [[mormorare]], [[sparlare]], [[spettegolare]], [[sproloquiare]], [[straparlare]]
+*''(di argomento)''[[analizzare]], [[argomentare]], [[dibattere]],  [[discutere]], [[dissertare]], [[esaminare]], [[esporre]], [[ragionare]], [[sviluppare]], [[trattare]],
+*[[ammettere]], [[confessare]], [[confidare]], [[divulgare]], lasciarsi sfuggire,[[pubblicizzare]], [[riferire]], [[rivelare]], [[spiattellare]], [[svelare]]
+* {{Term|gergale|it}} [[cantare]], [[spifferare]],  [[vuotare il sacco]]
+
+
+ 
+{{-ant-}}
+*'''(verbo)''' [[ammutolire]], [[tacere]], stare zitto, [[zittire]]
+*[[nascondere]], [[negare]], [[occultare]]
+ 
+{{-der-}}
+*[[parlarsi]], [[parlottare]], [[perorare]]. [[sparlare]], [[straparlare]], [[parlato]], [[parlatore]]
+
+{{-prov-}}
+* ''[[far parlare di sé]]'': [[provocare]] i giudizi delle persone
+* ''[[parlare a braccio]]''
+*''[[parlare a macchinetta]]'':
+* ''[[parlare a nuora perché suocera intenda]]''
+* ''[[parlare a vanvera]]''
+* ''[[parlare ai banchi]]'': insegnare a degli studenti disattenti e disinteressati
+* ''[[parlare ai sordi]]''
+*''[[parlare al deserto]]''
+* ''[[parlare  al muro]] '': parlare inutilmente, [[dare]] suggerimenti a chi li vuole mettere in pratica 
+* ''[[parlare  al vento]]'': parlare [[inutilmente]]
+* ''[[parlare all'aria]]'': parlare inutilmente, [[parlare al vento]]
+*''parlare arabo'': {{Term|familiare|it}} parlare in modo  inspiegabile
+*''[[parlare bene]]'': pronunciarsi in modo favorevole su qualcosa o qualcuno
+*''[[parlare chiaro]]'': parlare in modo [[intuibile]]
+*''[[parlare come un libro stampato]]'': {{Term|scherzoso|it}} parlare con un lessico molto accurato; parlare in modo compito, di solito con accezione negativa
+*''[[parlare come un mulino a vento]]''
+*''[[parlare dal pulpito]]''
+*''[[parlare del più e del meno]]''
+* ''[[parlare di corda in casa dell’impiccato]]''
+* ''parla come mangi!'':  non usare paroloni ''(scherzoso)''
+* ''un tanto parlare'': ...di cose futili
+* ''[[parlare in chicchera]]''
+* ''[[parlare in codice]]
+*''[[parlare in Crusca]]''
+* ''[[parlare in quinci e quindi]]''
+* ''[[parlare italiano]]''
+* ''[[parlare la stessa lingua]]'': andare d'accordo al [[non plus ultra]]
+* ''[[parlare meno]]'':
+
+{{-trad-}}
+{{Trad1|}}
+:* {{sq}}: [[flas]]
+:* {{ar}}: [[تَكَلَّمَ]], [[تَحَدَّثَ]]
+:* {{br}}: [[komz]]
+:* {{cs}}: [[mluvit]]
+:* {{cic}}: [[anumpali]]
+:* {{zh}}: [[说]] 
+:* {{eo}}: [[paroli]]
+:* {{fi}}: [[puhua]]
+:* {{fr}}: [[parler]]
+:* {{ja}}: [[話す]] 
+:* {{id}}: [[berbicara]]
+:* {{en}}: [[talk]], [[speak]]
+:* {{ia}}: [[parlar]]
+{{mid}}
+:* {{la}}: [[collŏqui]], [[dīcĕre]], [[fāri]], [[lŏqui]], [[, fābŭlāri]], [[effāri]]
+:* {{lv}}: [[runāt]]
+:* {{nl}}: [[praten]], [[spreken]]
+:* {{pt}}: [[falar]]
+:* {{ro}}: [[vorbi]]
+:* {{ru}}: [[говорить]]
+:* {{scn}}: [[parrari]]
+:* {{es}}: [[hablar]]
+:* {{sv}}: [[tala]], [[prata]]
+:* {{de}}: [[sprechen]]
+:* {{tr}}: [[konuşmak]]
+:* {{uz}}: [[gapir]]
+:* {{xh}}: [[thetha|ukuthetha]]
+{{Trad2}}
+
+{{-ref-}}
+* {{Fonte|dem}}
+* {{Fonte|sabco|1}}
+* {{Fonte|sabco|2}}
+* {{Fonte|sin-co}}
+* {{Fonte|trec}}
+* {{Fonte|eti}}
+* {{Fonte|dizit}}
+* {{Fonte|hoep}}
+* {{Fonte|sape}}
+* {{Fonte|gar}}
+*AA.VV., ''Dizionario sinonimi e contrari'', Mariotti, 2006, pagina 386

@@ -1,0 +1,48 @@
+{{Vedi|bongiorno}}
+== {{-it-}} ==
+{{-sost-|it}}
+{{Pn}} ''m inv''
+#[[saluto]] usato quando si lascia qualcuno o lo si incontra al [[mattino]].
+
+{{-sill-}}
+; buon | giór | no
+
+{{-pron-}}
+{{IPA|/bwonˈd͡ʒorno/}}
+
+{{-etim-}}
+da [[buono]] e da [[giorno]]
+
+{{-var-}}
+* [[bongiorno]]
+
+{{-noconf-}}
+* [[buona giornata]] termine che si usa solo quando ci si congeda da una persona, mentre [[buongiorno]] lo si utilizza quando la s'incontra   
+
+{{-trad-}}
+{{Trad1|}}
+:*{{cs}}:  [[dobrý den]]
+:*{{zh}}:  [[你好]] (nĭhăo)
+:*{{hr}}:  [[dobar dan]]
+:*{{da}}:  [[god dag]], [[godmorgen]]
+:*{{fr}}:  [[bonjour]]
+:*{{el}}:  [[καλημέρα]] (calhméra)
+:*{{en}}:  [[good morning]]
+:*{{nap}}:  [[bòna jurnàta]], [[bonnì]]
+:*{{nl}}:  [[goede morgen]]
+{{mid}}
+:*{{pl}}:  [[dzień dobry]]
+:*{{pt}}:  [[bom dia]]
+:* {{ru}}: [[доброе]]
+:*{{scn}}:  [[boggiornu]]
+:*{{sl}}:  [[dober dan]]
+:*{{es}}:  [[buenos días]]
+:*{{de}}:  [[guten Morgen]], [[guten Tag]]
+:*{{vec}}:  [[bongiorno]]
+{{Trad2}}
+
+{{-ref-}}
+* {{Fonte|trec}}
+* {{Fonte|sape}}
+* {{Fonte|dizit}}
+* {{Fonte|oli|297}}

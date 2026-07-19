@@ -30,7 +30,8 @@
 		y = 0,
 		text = "",
 		context = "",
-		language = "en"
+		language = "en",
+		definitionLanguage = ""
 	}: {
 		show?: boolean;
 		x?: number;
@@ -38,6 +39,7 @@
 		text?: string;
 		context?: string;
 		language?: string;
+		definitionLanguage?: string;
 	} = $props();
 
 	let entries = $state<DictEntry[]>([]);
@@ -56,7 +58,12 @@
 		err = "";
 		entries = [];
 		translation = null;
-		const r = await api.vocabulary.lookup({ word: text, context, language });
+		const r = await api.vocabulary.lookup({
+			word: text,
+			context,
+			language,
+			definition_language: definitionLanguage || undefined
+		});
 		if (r.isOk()) {
 			const data = r.value as unknown as LookupResponse;
 			entries = data.entries;
@@ -149,7 +156,9 @@
 
 			{#if translation}
 				<div class="border-outline-variant/30 mt-3 border-t pt-3">
-					<span class="font-label text-label-sm text-on-surface-variant/60 block mb-1">Translation</span>
+					<span class="font-label text-label-sm text-on-surface-variant/60 mb-1 block"
+						>Translation</span
+					>
 					<p class="font-body text-body-md text-on-surface-variant">{translation}</p>
 				</div>
 			{/if}

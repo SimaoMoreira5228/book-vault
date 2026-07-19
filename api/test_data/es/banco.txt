@@ -1,0 +1,62 @@
+== {{lengua|es}} ==
+{{pron-graf}}
+
+=== Etimología 1 ===
+{{etimología|fro|bank}} y a su vez {{etim|gem-pro|*bank}}.
+
+==== {{sustantivo masculino|es}} ====
+{{es.sust}}
+;1: {{plm|empresa}} que ofrece [[servicio]]s [[monetario]]s como [[cuenta]]s o [[préstamo]]s.
+{{ejemplo|¿Hay un '''banco''' cerca?<br>Sí, el BBVA está en esta misma calle.}}
+;2: Mueble alargado que se usa como asiento para más de una persona.
+{{sinónimo|banca}}.
+;3: Mueble cuadrado sin respaldo que sirve como asiento individual.
+{{sinónimo|banquillo}}.
+;4: Grupo numeroso de [[pez|peces]] de una misma [[especie]].
+{{sinónimo|cardumen}}.
+;5: Lugar de [[almacenaje]] de [[tejido]]s [[humano]]s como la [[sangre]] o de [[recurso]]s [[biológico]]s como [[semilla]]s reunidos con propósitos médicos y científicos.
+{{hipónimo|banco de genes|banco de ojos|banco de sangre|banco de semen|banco de semillas}}.
+;6 {{csem|náutica}}: ''En las galeras o embarcaciones de remo:'' Asiento en que van sentados los [[galeote]]s, o los que reman.<ref name="drae1780">{{DLC1780}}</ref>
+{{ejemplo|Yo, por mi parte, condeno tu orden de arrastrar al mar las naves de buenos '''''bancos''''', alejándolas de los clamores del combate.|c=libro|título=Ilíada|a=Homero|f=2014|fo=700A~|editorial=Edimat|isbn=9788497942270|p=214}}
+
+==== Véase también ====
+{{w}}
+
+==== Traducciones ====
+{{trad-arriba}}
+{{t|de|a1=1-3,5|t1=Bank|a2=4|t2=Schwarm}}
+{{t|br|a1=2,3|t1=bank|g1=m}}
+{{t|fr|a1=1|t1=banque|a2=2,3|t2=banc}}
+{{t|gl|a1=1-3|t1=banco}}
+{{t|el|t1=τράπεζα}}
+{{t|en|a1=1|t1=bank|a2=2,3|t2=bench}}
+{{t|ja|a1=1|t1=銀行|a2=1|t2=ぎんこう|tl2=ginkō}}
+{{t|arn|a1=2, 3|t1=wangku}}
+{{t|pt|a1=1-3|t1=banco}}
+{{trad-abajo}}
+
+=== Etimología 2 ===
+{{etimología|lexicalización|bancar}}.
+
+==== {{interjección|es}} ====
+
+;1: {{impropia|Expresa fuerte aceptación de una propuesta hecha por otra persona}}.
+{{uso|coloquial}}
+{{ámbito|Argentina}}
+
+== {{lengua|gl}} ==
+{{pron-graf|leng=gl}}
+
+=== Etimología ===
+{{etimología|leng=gl}}, 
+
+=== {{sustantivo masculino|gl}} ===
+{{gl.sust}}
+;1 {{csem}}: {{plm}}.<ref>{{DRAG}}</ref>
+{{ejemplo|Por eso eres ti do '''banco''' donde se xuntan os votos.|trad= Por eso eres del '''banco''' donde se recogen los votos.}}
+
+=== Véase también ===
+{{W|idioma=gl}}
+
+== Referencias y notas ==
+<references />

@@ -1,0 +1,791 @@
+{{Siehe auch|[[wasser]], [[wässer]], [[Wässer]]}}
+{{Wort der Woche|5|2006}}
+== Wasser ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Wasser
+|Nominativ Plural 1=Wasser
+|Nominativ Plural 2=Wässer
+|Genitiv Singular=Wassers
+|Genitiv Plural 1=Wasser
+|Genitiv Plural 2=Wässer
+|Dativ Singular=Wasser
+|Dativ Plural 1=Wassern
+|Dativ Plural 2=Wässern
+|Akkusativ Singular=Wasser
+|Akkusativ Plural 1=Wasser
+|Akkusativ Plural 2=Wässer
+|Bild 1=2006-02-13 Drop-impact.jpg|mini|1|[[Einschlag]] eines ''Wasser''[[Tropfen|tropfens]] in einem [[Glas]]
+|Bild 2=Handful of Water - Kolkata 2011-03-16 2004.jpg|mini|1|eine [[Handvoll]] ''Wasser''
+|Bild 3=Glacial iceberg in Argentina.jpg|mini|1|''Wasser'' in zwei [[Aggregatzuständen]]: fest (Eisberg) und flüssig (Meer)
+}}
+
+{{Worttrennung}}
+:Was·ser, {{Pl.1}} Was·ser, {{Pl.2}} Wäs·ser
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈvasɐ}}
+:{{Hörbeispiele}} {{Audio|De-Wasser.ogg|Wasser (weibliche Stimme)}}, {{Audio|De-Wasser2.ogg|Wasser (männliche Stimme)}}, {{Audio|De-Wasser3.ogg}}
+:{{Reime}} {{Reim|asɐ|Deutsch}}
+
+{{Bedeutungen}}
+:[1] {{K|kein Plural}} die [[chemische Verbindung]] ([[Diwasserstoffoxid]]), der [[Stoff]] [[H₂O|H<sub>2</sub>O]] in [[flüssig]]em [[Aggregatzustand]], die aus [[Wasserstoff]] und [[Sauerstoff]] zusammengesetzt ist
+:[2] ''auch Plural möglich: siehe Plural 1, [[poetisch]], [[gehoben]]:'' für [[Gewässer]]
+:[3] ''beide Pluralformen, [[übertragen]], {{ugs.}}, zum Teil [[synonym]]:'' für sehr viele [[Flüssigkeit]]en, [[Lösung]]en, [[Emulsion]]en, die in ihrer [[Konsistenz]] dem Wasser [[ähneln]], sowie Gewässer und Wässer, die ihrer [[Herkunft]] nach, ihrem [[Vorkommen]] nach, ihrem [[Verwendungszweck]] nach und Ähnlichem benannt werden
+:[4] ''nur im Plural 2 üblich oder {{ugs.}} Wässerchen:'' ein [[alkoholisch]]es [[Getränk]], welches aus [[vergoren]]en [[Frucht|Früchten]] oder anderen [[Teil]]en der [[Pflanze]] gebrannt wurde
+:[5] {{K|kein Plural}} ein [[Reinheitsmaß]] für [[Diamant]]en
+:[6] {{K|Medizin}} [[krankhaft]]e [[Ansammlung]] von [[Körperflüssigkeit]]en im [[Gewebe]]
+:[7] {{K|ugs.|kurz für}} [[Mineralwasser]], [[Tafelwasser]]
+
+{{Abkürzungen}}
+:[1] ''[[Summenformel]]:'' [[H₂O|H<sub>2</sub>O]]
+:[2] [[Wa]], [[Wa.]]
+
+{{Herkunft}}
+:von [[Mittelhochdeutsch]] ''{{Ü|gmh|wazzer}}'' (vgl. [[Jiddisch]] ''{{Üt|yi|וואַסער|}}''), von [[Althochdeutsch]] ''{{Ü|goh|wazzar}}'', belegt seit dem 8. Jahrhundert<ref>{{Lit-Kluge: Etymologisches Wörterbuch|A=24}}, Stichwort: „Wasser“, Seite 974.</ref>, von [[Urwestgermanisch]] ''[[Wiktionary:Urwestgermanisch/watar|*watar]]'' (vgl. [[Altenglisch]] ''{{Ü|ang|wæter}}'' (zu [[Mittelenglisch]] ''{{Ü|enm|water}}'', zu [[Englisch]] ''{{Ü|en|water}}'' und [[Scots]] ''{{Ü|sco|wattir}}''), [[Altfriesisch]] ''{{Ü|ofs|weter}}'' (vgl. [[Westfriesisch]] ''{{Ü|fy|wetter}}'', [[Nordfriesisch]] ''{{Ü|frr|weeter}}'' und [[Saterfriesisch]] ''{{Ü|stq|Woater}})'', [[Altsächsisch]] ''{{Ü|osx|watar}}'' (zu [[Mittelniederdeutsch]] ''{{Ü|gml|wāter}}'', zu [[Niederdeutsch]] ''{{Ü|nds|Water}}''), [[Altfränkisch]] ''{{Ü|frk|watar}}'' (zu [[Altniederländisch]] ''[[watar#Altniederländisch|watar]]'', zu [[Mittelniederländisch]] ''{{Ü|dum|water}}'', zu [[Niederländisch]] ''{{Ü|nl|water}}'', etc.)), von [[Urgermanisch]] ''[[Wiktionary:Urgermanisch/watōr|*watōr]]'' (vgl. [[Altnordisch]] ''{{Ü|non|vatn}}'' (zu [[Isländisch]] ''{{Ü|is|vatn}}'', [[Färöisch]] ''{{Ü|fo|vatn}}''; [[Neunorwegisch]] ''{{Ü|nn|vatn}}'', [[Bokmål]] ''{{Ü|nb|vann}}''), [[Gotisch]] ''{{Ü|got|𐍅𐌰𐍄𐍉}}'', etc.), von [[Urindogermanisch]] ''[[Wiktionary:Urindogermanisch/wédōr|wédōr]]'', [[Kollektivum]] zu ''[[Wiktionary:Urindogermanisch/wódr̥|wódr̥]]''
+
+:Es wird angenommen, dass es im [[Urindogermanisch]]en fünf Wortstämme für Wasser gab:
+:* *h₂epø bezog sich auf das Wasser als eine „lebende“ Naturkraft
+:** *h₂epis (Lateinisch)
+:** *h₂eperós (Griechisch, Germanisch)
+:** *h₂eph₃ōnø (Keltisch)
+:* *wódr̥ bezeichnete die seelenlose Substanz, die Flüssigkeit
+:** *wédōr (Germanisch, Anatolisch, Griechisch, Tocharisch)
+:* *h₂ekʷeh₂ø
+
+:Die erste Wurzel ist im [[sanskritischen]] „{{Ü|sa|āpaḥ}}“ sowie bis heute im [[persischen]] „{{Ü|fa|āb}}“ erhalten geblieben, indes von der zweiten unter anderem die folgenden Wortgruppen stammen:
+
+:*das [[altkirchenslavisch]]e „вода“ (vergleiche [[russisch]] ''{{Üt|ru|вода}},'' [[serbisch]] / [[tschechisch]] ''{{Ü|cs|voda}},'' [[polnisch]] ''{{Ü|pl|woda}}'' und so weiter, vergleiche ''[[Wodka]]'' im Deutschen), sowie (durch frühe Lautverschiebung) ''[[выдра]]'' / ''[[wydra]]'' (Fischotter) und ''[[ведро]]'' (Eimer)
+:*das [[altpreußisch]]e ''{{Ü|bat|wundan}}''
+:*„{{Ü|sa|udnah}}“ im [[Sanskrit]]
+:*das litauische ''{{Ü|lt|vanduo}}''
+:*das [[gälische]] ''{{Ü|gd|uisge}}'' (vergleiche [[schottisch]] ''{{Ü|gd|uisge}},'' [[irisch]] ''{{Ü|ga|uisce}},'' [[englisch]] ''{{Ü|en|whiskey}}'')
+:*sowie das [[griechische]] {{Polytonisch|{{Üt|el|ὕδωρ|hýdōr}}}} — das, wiederum, von vielen anderen Sprachen übernommen wurde (vergleiche den Stamm -hydr- in germanischen, -гидр- in slawischen Sprachen).
+
+:Des Weiteren stammt von der Wurzel ''*wódr̥'' auch das [[lateinisch]]e ''{{Ü|la|unda}}'' (Welle) ab — von dem, wiederum, das [[spanische]], [[italienische]] und [[katalanische]] ''{{Ü|es|onda}},'' [[französisch]] ''{{Ü|fr|onde}},'' sowie der deutsche Name ''[[Undine]]'' stammen.
+
+:Somit sind im Deutschen die folgenden Wörter entfernt mit dem Wort „Wasser“ verwandt:
+
+:*[[Hydra]], [[Hydrant]]
+:*[[Undine]]
+:*[[Waterkant]] (aus dem Niederdeutschen stammend)
+:*[[Whisky]]
+:*[[Wodka]]
+
+:Die Bezeichnung „von reinstem Wasser“ in Bezug auf Edelsteine geht, aller Wahrscheinlichkeit nach, auf einen Fehler bei der Übersetzung aus dem Arabischen zurück, in dem das Wort [[ماء]] ({{IPA-Text|māʔ}}) nicht nur „Wasser“, sondern auch „[[Glanz]]“, „[[Pracht]]“, „[[Ruhm]]“ bedeutet.{{QS Herkunft|unbelegt}}
+
+{{Synonyme}}
+:[1] das feuchte Element, das nasse Element, [[Nass]], [[H₂O|H<sub>2</sub>O]], [[Wasserstoffoxid]], ''[[scherzhaft]] für Wasser zum Trinken:'' [[Gänsewein]], ''scherzhaft:'' [[Dihydrogenmonoxid]]
+:[2] [[Gewässer]]
+:[3] [[Schweiß]], [[Harn]], [[Urin]]; [[Träne]]n, [[Zähre]]n, [[Duftwasser]]
+:[4] [[Obstbrand]], [[Obstler]]
+:[6] [[Ödem]]
+
+{{Verkleinerungsformen}}
+:[[Wässerchen]], [[Wässerlein]]
+
+{{Oberbegriffe}}
+:[1] [[Flüssigkeit]]
+:[2] [[Landschaft]]
+:[3] [[Flüssigkeit]], [[Lösung]], [[Emulsion]]
+:[4] [[Schnaps]], [[Spirituose]], [[alkoholisch]]es [[Getränk]]
+:[5] [[Reinheitsmaß]]
+
+{{Unterbegriffe}}
+:[1] [[Abwaschwasser]], [[Abwasser]], [[Achterwasser]], [[Alpenwasser]], [[Altwasser]], [[Ammerwasser]], [[Aquarienwasser]], [[Aufwaschwasser]], [[Ausgusswasser]], [[Bachwasser]], [[Badewasser]], [[Ballastwasser]], [[Bergwasser]], [[Betriebswasser]], [[Bewässerung]], [[Bewässerungssystem]], [[Bewässerungswasser]], [[Bilgewasser]]/[[Bilgenwasser]], [[Bitzelwasser]], [[Blubberwasser]], [[Blumenwasser]], [[Blutwasser]], [[Bodenwasser]], [[Bölkwasser]], [[Borwasser]], [[Brackwasser]], [[Brauchwasser]], [[Brauwasser]], [[Brühwasser]], [[Brunnenwasser]], [[Chlorwasser]], [[Dreckwasser]], [[Druckwasser]], [[Duschwasser]], [[Eierwasser]], [[Eigenwasser]], [[Einweichwasser]], [[Eisenwasser]], [[Eiswasser]], [[Essigwasser]], [[Fahrwasser]], [[Fernwasser]], [[Fischwasser]], [[Flachwasser]], [[Fleckenwasser]], [[Fließwasser]], [[Flusswasser]], [[Flutwasser]], [[Freiwasser]], [[Fremdwasser]], [[Frischwasser]], [[Gebirgswasser]], [[Gießwasser]], [[Giftwasser]], [[Gletscherwasser]], [[Goldwasser]], [[Grauwasser]], [[Grubenwasser]], [[Grundwasser]], [[Gurgelwasser]], [[Gurkenwasser]], [[Hafenwasser]], [[Hahnenwasser]], [[Haushaltswasser]], [[Heilwasser]], [[Heißwasser]], [[Heizwasser]], [[Heizungswasser]], [[Hirnwasser]], [[Hochwasser]], [[Industriewasser]], [[Kaffeewasser]], [[Kalkwasser]], [[Kaltwasser]], [[Kammerwasser]], [[Kanalwasser]], [[Kartoffelwasser]], [[Keeswasser]], [[Kielwasser]], [[Klarwasser]], [[Klärwasser]], [[Kleinwasser]], [[Kloßwasser]], [[Kochwasser]], [[Kondenswasser]], [[Königswasser]], [[Kopfwasser]], [[Krabbelwasser]], [[Kribbelwasser]], [[Kristallwasser]], [[Kühlwasser]], [[Kupferwasser]], [[Leichtwasser]], [[Leitungswasser]], [[Löschwasser]], [[Lötwasser]], [[Meerwasser]], [[Mineralwasser]], [[Mischwasser]], [[Mittelwasser]], [[Niederschlagswasser]], [[Niederwasser]], [[Niedrigwasser]], [[Normalwasser]], [[Nutzwasser]], [[Oberflächenwasser]], [[Oberwasser]], [[Osterwasser]], [[Ozeanwasser]], [[Porenwasser]], [[Prickelwasser]], [[Prozesswasser]], [[Putzwasser]], [[Quellwasser]], [[Rasierwasser]], [[Reaktorwasser]], [[Regenwasser]], [[Reinigungswasser]], [[Reinwasser]], [[Restwasser]], [[Rieselwasser]], [[Rohwasser]], [[Rosenwasser]], [[Rülpswasser]], [[Salzwasser]], [[Sauerwasser]], [[Scheidewasser]], [[Schichtenwasser]], [[Schlabberwasser]], [[Schmelzwasser]], [[Schmutzwasser]], [[Schneewasser]], [[Schraubenwasser]], [[Schwerwasser]], [[Schwitzwasser]], [[Seewasser]], [[Seifenwasser]], [[Seihwasser]], [[Selterswasser]], [[Sickerwasser]], [[Siedewasser]], [[Skiwasser]], [[Sodawasser]], [[Solwasser]], [[Speisewasser]], [[Sperrwasser]], [[Spritzwasser]], [[Sprudelwasser]], [[Sprühwasser]], [[Spülwasser]], [[Stagnationswasser]], [[Standwasser]], [[Stauwasser]], [[Stillwasser]], [[Sumpfwasser]], [[Süßwasser]], [[Tafelwasser]], [[Talsperrenwasser]], [[Taufwasser]], [[Tauwasser]], [[Teewasser]], [[Teichwasser]], [[Thermalwasser]], [[Thymianwasser]], [[Tiefwasser]], [[Tiefenwasser]], [[Trinkwasser]], [[Uferwasser]], [[Unterwasser]], [[Vitaminwasser]], [[Warmwasser]], [[Waschwasser]], [[Weißwasser]], [[Wischwasser]], [[Zahnwasser]], [[Zisternenwasser]]
+:[1] [[Atlantikwasser]], [[Bodenseewasser]], [[Donauwasser]], [[Elbewasser]]/[[Elbwasser]], [[Euphratwasser]], [[Jordanwasser]], [[Mainwasser]], [[Mittelmeerwasser]], [[Moselwasser]], [[Neckarwasser]], [[Nilwasser]], [[Nordseewasser]], [[Oderwasser]], [[Ostseewasser]], [[Rheinwasser]], [[Spreewasser]]
+:[1] [[Lourdeswasser]]
+:[2] [[Binnenwasser]], [[Fluss]], [[Bach]], [[Strom]], [[Teich]], [[Weiher]], [[See]], [[Lagune]], [[Meer]]
+:[3] [[Alaunwasser]], [[Ammoniakwasser]], [[Ätzwasser]], [[Augenwasser]], [[Birkenwasser]], [[Bitterwasser]], [[Fruchtsaftwasser]], [[Fruchtwasser]], [[Gaswasser]], [[Gesichtswasser]], [[Haarwasser]], [[Hirnwasser]], [[Karbolwasser]], [[Kokoswasser]], [[Kölnischwasser]], [[Laugenwasser]], [[Lavendelwasser]], [[Magenwasser]], [[Mundwasser]], [[Nasenwasser]], [[Toilettenwasser]], [[Tränenwasser]]
+:[4] [[Alsterwasser]], [[Birnenwasser]], [[Dirndlbrand]], [[Diplomatenwasser]], [[Feuerwasser]], [[Kirschwasser]], [[Lebenswasser]], [[Obstwasser]], [[Slivovitz]], [[Wodka]], [[Zielwasser]], [[Zwetschgenwasser]]
+:[6] [[Wundwasser]]
+:[*] [[Quasselwasser]], [[Schwarzwasser]], [[Weihwasser]], [[Wildwasser]], [[Wunderwasser]], [[Zitronenwasser]], [[Zuckerwasser]]
+
+{{Meronyme}}
+:[1] [[Sauerstoff]], [[Wasserstoff]]
+
+{{Beispiele}}
+:[1] Wenn es heiß ist, trinke ich gern ''Wasser.''
+:[1] „Reines ''Wasser'' unterliegt einer sogenannten Autoprotolyse (auch Autodissoziation).“<ref>{{Wikipedia|Protolyse|oldid=161478781}}</ref>
+:[1] Auch sie sprang ins ''Wasser.''
+:[1] „Er kniete und goß sich ''Wasser'' über Kopf und Schultern.“<ref>{{Literatur| Autor=Jens Rehn, Nachwort von Ursula März |Titel=Nichts in Sicht |Auflage= |Verlag= Schöffling |Ort = Frankfurt/Main |Jahr= 2018| Seiten= 111. |ISBN= 978-3-89561-149-0}}</ref>
+:[1] „Der zusätzliche Gebrauch von ''Wasser'' und Seife müsste als grobe luxuriöse Übertreibung angesehen werden.“<ref>{{Literatur |Autor=Loriot (Verfasser) |Titel=Der ganz offene Brief|Herausgeber= Susanne von Bülow, Peter Geyer, OA Krimmel |Verlag=Hoffmann und Campe|Ort= Hamburg |Jahr=2014 |ISBN= 978-3-455-40514-9|Seiten=191}}.</ref>
+:[1] „Sie legten rasch drei Gedecke auf, brachten Brot, Parmesankäse und ''Wasser'', und unter Gelächter aßen sie und tranken mit mir den ihnen ganz ungewohnten Zyperwein, der ihnen bald in den Kopf stieg.“<ref>{{Literatur | Autor= Giacomo Casanova |Titel= Geschichte meines Lebens, herausgegeben und eingeleitet von Erich Loos, Band 1 | Übersetzer= Heinz von Sauter | Verlag= Propyläen | Ort=Berlin | Jahr=1985 (Neuausgabe) | Seiten= 180&nbsp;f.}}</ref>
+:[2] Er ging hinunter ans ''Wasser.''
+:[2] Mein Vater ließ das Boot zu ''Wasser.''
+:[2] Große ''Wasser,'' Berg und Tal / Anzuschauen überall – ''(Zeile aus dem Volkslied: „Auf, du junger Wandersmann“)''
+:[2] Das Wasser rauscht', das Wasser schwoll – ''(Gedichtanfang von Goethes Ballade: „Der Fischer“)''
+:[2] „Da war das ''Wasser'', da war der Wind, die Weiden waren da und die Steine.“<ref>{{Literatur| Autor= Ulla Hahn | Titel= Wir werden erwartet | TitelErg= Roman| Auflage= | Verlag= Deutsche Verlags-Anstalt |Ort= München |Jahr= 2017 | ISBN= 978-3-421-04782-3 |Seiten= 95.}}</ref>
+:[2] „Er zog an der Leitkette, bis das Maul des Haifischs sich aus dem ''Wasser'' hob.“<ref>{{Literatur |Autor=Marc Steadman |Titel=Schwarze Chronik|Übersetzer= Elisabeth Schnack|TitelErg=Ein Südstaaten-Dekameron | Originaltitel=MacAfee county |Verlag=Fischer Taschenbuch Verlag|Ort= Frankfurt am Main |Jahr=1980 |ISBN= 3-596-22489-6|Seiten=139}}. Englisches Original 1970.</ref>
+:[2] „Das ''Wasser'' plätscherte neben ihnen, die Lichter hüpften und tanzten um sie her, und mit Hilfe kleiner Brückenstege machte man sich das Vergnügen, die Flußseite zu wechseln, je nachdem hüben oder drüben der kühlere Schatten lag.“<ref>{{Literatur | Autor= Theodor Fontane |Titel= Cécile | TitelErg= Roman | Verlag = Nymphenburger | Ort= München | Jahr=1969  | Seiten= 39.}} Entstanden 1884/5. </ref>
+:[3] Beim Fällen des Baums lief ihm das ''Wasser'' nur so herunter.
+:[3] Er stellte sich an den Baum, um sein ''Wasser'' abzuschlagen.
+:[3] Vor lauter Rührung stand ihr das ''Wasser'' in den Augen.
+:[3] Sie mischte wohlriechende ''Wässer.''
+:[4] Im Gegensatz zu Geisten stammt bei ''Wässern'' der Alkohol aus der Gärung der Früchte.
+:[5] Das ''Wasser'' des Diamanten entscheidet über den Preis.
+:[6] Meine Oma sagt, sie habe ''Wasser'' in den Beinen.
+:[7] „Ein ''Wasser'', Zahnstocher und die Zeitung bitte!“
+:[7] Esmeralda, holst du bitte noch mehr ''Wasser'' aus dem Keller?
+
+{{Redewendungen}}
+:[[an jemandem ablaufen wie das Wasser am Entenflügel|an jemandem ablaufen wie das ''Wasser'' am Entenflügel]] (an der Gans, am Pudel)
+:[[alle Wasser auf jemandes Mühle leiten|alle ''Wasser'' auf jemandes Mühle leiten]]
+:[[auch nur mit Wasser kochen|auch nur mit ''Wasser'' kochen]]
+:[[auf beiden Schultern Wasser tragen|auf beiden Schultern ''Wasser'' tragen]]
+:[[auf meinen Hof Wasser trinken kommen|auf meinen Hof ''Wasser'' trinken kommen]], [[auf mein Klosett Wasser trinken kommen|auf mein Klosett ''Wasser'' trinken kommen]], [[auf meine Toilette Wasser trinken kommen|auf meine Toilette ''Wasser'' trinken kommen]]
+:[[bei Wasser und Brot sitzen|bei ''Wasser'' und Brot sitzen]]
+:[[bis dahin fließt noch viel Wasser den Berg hinunter|bis dahin fließt noch viel ''Wasser'' den Berg hinunter]], [[bis dahin fließt noch viel Wasser den Bach hinunter]] (die Elbe, den Rhein und jedes beliebige, denkbare [[Fließgewässer]] einsetzbar)
+:[[Blut ist dicker als Wasser|Blut ist dicker als ''Wasser'']]
+:[[Blut und Wasser schwitzen|Blut und ''Wasser'' schwitzen]]
+:[[dem Wasser seinen Lauf lassen|dem ''Wasser'' seinen Lauf lassen]]
+:[[das kann alles Wasser im Meer nicht abwaschen|Das kann alles ''Wasser'' im Meer nicht abwaschen]]
+:[[eine Stange Wasser in die Ecke stellen|eine Stange ''Wasser'' in die Ecke stellen]]
+:[[ein Gegensatz wie Feuer und Wasser sein|ein Gegensatz wie Feuer und ''Wasser'' sein]]
+:[[ein stilles Wasser sein|ein stilles ''Wasser'' sein]]
+:[[ein Schlag ins Wasser sein|ein Schlag ins ''Wasser'' sein]]
+:[[ein Sprung ins kalte Wasser|ein Sprung ins kalte ''Wasser'']]
+:[[etwas unter Wasser setzen|etwas unter ''Wasser'' setzen]]
+:[[gesund wie ein Fisch im Wasser sein|gesund wie ein Fisch im ''Wasser'' sein]], [[munter wie ein Fisch im Wasser sein|munter wie ein Fisch im ''Wasser'' sein]]
+:[[ins kalte Wasser springen|ins kalte ''Wasser'' springen]], [[ins kalte Wasser geworfen werden|ins kalte ''Wasser'' geworfen werden]]
+:[[ins Wasser fallen|ins ''Wasser'' fallen]]
+:[[ins Wasser gehen|ins ''Wasser'' gehen]]
+:[[jemand bekommt Wasser auf die Mühle|jemand bekommt ''Wasser'' auf die Mühle]]
+:[[jemandem das Wasser abgraben|jemandem das ''Wasser'' abgraben]]
+:[[jemandem das Wasser nicht reichen|jemandem das ''Wasser'' nicht reichen]], [[jemandem das Wasser nicht reichen können|jemandem das ''Wasser'' nicht reichen können]]
+:[[jemandem läuft das Wasser im Munde zusammen|jemandem läuft das ''Wasser'' im Munde zusammen]]
+:[[jemandem nicht das Wasser reichen können|jemandem nicht das ''Wasser'' reichen können]]
+:[[jemandem schießt das Wasser in die Augen|jemandem schießt das ''Wasser'' in die Augen]]
+:[[jemandem schlägt das Wasser über dem Kopf zusammen|jemandem schlägt das ''Wasser'' über dem Kopf zusammen]]
+:[[jemandem steht das Wasser bis zum Hals|jemandem steht das ''Wasser'' bis zum Hals]]/[[jemandem steht das Wasser bis zur Kehle|jemandem steht das ''Wasser'' bis zur Kehle]]
+:[[jemandem Wasser in den Wein gießen|jemandem ''Wasser'' in den Wein gießen]] ''(in den Wein der Begeisterung, schütten)''
+:[[jemandem Wasser und Feuer verweigern|jemandem ''Wasser'' und Feuer verweigern]]
+:[[jemanden schleifen, bis ihm das Wasser im Arsch kocht|jemanden schleifen, bis ihm das ''Wasser'' im Arsch kocht]]
+:[[jemandes Strümpfe ziehen Wasser|jemandes Strümpfe ziehen ''Wasser'']]
+:[[mit allen Wassern gewaschen sein|mit allen ''Wassern'' gewaschen sein]]
+:[[mit kaltem Wasser verbrüht sein|mit kaltem ''Wasser'' verbrüht sein]]
+:[[nahe am Wasser gebaut haben|nahe am ''Wasser'' gebaut haben]]
+:[[nur mit Wasser kochen|nur mit ''Wasser'' kochen]], [[auch nur mit Wasser kochen|auch nur mit ''Wasser'' kochen]], ''(überall, da wird, es wird gekocht)''
+:[[reinsten Wassers sein|reinsten ''Wassers'' sein]], [[von reinstem Wasser sein|von reinstem ''Wasser'' sein]]
+:[[Rotz und Wasser heulen|Rotz und ''Wasser'' heulen]]
+:[[sein Wasser abschlagen|sein ''Wasser'' abschlagen]], [[Wasser abschlagen|''Wasser'' abschlagen]]
+:[[sich das Wasser abschlagen|sich das ''Wasser'' abschlagen]]
+:[[sich über Wasser halten|sich über ''Wasser'' halten]], [[jemandem über Wasser halten|jemandem über ''Wasser'' halten]], [[sich kaum noch über Wasser halten|sich kaum noch über ''Wasser'' halten]] ''(können)''
+:[[über das große Wasser fahren|über das große ''Wasser'' fahren]]
+:[[von reinstem Wasser sein|von reinstem ''Wasser'' sein]], ''(reinsten Wassers)''
+:[[Wasser hat keine Balken|''Wasser'' hat keine Balken]], [[Wasser hat keinen Balken|''Wasser'' hat keinen Balken]]
+:[[Wasser ins Meer gießen|''Wasser'' ins Meer gießen]], [[Wasser ins Meer schütten|''Wasser'' ins Meer schütten]], [[Wasser ins Meer tragen|''Wasser'' ins Meer tragen]], ''(in die [[See]], in den [[Brunnen]], in den [[Bach]], in andere bekannte Gewässer wie Nordsee, Elbe, Rhein)''
+:[[Wasser in den Ohren haben|''Wasser'' in den Ohren haben]] ''(im Vergaser)''
+:[[Wasser lassen]]
+:[[Wasser marsch!|''Wasser'' marsch!]]
+:[[Wasser mit einem Sieb schöpfen|''Wasser'' mit einem Sieb schöpfen]], :''(mit einem Siebe, tragen, holen)'',
+:[[Wasser predigen und Wein trinken|''Wasser'' predigen und Wein trinken]]
+:[[Wasser treten|''Wasser'' treten]]
+:[[Wasser und Feuer zugleich tragen|''Wasser'' und Feuer zugleich tragen]]
+:[[wie aus dem Wasser gezogen sein|wie aus dem ''Wasser'' gezogen sein]]
+:[[wie Feuer und Wasser sein|wie Feuer und ''Wasser'' sein]], [[wie Wasser und Feuer sein]]
+:[[wie mit kaltem Wasser übergossen sind|wie mit kaltem ''Wasser'' übergossen sind]] ''(begossen)''
+:[[zu dumm sein, einen Eimer Wasser umzustoßen|zu dumm sein, einen Eimer ''Wasser'' umzustoßen]], [[zu blöd sein, einen Eimer Wasser umzustoßen|zu blöd sein, einen Eimer ''Wasser'' umzustoßen]] ''(umzuschmeißen, umzuwerfen)''
+:[[zu Wasser werden|zu ''Wasser'' werden]] (machen)
+
+{{Sprichwörter}}<ref>alle nach: {{Lit-Beyer: Sprichwörterlexikon|A=3}}</ref>
+:[[alle Wasser laufen ins Meer|Alle ''Wasser'' laufen ins Meer]].
+:[[alle kleinen Wasser laufen in die großen|Alle kleinen ''Wasser'' laufen in die großen]].
+:[[an der Quelle ist das Wasser am reinsten|An der Quelle ist das ''Wasser'' am reinsten]].
+:[[aus einer bitteren Quelle läuft kein süßes Wasser|Aus einer bitteren Quelle läuft kein süßes ''Wasser'']].
+:[[aus Schnee wird nichts als Wasser|Aus Schnee wird nichts als ''Wasser'']].
+:[[das Schiff gehört aufs Wasser|Das Schiff gehört aufs ''Wasser'']].
+:[[das Wasser fließt fort, auch wenn der Müller schläft|Das ''Wasser'' fließt fort, auch wenn der Müller schläft]].
+:[[das Wasser geht mit dem Strom|Das ''Wasser'' geht mit dem Strom]].
+:[[das Wasser läuft nicht den Berg hinauf|Das ''Wasser'' läuft nicht den Berg hinauf]].
+:[[das Wasser muss seinen Lauf haben|Das ''Wasser'' muss seinen Lauf haben]].
+:[[das Wasser nimmt alles weg|Das ''Wasser'' nimmt alles weg]].
+:[[das Wasser sucht sich seinen Weg|Das ''Wasser'' sucht sich seinen Weg]].
+:[[der hat gut schwimmen, den man über Wasser hält|Der hat gut schwimmen, den man über ''Wasser'' hält]].
+:[[der Krug geht so lange zum Wasser, bis er bricht|Der Krug geht so lange zum ''Wasser'', bis er bricht]]. (vergleiche [[der Krug geht so lange zum Brunnen, bis er bricht|… zum Brunnen …]])
+:[[die Ufer halten das Wasser|Die Ufer halten das ''Wasser'']].
+:[[Durst macht aus Wasser Wein|Durst macht aus ''Wasser'' Wein]].
+:[[einer reinlichen Frau fehlt es nie an Wasser|Einer reinlichen Frau fehlt es nie an ''Wasser'']].
+:[[einer will Feuer, der andere Wasser|Einer will Feuer, der andere ''Wasser'']].
+:[[ein großes Schiff braucht viel Wasser|Ein großes Schiff braucht viel ''Wasser'']].
+:[[ein kleiner Regen gibt auch Wasser|Ein kleiner Regen gibt auch ''Wasser'']].
+:[[ein nasser Pudel scheut das Wasser nicht|Ein nasser Pudel scheut das ''Wasser'' nicht]].
+:[[ein Sieb hält kein Wasser|Ein Sieb hält kein ''Wasser'']].
+:[[entferntes Wasser löscht keinen nahen Brand|Entferntes ''Wasser'' löscht keinen nahen Brand]].
+:[[es wird überall nur mit Wasser gekocht|Es wird überall nur mit ''Wasser'' gekocht]].
+:[[Feuer verzehrt, Wasser ernährt|Feuer verzehrt, ''Wasser'' ernährt]].
+:[[fließendes Wasser hält sich rein|Fließendes ''Wasser'' hält sich rein]].
+:[[gestohlenes Wasser ist Wein|Gestohlenes ''Wasser'' ist Wein]].
+:[[große Schiffe, große Wasser|Große Schiffe, große ''Wasser'']].
+:[[hat man kein Wasser, so löscht man mit Mist|Hat man kein ''Wasser'', so löscht man mit Mist]].
+:[[in der Fremde läuft das Wasser bergauf|In der Fremde läuft das ''Wasser'' bergauf]].
+:[[in einem Sumpfe muss man kein klares Wasser suchen|In einem Sumpfe muss man kein klares ''Wasser'' suchen]].
+:[[in großen Wassern fängt man große Fische|In großen ''Wassern'' fängt man große Fische]].
+:[[in schönen Wassern kann man auch ertrinken|In schönen ''Wassern'' kann man auch ertrinken]].
+:[[in trüben Wassern ist gut fischen|In trüben ''Wassern'' ist gut fischen]].
+:[[ist das Wasser faul, so mag es kein Gaul|Ist das ''Wasser'' faul, so mag es kein Gaul]].
+:[[jeder leitet das Wasser auf seine Mühle|Jeder leitet das ''Wasser'' auf seine Mühle]].
+:[[je mehr Fische, je trüber das Wasser|Je mehr Fische, je trüber das ''Wasser'']].
+:[[kein Feuer so heiß, ein Wasser kann es löschen|Kein Feuer so heiß, ein ''Wasser'' kann es löschen]].
+:[[mancher lobt das Wasser und bleibt auf dem Lande|Mancher lobt das ''Wasser'' und bleibt auf dem Lande]].
+:[[mancher nimmt das nächste Wasser zum Löschen|Mancher nimmt das nächste ''Wasser'' zum Löschen]].
+:[[ohne Wasser ist nicht gut segeln|Ohne ''Wasser'' ist nicht gut segeln]].
+:[[stehendes Wasser wird faul|Stehendes ''Wasser'' wird faul]].
+:[[stille Wasser sind tief|stille ''Wasser'' sind tief]]
+:[[stille Wasser gründen tief|stille ''Wasser'' gründen tief]]
+:[[trau keinem stillen Wasser und keinem stillen Mann|Trau keinem stillen ''Wasser'' und keinem stillen Mann]].
+:[[trübes Wasser treibt die Mühle auch|Trübes ''Wasser'' treibt die Mühle auch]].
+:[[vom Wasser verdirbt der beste Wein|Vom ''Wasser'' verdirbt der beste Wein]].
+:[[Wasser bei der Hand löscht den Brand|''Wasser'' bei der Hand löscht den Brand]].
+:[[Wasser in Frieden ist besser als Wein in Zank|''Wasser'' in Frieden ist besser als Wein in Zank]].
+:[[Wasser stillt wohl den Durst, aber singen lehrt es nicht|''Wasser'' stillt wohl den Durst, aber singen lehrt es nicht]].
+:[[Wasser und Feuer werden nicht Freunde|''Wasser'' und Feuer werden nicht Freunde]].
+:[[wem das Wasser ins Maul läuft, der lernt wohl schwimmen|Wem das ''Wasser'' ins Maul läuft, der lernt wohl schwimmen]].
+:[[wem das Wasser nicht schmeckt, der hat keinen Durst|Wem das ''Wasser'' nicht schmeckt, der hat keinen Durst]].
+:[[wenn das Herz brennt, muss der Kopf Wasser holen|Wenn das Herz brennt, muss der Kopf ''Wasser'' holen]].
+:[[wenn das Wasser fließt, so geht die Mühle|Wenn das ''Wasser'' fließt, so geht die Mühle]].
+:[[wenn der Brunnen trocken ist, schätzt man erst das Wasser|Wenn der Brunnen trocken ist, schätzt man erst das ''Wasser'']].
+:[[wenn der Strom anschwillt, ist das Wasser trübe|Wenn der Strom anschwillt, ist das ''Wasser'' trübe]].
+:[[wenn des Nachbars Haus brennt, so trägt man Wasser zum eigenen|Wenn des Nachbars Haus brennt, so trägt man ''Wasser'' zum eigenen]].
+:[[wenn die Gans das Wasser sieht, so zappelt ihr der Steiß|Wenn die Gans das ''Wasser'' sieht, so zappelt ihr der Steiß]].
+:[[wenn die Ziege Wasser sieht, muss sie saufen|Wenn die Ziege ''Wasser'' sieht, muss sie saufen]].
+:[[wer an der Quelle trinkt, hat das Wasser rein|Wer an der Quelle trinkt, hat das ''Wasser'' rein]].
+:[[wer aus Scherz ins Wasser springt, kann leicht darin ertrinken|Wer aus Scherz ins ''Wasser'' springt, kann leicht darin ertrinken]].
+:[[wer das Wasser fürchtet, lernt nie schwimmen|Wer das ''Wasser'' fürchtet, lernt nie schwimmen]].
+:[[wer das Wasser scheut, muss sich nicht baden|Wer das ''Wasser'' scheut, muss sich nicht baden]].
+:[[wer des Wassers bedarf, sucht es im Brunnen|Wer des ''Wassers'' bedarf, sucht es im Brunnen]].
+:[[wer dumm ist, muss Wasser saufen|Wer dumm ist, muss ''Wasser'' saufen]].
+:[[wer ins Wasser fällt, braucht den Regen nicht zu fürchten|Wer ins ''Wasser'' fällt, braucht den Regen nicht zu fürchten]].
+:[[wer keinen Geschmack hat, trinkt Wasser für Wein|Wer keinen Geschmack hat, trinkt ''Wasser'' für Wein]].
+:[[wer keinen Wein hat, muss Wasser trinken|Wer keinen Wein hat, muss ''Wasser'' trinken]].
+:[[wer kein Wasser hat, lösch mit Dreck|Wer kein ''Wasser'' hat, lösch mit Dreck]].
+:[[wer nicht schwimmen kann, muss nicht ins Wasser springen|Wer nicht schwimmen kann, muss nicht ins ''Wasser'' springen]].
+:[[wer sich ertränken will, findet überall Wasser|Wer sich ertränken will, findet überall ''Wasser'']].
+:[[wer Wasser trinkt, hat keinen Wein zu bezahlen|Wer ''Wasser'' trinkt, hat keinen Wein zu bezahlen]].
+:[[wer zum Meer will, gehe den Wassern nach|Wer zum Meer will, gehe den ''Wassern'' nach]].
+:[[wie die Quelle, so das Wasser|Wie die Quelle, so das ''Wasser'']].
+:[[wo Frösche sind, da ist auch Wasser|Wo Frösche sind, da ist auch ''Wasser'']].
+:[[wo kein Wasser ist, kann kein Kalb trinken|Wo kein ''Wasser'' ist, kann kein Kalb trinken]].
+:[[wo Wasser wegfließt, da fließt es auch wieder hin|Wo ''Wasser'' wegfließt, da fließt es auch wieder hin]].
+:[[wo Weiden sind, da ist auch Wasser|Wo Weiden sind, da ist auch ''Wasser'']].
+:[[zufrieden sein macht Wasser zu Wein|Zufrieden sein macht ''Wasser'' zu Wein]].
+:[[zu viel Wasser ertränkt den Müller|Zu viel ''Wasser'' ertränkt den Müller]].
+
+{{Charakteristische Wortkombinationen}}
+:''mit [[Adjektiv]]:'' [[abgestanden]]es / [[destilliert]]es / [[enthärtet]]es / [[heiß]]es / [[kalkhaltig]]es / [[kalt]]es / [[klar]]es ''Wasser'', [[kochend]]es ''Wasser'' ({{Audio|De-kochendes Wasser.ogg}}), [[kohlensäurehaltig]]es / [[mineralhaltig]]es / [[lauwarm]]es / [[rein]]es / [[salzig]]es / [[still]]es / [[trüb]]es / [[warm]]es / [[weich]]es ''Wasser''
+:[1] ''mit [[Verb]]:'' ''Wasser'' [[aufbereiten]] / [[destillieren]] / [[filtern]] / [[holen]] / [[saufen]] / [[trinken]]; ''Wasser'' [[gefrieren|gefriert]] / [[kochen|kocht]] / [[sieden|siedet]] / [[verdunsten|verdunstet]] / [[aufwallen|wallt auf]]
+:[1] ''in [[Kombination]]:'' einen [[Eimer]] ''Wasser'' / eine [[Flasche]] ''Wasser'' / ein [[Glas]] ''Wasser'' / eine [[Kanne]] ''Wasser'' [[holen]]; ''Wasser'' [[in]] die [[Badewanne]] [[einlassen]] / [[laufen]] [[lassen]]; sich mit [[kalt]]em / [[warm]]em ''Wasser'' die [[Haar]]e / [[Hand|Hände]] [[waschen]]; ''Wasser'' [[fließen|fließt]] / [[tropfen|tropft]] aus dem [[Hahn]]; ''Wasser'' ([[für]] [[Kaffee]] / [[Tee]]) [[aufsetzen]]; ''Wasser'' (mit den [[Hand|Händen]], mit einer [[Kelle]]) [[schöpfen]]; die [[Blume]]n [[brauchen]] (mal wieder) ''Wasser''; die [[Blume]]n ins ''Wasser'' [[stellen]]; seinen [[Durst]] mit ''Wasser'' [[löschen]]; etwas [[unter]] ''Wasser'' [[setzen]]; mit ''Wasser'' sich die [[Lippe]]n [[benetzen]]
+:[2] ''mit [[Adjektiv]]:'' [[brackig]]es ''Wasser'', [[eisfrei]]es ''Wasser'', [[faulig]]es ''Wasser'', [[flach]]es ''Wasser'', [[fließend]]es ''Wasser'', [[offen]]es ''Wasser'', [[schmutzig]]es ''Wasser'', [[seicht]]es ''Wasser'', [[stehend]]es ''Wasser'', [[tief]]es ''Wasser''; ''[[Tide]]/[[Gezeiten]]:'' [[ablaufend]]es ''Wasser'', [[auflaufend]]es ''Wasser''
+:[2] ''mit [[Verb]]:'' nach ''Wasser'' [[bohren]], nach ''Wasser'' [[suchen]], auf ''Wasser'' [[stoßen]]; ins ''Wasser'' [[fallen]]; ''Wasser'' [[fließen|fließt]] / [[gurgeln|gurgelt]] / [[plätschern|plätschert]] / [[rauschen|rauscht]] / [[rinnen|rinnt]] / [[ansteigen|steigt an]] / [[strömen|strömt]] / [[versickern|versickert]]
+:[2] ''in [[Kombination]]:'' das ''Wasser'' ist an dieser [[Stelle]] (sehr) [[flach]]; das ''Wasser'' [[durchbrechen|durchbricht]] die [[Damm|Dämme]]; ''Wasser'' [[tritt]] über die [[Ufer]], ''Wasser'' [[überschwemmt]] das [[Land]]; ''Wasser'' [[verläuft]] sich; der [[Keller]] [[steht]] unter ''Wasser''; das [[Haus]] [[stehen|steht]] am ''Wasser'', der [[Garten]] / die [[Straße]] [[liegen|liegt]] (direkt) am ''Wasser''; etwas [[schwimmen|schwimmt]] im ''Wasser''; etwas [[treiben|treibt]] auf dem ''Wasser''; ins ''Wasser'' (mit einem Köpper) [[springen]]; sich ins ''Wasser'' [[stürzen]]; die [[Kinder]] [[tummeln]] sich im ''Wasser'' / [[plantschen]] im ''Wasser''; den [[Körper]] unter ''Wasser'' [[drücken]] / [[halten]]; etwas [[spiegelt]] sich im ''Wasser''; ins ''Wasser'' [[tauchen]]; sich ins ''Wasser'' [[werfen]]; sich [[über]] ''Wasser'' [[halten]]; [[unter]] ''Wasser'' [[schwimmen]]; [[Boot]]e / [[Jolle]]n / [[Yacht]]en werden [[zu]] ''Wasser'' [[lassen|gelassen]]; etwas [[zu]] ''Wasser'' oder zu Land [[erreichen]]; das ''Wasser'' [[treibt]] die [[Turbine]] an
+:[3] ''in [[Kombination]] ([[Urin]]):'' sein ''Wasser'' [[abschlagen]], ''Wasser'' [[lassen]], das ''Wasser'' nicht halten können
+:[3] ''in [[Kombination]]:'' das ''Wasser'' steht vor [[Rührung]] in den Augen; der [[Schmerz]] treibt ''Wasser'', die Schmerzen [[treiben]] (regelrecht) ''Wasser'' in die Augen
+:[3] [[duften]]de ''Wasser'', [[wohlriechend]]e ''Wasser''; sich mit [[Kölnisch]](em) ''Wasser'' [[besprühen]]
+:[4] ''in [[Kombination]]:'' [[hochprozentig]]es ''Wasser'' [[brennen]], [[hochprozentig]]es ''Wasser'' [[trinken]]; das ''Wasser'' macht [[besoffen]] / [[betrunken]]
+:[6] ''in [[Kombination]]:'' ''Wasser'' in den [[Bein]]en / im [[Bauch]] haben; ''[[schwitzen]]:'' das ''Wasser'' [[laufen|läuft]] nur so von der [[Stirn]] / [[laufen|läuft]] nur so am Körper [[herunter]]
+
+{{Wortbildungen}}
+:''[[Adjektiv]]e/[[Adverb]]ien:'' [[wasserabstoßend]], [[wasserabweisend]], [[wasserähnlich]], [[wasserarm]], [[wasserartig]], [[wasserbasiert]], [[wasserbeschädigt]], [[wasserbindend]], [[wasserblau]], [[wasserblütig]], [[wasserdicht]], [[wasserdurchlässig]], [[wasserecht]], [[wasserentziehend]], [[wasserfest]], [[wasserfleckig]], [[wasserfrei]], [[wasserführend]], [[wassergebunden]], [[wassergefährdend]], [[wassergefüllt]], [[wassergekühlt]], [[wassergesättigt]], [[wassergeschützt]], [[wassergetrieben]], [[wasserhaltig]], [[wasserhell]], [[wasserklar]], [[wasserlebend]], [[wasserlos]], [[wasserlöslich]], [[wasserrechtlich]], [[wasserreich]], [[wasserresistent]], [[wasserscheu]], [[wasserspeiend]], [[wassersportlich]], [[wassersüchtig]], [[wassertechnisch]], [[wasserundurchlässig]], [[wasserüberronnen]], [[wasserunlöslich]], [[wasserverdünnbar]], [[wasserwirtschaftlich]]
+:[[wässerig]], [[wässrig]]
+:''[[Substantiv]]e:''
+::[[Wasserabfluss]], [[Wasserabgabe]], [[Wasserablass]], [[Wasserablauf]], [[Wasserableitung]], [[Wasserabort]], [[Wasserabschlag]], [[Wasserabweiser]], [[Wasserader]], [[Wasseraerobic]], [[Wasseraloe]], [[Wasserampfer]], [[Wasseramsel]], [[Wasseramt]], [[Wasseranalyse]], [[Wasserangebot]], [[Wasseranlage]], [[Wasseransammlung]], [[Wasseranschluss]], [[Wasseranteil]], [[Wasserantrieb]], [[Wasseranwendung]], [[Wasserarm]], [[Wasserarmut]], [[Wasserassel]], [[Wasseraufbereitung]], [[Wasseraufbereitungsanlage]], [[Wasseraufnahme]], [[Wasseraustausch]], [[Wasseraustritt]], [[Wasserautobahn]]
+::[[Wasserbad]], [[Wasserbahn]], [[Wasserbakterie]], [[Wasserball]], [[Wasserballett]], [[Wasserbasis]], [[Wasserbassin]], [[Wasserbau]], [[Wasserbauch]], [[Wasserbaukunst]], [[Wasserbauer]], [[Wasserbaumeister]], [[Wasserbaumtechniker]], [[Wasserbecken]], [[Wasserbedarf]], [[Wasserbehälter]], [[Wasserbehandlung]], [[Wasserbehörde]], [[Wasserbeitrag]], [[Wasserbelastung]], [[Wasserbereich]], [[Wasserbereithaltung]], [[Wasserbereitstellung]], [[Wasserberg]], [[Wasserbeschaffenheit]], [[Wasserbeschaffung]], [[Wasserbetrieb]], [[Wasserbett]], [[Wasserbeutel]], [[Wasserbewegung]], [[Wasserbewirtschaftung]], [[Wasserbewohner]], [[Wasserbilanz]], [[Wasserbild]], [[Wasserbinse]], [[Wasserblase]], [[Wasserblattern]], [[Wasserblattgewächs]], [[Wasserblei]], [[Wasserblume]], [[Wasserblüte]], [[Wasserbock]], [[Wasserboiler]], [[Wasserbombe]], [[Wasserbottich]], [[Wasserborn]], [[Wasserbrei]], [[Wasserbrotwurzel]], [[Wasserbruch]], [[Wasserbrunnen]], [[Wasserbuch]], [[Wasserbüffel]], [[Wasserburg]], [[Wasserbus]], [[Wasserbütte]]
+::[[Wasserchemie]], [[Wasserchemiker]]
+::[[Wasserdamm]], [[Wasserdampf]], [[Wasserdargebot]], [[Wasserdichte]], [[Wasserdichtigkeit]], [[Wasserdost]], [[Wasserdruck]], [[Wasserdrucklehre]], [[Wasserdunst]], [[Wasserdurchfluss]], [[Wasserdurchtritt]], [[Wasserdüse]]
+::[[Wassereidechse]], [[Wassereimer]], [[Wassereinbruch]], [[Wassereinlagerung]], [[Wassereinsatz]], [[Wassereinsparung]], [[Wassereintritt]], [[Wassereinzugsgebiet]], [[Wassereis]], [[Wasserelektrolyse]], [[Wasserenergie]], [[Wasserenthärter]], [[Wasserenthärtung]], [[Wasserentnahme]], [[Wasserentnahmestelle]], [[Wasserentsorgung]], [[Wasserentzug]], [[Wassererschließung]], [[Wassererwärmung]], [[Wasserexperte]]
+::[[Wasserfach]], [[Wasserfachmann]], [[Wasserfahrt]], [[Wasserfahrzeug]], [[Wasserfall]], [[Wasserfalle]], [[Wasserfarbe]], [[Wasserfarn]], [[Wasserfass]], [[Wasserfassung]], [[Wasserfeder]], [[Wasserfee]], [[Wasserfenchel]], [[Wasserfernleitung]], [[Wasserfilm]], [[Wasserfilter]], [[Wasserfläche]], [[Wasserflasche]], [[Wasserfleck]], [[Wasserfledermaus]], [[Wasserfloh]], [[Wasserflughafen]], [[Wasserflugzeug]], [[Wasserfluss]], [[Wasserflut]], [[Wasserfontäne]], [[Wasserförderer]], [[Wasserförderung]], [[Wasserforschung]], [[Wasserforum]], [[Wasserfracht]], [[Wasserfrage]], [[Wasserfrau]], [[Wasserfreude]], [[Wasserfreund]], [[Wasserfront]], [[Wasserfrosch]], [[Wasserführung]], [[Wasserfüllung]], [[Wasserfurche]]
+::[[Wassergabe]], [[Wassergang]], [[Wassergarten]], [[Wassergas]], [[Wassergebiet]], [[Wassergebühr]], [[Wassergeburt]], [[Wassergedächtnis]], [[Wassergefährdung]], [[Wassergefäß]], [[Wassergeflügel]], [[Wassergehalt]], [[Wassergeist]], [[Wassergeld]], [[Wassergemisch]], [[Wassergeplätscher]], [[Wassergeräusch]], [[Wassergeschäft]], [[Wassergesellschaft]], [[Wassergesetz]], [[Wassergeusen]], [[Wassergewebe]], [[Wassergewinnung]], [[Wassergewöhnung]], [[Wasserglas]], [[Wasserglätte]], [[Wassergott]], [[Wassergraben]], [[Wassergroschen]], [[Wassergrube]], [[Wassergrundstück]], [[Wasserguss]], [[Wassergüte]], [[Wassergymnastik]]
+::[[Wasserhahn]], [[Wasserhaltung]], [[Wasserhandel]], [[Wasserhändler]], [[Wasserhärte]], [[Wasserhaushalt]], [[Wasserheilkunde]], [[Wasserheilverfahren]], [[Wasserhimmel]], [[Wasserhindernis]], [[Wasserhöhe]], [[Wasserhose]], [[Wasserhuhn]], [[Wasserhülle]], [[Wasserhyazinthe]], [[Wasserhydrant]], [[Wasserhygiene]]
+::[[Wasserindustrie]], [[Wasseringenieur]], [[Wasserinsekt]], [[Wasserinstallateur]], [[Wasserinstallation]], [[Wasserisolation]], [[Wasserjungfer]]
+::[[Wasserkäfer]], [[Wasserkakao]], [[Wasserkammer]], [[Wasserkanal]], [[Wasserkanister]], [[Wasserkanne]], [[Wasserkanone]], [[Wasserkante]], [[Wasserkaraffe]], [[Wasserkarren]], [[Wasserkarte]], [[Wasserkaskade]], [[Wasserkastanie]], [[Wasserkasten]], [[Wasserkauf]], [[Wasserkeil]], [[Wasserkelch]], [[Wasserkessel]], [[Wasserkind]], [[Wasserkissen]], [[Wasserklosett]], [[Wasserknappheit]], [[Wasserkobold]], [[Wasserkocher]], [[Wasserkonferenz]], [[Wasserkontrolle]], [[Wasserkonzept]], [[Wasserkonzern]], [[Wasserkopf]], [[Wasserkosten]], [[Wasserkraft]], [[Wasserkraftwerk]], [[Wasserkran]], [[Wasserkreislauf]], [[Wasserkrieg]], [[Wasserkrise]], [[Wasserkrug]], [[Wasserkübel]], [[Wasserkugel]], [[Wasserkühlung]], [[Wasserkunst]], [[Wasserkur]]
+::[[Wasserlabor]], [[Wasserlache]], [[Wasserlack]], [[Wasserlage]], [[Wasserlandeplatz]], [[Wasserlandschaft]], [[Wasserlandung]], [[Wasserlast]], [[Wasserlauf]], [[Wasserläufer]], [[Wasserlebewesen]], [[Wasserleiche]], [[Wasserleitung]], [[Wasserleitungsrohr]], [[Wasserlichtorgel]], [[Wasserlieferant]], [[Wasserlieferung]], [[Wasserlilie]], [[Wasserlinie]], [[Wasserlinse]], [[Wasserloch]]
+::[[Wassermanagement]], [[Wassermangel]], [[Wassermann]], [[Wassermassage]], [[Wassermasse]], [[Wassermatratze]], [[Wassermeister]], [[Wassermelone]], [[Wassermenge]], [[Wassermesser]], [[Wasserminze]], [[Wassermolch]], [[Wassermokassinotter]], [[Wassermolekül]], [[Wassermörtel]], [[Wassermotorrad]], [[Wassermühle]], [[Wassermusik]]
+::[[Wassernähe]], [[Wassernase]], [[Wassernebel]], [[Wassernetz]], [[Wassernixe]], [[Wassernot]], [[Wassernotstand]], [[Wassernutzung]], [[Wassernymphe]]
+::[[Wasseroberfläche]], [[Wasserökologie]], [[Wasserorganismus]], [[Wasserorgel]]
+::[[Wasserpalme]], [[Wasserpantomime]], [[Wasserpartie]], [[Wasserparadies]], [[Wasserpark]], [[Wasserpass]], [[Wasserpegel]], [[Wasserperle]], [[Wasserpest]], [[Wasserpfeffer]], [[Wasserpfeife]], [[Wasserpfennig]], [[Wasserpflanze]], [[Wasserpforte]], [[Wasserpfütze]], [[Wasserpilz]], [[Wasserpipeline]], [[Wasserpistole]], [[Wasserplan]], [[Wasserplatz]], [[Wasserpolitik]], [[Wasserpolizei]], [[Wasserpolnisch]], [[Wasserpreis]], [[Wasserprimel]], [[Wasserprobe]], [[Wasserproblem]], [[Wasserproblematik]], [[Wasserprojekt]], [[Wasserpumpe]], [[Wasserpumpenzange]], [[Wasserpumpstation]], [[Wasserqualität]], [[Wasserquelle]], [[Wasserquirl]]
+::[[Wasserrad]], [[Wasserrakete]], [[Wasserralle]], [[Wasserrand]], [[Wasserrationierung]], [[Wasserratte]], [[Wasserrauschen]], [[Wasserrechnung]], [[Wasserrecht]], [[Wasserregime]], [[Wasserregulierung]], [[Wasserreichtum]], [[Wasserreinhaltung]], [[Wasserreinigung]], [[Wasserreis]], [[Wasserreserve]], [[Wasserreservoir]], [[Wasserressource]], [[Wasserretter]], [[Wasserrettung]], [[Wasserrettungsdienst]], [[Wasserrinne]], [[Wasserrohr]], [[Wasserrohrleitung]], [[Wasserrose]], [[Wasserrübe]], [[Wasserrückstand]], [[Wasserrutschbahn]], [[Wasserrutsche]], 
+::[[Wassersack]], [[Wassersalamander]], [[Wassersalat]], [[Wassersanierung]], [[Wassersäule]], [[Wasserschaden]], [[Wasserschaff]], [[Wasserschale]], [[Wasserscheide]], [[Wasserscheu]], [[Wasserschicht]], [[Wasserschieber]], [[Wasserschildkröte]], [[Wasserschlacht]], [[Wasserschlag]], [[Wasserschlange]], [[Wasserschlauch]], [[Wasserschleier]], [[Wasserschloss]], [[Wasserschnecke]], [[Wasserschnelle]], [[Wasserschöpfer]], [[Wasserschraube]], [[Wasserschüssel]], [[Wasserschutz]], [[Wasserschutzgebiet]], [[Wasserschutzpolizei]], [[Wasserschwall]], [[Wasserschwein]], [[Wasserseite]], [[Wassersicherheit]], [[Wassersicherstellung]], [[Wassersituation]], [[Wasserski]], [[Wasserskulptur]], [[Wassersparen]], [[Wassersparer]], [[Wassersparmaßnahme]], [[Wasserspaß]], [[Wasserspeicher]], [[Wasserspeicherung]], [[Wasserspeier]], [[Wasserspeisung]], [[Wasserspender]], [[Wassersperre]], [[Wasserspiegel]], [[Wasserspiel]], [[Wasserspielplatz]], [[Wasserspinne]], [[Wassersport]], [[Wassersportart]], [[Wasserspringen]], [[Wasserspringer]], [[Wasserspritze]], [[Wasserspritzer]], [[Wasserspritzpistole]], [[Wasserspülung]], [[Wasserspur]], [[Wasserstadt]], [[Wasserstand]], [[Wasserstau]], [[Wasserstaub]], [[Wasserstein]], [[Wasserstelle]], [[Wasserstiefel]], [[Wasserstoff]], [[Wasserstrahl]], [[Wasserstraße]], [[Wasserstrecke]], [[Wasserstreifen]], [[Wasserstress]], [[Wasserstrom]], [[Wasserströmung]], [[Wasserstrudel]], [[Wassersturz]], [[Wassersuche]], [[Wassersucht]], [[Wassersuppe]], [[Wassersystem]]
+::[[Wassertablette]], [[Wassertag]], [[Wassertank]], [[Wassertarif]], [[Wassertaxi]], [[Wassertechnik]], [[Wassertechnologie]], [[Wassertemperatur]], [[Wassertherapie]], [[Wassertiefe]], [[Wassertier]], [[Wassertisch]], [[Wassertomate]], [[Wassertonne]], [[Wassertopf]], [[Wassertor]], [[Wassertourismus]], [[Wassertourist]], [[Wasserträger]], [[Wassertransport]], [[Wassertretbecken]], [[Wassertreten]], [[Wassertrinker]], [[Wassertrog]], [[Wassertropfen]], [[Wassertümpel]], [[Wasserturbine]], [[Wasserturm]]
+::[[Wasseruhr]], [[Wasserungeheuer]], [[Wasserunternehmen]], [[Wasseruntersuchung]]
+::[[Wasserventil]], [[Wasserverband]], [[Wasserverbindung]], [[Wasserverbindungsweg]], [[Wasserverbrauch]], [[Wasserverbraucher]], [[Wasserverdrängung]], [[Wasserverdunstung]], [[Wasservergiftung]], [[Wasserverhältnis]], [[Wasserverkauf]], [[Wasserverkäufer]], [[Wasserverknappung]], [[Wasserverkehr]], [[Wasserverlust]], [[Wasserverschmutzer]], [[Wasserverschmutzung]], [[Wasserverschwender]], [[Wasserverschwendung]], [[Wasserverseuchung]], [[Wasserversorger]], [[Wasserversorgung]], [[Wasserverteilung]], [[Wasserverunreinigung]], [[Wasserverwendung]], [[Wasservogel]], [[Wasservolumen]], [[Wasservorhang]], [[Wasservorkommen]], [[Wasservorrat]]
+::[[Wasserwaage]], [[Wasserwacht]], [[Wasserwagen]], [[Wasserwand]], [[Wasserwanderer]], [[Wasserwandern]], [[Wasserwanderung]], [[Wasserwanze]], [[Wasserwärme]], [[Wasserweg]], [[Wasserwehr]], [[Wasserweihe]], [[Wasserwelle]], [[Wasserwelt]], [[Wasserwerfer]], [[Wasserwerk]], [[Wasserwerker]], [[Wasserwesen]], [[Wasserwiderstand]], [[Wasserwild]], [[Wasserwirbel]], [[Wasserwirtschaft]], [[Wasserwirtschaftler]], [[Wasserwissenschaft]], [[Wasserwoche]], [[Wasserwoge]], [[Wasserwolke]], [[Wasserwüste]]
+::[[Wasserzähler]], [[Wasserzapfstelle]], [[Wasserzeichen]], [[Wasserzirkulation]], [[Wasserzuber]], [[Wasserzufluss]], [[Wasserzufuhr]], [[Wasserzulauf]], [[Wasserzuleitung]], [[Wasserzunge]], [[Wasserzweckverband]]
+:''[[Verb]]en:'' [[bewässern]], [[entwässern]], [[verwässern]], [[wassern]], [[wässern]]
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=chemische Verbindung, die aus Wasserstoff und Sauerstoff zusammengesetzt ist|Ü-Liste=
+*{{ab}}: {{Üt|ab|аӡы|}}
+*{{af}}: {{Ü|af|water}}
+*{{egy}}: {{Üt|egy|mw|<hiero>mw</hiero>}} {{f}}
+*{{sq}}: {{Ü|sq|ujë}} {{m}}
+*{{grc}}: {{Üt|grc|ὕδωρ}} {{n}}
+*{{non}}: {{Ü|non|vatn}}
+*{{alp}}: {{Ü|alp|'wele}}; ''Nordküstenalune:'' {{Ü|alp|kwele}}
+*{{aie}}: {{Ü|aie|eiki}}
+*{{amk}}: {{Ü|amk|mereha}}
+*{{am}}: {{Üt|am|ውኃ|whä}}, {{Üt|am|ውሃ|wiha}}
+*{{akg}}: {{Ü|akg|wei}}
+*{{ar}}: {{Üt|ar|ماء|māʾ|مَاء}} {{m}}, {{Üt|ar|مياه|meyāh|مِيَاه}} {{m}}
+*{{an}}: {{Ü|an|augua}}, {{Ü|an|aigua}}
+*{{agf}}: {{Ü|agf|wir}}
+*{{hy}}: {{Üt|hy|ջուր|ǰowr}}
+*{{az}}: {{Ü|az|su}}
+*{{as}}: {{Üt|as|জল|zol}}
+*{{ast}}: {{Ü|ast|agua}}
+*{{aua}}: {{Ü|aua|ñio}}
+*{{tay}}: {{Ü|tay|usiak}}
+*{{av}}: {{Üt|av|лъим|}}
+*{{ay}}: {{Ü|ay|uma}}
+*{{baa}}: {{Ü|baa|mbisi}}
+*{{bzg}}: {{Ü|bzg|to}}
+*{{xbc}}: {{Ü|xbc|αββο}}
+*{{ban}}: {{Ü|ban|yeh}}
+*{{bm}}: {{Ü|bm|ji}}
+*{{bjn}}: {{Ü|bjn|banyu}}
+*{{bcm}}: {{Ü|bcm|koromo}}
+*{{ba}}: {{Üt|ba|һыу|ḥyu}}
+*{{eu}}: {{Ü|eu|ur}}
+*{{bbc}}: {{Ü|bbc|aek}}
+*{{bem}}: {{Ü|bem|amenshi}}
+*{{bn}}: {{Üt|bn|পানি|pāni}}, {{Üt|bn|জল|jala}}
+*{{bhw}}: {{Ü|bhw|wār}}
+*{{my}}: {{Üt|my|ရေ|re}}
+*{{bi}}: {{Ü|bi|wota}}
+*{{bla}}: {{Ü|bla|aohkíí}}
+*{{bty}}: {{Ü|bty|wai}}, {{Ü|bty|way}}
+*{{bs}}: {{Üt|bs|вода}} {{f}}
+*{{brh}}: {{Ü|brh|دیر}}
+*{{br}}: {{Ü|br|dour}}, {{Ü|br|deur}}
+*{{bg}}: {{Üt|bg|вода}} {{f}}
+*{{rmq}}: {{Ü|rmq|ansiá}}, {{Ü|rmq|pañí}}, {{Ü|rmq|clariosa}}
+*{{ceb}}: {{Ü|ceb|tubig}}
+*{{ch}}: {{Ü|ch|hånom}}
+*{{chr}}: {{Üt|chr|ᎠᎹ|ama}}
+*{{chy}}: {{Ü|chy|mahpe}}
+*{{ny}}: {{Ü|ny|madzi}}
+*{{zh}}: {{Üt|zh|水|shuǐ}}
+*{{chp}}: {{Ü|chp|tú}}
+*{{cr}}: {{Üt|cr|ᓃᐲᔾ|nīpīy}}
+*{{da}}: {{Ü|da|vand}} {{n}}
+*{{dhv}}: {{Ü|dhv|medrixadra}}
+*{{de}}:
+**{{goh}}: {{Ü|goh|waʒʒar}}
+*{{diq}}: {{Ü|diq|ab}}
+*{{dob}}: {{Ü|dob|boasi}}
+*{{dz}}: {{Üt|dz|ཆུ|chu}} {{f}}
+*{{egl}}: {{Ü|egl|aqua}}
+*{{en}}: {{Ü|en|water}}
+**{{ang}}: {{Ü|ang|wæter}}
+*{{myv}}: {{Ü|myv|ведь}}
+*{{eo}}: {{Ü|eo|akvo}}
+*{{et}}: {{Ü|et|vesi}}
+*{{fo}}: {{Ü|fo|vatn}}
+*{{fj}}: {{Ü|fj|wai}}
+*{{hif}}: {{Ü|hif|paani}}
+*{{fi}}: {{Ü|fi|vesi}}
+*{{fr}}: {{Ü|fr|eau}} {{f}}
+*{{fur}}: {{Ü|fur|aghe}}
+*{{ff}}: {{Ü|ff|ndiyam}}
+*{{gl}}: {{Ü|gl|agua}}, {{Ü|gl|auga}}
+*{{gay}}: {{Ü|gay|wih}}
+*{{ka}}: {{Üt|ka|წყალი|cqali}}
+*{{glk}}: {{Ü|glk|آو}}
+*{{gil}}: {{Ü|gil|ran}}
+*{{got}}: {{Üt|got|𐍅𐌰𐍄𐍉|watō}}
+*{{el}}: {{Üt|el|νερό|neró}} {{n}}, ''<small>gehoben, literarisch:</small>'' {{Üt|el|ύδωρ|ýdor}} {{n}}
+*{{kl}}: {{Ü|kl|imeq}}
+*{{gn}}: {{Ü|gn|y}}, {{Ü|gn|î}}
+*{{gu}}: {{Üt|gu|પાણી|pāṇī}} {{n}}
+*{{ht}}: {{Ü|ht|dlo}}
+*{{ha}}: {{Ü|ha|ruwa}} {{m}}
+*{{haw}}: {{Ü|haw|wai}}
+*{{he}}: {{Üxx5|he|mayīm|מַיִם|מים}} ''Pl.''
+*{{hi}}: {{Üt|hi|पानी|pānī}}
+*{{io}}: {{Ü|io|aquo}}
+*{{ig}}: {{Ü|ig|mmiri}}
+*{{ilo}}: {{Ü|ilo|danum}}
+*{{id}}: {{Ü|id|air}}
+*{{inh}}: {{Ü|inh|хий}}
+*{{ia}}: {{Ü|ia|aqua}}
+*{{iu}}: {{Üt|iu|ᐃᒥᖅ|imiq}}
+*{{ga}}: {{Ü|ga|uisce}}
+*{{xh}}: {{Ü|xh|amanzi}}
+*{{zu}}: {{Ü|zu|amanzi}}
+*{{is}}: {{Ü|is|vatn}} {{n}}, ''speziell Meerwasser'': {{Ü|is|sjór}} {{m}}
+*{{it}}: {{Ü|it|acqua}} {{f}}
+**{{pms}}: {{Ü|pms|eva}}
+*{{sah}}: {{Üt|sah|уу|uu}}
+*{{ja}}: {{Üt|ja|水|みず, mizu}}
+*{{jv}}: {{Ü|jv|wwe}}, {{Ü|jv|wway}}, {{Ü|jv|bañu}}, {{Ü|jv|banyu}}
+*{{yi}}: {{Üt|yi|װאַסער|vaser}} {{n}}
+*{{kab}}: {{Ü|kab|aman}}
+*{{kn}}: {{Üt|kn|ನೀರು|nīru}}
+*{{pam}}: {{Ü|pam|danúm}}
+*{{kaa}}: {{Ü|kaa|suw}}
+*{{kk}}: {{Üt|kk|су}}
+*{{csb}}: {{Ü|csb|wòda}}
+*{{ks}}: {{Üt|ks|آب|}} {{f}}
+*{{ca}}: {{Ü|ca|aigua}} {{f}}
+*{{km}}: {{Üt|km|ទឹក|tɨk}}
+*{{khw}}: {{Ü|khw|اوغ}}
+*{{kg}}: {{Ü|kg|maza}}
+*{{ki}}: {{Ü|ki|mai}}
+*{{rw}}: {{Ü|rw|amazi}}
+*{{ky}}: {{Üt|ky|суу|suu}}
+*{{rn}}: {{Ü|rn|amazi}}
+*{{tlh}}: {{Ü|tlh|bIQ}}
+*{{kv}}: {{Üt|kv|ва|va}}
+*{{kok}}: {{Üt|kok|उदाक|udāka}}
+*{{cop}}: {{Ü|cop|ⲙⲟⲟⲩ}}
+*{{ko}}: {{Üt|ko|물|mul}}
+*{{kw}}: {{Ü|kw|dowr}}
+*{{co}}: {{Ü|co|acqua}}
+*{{kos}}: {{Ü|kos|kof}}, {{Ü|kos|sroano}}
+*{{avk}}: {{Ü|avk|lava}}
+*{{crh}}: {{Ü|crh|suv}}
+*{{hr}}: {{Ü|hr|voda}} {{f}}
+*{{ku}}: {{Ü|ku|av}}
+**{{kmr}}: {{Ü|kmr|av}}
+**{{ckb}}: {{Üt|ckb|ئاو|āū}}
+*{{lld}}: {{Ü|lld|ega}}
+*{{lad}}: {{Üt|lad|אגוא|agua}}
+*{{lo}}: {{Üt|lo|ນ້ຳ|nam}}
+*{{la}}: {{Ü|la|aqua}} {{f}}
+*{{lez}}: {{Üt|lez|йад|}}, {{Üt|lez|яд|}}
+*{{ltg}}: {{Ü|ltg|iudiņs}}
+*{{lv}}: {{Ü|lv|ūdens}}
+*{{lij}}: {{Ü|lij|ægoa}}
+*{{li}}: {{Ü|li|water}}
+*{{ln}}: {{Ü|ln|mái}}
+*{{lt}}: {{Ü|lt|vanduo}} {{m}}
+*{{jbo}}: {{Ü|jbo|djacu}}
+*{{lg}}: {{Ü|lg|amazzi}}
+*{{lb}}: {{Ü|lb|Waasser}} {{n}}
+*{{mas}}: {{Ü|mas|engare}}
+*{{mg}}: {{Ü|mg|rano}}, {{Ü|mg|siniben-drano}}, {{Ü|mg|ráno}}
+*{{mad}}: {{Ü|mad|aeŋ}}
+*{{ms}}: {{Ü|ms|air}}
+*{{ml}}: {{Üt|ml|ജലം|jalã}}
+*{{dv}}: {{Üt|dv|ފެން|fen}}
+*{{mt}}: {{Ü|mt|ilma}}
+*{{mnc}}: {{Ü|mnc|muke}}, {{Ü|mnc|ᠮᡠᡴᡝ}}
+*{{gv}}: {{Ü|gv|ushtey}}, {{Ü|gv|ushtaghey}}
+*{{mi}}: {{Ü|mi|wai}}
+*{{arn}}: {{Ü|arn|ko}}
+*{{mr}}: {{Üt|mr|पाणी|pāṇī}}, {{Üt|mr|जल|jala}}
+*{{mh}}: {{Ü|mh|dān}}
+*{{yua}}: {{Ü|yua|haʼ}}, {{Ü|yua|ja'}}
+*{{mk}}: {{Üt|mk|вода}} {{f}}
+*{{min}}: {{Ü|min|aie}}
+*{{xmf}}: {{Üt|xmf|წყარი|c̣q̇ari}}
+*{{mwl}}: {{Ü|mwl|auga}}
+*{{moh}}: {{Ü|moh|ohnekanos}}, {{Ü|moh|ohneka}}
+*{{mdf}}: {{Ü|mdf|ведь}}
+*{{mn}}: {{Üt|mn|ус|us}}
+*{{nah}}:
+**{{azd}}: {{Ü|azd|at}}
+**{{ngu}}: {{Ü|ngu|atl}}
+**{{nhe}}: {{Ü|nhe|atl}}
+**{{nhw}}: {{Ü|nhw|atl}}
+**{{nch}}: {{Ü|nch|atl}}
+**{{nci}}: {{Ü|nci|atl}}
+**{{nhx}}: {{Ü|nhx|á'}}
+**{{nlv}}: {{Ü|nlv|atl}}
+**{{nhv}}: {{Ü|nhv|atl}}
+**{{nhg}}: {{Ü|nhg|ötl}}, {{Ü|nhg|ötzintli̱}}
+**{{nhn}}: ''Amecameca'': {{Ü|nhn|atl}}; ''Cholula'': {{Ü|nhn|atzintli}}; ''Milpa Alta'': {{Ü|nhn|atzintli}}; ''Tlaxcala'': {{Ü|nhn|atl}}
+**{{ncx}}: {{Ü|ncx|at}}
+*{{na}}: {{Ü|na|ebok}}
+*{{nv}}: {{Ü|nv|tó}}
+*{{nap}}: {{Ü|nap|acqua}}
+*{{ne}}: {{Üt|ne|पानी|pānī}}
+*{{new}}: {{Üt|new|लः|la:}}
+*{{nds}}: {{Ü|nds|Water}}
+*{{nl}}: {{Ü|nl|water}} {{n}}
+*{{niu}}: {{Ü|niu|vai}}
+*{{nso}}: {{Ü|nso|meetse}}
+*{{frr}}: {{Ü|frr|weeder}}
+*{{se}}: {{Ü|se|čáhci}}
+*{{no}}:
+**{{nb}}: {{Ü|nb|vann}} {{n}}, {{Ü|nb|vatn}} {{n}}
+**{{nn}}: {{Ü|nn|vatn}} {{n}}
+*{{nov}}: {{Ü|nov|aque}}
+*{{ood}}: {{Ü|ood|shuhthagi}}
+*{{oc}}: {{Ü|oc|aiga}} {{f}}
+*{{or}}: {{Üt|or|ପାଣି|pāṇi}}
+*{{om}}: {{Ü|om|bishaan}}
+*{{os}}: {{Üt|os|дон|don}}
+*{{pa}}: {{Üt|pa|ਪਾਣੀ|pāṇī}}, {{Üt|pa|ਆਬ|āb}}
+*{{pap}}: {{Ü|pap|awa}}
+*{{ps}}: {{Üt|ps|اوبه|obë}}
+*{{fa}}: {{Üt|fa|آب|āb}}
+*{{pih}}: {{Ü|pih|worta}}
+*{{pox}}: {{Ü|pox|woda}} {{f}}, {{Ü|pox|wôda}} {{f}}, {{Ü|pox|vôdă}} {{f}}
+*{{pl}}: {{Ü|pl|woda}} {{f}}
+*{{pt}}: {{Ü|pt|água}} {{f}}
+*{{qu}}: {{Ü|qu|unu}}
+**{{quz}}: {{Ü|quz|yaku}}
+*{{rap}}: {{Ü|rap|vai}}
+*{{rm}}: {{Ü|rm|aua}}
+*{{rom}}:
+**{{rmy}}: {{Ü|rmy|panì}}
+*{{ro}}: {{Ü|ro|apă}} {{f}}
+*{{ru}}: {{Üt|ru|вода}} {{f}}
+*{{bxr}}: {{Üt|bxr|уһан}}
+*{{sm}}: {{Ü|sm|vai}}
+*{{sa}}: {{Üt|sa|जल|jala}}
+*{{sc}}: {{Ü|sc|abba}}
+*{{sas}}: {{Ü|sas|aiq}}
+*{{stq}}: {{Ü|stq|Woater}}
+*{{gd}}: {{Ü|gd|uisge}}
+*{{sv}}: {{Ü|sv|vatten}} {{n}}
+*{{sco}}: {{Ü|sco|watter}}
+*{{sr}}: {{Üt|sr|вода}} {{f}}
+*{{sh}}: {{Üt|sh|вода}} {{f}}
+*{{st}}: {{Ü|st|metsi}}
+*{{tn}}: {{Ü|tn|metsi}}
+*{{shn}}: {{Üt|shn|ၼမ်ႉ|nâ̰m}}
+*{{sn}}: {{Ü|sn|mvura}}
+*{{sd}}: {{Üt|sd|پاڻي|pāṇī}}
+*{{si}}: {{Üt|si|ජලය|jalaya}}, {{Üt|si|වතුර|vatura}}
+*{{ss}}: {{Ü|ss|emanti}}
+*{{scn}}: {{Ü|scn|acqua}} {{f}}, {{Ü|scn|occa}} {{f}}, {{Ü|scn|vuvù}}
+*{{sk}}: {{Ü|sk|voda}}
+*{{sl}}: {{Ü|sl|voda}} {{f}}
+*{{so}}: {{Ü|so|biyo}}
+*{{wen}}:
+**{{dsb}}: {{Ü|dsb|wóda}} {{f}}
+**{{hsb}}: {{Ü|hsb|woda}} {{f}}
+*{{es}}: {{Ü|es|agua}} {{f}}
+*{{srn}}: {{Ü|srn|watra}}
+*{{sw}}: {{Ü|sw|maji}}
+*{{erk}}: {{Ü|erk|nai}}
+*{{tvk}}: {{Ü|tvk|oei}}
+*{{su}}: {{Ü|su|cai}}
+*{{tg}}: {{Üt|tg|об|ob}}
+*{{tl}}: {{Ü|tl|tubig}}
+*{{ty}}: {{Ü|ty|vai}}, {{Ü|ty|pape}}
+*{{ta}}: {{Üt|ta|நீர்|nīr}}, {{Üt|ta|தண்ணீர்|taṇṇīr}}
+*{{trv}}: {{Ü|trv|kasia}}
+*{{tt}}: {{Ü|tt|su}}
+*{{te}}: {{Üt|te|అంభస్సు|ambhassu}}, {{Üt|te|అంబువు|ambuvu}}, {{Üt|te|నీరు|nīru}}
+*{{tet}}: {{Ü|tet|bee}}
+*{{th}}: {{Üt|th|น้ำ|náam}}
+*{{bo}}: {{Üt|bo|ཆུ|chu}}
+*{{ti}}: {{Üt|ti|ማይ|maɪ̯}}
+*{{tox}}: {{Ü|tox|char}}, ''Meerwasser:'' {{Ü|tox|tati}}
+*{{tpi}}: {{Ü|tpi|wara}}
+*{{tkl}}: {{Ü|tkl|vai}}
+*{{to}}: {{Ü|to|vai}}
+*{{cs}}: {{Ü|cs|voda}} {{f}}
+*{{ce}}: {{Üt|ce|хи}}
+*{{cv}}: {{Üt|cv|шыв|šyv}}
+*{{tpn}}: {{Ü|tpn|'y}}
+*{{tr}}: {{Ü|tr|su}}
+*{{tk}}: {{Ü|tk|suw}}
+*{{tvl}}: {{Ü|tvl|vai}}
+*{{tyv}}: {{Üt|tyv|суг|sug}}
+*{{udm}}: {{Ü|udm|ву}}
+*{{ug}}: {{Üt|ug|سۇ|su}}
+*{{uk}}: {{Üt|uk|вода}} {{f}}
+*{{hu}}: {{Ü|hu|víz}}
+*{{ur}}: {{Üt|ur|پانی|}} {{m}}, ''formell, literarisch:'' {{Üt|ur|آب|ab}}
+*{{uz}}: {{Ü|uz|suv}}
+*{{vec}}: {{Ü|vec|aqua}}, {{Ü|vec|ensa}}, {{Ü|vec|lensa}}
+*{{vi}}: {{Ü|vi|nước}}
+*{{vo}}: {{Ü|vo|vat}}
+*{{cy}}: {{Ü|cy|dŵr}}, {{Ü|cy|dwfr}}
+*{{wa}}: {{Ü|wa|aiwe}}, {{Ü|wa|êwe}}
+*{{war}}: {{Ü|war|tubig}}
+*{{be}}: {{Üt|be|вада}} {{f}}
+*{{vep}}: {{Ü|vep|vezi}}
+*{{pnb}}: {{Ü|pnb|پانی}} {{m}}
+*{{fy}}: {{Ü|fy|wetter}}
+*{{wo}}: {{Ü|wo|ndoh}}
+*{{ts}}: {{Ü|ts|mati}}
+*{{yak}}: {{Ü|yak|chiish}}
+*{{yo}}: {{Ü|yo|omi}}
+*{{bcl}}: {{Ü|bcl|tubig}}
+*{{za}}: {{Ü|za|raemx}}
+|Dialekttabelle=
+*{{frk}}: [?] {{Ü?|frk|water}}
+*{{bar}}: [1–7] {{Ü|bar|Wassa}} ({{Audio|BY-Wasser.ogg|Wasser (Bairisch)}})
+*Berlinisch: [1–7] Wassa
+*Elsässisch: [?] [[Wâsser]]
+*Hessisch: [?] Wassä
+*[[Thüringisch-Obersächsisch]]:
+**[[Obersächsisch]]:
+***[[Meißnisch]]: [?] Wassor
+***[[Osterländisch]]: [?] Wassor
+}}
+
+{{Ü-Tabelle|2|G=poetisch, gehoben: für Gewässer|Ü-Liste=
+*{{ar}}: {{Üxx5|ar|meyāh|مِيَاه|مياه}}
+*{{hy}}: {{Üt|hy|ջուր|ǰowr}}
+*{{bn}}: {{Üt|bn|জল|jala}}
+*{{bg}}: {{Üt|bg|води}} ''Pl.''
+*{{de}}:
+**{{goh}}: {{Ü|goh|waʒʒar}}; ''nur fließendes Gewässer:'' {{Ü|goh|aha}}
+*{{en}}: {{Ü|en|water}}
+**{{ang}}: {{Ü|ang|ēa}}
+*{{et}}: {{Ü|et|vesi}}
+*{{fi}}: {{Ü|fi|vesi}}
+*{{fr}}: {{Ü|fr|eau}} {{f}}, {{Ü|fr|onde}} {{f}}
+*{{got}}: {{Üt|got|𐌰𐍈𐌰|aƕa}}
+*{{ht}}: {{Ü|ht|dlo}}
+*{{lb}}: {{Ü|lb|Waasser}}
+*{{nds}}: {{Ü|nds|Water}}
+*{{oc}}: {{Ü|oc|aiga}} {{f}}
+*{{pl}}: {{Ü|pl|woda}} {{f}}
+*{{ru}}: {{Üt|ru|воды}}
+*{{sr}}: {{Üt|sr|воде}} ''Pl.''
+*{{sh}}: {{Üt|sh|воде}} ''Pl.''
+*{{sk}}: {{Ü|sk|voda}}
+*{{tpi}}: {{Ü|tpi|wara}}
+*{{cs}}: {{Ü|cs|voda}} {{f}}
+*{{tr}}: {{Ü|tr|sular}} ''pl.''
+*{{uk}}: {{Üt|uk|води}}
+*{{hu}}: {{Ü|hu|tavak}}, {{Ü|hu|tengerek}}, {{Ü|hu|vizek}}
+|Dialekttabelle=
+*{{frk}}: [?] {{Ü?|frk|water}}
+*{{bar}}: [1–7] {{Ü|bar|Wassa}} ({{Audio|BY-Wasser.ogg|Wasser (Bairisch)}})
+*Berlinisch: [1–7] Wassa
+*Elsässisch: [?] [[Wâsser]]
+*Hessisch: [?] Wassä
+*[[Thüringisch-Obersächsisch]]:
+**[[Obersächsisch]]:
+***[[Meißnisch]]: [?] Wassor
+***[[Osterländisch]]: [?] Wassor
+}}
+
+{{Ü-Tabelle|3|G=Flüssigkeiten, Lösungen, Emulsionen, die in ihrer Konsistenz dem Wasser ähneln|Ü-Liste=
+*{{hy}}: {{Üt|hy|ջուր|ǰowr}}
+*{{fr}}: {{Ü|fr|eau}} {{f}}, {{Ü|fr|larmes}} {{fPl.}}
+*{{id}}: {{Ü|id|air}}
+*{{it}}: {{Ü|it|acqua}} {{f}}
+*{{jv}}: {{Ü|jv|banyu}}
+*{{la}}: {{Ü|la|liquor}}
+*{{lb}}: {{Ü|lb|Waasser}}
+*{{nds}}: {{Ü|nds|Water}}
+*{{oc}}: {{Ü|oc|aiga}} {{f}}
+*{{pl}}: {{Ü|pl|woda}} {{f}}
+*{{sv}}: {{Ü|sv|vatten}} {{n}}
+*{{sr}}: {{Üt|sr|текучине}} ''Pl.''
+*{{sh}}: {{Üt|sh|текучине}} ''Pl.''
+*{{sk}}: {{Ü|sk|voda}}
+*{{cs}}: {{Ü|cs|voda}} {{f}}
+*{{tr}}: {{Ü|tr|sıvı}}
+*{{uk}}: {{Üt|uk|вода}}
+|Dialekttabelle=
+*{{frk}}: [?] {{Ü?|frk|water}}
+*{{bar}}: [1–7] {{Ü|bar|Wassa}} ({{Audio|BY-Wasser.ogg|Wasser (Bairisch)}})
+*Berlinisch: [1–7] Wassa
+*Elsässisch: [?] [[Wâsser]]
+*Hessisch: [?] Wassä
+*[[Thüringisch-Obersächsisch]]:
+**[[Obersächsisch]]:
+***[[Meißnisch]]: [?] Wassor
+***[[Osterländisch]]: [?] Wassor
+}}
+
+{{Ü-Tabelle|4|G=umgangssprachlich Wässerchen: ein alkoholisches Getränk|Ü-Liste=
+*{{fr}}: {{Ü|fr|eau de vie}} {{f}}, {{Ü|fr|liqueur}} {{f}}
+*{{lb}}: {{Ü|lb|Waasser}}
+*{{nds}}: {{Ü|nds|Water}}
+*{{pl}}: {{Ü|pl|wódka}} {{f}}
+*{{cs}}: {{Ü|cs|vodka}} {{f}}
+*{{tr}}: ''übertr.'' {{Ü|tr|alkollü içki}}
+*{{uk}}: {{Üt|uk|горілка}}, {{Üt|uk|оковита}}
+*{{hu}}: {{Ü|hu|folyadék}}
+|Dialekttabelle=
+*{{frk}}: [?] {{Ü?|frk|water}}
+*{{bar}}: [1–7] {{Ü|bar|Wassa}} ({{Audio|BY-Wasser.ogg|Wasser (Bairisch)}})
+*Berlinisch: [1–7] Wassa
+*Elsässisch: [?] [[Wâsser]]
+*Hessisch: [?] Wassä
+*[[Thüringisch-Obersächsisch]]:
+**[[Obersächsisch]]:
+***[[Meißnisch]]: [?] Wassor
+***[[Osterländisch]]: [?] Wassor
+}}
+
+{{Ü-Tabelle|5|G=kein Plural: ein Reinheitsmaß für Diamanten|Ü-Liste=
+*{{lb}}: {{Ü|lb|Waasser}}
+*{{nds}}: {{Ü|nds|Water}}
+|Dialekttabelle=
+*{{frk}}: [?] {{Ü?|frk|water}}
+*{{bar}}: [1–7] {{Ü|bar|Wassa}} ({{Audio|BY-Wasser.ogg|Wasser (Bairisch)}})
+*Berlinisch: [1–7] Wassa
+*Elsässisch: [?] [[Wâsser]]
+*Hessisch: [?] Wassä
+*[[Thüringisch-Obersächsisch]]:
+**[[Obersächsisch]]:
+***[[Meißnisch]]: [?] Wassor
+***[[Osterländisch]]: [?] Wassor
+}}
+
+{{Ü-Tabelle|6|G=Medizin: krankhafte Ansammlung von Körperflüssigkeiten im Gewebe|Ü-Liste=
+*{{hy}}: {{Üt|hy|ջուր|ǰowr}}
+*{{lb}}: {{Ü|lb|Waasser}}
+*{{nds}}: {{Ü|nds|Water}}
+*{{pl}}: {{Ü|pl|woda}} {{f}}
+*{{sr}}: {{Üt|sr|течности}} ''Pl.''
+*{{sh}}: {{Üt|sh|течности}} ''Pl.''
+*{{sk}}: {{Ü|sk|voda}}
+*{{cs}}: {{Ü|cs|voda}} {{f}}
+*{{tr}}: {{Ü|tr|su}}
+*{{uk}}: {{Üt|uk|набряк}}, {{Üt|uk|едема}}
+*{{hu}}: {{Ü|hu|víz}}
+|Dialekttabelle=
+*{{frk}}: [?] {{Ü?|frk|water}}
+*{{bar}}: [1–7] {{Ü|bar|Wassa}} ({{Audio|BY-Wasser.ogg|Wasser (Bairisch)}})
+*Berlinisch: [1–7] Wassa
+*Elsässisch: [?] [[Wâsser]]
+*Hessisch: [?] Wassä
+*[[Thüringisch-Obersächsisch]]:
+**[[Obersächsisch]]:
+***[[Meißnisch]]: [?] Wassor
+***[[Osterländisch]]: [?] Wassor
+}}
+
+{{Ü-Tabelle|7|G=umgangssprachlich, kurz für: Mineralwasser, Tafelwasser|Ü-Liste=
+*{{bg}}: {{Üt|bg|минерална вода|mineralna voda}} {{f}}
+*{{lb}}: {{Ü|lb|Waasser}}
+*{{nds}}: {{Ü|nds|Water}}
+*{{oc}}: {{Ü|oc|aiga}} {{f}}
+*{{pl}}: {{Ü|pl|woda}} {{f}}
+*{{ru}}: {{Üt|ru|минеральная вода}} {{f}}
+*{{sr}}: {{Üt|sr|минерална вода}} {{f}}
+*{{sh}}: {{Üt|sh|минерална вода}} {{f}}
+*{{sk}}: {{Ü|sk|voda}}
+*{{cs}}: {{Ü|cs|voda}} {{f}}
+*{{tr}}: {{Ü|tr|maden suyu}}
+*{{uk}}: {{Üt|uk|мінералка}}
+|Dialekttabelle=
+*{{frk}}: [?] {{Ü?|frk|water}}
+*{{bar}}: [1–7] {{Ü|bar|Wassa}} ({{Audio|BY-Wasser.ogg|Wasser (Bairisch)}})
+*Berlinisch: [1–7] Wassa
+*Elsässisch: [?] [[Wâsser]]
+*Hessisch: [?] Wassä
+*[[Thüringisch-Obersächsisch]]:
+**[[Obersächsisch]]:
+***[[Meißnisch]]: [?] Wassor
+***[[Osterländisch]]: [?] Wassor
+}}
+
+{{Referenzen}}
+:[1] {{Wikipedia}}
+:[1, 4] {{Wikipedia|Wasser (Begriffsklärung)}}
+:[6] {{Wikipedia|Wassersucht}}
+:[?] {{Ref-Grimm|wasser, ''n.''|id=GW08077}}
+:[1–7] {{Ref-DWDS}}
+:[*] {{Ref-UniLeipzig}}
+:[1–3, 6, 7] {{Ref-FreeDictionary}}
+:[1] {{Ref-Duden}}
+:[1] [[Verzeichnis:Chemie]]
+
+{{Quellen}}
+
+{{Ähnlichkeiten 1|[[Hasser]], [[krasser]], [[nasser]], [[Prasser]], [[Vase]], [[Waffe]], [[was]], [[Wasa]], [[Wrasen]]|Anagramme=[[wassre]]}}

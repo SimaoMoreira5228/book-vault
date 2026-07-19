@@ -1,0 +1,86 @@
+==Italian==
+{{wp|it:}}
+
+===Pronunciation===
+{{it-pr|cuòre<audio:It-il cuore.ogg>}}
+
+===Etymology 1===
+{{root|it|ine-pro|*ḱerd-}}
+From {{inh|it|la-vul|*corem|g=m}}, from {{inh|it|la|cor|g=n}}.
+
+[[Image:Heart numlabels.svg|thumb|right]]
+[[Image:Corazón.svg|thumb|right|il cuore]]
+
+====Alternative forms====
+* {{alt|it|core||Tuscan<ref>{{R:roa:AIS|il cuore|137|place=523}}</ref> or literary/archaic|Rome}}, {{alt|it|cor||apocopic}}
+* {{alt|it|quore||obsolete, now considered a misspelling}}
+* {{alt|it|cuor||apocopic}}
+
+====Noun====
+{{it-noun|m|dim_end=cuoricìno/coricìno|derog=cuoriciàttolo/coriciàttolo,cuorùccio<q:uncommon>/corùccio|pej=cuoràccio/coràccio}}
+
+# [[heart]]
+## {{lb|it|anatomy}} [[muscular]] [[organ]] that pumps [[blood]]
+## {{lb|it|uncountable}} [[emotion]], [[kindness]], [[moral]] effort, or [[spirit]]
+## {{lb|it|figurative}} [[center]], [[essence]], or [[core]]
+# [[breast]], [[bosom]]
+# {{lb|it|card games|in the plural}} [[heart]]
+
+=====Derived terms=====
+{{col3
+|it|amico del cuore
+|batticuore
+|cuoricino
+|cuoriforme
+|cuore polmonare
+|del cuore
+|di cuore
+|due cuori e una capanna
+|lontano dagli occhi, lontano dal cuore
+|occhio non vede, cuore non duole
+|rincuorare
+|avere a cuore
+|avere in cuore
+|tenere in cuore
+|tuffo al cuore
+|prendersi a cuore
+|rodersi il cuore
+|mettersi il cuore in pace
+|cuore di tigre
+|avere il cuore sulle labbra
+|cuore di coniglio
+|cuore di pecora
+|cuore di leone
+|a cuore
+}}
+
+=====Related terms=====
+{{col
+|it|coraggio
+|corata
+|coratella
+}}
+
+=====See also=====
+* {{l|it|cardiaco}}
+* {{l|it|cardio-}}
+
+===Etymology 2===
+{{nonlemma}}
+
+====Noun====
+{{head|it|noun form}}
+
+# {{plural of|it|cuora}}
+
+===References===
+{{reflist}}
+
+{{C|it|Organs}}
+
+==Neapolitan==
+
+===Noun===
+{{head|nap|noun form}}
+
+# {{plural of|nap|core}}

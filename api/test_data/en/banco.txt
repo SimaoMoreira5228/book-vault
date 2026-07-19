@@ -1,0 +1,303 @@
+{{also|Banco|bancó|bancò|bàn cờ|Ban Cơ|Bàn Cổ}}
+==English==
+
+===Pronunciation===
+* {{IPA|en|/ˈbæŋkəʊ̯/|[ˈbæŋkʰəʊ̯]|;|/ˈbæŋkɵʊ̯/|[ˈbæŋkʰɵ̞ʊ̯]|a=RP}}
+* {{a|en|GA}}
+** {{IPA|en|/ˈbæŋkoʊ̯/|[ˈbæŋkʰoʊ̯]|;|/ˈbæŋkɔʊ̯/|[ˈbæŋkʰɔʊ̯]|a=non-æ-tensing}}
+** {{a|en|æ-tensing}}
+*** {{IPA|en|/ˈbeɪ̯ŋkoʊ̯/|[ˈbeɪ̯ŋkʰoʊ̯]|~|/ˈbeɪ̯ŋkɔʊ̯/|[ˈbeɪ̯ŋkʰɔʊ̯]|;|/ˈbɛ̃ŋkoʊ̯/|[ˈbɛ̃ŋkʰoʊ̯]|~|/ˈbɛ̃ŋkɔʊ̯/|[ˈbɛ̃ŋkʰɔʊ̯]|a=US,CA}}
+* {{rhyme|en|æŋkəʊ|s=2}}
+* {{hyph|en|ban|co}}
+
+===Etymology 1===
+From {{m|en|in banco}}, from {{der|en|la|in banco}}.<ref>{{R:OED Online|pos=''adj.''<sup>2</sup>|noformat=1|id=1126800034}}</ref>
+
+====Adjective====
+{{en-adj|-}}
+
+# Being or relating to a type of [[court]] involving a bench of judges, often an appeals court.
+
+====See also====
+{{col|en|en banc}}
+
+===Etymology 2===
+{{bor+|en|it|banco}}.<ref>{{R:OED Online|pos=''n.''<sup>1</sup> and ''adj.''<sup>1</sup>|noformat=1|id=3379909598}}</ref><ref>{{R:OED Online|pos=int|id=3865612631}}</ref> {{doublet|en|banc|bank|bench}}.
+
+====Noun====
+{{en-noun}}
+
+# {{lb|en|attributive}} A [[bank]], especially that of [[Venice]]; {{n-g|formerly used to indicate bank [[money]], as distinguished from the [[current]] money when it has become [[depreciate]]d}}.
+#: {{co|en|'''banco''' money}}
+#* {{quote-text|en|year=1941|author=Sir John Harold Clapham; Eileen Edna Power|title=The Cambridge Economic History of Europe
+|passage=On account of the great confidence placed on them, payments ''in '''banco''''' soon gained a premium on payments in current coin, so that speculation arose on the fluctuating premium.}}
+# {{lb|en|gambling}} In [[baccarat]] or [[chemin de fer]], a [[bet]] on the banker hand.
+#* {{quote-book|en|year=1953|author=w:Ian Fleming|page=23|pageurl=https://archive.org/details/casinoroyale00flem/page/23/mode/1up|chapter=4|title={{w|Casino Royale (novel)|Casino Royale}}|passage=Bond had spent the last two afternoons and most of the nights at the Casino, playing complicated progression systems on the even chances at roulette. He made a high '''banco''' at chemin-de-fer whenever he heard one offered.}}
+
+====Verb====
+{{en-verb}}
+
+# {{lb|en|gambling}} In [[baccarat]] or [[chemin de fer]], to bet an amount equal to the entire [[bankroll]] currently being offered by the [[banker]].
+#* {{quote-text|en|year=1953|year_published=1955|author=w:Ian Fleming|title={{w|Casino Royale (novel)|Casino Royale}}|volume=|location=London|publisher=Pan Books|chapter=The Deadly Tube|page=86|passage=The then only hope, thought Bond, was to stamp on him now. Not to share the bank with the table, or to take some minor part of it, but to go the whole hog. This would really jolt Le Chiffre. He would hate to see more than ten or fifteen million of the stake covered, and he could not possibly expect anyone to '''banco''' the entire thirty-two millions.}}
+
+===References===
+* {{R:Webster 1913}}
+<references/>
+
+===Anagrams===
+* {{anagrams|en|a=abcno|bacon|coban|Bonac|Bacon}}
+
+==French==
+
+===Pronunciation===
+* {{fr-IPA}}
+* {{audio|fr|LL-Q150 (fra)-Lepticed7-banco.wav|a=<<France>> (<<Toulouse>>)}}
+* {{audio|fr|LL-Q150 (fra)-LoquaxFR-banco.wav|a=<<France>> (<<Vosges>>)}}
+
+===Adjective===
+{{fr-adj|mf}}
+
+# {{l|en|banco}}
+
+===Further reading===
+* {{R:fr:TLFi}}
+
+==Galician==
+
+===Alternative forms===
+* {{alt|gl|branco||archaic}}
+
+===Etymology===
+12th century in local Latin texts.<ref>[https://web.archive.org/web/20210105030727/http://gmh.consellodacultura.org/nc/buscador/resultados/lib/0/metadato/1/buscar/banco/envio/BUSCAR/op/az/ "banco"] in ''Gallaeciae Monumenta Historica''.</ref> With the meaning of ''[[bank]]'', from {{bor|gl|it|-}}; with the meaning of ''[[bench]]'' and ''[[workbench]]'' probably from {{bor|gl|fro|-}}; ultimately from {{der|gl|gem-pro|*bankiz|t=bench, counter}}, from {{der|gl|ine-pro|*bʰeg-|t=to turn, curve, bend, bow}}.
+
+===Pronunciation===
+{{gl-pr}}
+* {{hyph|gl|ban|co}}
+
+===Noun===
+{{gl-noun|m}}
+
+# [[bench]]
+#* {{quote-book|gl|year=1414|editor=Clarinda de Azevedo Maia|title=História do galego-português. Estado linguístico da Galiza e do Noroeste de Portugal do século XII ao século XVI|location=Coimbra|publisher=INIC|page=105
+|passage=''saluo duas meſas grandes et dous '''vancos''' que ſon do biſpo''
+|translation=with the exception of two large tables and two '''benchs''', that belong to the bishop}}
+# [[workbench]]
+# [[sandbank]]
+# [[school]], [[shoal]]
+# {{lb|gl|nautical}} [[thwart]]
+# [[bank]]
+
+====Derived terms====
+{{col3|gl|abancar|bancal}}
+
+===References===
+* {{R:roa-opt:CX|vanco}}
+* {{R:gl:DDLG}}
+* {{R:gl:TILG}}
+* {{R:TLPGP}}
+<references/>
+
+==Indonesian==
+
+===Etymology===
+{{etymon|id|:bor|pt:banco}}
+{{ubor|id|pt|banco}}, from {{der|id|lng|bank}}, from {{der|id|gmw-pro|*banki}}, from {{der|id|gem-pro|*bankiz}}. {{doublet|id|bangku|bank}}.
+
+===Pronunciation===
+{{id-pr|bang.ko}}
+
+===Noun===
+{{id-noun}}
+
+# [[counter]], [[desk]] (in a bank)
+
+===Further reading===
+* {{R:KBBI Daring}}
+
+==Istriot==
+
+===Noun===
+{{head|ist|noun|g=m}}
+
+# {{alternative form of|ist|banca}}
+
+===References===
+*{{cite-book|author=Sandro Cergna|title=Vocabolario del dialetto di Valle d'Istria|page=37|passage=|year=2015|isbn=9789537891114}}
+
+==Italian==
+
+===Pronunciation===
+{{it-pr|bànco}}
+
+===Etymology 1===
+{{etymon|it|:bor|lng:bank}}
+{{bor+|it|lng|bank}}, from {{der|it|gmw-pro|*banki}}, from {{der|it|gem-pro|*bankiz}}. {{doublet|it|banca|panca}}. Cognate with {{cog|scn|vancu}}.
+
+====Noun====
+{{it-noun|m}}
+
+# [[desk]]
+# [[counter]] (in a bank, etc.)
+# [[bench]], [[table]]
+# [[stall]] (selling goods)
+# [[dock]] (in a court)
+# [[shoal]] (of sand)
+# [[floe]] (of ice)
+# [[bank]] (institution to place or borrow money)
+# [[bank]] (of fog, clouds, sand)
+# [[school]] (of fishes)
+# [[pawnshop]] (banco dei pegni)
+# [[reef]] (of corals)
+
+=====Descendants=====
+''Includes descendants from {{m|it|banca}}. Some may be via other European languages.''
+{{top4}}
+* {{desc|bor=1|am|ባንክ}}
+* {{desc|bor=1|ar|بنك|tr=bank}}
+* {{desc|bor=1|ast|bancu|banca}}
+* {{desc|bor=1|ca|banc|banca}}
+* {{desc|bor=1|cim|bånka}}
+* {{desc|bor=1|co|banca}}
+* {{desc|bor=1|cs|banka}}
+* {{desc|bor=1|en|banco}}
+* {{desc|bor=1|gl|banco}}
+* {{desc|bor=1|de|Bank}} {{see desc}}
+* {{desc|bor=1|he|בנק|tr=bánk}}
+* {{desc|bor=1|kmr|bank}}
+* {{desc|bor=1|lmo|banca}}
+* {{desc|bor=1|mt|bank}}
+* {{desc|bor=1|mhn|pònk}}
+* {{desc|bor=1|oc|banca}}
+* {{desc|bor=1|pfl|Bongg}}
+* {{desc|bor=1|pdt|Bank}}
+* {{desc|bor=1|pt|banco}} {{see desc}}, {{l|pt|banca}}
+* {{desc|bor=1|ro|bancă}}
+* {{desc|bor=1|rm|banca}}
+* {{desc|bor=1|rue|банка}}
+* {{desc|bor=1|gd|banca}}
+* {{desc|bor=1|sl|banka}}
+* {{desc|bor=1|so|banki|bangi}}
+* {{desc|bor=1|es|banco|banca}}
+* {{desc|bor=1|ti|ባንክ}}
+{{bottom}}
+
+===Etymology 2===
+{{nonlemma}}
+
+====Verb====
+{{head|it|verb form}}
+
+# {{inflection of|it|bancare||1|s|pres|indc}}
+
+===Anagrams===
+* {{anagrams|it|a=abcno|bacon}}
+
+==Portuguese==
+
+===Pronunciation===
+{{pt-IPA}}
+* {{audio|pt|LL-Q5146 (por)-Santamarcanda-banco.wav|a=<<Portugal>> (<<Porto>>)}}
+* {{rhymes|pt|ɐ̃ku|s=2}}
+* {{hyph|pt|ban|co}}
+
+===Etymology 1===
+[[Image:A Welcome Seat in Horton in Ribblesdale - geograph.org.uk - 430407.jpg|thumb|200px|banco]]
+{{etymon|pt|:bor|it:banco}}
+Borrowed from {{bor|pt|it|banco}}, from {{der|pt|goh|bank}}, from {{der|pt|gem-pro|*bankiz}}.
+
+====Noun====
+{{pt-noun|m}}
+
+# [[bank]] {{gloss|financial institution}}
+# [[bank]] {{gloss|safe place for storage and retrieval of items}}
+# [[bench]] {{gloss|long seat}}
+# {{lb|pt|sports}} [[bench]] {{gloss|place where players of a sport sit when not playing}}
+# {{lb|pt|hydrology}} [[bank]] {{gloss|a shallow area in a body of water}}
+# {{clipping of|pt|banco de dados}}
+
+=====Derived terms=====
+{{col|pt|banquinho<pos:diminutive>|amargar banco|bancar|bancário|banqueiro|banco de dados|esquentar banco}}
+
+=====Related terms=====
+{{col|pt|banca}}
+
+=====Descendants=====
+* {{desc|gu|બાંક|બાંકડો|bor=1}}
+* {{desc|kbc|baanco|bor=1}}
+* {{desc|kok|बांक|bor=1}}
+* {{desctree|ms|bangku|bor=1}}
+* {{desc|ml|ബാങ്ക്|bor=1}}
+* {{desc|mr|बाक|bor=1}}
+* {{desc|si|බැංකුව|bor=1}}
+
+===Etymology 2===
+
+====Verb====
+{{head|pt|verb form}}
+
+# {{pt-verb form of|bancar}}
+
+===Further reading===
+* {{R:pt:Aulete}}
+* {{R:pt:Priberam}}
+
+{{C|pt|Banking|Buildings|Databases|Chairs}}
+
+==Romanian==
+
+===Pronunciation===
+* {{IPA|ro|[ˈbaŋko]}}
+
+===Noun===
+{{head|ro|noun form|g=f}}
+
+# {{noun form of|ro|bancă||voc|s}}
+
+==Spanish==
+
+===Pronunciation===
+{{es-pr|+<audio:LL-Q1321 (spa)-AdrianAbdulBaha-banco.wav<a:Colombia>>}}
+
+===Etymology 1===
+{{etymon|es|:bor|fro:bank<ety:der<gem-pro:*bankiz>>}}
+{{bor+|es|fro|bank}}, from {{der|es|gem-pro|*bankiz}}. Compare {{cog|en|bench}} and {{m|en|bank}}.
+
+====Noun====
+{{es-noun|m}}
+
+# [[bank]] {{gl|financial institution}}
+# [[bench]]
+#: {{syn|es|escaño<q:dated>}}
+# [[pew]]
+# [[school]] of [[fish]]
+#: {{syn|es|cardumen}}
+
+=====Derived terms=====
+{{col|es|amoladora de banco|asaltabancos|autobanco|bancazo|Banco Central Europeo|billete de banco|banco central|banco comercial|banco de alimentos|banco de datos|banco de hielo|banco de inversiones|banco de la paciencia|banco de liquidación|banco de negocios|banco de niebla|banco de piedra|banco de prensa|banco de pruebas|banco de sangre|Banco Mundial|banquero|banco de arena|esmeril de banco|estar en el banco|herrar o quitar el banco|estar en el banco de la paciencia|pata de banco|pie de banco|razón de pie de banco|robabancos|salida de pie de banco|tornillo de banco}}
+
+=====Related terms=====
+{{col|es|banca|bancario|banquero|banqueta|banquillo}}
+
+=====Descendants=====
+{{top2}}
+* {{desc|eu|banku|bor=1}}
+* {{desc|ceb|bangko|bor=1}}
+* {{desc|hil|bangko|bor=1}}
+* {{desc|pam|bangku|bor=1}}
+* {{desc|kyj|bangko|bor=1}}
+* {{desc|kmk|bangku|bor=1}}
+* {{desc|tl|bangko|bor=1}}
+{{bottom}}
+
+===Etymology 2===
+
+====Verb====
+{{head|es|verb form}}
+
+# {{es-verb form of|bancar}}
+
+===Further reading===
+* {{R:es:DRAE}}
+
+{{C|es|Banking|Buildings|Furniture}}
+{{cln|es|collective nouns}}

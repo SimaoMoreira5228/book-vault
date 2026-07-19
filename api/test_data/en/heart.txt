@@ -1,0 +1,485 @@
+{{also|Heart|hèart}}
+==English==
+[[File:Human heart diagram from Outlines of Human Physiology; Designed for the Use of the Higher Classes in Common Schools (1834) (14803245943).jpg|thumb|A diagram of the human heart, from ''Outlines of Human Physiology'' (1834)<ref>{{cite-book|author=George Hayward|chapter=Of the Circulation of the Blood|title=Outlines of Human Physiology; Designed for the Use of the Higher Classes in Common Schools|location=Boston, Mass.|publisher=Marsh, Capen & Lyon|year=1834|page=47|pageurl=https://archive.org/stream/outlinesofhumanp00hayw/outlinesofhumanp00hayw#page/47/mode/1up/|oclc=1611668}}.</ref>]]
+[[File:Poker-sm-221-Ah.png|thumb|The ace of hearts.]]
+
+===Alternative forms===
+* {{alt|en|hart|hearte||all obsolete}}
+
+===Etymology===
+{{root|en|ine-pro|*ḱerd-}}{{PIE word|en|ḱḗr}}
+{{etymon|en|:inh|enm:herte<id:heart>|tree=1}}
+From {{inh|en|enm|harte}}, {{m|enm|heorrte}}, {{m|enm|hert}}, {{m|enm|herte}}, {{m|enm|hierte}}, {{m|enm|hirte}}, {{m|enm|horte}}, {{m|enm|huerte}}, {{m|enm|hurte}}, from {{inh|en|ang|heorte|t=heart}}, from {{inh|en|gmw-pro|*hertā}}, from {{inh|en|gem-pro|*hertô|t=heart}}, from {{inh|en|ine-pro|*ḱḗr|t=heart}}, from {{m|ine-pro|*ḱerd-|t=heart}}. {{dbt|en|cardia}}; see also {{m|en|core}}.
+{{col-top|2|cog}}
+Cognate with {{cog|sco|hert|t=heart}}, {{cog|yol|hart}}, {{m|yol|hearth|t=heart}}, {{cog|frr|hart}}, {{m|frr|härt|t=heart}}, {{cog|stq|Haat|t=heart}}, {{cog|fy|hert|t=heart}}, {{cog|gsw|Härz|t=heart}}, {{cog|gmw-cfr|Hatz}}, {{m|gmw-cfr|Hätz|t=heart}}, {{cog|cim|hèertze}}, {{m|cim|hèrtz|t=heart}}, {{cog|nl|hart|t=heart}}, {{cog|de|Hertz}}, {{m|de|Herz}}, {{m|de|Herze|t=heart}}, {{cog|nds|Hiärt|t=heart}}, {{cog|lb|Häerz|t=heart}}, {{cog|mhn|hèrz|t=heart}}, {{cog|wym|haoc|t=heart}}, {{cog|vls|erte|t=heart}}, {{cog|yi|האַרץ}}, {{m|yi|הערץ|t=heart}}, {{cog|da|hierte}}, {{m|da|hjerte}}, {{m|da|hjærte|t=heart}}, {{cog|ovd|järta|t=heart}}, {{cog|fo,is|hjarta|t=heart}}, {{cog|jut|jaart|t=heart}}, {{cog|nb|hjerte|t=heart}}, {{cog|nn|hjarta}}, {{m|nn|hjarte}}, {{m|nn|hjerta}}, {{m|nn|hjerte|t=heart}}, {{cog|sv|hjärta|t=heart}}, {{cog|got|𐌷𐌰𐌹𐍂𐍄𐍉|t=heart}}; also {{cog|kw|kres|t=centre, middle; waist}}, {{cog|ga|croí}}, {{m|ga|croidhe|t=heart; core; hub; sweetheart}}, {{cog|gv|cree|t=heart}}, {{cog|gd|cridhe|t=heart; courage; core; nucleus; sweetheart}}, {{cog|cy|craidd|t=centre, core, middle}}, {{cog|la|cor|t=heart}}, {{cog|el|καρδιά|t=heart}}, {{cog|sq|kërth|t=askew}}, {{cog|ltg|sirds|t=heart}}, {{cog|lv|sirde}}, {{m|lv|sirds|t=heart}}, {{cog|lt|širdis|t=heart}}, {{cog|prg|seyr|t=heart}}, {{cog|be|сэ́рца|t=heart}}, {{cog|bg|сърце́|t=heart; centre}}, {{cog|cs,sk|srdce|t=heart}}, {{cog|mk|срце|t=heart}}, {{cog|pl|serce|t=heart}}, {{cog|ru|се́рдце|t=heart}}, {{cog|sh|ср̏це}}, {{m|sh|sȑce|t=heart}}, {{cog|sl|srce|t=heart}}, {{cog|uk|се́рце|t=heart}}, {{cog|hy|սիրտ|t=heart}}, {{cog|ae|𐬰𐬆𐬭𐬆𐬛|t=heart}}, {{cog|bal|زرد|tr=zird|t=heart; conscience}}, {{cog|ckb|زر|t=heart}}, {{cog|fa|دل|tr=del / dil|t=heart; stomach; mind; courage}}, {{cog|hac|زێڵ|tr=zēł|t=heart}}, {{cog|kmr|dil|t=heart}}, {{cog|os|зӕрдӕ|t=heart; soul}}, {{cog|ps|زړه|tr=zrë|t=heart}}, {{cog|tly|dıl|t=heart}}, {{cog|zza|zerri|t=heart}}, {{cog|hit|𒆠𒅕|tr=ker}}, {{m|hit|𒊮𒅕|tr=ŠÀ-er|t=heart}}, {{cog|xlu|𒍝𒀀𒅈𒍝|tr=UZUzārza}}, {{m|xlu|𔖪𔖱𔖪|tr=zārza|t=heart}}, {{cog|ask|židi|t=heart}}, {{cog|bsh|j̈arë}}, {{m|bsh|zërë|t=heart}}, {{cog|prn|zër|t=heart}}, {{cog|xto|kri|t=will}}, {{cog|txb|*käryā-|t=heart}}, {{cog|sa|हृद्|t=heart; soul; breast, chest}}.
+{{col-bottom}}
+
+Most of the modern figurative senses (such as passion or compassion, spirit, inmost feelings, especially love, affection, and courage) were present in Old English. However, the meaning “center” dates from the early 14th century.<ref name="etymonline">{{R:Online Etymology Dictionary}}</ref> The verb sense “to love” is from the 1977 {{w|I Love New York|I ❤ NY}} advertising campaign.<ref name="etymonline"/>
+
+{{col-top|2|Notes on spelling}}
+The spelling ⟨ear⟩ for {{IPAchar|/ɑː(ɹ)/}} is paralleled by {{m|en|hearken}} and {{m|en|hearth}}, but is problematic since an Early Modern variant with {{IPAchar|/ɛːr/}} can be posited for those words, but not ''heart''. Perhaps it represents {{m+|gmw-msc|hart}} {{IPAchar|/hɛːrt/}} (reflecting the Scots lengthening of {{IPAchar|/a/}} before {{IPAchar|/r/}} then a consonant, then the early actuation of the {{w|Great Vowel Shift}} in Scots) or a parallel development in Northern England. Alternatively, a back-spelling by speakers of dialects where preconsonantal {{IPAchar|/ɛːr/}} was shortened early, allowing it to undergo the late Middle English lowering to {{IPAchar|/ar/}} (reflected in forms such as {{m|en|larn}} "learn") is possible.
+{{col-bottom}}
+
+===Pronunciation===
+* {{IPA|en|/hɑːʔ/|/hɑːt/|a=SSBE}}
+* {{IPA|en|/hɑːt/|a=RP}}
+** {{audio|en|En-uk-heart.ogg|a=RP}}
+* {{enPR|härt|a=GA}}, {{IPA|en|/hɑɹt/}}
+** {{audio|en|En-us-heart.ogg|a=California}}
+* {{rhymes|en|ɑː(ɹ)t|s=1}}
+* {{homophones|en|Hart|hart}}
+
+===Noun===
+{{en-noun|~}}
+
+# {{senseid|en|Q1072}}{{lb|en|anatomy}} A [[muscular]] [[organ]] that pumps [[blood]] through the [[body]], traditionally thought to be the seat of [[emotion]].
+#* {{RQ:William Harvey Heart|chapter=The Causes which Mov'd the Author to Write|page=1|passage={{...}} I did almoſt beleeve, that the motion of the '''Heart''' vvas knovvn to God alone: {{...}}}}
+# {{lb|en|uncountable}} One's feelings and emotions, especially considered as part of one's character.
+#: {{ux|en|She has a cold '''heart'''.}}
+#* {{quote-book|en|year=1852|author=Mrs M.A. Thompson|chapter=The Tutor's Daughter|title=Graham's American Monthly Magazine of Literature, Art, and Fashion|page=266|url=http://books.google.com/books?id=hdcRAAAAYAAJ&pg=PA266|passage=In the lightness of my '''heart''' I sang catches of songs as my horse gayly bore me along the well-remembered road.}}
+#* {{quote-book|en|passage=Here is my secret. It is very simple: It is only with the '''heart''' that one can see rightly; what is essential is invisible to the eye.|by=w:Antoine de Saint Exupéry|title=''{{w|The Little Prince}}''|year=1943|translator=Katherine Woods}}
+#* {{quote-book|en|author=w:John Updike|title='[[w:Rabbit, Run|Rabbit, Run]]'|year=1960| page=47|passage="Do what the '''heart''' commands," Tothero says. "The heart is our only guide."}}
+# The seat of the affections or sensibilities, collectively or separately, as love, hate, joy, grief, courage, etc.; rarely, the seat of the understanding or will; usually in a good sense; personality.
+#: {{ux|en|a good, tender, loving, bad, hard, or selfish '''heart'''}}
+#: {{ux|en|Her '''heart''' was singing.}}
+# Compassion.
+#: {{ux|en|If she [[have a heart|had any '''heart''']] she'd forgive me.}}
+# Affection
+#: {{ux|en|The chorus's singing [[win someone's heart|won the '''heart'''s of]] the audience.}}
+#* {{RQ:Marlowe Tamburlaine|part=1|scene=ii|page=46|passage=Upon his browes was pourtraid vgly death, / And in his eies the furies of his '''heart''', / That ſhine as Comets, menacing reueng, / And caſts a pale complexion on his cheeks.}}
+#* {{RQ:Tennyson In Memoriam|XI||Calm and deep peace in this wide air,<br>⁠These leaves that redden to the fall;<br>⁠And in my '''heart''', if calm at all,<br>If any calm, a calm despair: […]}}
+# Disposition
+#: {{ux|en|They didn't take the remarks in good '''heart'''.}}
+# Emotional strength that allows one to continue in difficult situations; [[courage|courage]]; [[spirit]]; a will to compete.
+#: {{syn|en|bravery|nerve|spirit|Thesaurus:courage}}
+#: {{ux|en|The team lost, but they showed a lot of '''heart'''.}}
+#: {{ux|en|She [[put one's heart in|put her whole '''heart''' into]] [[making a go of]] the business.}}
+#* {{RQ:Milton Paradise Lost|book=9|passage=Eve, recovering '''heart''', replied.|year=1873}}
+#* {{quote-text|en|year=c. 1679|author=w:William Temple|title=Essay
+|passage=The expelled nations take '''heart''', and when they fled from one country, invaded another.}}
+#* '''2008''', "Rights trampled in rush to deport immigrant workers," ''Quaker Action'' (magazine), vol. 89, no. 3, page 8:
+#*: "We provided a lot of brains and a lot of '''heart''' to the response when it was needed," says Sandra Sanchez, director of AFSC's Immigrants' Voice Program in Des Moines.
+#* {{quote-journal|en|date=September 2, 2011|title=Wales 2-1 Montenegrof|url=http://news.bbc.co.uk/sport2/hi/football/14660870.stm|passage=The result still leaves Wales bottom of the group but in better '''heart''' for Tuesday night's trip to face England at Wembley, who are now outright leaders after their 3-0 win in Bulgaria.}}
+#* {{quote-journal|en|author=Tom English|title=Celtic 3–3 Manchester City|url=http://www.bbc.com/sport/football/37465107|publisher=w:BBC Sport|date=28 September 2016|passage= The '''heart''' from the home team was immense. Some of them were out on their feet before the end, but they dug in, throwing themselves in front of shots and crosses, surviving.}}
+# Vigorous and efficient activity; power of fertile production; condition of the soil, whether good or bad.
+#* {{RQ:Dryden Georgics|book=1|page=52|lines=106–109|passage=Both theſe unhappy Soils the Swain forbears, / And keeps a Sabbath of alternate Years: / That the ſpent Earth may gather '''heart''' again; / And, better'd by Ceſſation, bear the Grain.}}
+# {{lb|en|archaic}} {{non-gloss|A term of affectionate or kindly and familiar address.}}
+#: {{syn|en|honey|sugar|Thesaurus:sweetheart}}
+#: {{ux|en|Listen, dear '''heart''', we must go now.}}
+#* {{RQ:Shakespeare Henry 4-2|act=V|scene=v|passage=My King, my Jove, I speak to thee, my '''heart'''!}}
+#* {{RQ:Shakespeare Tempest|act=I|scene=ii|passage=Awake, dear '''heart''', awake. Thou hast slept well./Awake.}}
+#* {{quote-book|en|year=1991|author=w:Stephen Fry|title=The Liar|page=9–10|passage=Certain unscrupulous men may call upon you here in your dressing-room. They will lavish you with flowers, with compliments, with [[phial]]s of [[Hungary water]] and [[methuselah]]s of the costliest champagne. You must be wary of such men, my '''hearts''', they are not to be trusted.}}
+# {{lb|en|obsolete|except in the phrase "[[by heart]]"}} Memory.
+#: {{ux|en|I  know almost every Beatles song by '''heart'''.}}
+# {{lb|en|figurative}} A [[wight]] or [[being]].
+#* {{RQ:Shakespeare Merchant of Venice|act=II|scene=i|passage={{...}} I would outstare the sternest eyes that look, / Outbrave the '''heart''' most daring on earth, / Pluck the young sucking cubs from the she-bear, / Yea, mock the lion when he roars for prey,{{...}}}}
+# A [[conventional]] [[shape]] or [[symbol]] used to [[represent]] the heart, [[love]], or emotion: [[♥]].
+#* {{quote-text|en|year=1998|author=Pat Cadigan|title=Tea From an Empty Cup|page=106|passage="Aw. Thank you." The Cherub kissed the air between them and sent a small cluster of tiny red '''hearts''' at her.}}
+# {{senseid|en|Q3419242}}{{lb|en|card games}} A [[playing card]] of the suit [[hearts]] featuring one or more heart-shaped symbols.
+# {{lb|en|cartomancy}} The twenty-fourth [[Lenormand]] card.
+# {{lb|en|figurative}} The [[centre]], [[essence]], or [[core]].
+#: {{syn|en|crux|gist|Thesaurus:gist}}
+#: {{collocation|en|That is the '''heart''' of the matter}}
+#: {{ux|en|The wood at the '''heart''' of a tree is the oldest.}}
+#: {{ux|en|Buddhists believe that suffering is right at the '''heart''' of all life.}}
+#* {{quote-text|en|year=1899|author=[[w:Robert Barr (writer)|Robert Barr]]|title=The Strong Arm|chapter=3|passage=At last she spoke in a low voice, hesitating slightly, nevertheless going with incisive directness into the very '''heart''' of the problem.}}
+#* {{quote-book|en|year=1980|title=AA Book of British Villages|publisher=Drive Publications Ltd|page=150|text=The narrow streets that twist and turn through the compact '''heart''' of Dent are surfaced with cobbles which, in the absence of pavements, spread right across from doorstep to doorstep.}}
+#* {{quote-book
+|en
+|year=1995
+|first=Alberto
+|last=Zola
+|chapter=Introduction
+|title=China
+|url=https://archive.org/details/china0000zola/
+|publisher=Tiger Books International
+|ISBN=1-85501-735-0
+|OCLC=45420684
+|page=23
+|pageurl=https://archive.org/details/china0000zola/page/23/
+|text=The '''heart''' of the modern city is T’ien-an-men Square, one of the largest — if not ''the'' largest — square in the world, created expressly in the Fifties on the ashes of the old “Tartar city,” an agglomeration of small and unassuming low grey houses, inhabited by the populace that was once excluded from the “Forbidden City.” }}
+#* {{quote-video game|en|developer=w:BioWare|title={{w|Mass Effect (video game)|Mass Effect}}|location=Redwood City|publisher=Electronic Arts|year=2008|system=PC|scene=Feros|isbn=9780784546642|oclc=246633669|passage=Arcelia Silva Martinez: Watch out!/Arcelia Silva Martinez: We've got geth in the tower./Fai Dan: Protect the '''heart''' of the colony!}}
+#* {{quote-journal|en|date=December 27, 2011|author=Mike Henson|title=Norwich 0 - 2 Tottenham|work=BBC Sport|url=http://news.bbc.co.uk/sport1/hi/football/16260392.stm|passage=Norwich's attack centred on a front pair of Steve Morison and Grant Holt, but Younes Kaboul at the '''heart''' of the Tottenham defence dominated in the air.}}
+#* {{see more citations|en}}
+## {{lb|en|chemistry}} The main [[fraction]] or [[product]] of a [[distillation]] run.
+##: {{cot|en|head|tail}}
+
+====Derived terms====
+{{col|en
+|absence makes the heart fonder
+|absence makes the heart go yonder
+|absence makes the heart grow fonder
+|after one's own heart
+|all heart|one's heart sinks|sinking heart
+|antiheart
+|artichoke heart
+|at heart
+|athlete's heart
+|bare one's heart|heart and dart|heart-leaved globe daisy|pull at someone's heart strings|tug at someone's heart strings
+|beating heart
+|beating-heart transplant
+|beauty heart radish
+|beefheart
+|beheart
+|be still my beating heart
+|be still my heart
+|big heart
+|blackheart|off by heart|one's heart out|someone's heart goes out
+|bleeding heart,bleeding-heart
+|bleeding-heart monkey
+|bless someone's heart
+|braveheart|hard of heart|athletic heart syndrome
+|break someone's heart
+|broken heart
+|broken-heart syndrome,broken heart syndrome
+|bullock's heart
+|by heart
+|carry one's heart on one's sleeve,carry one's heart upon one's sleeve
+|cattleheart
+|change of heart
+|chicken-heart
+|closet of the heart
+|close to one's heart
+|close to someone's heart
+|coconut heart
+|cold hands, warm heart
+|congenital heart defect
+|congenital heart disease
+|congestive heart failure
+|conversation heart
+|coronary heart disease
+|cross my heart
+|cross my heart and hope to die|faint heart never won fair maiden|gold-heart
+|cross one's heart
+|dearheart
+|dear heart
+|depraved-heart murder
+|disheart
+|dishearten
+|do someone's heart good
+|drive a stake through its heart
+|eat one's heart
+|eat one's heart out
+|eat someone's heart
+|enhearten
+|faint-heart
+|faint heart never won fair lady
+|faint of heart
+|falseheart
+|find it in one's heart
+|finger heart
+|floating heart
+|follow one's heart
+|for one's heart
+|from the bottom of one's heart
+|from the heart
+|frosted heart
+|gladden someone's heart
+|good-hearted
+|Green Heart
+|greenheart
+|halfhearted
+|hand heart
+|hand on heart
+|harden someone's heart
+|hard-hearted
+|have a heart
+|have Jesus in one's heart
+|have one's heart in
+|have one's heart in one's boots
+|have one's heart in the right place
+|have one's heart set on
+|have one's heart set upon
+|have the heart
+|heartache,heart-ache
+|heartake
+|heart and hand
+|heart and soul
+|heart as big as Phar Lap
+|heart attack
+|heart baby
+|heart balm,heart-balm
+|heartbeat,heart beat
+|heart block
+|heart-blood
+|heartbond
+|heart bond
+|heartbreak
+|heart breaker
+|heartbreaker
+|heartbreaking
+|heart-breaking
+|heart-breakingly
+|heart-breakingness
+|heartbroke
+|heartbroken
+|heart-burn
+|heartburn
+|heartburned
+|heartburning
+|heart cake
+|heart cam
+|heartcare
+|heart check
+|heart clover
+|heartcut
+|heartcutting
+|heartdeep
+|heart disease
+|hearten
+|heart eyes
+|heartface
+|heart failure,heart-failure
+|heart-felt,heartfelt
+|heart-free
+|heartful
+|heartgrief
+|heart-hand disease
+|heart-healthy
+|heartical
+|heartistic
+|heartland
+|heart-leaf,heartleaf
+|heart-leaved poison
+|heartless
+|heartlet
+|heartlike
+|heart line,heartline
+|heartling
+|heart-lung machine
+|heartly
+|heartman
+|heart massage
+|heartmate
+|heart murmur
+|heart muscle
+|heart neckline
+|heart note
+|heartnut
+|heart of glass
+|heart of gold
+|heart of grace
+|heart of hearts
+|heart of oak
+|heart of palm
+|heart of stone
+|heartpea
+|heart pine
+|heart-pounding
+|heart-poundingly
+|heartquake
+|heart rate
+|heart rate monitor
+|heart-rending
+|heartrending
+|heart-rendingly
+|heartrot,heart rot
+|heart sac
+|hearts and flowers
+|hearts and minds
+|hearts and rounds
+|heartscape
+|Heart's Delight
+|heart-searching,heartsearching
+|heartsease
+|heartseed
+|heart-service
+|heart-shaped
+|heart-shattering
+|heartsick
+|heart smart
+|heartsome
+|heartsong
+|hearts on sleeves
+|heartsore
+|heart sound
+|heart-spent,heartspent
+|heart-splitting
+|heart starter
+|heart-stirring
+|heartstopper,heart-stopper
+|heartstopping,heart-stopping
+|heart-stoppingly
+|heartstricken
+|heartstring,heartstrings,heart strings
+|heartstruck
+|heart surgeon
+|heart sweetbread
+|heartswelling
+|heartthrob
+|heart-throbbing
+|heart-thumping
+|heart to heart,heart-to-heart
+|heart-touchin'
+|heart-touching
+|heart-tugging
+|heart urchin
+|heart valve
+|heart-warmer
+|heartwarming,heart-warming
+|heartwater
+|heart wheel
+|heartwhole,heart-whole
+|heartwise
+|heartwood
+|heartworm
+|heartworthy
+|heartwrenching,heart-wrenching
+|heart-wrenchingly
+|hearty
+|heavy heart
+|hemp heart
+|holiday heart
+|holiday heart syndrome
+|home is where the heart is
+|inheart
+|irritable heart
+|lay to heart
+|lie at one's heart
+|lie at someone's heart
+|lionheart
+|Lionheart
+|lonely-heart
+|lonely-hearts
+|lose heart
+|lose one's heart
+|love heart
+|nonheart
+|one's heart bleeds
+|one's heart in one's mouth
+|one's heart in one's throat
+|one's heart is not in it
+|open-hearted
+|open-heart surgery
+|open one's heart
+|out of heart
+|out of the goodness of one's heart
+|oxheart
+|palmheart
+|pour one's heart out
+|pour out one's heart
+|pseudoheart
+|purple heart
+|Purple Heart
+|purpleheart
+|put one's heart in
+|put one's heart into
+|put one's heart on one's sleeve
+|put the heart across one
+|right-hearted
+|round heart disease
+|sea heart
+|set one's heart on
+|set one's heart upon
+|sick at heart
+|single-hearted
+|soldier's heart
+|someone's heart is in
+|someone's heart out
+|steal someone's heart
+|strike at the heart of
+|sweetheart
+|take heart
+|take to heart
+|Texas heart shot
+|the heart wants what it wants
+|the heart wants what the heart wants
+|the way to a man's heart is through his stomach
+|tobacco heart
+|two-heart
+|unheart
+|warm someone's heart
+|warm the cockles of someone's heart
+|wear one's heart on one's sleeve,wear one's heart upon one's sleeve
+|white-heart
+|wholehearted
+|win someone's heart
+|with all of one's heart
+|with all one's heart
+|xenoheart
+|yellowheart
+|young at heart
+}}
+
+====Descendants====
+* {{desc|srn|ati}}
+* {{desc|tcs|at}}
+* {{desc|bn|হার্ট|tr=harṭ|bor=1}}
+* {{desc|yue|heart|bor=1}}
+* {{desc|ceb|Heart|bor=1}}
+* {{desc|ga|hart|bor=1}}
+* {{desc|ja|ハート|tr=hāto|bor=1}}; {{l|ja|ハツ|tr=hatsu}} {{q|from ''hearts''}}
+* {{desc|ko|하트|bor=1}}
+* {{desc|pon|aht|bor=1}}
+* {{desc|tl|Heart|bor=1}}
+
+====Translations====
+{{see translation subpage|Noun}}
+
+===Verb===
+{{en-verb}}
+
+# {{lb|en|transitive|humorous|informal}} To be [[fond]] of. {{n-g|Often bracketed or abbreviated with a heart symbol.}} {{defdate|from late 20th c.}}
+#: {{syn|en|love|less than three}}
+#* {{quote-journal|en|date=April 6 2001|author=Michael Baldwin|title=The Heart Has Its Reasons|journal=Commonweal
+|passage=We're but the sum of all our terrors until we '''heart''' the dove.}}
+#* '''2006''', Susan Reinhardt, [http://groups.google.com/group/AR-News/browse_frm/thread/3b2187853e4a8503/543e00aecdce71f6?lnk=st&q=&rnum=3&hl=en#543e00aecdce71f6 Bulldog doesn't have to rely on the kindness of strangers to draw attention], Citizen-Times.com
+#*: I guess at this point we were supposed to feel elated she'd come to her senses and decided she '''hearts''' dogs after all.
+#* {{quote-journal|en|date=January 30 2008|title=Cheese in our time: Blur and Oasis to end feud with a Stilton|journal=The Guardian|location=London
+|passage=The further we delve into this "story", the more convinced we become of one thing: We '''heart''' the Goss.}}
+#* '''2008''' July 25, "The Media '''Hearts''' Obama?", ''On The Media'', National Public Radio
+#* {{quote-web|en|date=2019-07-04|author=John Leland|work=New York Times|title=Why This Famous Graphic Designer, at 90, Still ♥s NY|url=https://www.nytimes.com/2019/07/04/nyregion/why-this-famous-graphic-designer-at-90-still-ny.html|passage=Lots of people say they love their hometown, but no one '''hearts''' NY quite like Milton Glaser.}}
+# {{senseid|en|show approval of via a heart symbol}} {{lb|en|transitive}} To mark a comment, post, reply, etc., with the heart symbol (❤).
+#: {{syn|en|love<id:show approval of via a heart symbol>}}
+#: {{cot|en|like<id:show approval of via an online vote>|unlike#Verb}}
+#: {{ux|en|She '''hearted''' my photos of the kids playing with the dogs.}}
+# {{lb|en|transitive|obsolete}} To give heart to; to [[hearten]]; to [[encourage]].
+#* {{RQ:Shakespeare Othello|act=I|scene=iii|passage={{...}}My cause is '''hearted'''; thine hath no less reason.}}
+# {{lb|en|transitive|masonry}} To fill an interior with rubble, as a wall or a breakwater.
+# {{lb|en|intransitive|agriculture|botany}} To form a dense cluster of leaves, a heart, especially of lettuce or cabbage.
+
+====Translations====
+{{trans-top|to mark with the heart symbol}}
+{{multitrans|data=
+* Czech: {{tt|cs|srdíčkovat}}
+* Polish: {{tt+|pl|serduszkować}}
+* Russian: {{tt|ru|сердечкать}}
+* Serbo-Croatian:
+*: Cyrillic: {{tt|sh|срцовати}}
+*: Latin: {{tt|sh|srcovati}}
+* Slovak: {{tt|sk|srdiečkovať}}
+}}<!-- close {{multitrans}} -->
+{{trans-bottom}}
+
+===See also===
+* {{l|mul|<3}}, {{l|mul|♥}}, {{l|mul|❤}}, {{l|mul|🫀}}
+{{table:suits/en}}
+
+===References===
+<references/>
+
+===Further reading===
+* {{pedia}}
+
+===Anagrams===
+* {{anagrams|en|a=aehrt|Erath|rehat|ather-|Earth|Herta|Harte|rathe|Rathe|earth|th'are|thare|hater|Herat|Taher|Terah|Thera}}
+
+{{C|en|Cardiology|Love|Shapes|Plant anatomy}}
+
+==Chinese==
+
+===Etymology===
+From {{bor|yue|en|heart}}.
+
+===Pronunciation===
+{{zh-pron
+|c=haat1
+|cat=n
+}}
+
+===Noun===
+{{head|zh|noun}}
+
+# {{lb|zh|Hong Kong Cantonese|figuratively}} [[passion]]; [[determination]] {{zh-mw|c:個}}
+#: {{zh-co|有'''he{}ar{a}t{t1}'''|[[passionate]]|C}}
+#: {{zh-co|冇'''he{}ar{a}t{t1}'''|without passion|C}}

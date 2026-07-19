@@ -1,0 +1,352 @@
+{{also|Wasser|Wàsser|Wâsser|Wässer|Wåsser|wasser|wässer|wàsser}}
+==English==
+
+===Proper noun===
+{{en-proper noun|s}}
+
+# {{surname|en}}.
+
+===Further reading===
+* {{pedia}}
+
+===Anagrams===
+* {{anagrams|en|a=aerssw|resaws|swares|sawers|wrasse|sewars|swears}}
+
+==Alemannic German==
+
+===Alternative forms===
+* {{alter|gsw|Wâsser|Wàser||Alsatian}}
+* {{alter|gsw|Wâser||Dunzenheim}}
+* {{alter|gsw|wasser|wàsser||Italian Walser}}
+
+===Etymology===
+{{root|gsw|ine-pro|*wed-}}
+{{dercat|gsw|gmw-pro|gem-pro|ine-pro|inh=3}}
+From {{inh|gsw|gmh|wazzer|waʒʒer}}, from {{inh|gsw|goh|wazzar|waʒʒar}}. Cognate with {{cog|de|Wasser}}, {{cog|nl|-}} and {{cog|en|water}}, {{cog|is|vatn}}.
+
+===Noun===
+{{head|gsw|noun|g=n}}
+
+# {{lb|gsw|Basel|Alsatian}} [[water]]
+
+====Derived terms====
+* {{l|gsw|Wassermoli}}
+
+===References===
+* ''Wörterbuch der elsässischen Mundarten''
+* Rudolf Suter, ''Baseldeutsch-Grammatik'' (1976): s Wasser
+
+{{topics|gsw|Water}}
+
+==Central Franconian==
+
+===Alternative forms===
+* {{alt|gmw-cfr|Waßer}} {{qualifier|native in most dialects; now archaic in many}}
+
+===Etymology===
+{{etymon|gmw-cfr|:inh|gmh:wazzer<id:water>|id=water}}
+From {{inh|gmw-cfr|gmh|wazzer}}, from {{inh|gmw-cfr|goh|wazzar}}. The use of ''-a-'' instead of the expected ''-ā-'' is influenced by standard {{der|gmw-cfr|de|-}}.
+
+===Pronunciation===
+* {{IPA|gmw-cfr|/ˈʋasʌ/}}
+
+===Noun===
+{{head|gmw-cfr|noun|g=n|plural|Wasser|diminutive|Wässerche}}
+
+# {{lb|gmw-cfr|many dialects}} [[water]]
+#* {{quote-song|gmw-cfr
+|year=1990
+|title=Dat Wasser vun Kölle
+|artist=w:Bläck Fööss
+|url=https://www.youtube.com/watch?v=iY7dV9cIpNQ
+|passage=O leeve Jott, jevv uns '''Wasser''', <br> Denn janz Kölle hät Doosch! <br> O leeve Jott, jevv uns '''Wasser''' <br> Un helf uns en der Nut!
+|t=O dear God, give us '''water''', <br> For all of Cologne is thirsty! <br> O dear God, give us '''water''' <br> And help us in our misery!}}
+
+====Descendants====
+* {{desc|hrx|Wasser}}
+* {{desc|lb|Waasser}}
+* {{desc|gmw-tsx|Wåsser|alts=1}}
+
+{{C|gmw-cfr|Water}}
+
+==German==
+
+===Etymology===
+{{etymon|de|id=water|:inh|gmh:wazzer<id:water>|tree=1}}
+From {{inh|de|gmh|waȥȥer}}, from {{inh|de|goh|waȥȥar}}, from {{inh|de|gmw-pro|*watar}}, from {{inh|de|gem-pro|*watōr}}, from {{inh|de|ine-pro|*wédōr}}, collective of {{m|ine-pro|*wódr̥}}. 
+
+Compare {{cog|nds|Water}}, {{cog|nl|water}}, {{cog|en|water}}, {{cog|da|vand}}.
+
+===Pronunciation===
+* {{IPA|de|/ˈva.sər/}}, {{IPAchar|[ˈva.sɐ]|[ˈva.səʁ]}}
+* {{audio|de|De-Wasser.ogg}}
+* {{audio|de|De-Wasser3.ogg|a=<<Germany>> (<<Berlin>>)}}
+* {{audio|de|BY-Wasser.ogg|a=Bavaria}}
+* {{hyph|de|Was|ser}}
+
+===Noun===
+{{de-noun|n,,-:^|dim=^chen,^lein}}
+
+# [[water]] {{gloss|H₂O}}
+# [[water]], [[waters]] {{gl|body of water, especially a river or lake}}
+# {{lb|de|chiefly in compounds}} alcoholic beverage, similar to [[brandy]], made from fermented fruit
+# {{lb|de|literary|euphemistic}} [[urine]]
+#: {{coi|de|'''Wasser''' lassen|to urinate}}
+# {{lb|de|colloquial}} {{clipping of|de|[[Mineralwasser]]/[[Tafelwasser]]}}
+
+====Usage notes====
+* Both plural forms are infrequent. Unchanged '''''Wasser''''' is used as a purely emphatic plural: ''die '''Wasser''' des Rheins'' – the '''waters''' of the Rhine. '''''Wässer''''' is used as an actual plural meaning different kinds of water (or brandy): ''teure und preiswerte '''Wässer''''' – expensive and inexpensive [table] '''waters'''. However, ''Wässer'' is also used emphatically in some compound words such as {{m|de|Abwässer|Ab'''wässer'''|waste water}} and {{m|de|Schmutzwässer|Schmutz'''wässer'''|dirty water}}.
+
+====Declension====
+{{de-ndecl|n,,-:^}}
+
+====Derived terms====
+{{col|de|title=compound nouns
+|Abwasser<t:wastewater; sewage>
+|Altwasser<t:oxbow lake>
+|Frischwasser
+|Grauwasser
+|Grundwasser
+|Hochwasser<t:flood, flooding>
+|Kirschwasser<t:kirsch, a clear brandy made from black cherries>
+|Kondeswasser
+|Leitungswasser
+|Meerwasser<t:seawater>
+|Mineralwasser<t:mineral water, carbonated water>
+|Mundwasser
+|Regenwasser
+|Salzwasser<t:salt water>
+|Schwarzwasser
+|Sprudelwasser<t:fizzy water>
+|Süßwasser<t:freshwater>
+|Tafelwasser
+|Trinkwasser<t:drinking water>
+|Weihwasser
+|Wildwasser<t:white water>
+|Wurstwasser<t:water in which sausages have been cooked and/or packaged>
+|Zielwasser
+|Wasserabfluss
+|Wasseramsel
+|Wasseranschluss
+|Wasseraufbereitung
+|Wasserbad
+|Wasserball
+|Wasserbär
+|Wasserbecken
+|Wasserbehälter
+|Wasserbombe<t:depth charge; water bomb, water balloon>
+|Wasserbüffel
+|Wasserburg
+|Wasserchemie
+|Wasserdampf<t:steam; water vapour>
+|Wasserdruck
+|Wassereis<t:ice pop, popsicle, ice lolly; frozen water>
+|Wasserenthärtung
+|Wasserfahrzeug
+|Wasserflugzeug
+|Wasserfall<t:waterfall>
+|Wasserfarbe<t:watercolour>
+|Wasserfass
+|Wasserfläche
+|Wasserflasche<t:water bottle><g:f>
+|Wasserfloh
+|Wassergehalt
+|Wassergewebe
+|Wasserglas
+|Wassergüte
+|Wasserhahn
+|Wasserhärte
+|Wasserhäuschen
+|Wasserhyazinthe
+|Wasserhund<t:water dog>
+|Wasserkäfer
+|Wasserklosett
+|Wasserkocher
+|Wasserkopf
+|Wasserkraft
+|Wasserkraftwerk
+|Wasserkreislauf
+|Wasserkresse
+|Wasserkunst
+|Wasserlauf
+|Wasserleitung
+|Wasserlinse
+|Wasserloch
+|Wassermangel
+|Wassermann<t:Aquarius, Aquarian>
+|Wassermelone
+|Wasserminze
+|Wassermolekül
+|Wassermühle<t:water mill>
+|Wasseroberfläche
+|Wasserpfeife<t:water pipe>
+|Wasserpflanze
+|Wasserpistole
+|Wasserrad
+|Wasserralle<t:water rail>
+|Wasserratte
+|Wasserrohr
+|Wasserrutsche<t:Waterslide><g:f>
+|Wassersäule<t:water column><g:f>
+|Wasserschaden
+|Wasserscheide<t:watershed>
+|Wasserschierling
+|Wasserschlange
+|Wasserschloss
+|Wasserschwein
+|Wasserski<t:water skiing; water ski>
+|Wasserskorpion<t:water scorpion>
+|Wasserspeier<t:gargoyle, waterspout>
+|Wasserspinne<t:water spider, diving bell spider>
+|Wasserstrahl
+|Wasserstraße
+|Wasserstoff<t:hydrogen>
+|Wassersucht
+|Wassertank
+|Wassertemperatur
+|Wassertiefe
+|Wasserturm
+|Wasseruhr
+|Wasserverbrauch
+|Wasserverlust
+|Wasserversorgung
+|Wasservogel
+|Wasserwaage
+|Wasserwanze<t:water bug>
+|Wasserweg
+|Wasserwerfer
+|Wasserwerk
+|Wasserzähler
+|Wasserzeichen
+}}
+{{col|de|title=adjectives
+|wasserabweisend
+|wasserarm
+|wasserdicht
+|wasserdurchlässig
+|wasserentziehend
+|wasserfest
+|wasserfrei
+|wassergekühlt
+|wasserlöslich
+|wasserreich
+|wasserundurchlässig
+|wasserunlöslich
+|wässerig, wässrig
+}}
+{{col|de
+|fließend Wasser
+|Schlag ins Wasser
+|Wasser auf die Mühlen
+|Blut ist dicker als Wasser<t:blood is thicker than water>
+|das Wasser reichen können<t:to hold a candle>
+|Gewässer<t:body of water, waterbody, water>
+|auch nur mit Wasser kochen
+|ins Wasser fallen
+|Wasser predigen und Wein trinken<t:to not practice what one preaches>
+|wässern<t:to water>
+|wassern
+|nah am Wasser gebaut<t:prone to crying>
+|Wasser ins Meer tragen
+}}
+
+===Further reading===
+* {{R:de:DWDS}}
+* {{R:de:UniLeipzig}}
+* {{R:de:Duden}}
+* {{pedia|lang=de}}
+
+{{C|de|Beverages|Water}}
+
+==Hunsrik==
+
+===Alternative forms===
+* {{alt|hrx|waser||Wiesemann spelling system}}
+
+===Etymology===
+{{etymon|hrx|:inh|gmw-cfr:Wasser<id:water>|id=water|text=+}}<ref>{{R:hrx:Boll|171|2}}</ref>
+
+Cognate with {{cog|de|Wasser}}, {{cog|lb|Waasser}}, {{cog|pdc|Wasser}} and {{cog|gmw-tsx|Wåsser}}.
+
+===Pronunciation===
+{{hrx-pr}}
+
+===Noun===
+{{hrx-noun|n|pl=Wassre}}
+
+# [[water]]
+#: {{ux|hrx|Ich drinke en Glaas '''Wasser'''.|I am drinking a glass of '''water'''.}}
+
+====Derived terms====
+{{col|hrx|Mineralwasser|Rehnwasser|Salswasser|Zitronewasser}}
+
+===References===
+<references />
+
+{{C|hrx|Water}}
+
+==Pennsylvania German==
+
+===Etymology===
+{{root|pdc|ine-pro|*wed-}}
+{{dercat|pdc|gmw-pro|gem-pro|ine-pro|inh=3}}
+From {{inh|pdc|gmh|wazzer}}, from {{inh|pdc|goh|wazzar}}. Compare {{cog|de|Wasser}}, {{cog|nl|water}}, {{cog|en|water}}.
+
+===Noun===
+{{head|pdc|noun|g=n}}
+
+# [[water]]
+
+{{topics|pdc|Water}}
+
+==Rhine Franconian==
+
+===Etymology===
+{{root|gmw-rfr|ine-pro|*wed-}}
+{{dercat|gmw-rfr|gmw-pro|gem-pro|ine-pro|inh=3}}
+From {{inh|gmw-rfr|gmh|wazzer}}, from {{inh|gmw-rfr|goh|wazzar}}.
+
+===Noun===
+{{head|gmw-rfr|noun|g=n}}
+
+# {{lb|gmw-rfr|many dialects|including|Palatine}} [[water]]
+
+===References===
+* ''Verse und Reime eines alten Pfälzers, in pfälzischer Mundart'' (1864): guts Wasser
+
+{{C|gmw-rfr|Water}}
+
+==Unserdeutsch==
+
+===Etymology===
+{{root|uln|ine-pro|*wed-}}
+{{dercat|uln|gmw-pro|gem-pro|ine-pro|inh=3}}
+From {{inh|uln|de|Wasser}}, from {{inh|uln|gmh|wazzer}}, from {{inh|uln|goh|wazzar}}.
+
+===Noun===
+{{head|uln|noun|head=*Wasser}}
+
+# [[water]]
+
+===References===
+* Craig Volker, ''The Birth and Decline of Rabaul Creole German'', in: '''1991''', ''Language and Linguistics in Melanesia'', vol. 22, pp. 143ff., here p. 154:
+*: 3. Inclusive/exclusive 'we':
+*: (a) Uns bis neben Salz-wasser.
+*: we:IN are next.to salt water
+*: 'We're next to the ocean.'
+
+{{C|uln|Water}}
+
+==Volga German==
+
+===Etymology===
+{{root|gmw-vog|ine-pro|*wed-}}
+{{dercat|gmw-vog|gmw-pro|gem-pro|ine-pro|inh=3}}
+From {{inh|gmw-vog|gmh|wazzer}}, from {{inh|gmw-vog|goh|wazzar}}.
+
+===Noun===
+{{head|gmw-vog|noun|g=n}}
+
+# [[water]]
+
+{{C|gmw-vog|Water}}

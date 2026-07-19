@@ -1,4 +1,6 @@
 use serde::Serialize;
+use std::collections::HashMap;
+use std::sync::LazyLock;
 
 #[derive(Clone, Debug, Serialize)]
 pub struct Token {
@@ -10,6 +12,13 @@ pub struct Token {
 	pub pos: Option<String>,
 	pub frequency_rank: Option<u32>,
 }
+
+static IRREGULAR_EN: LazyLock<HashMap<String, String>> = LazyLock::new(|| serde_json::from_str(include_str!("lemmas/en.json")).unwrap());
+static IRREGULAR_PT: LazyLock<HashMap<String, String>> = LazyLock::new(|| serde_json::from_str(include_str!("lemmas/pt.json")).unwrap());
+static IRREGULAR_ES: LazyLock<HashMap<String, String>> = LazyLock::new(|| serde_json::from_str(include_str!("lemmas/es.json")).unwrap());
+static IRREGULAR_FR: LazyLock<HashMap<String, String>> = LazyLock::new(|| serde_json::from_str(include_str!("lemmas/fr.json")).unwrap());
+static IRREGULAR_DE: LazyLock<HashMap<String, String>> = LazyLock::new(|| serde_json::from_str(include_str!("lemmas/de.json")).unwrap());
+static IRREGULAR_IT: LazyLock<HashMap<String, String>> = LazyLock::new(|| serde_json::from_str(include_str!("lemmas/it.json")).unwrap());
 
 pub fn tokenize(text: &str, language: &str) -> Vec<Token> {
 	let mut tokens = Vec::new();
@@ -56,13 +65,25 @@ pub fn tokenize(text: &str, language: &str) -> Vec<Token> {
 }
 
 pub fn lemmatize(word: &str, language: &str) -> String {
+	let lower = word.to_lowercase();
+	let table: &LazyLock<HashMap<String, String>> = match language {
+		l if l.starts_with("pt") => &IRREGULAR_PT,
+		l if l.starts_with("es") => &IRREGULAR_ES,
+		l if l.starts_with("fr") => &IRREGULAR_FR,
+		l if l.starts_with("de") => &IRREGULAR_DE,
+		l if l.starts_with("it") => &IRREGULAR_IT,
+		_ => &IRREGULAR_EN,
+	};
+	if let Some(lemma) = table.get(&lower) {
+		return lemma.clone();
+	}
 	match language {
-		l if l.starts_with("pt") => lemmatize_pt(word),
-		l if l.starts_with("es") => lemmatize_es(word),
-		l if l.starts_with("fr") => lemmatize_fr(word),
-		l if l.starts_with("de") => lemmatize_de(word),
-		l if l.starts_with("it") => lemmatize_it(word),
-		_ => lemmatize_en(word),
+		l if l.starts_with("pt") => lemmatize_pt(&lower),
+		l if l.starts_with("es") => lemmatize_es(&lower),
+		l if l.starts_with("fr") => lemmatize_fr(&lower),
+		l if l.starts_with("de") => lemmatize_de(&lower),
+		l if l.starts_with("it") => lemmatize_it(&lower),
+		_ => lemmatize_en(&lower),
 	}
 }
 
@@ -107,40 +128,41 @@ fn lemmatize_en(word: &str) -> String {
 	lower
 }
 
-fn lemmatize_pt(word: &str) -> String {
-	let lower = word.to_lowercase();
-	if lower.len() < 4 {
-		return lower;
-	}
-	if lower.ends_with("ões") {
-		return format!("{}ão", &lower[..lower.len() - 3]);
-	}
-	if lower.ends_with("ães") {
-		return format!("{}ão", &lower[..lower.len() - 3]);
-	}
-	if lower.ends_with("ais") {
-		return format!("{}al", &lower[..lower.len() - 3]);
-	}
-	if lower.ends_with("res") && lower.len() > 5 {
-		return format!("{}r", &lower[..lower.len() - 2]);
-	}
-	if lower.ends_with("ndo") {
-		return format!("{}r", &lower[..lower.len() - 2]);
-	}
-	if lower.ends_with("dos") || lower.ends_with("das") {
-		let stem = &lower[..lower.len() - 2];
-		if stem.ends_with('a') || stem.ends_with('o') {
-			return stem.to_string();
+	fn lemmatize_pt(word: &str) -> String {
+		let lower = word.to_lowercase();
+		if lower.len() < 4 {
+			return lower;
 		}
-	}
-	if lower.ends_with('s') {
-		let stem = &lower[..lower.len() - 1];
-		if stem.len() > 2 {
-			return stem.to_string();
+		if lower.ends_with("ões") {
+			return format!("{}ão", &lower[..lower.len() - 3]);
 		}
+		if lower.ends_with("ães") {
+			return format!("{}ão", &lower[..lower.len() - 3]);
+		}
+		if lower.ends_with("ais") {
+			return format!("{}al", &lower[..lower.len() - 3]);
+		}
+		if lower.ends_with("res") && lower.len() > 5 {
+			let stem = &lower[..lower.len() - 3];
+			return format!("{}r", stem);
+		}
+		if lower.ends_with("ndo") && lower.len() > 4 {
+			return format!("{}r", &lower[..lower.len() - 3]);
+		}
+		if lower.ends_with("dos") || lower.ends_with("das") {
+			let stem = &lower[..lower.len() - 2];
+			if stem.ends_with('a') || stem.ends_with('o') {
+				return stem.to_string();
+			}
+		}
+		if lower.ends_with('s') {
+			let stem = &lower[..lower.len() - 1];
+			if stem.len() > 2 {
+				return stem.to_string();
+			}
+		}
+		lower
 	}
-	lower
-}
 
 fn lemmatize_es(word: &str) -> String {
 	let lower = word.to_lowercase();
@@ -153,13 +175,13 @@ fn lemmatize_es(word: &str) -> String {
 	if lower.ends_with("ciones") || lower.ends_with("siones") {
 		return format!("{}ción", &lower[..lower.len() - 5]);
 	}
-	if lower.ends_with("ando") || lower.ends_with("endo") {
-		return format!("{}r", &lower[..lower.len() - 2]);
+	if (lower.ends_with("ando") || lower.ends_with("endo")) && lower.len() > 4 {
+		return format!("{}r", &lower[..lower.len() - 3]);
 	}
 	if lower.ends_with("ados") || lower.ends_with("idas") || lower.ends_with("idos") {
 		return lower[..lower.len() - 1].to_string();
 	}
-	if lower.ends_with('s') && !lower.ends_with("as") {
+	if lower.ends_with('s') && !lower.ends_with("as") && lower.len() > 3 {
 		return lower[..lower.len() - 1].to_string();
 	}
 	lower
@@ -187,16 +209,13 @@ fn lemmatize_fr(word: &str) -> String {
 
 fn lemmatize_de(word: &str) -> String {
 	let lower = word.to_lowercase();
-	if lower.len() < 4 {
+	if lower.len() < 5 {
 		return lower;
 	}
 	if lower.ends_with("ung") || lower.ends_with("heit") || lower.ends_with("keit") || lower.ends_with("schaft") {
 		return lower.clone();
 	}
 	if lower.ends_with("en") || lower.ends_with("nen") {
-		return lower[..lower.len() - 1].to_string();
-	}
-	if lower.ends_with("er") || lower.ends_with("es") {
 		return lower[..lower.len() - 1].to_string();
 	}
 	lower
@@ -216,10 +235,10 @@ fn lemmatize_it(word: &str) -> String {
 	if lower.ends_with("menti") {
 		return format!("{}mento", &lower[..lower.len() - 4]);
 	}
-	if lower.ends_with("ando") || lower.ends_with("endo") {
-		return format!("{}re", &lower[..lower.len() - 2]);
+	if (lower.ends_with("ando") || lower.ends_with("endo")) && lower.len() > 4 {
+		return format!("{}re", &lower[..lower.len() - 3]);
 	}
-	if lower.ends_with('i') {
+	if lower.ends_with('i') && lower.len() > 3 {
 		return lower[..lower.len() - 1].to_string();
 	}
 	lower
@@ -265,7 +284,8 @@ mod tests {
 
 	#[test]
 	fn test_de_lemmatize() {
-		assert_eq!(lemmatize("bücher", "de"), "bücher");
+		assert_eq!(lemmatize("bücher", "de"), "buch");
+		assert_eq!(lemmatize("männer", "de"), "mann");
 	}
 
 	#[test]

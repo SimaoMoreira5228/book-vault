@@ -1,0 +1,13 @@
+==Galician==
+
+===Verb===
+{{head|gl|verb form}}
+
+# {{gl-verb form of|empurrar}}
+
+==Portuguese==
+
+===Verb===
+{{head|pt|verb form}}
+
+# {{pt-verb form of|empurrar}}

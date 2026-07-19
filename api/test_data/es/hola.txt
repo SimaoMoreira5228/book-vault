@@ -1,0 +1,98 @@
+{{desambiguación|holá|holà|hóla|hòla|hola-|hoľa}}
+
+== {{lengua|es}} ==
+{{pron-graf|1audio1=Es-hola.oga|h1=ola}}
+
+=== Etimología 1 ===
+{{etimología|expresiva}}.
+
+==== {{interjección|es}} ====
+;1: {{impropia|Expresión de [[saludo]] utilizada entre dos o más personas de trato [[familiar]], sin importar el momento del día ni las circunstancias}}.
+{{sinónimo|buenas}}.
+{{relacionado|buenos días|buenas tardes|buenas noches}}.
+;2: {{impropia|Expresión de [[sorpresa]]}}.
+{{sinónimo|¡anda!|¡ahí va!|¡qué me dices!}}
+
+==== Véase también ====
+{{w}}
+
+==== Traducciones ====
+{{trad-arriba}}
+{{t|sh|a1=1|t1=zdravo|t2=ćao|a3=1|t3=здраво|tl3=zdravo|t4=ћао}}
+{{t|sq|a1=1|t1=tungjatjeta}}
+{{t|ar|t1=مرحبًا|a1=1}}
+{{t|ast|a1=1|t1=hola}}
+{{t|de|a1=1|t1=hallo}}
+{{t|bg|a1=1|t1=здравей|nota1=a una persona|t2=здравейте|nota2=a más personas о formal|t3=здрасти|nota3=informal}}
+{{t|ca|a1=1|t1=hola}}
+{{t|zh|a1=1|t1=你好|tl1=nĭ hăo|t2=您好|tl2=nín hăo|nota2=formal}}
+{{t|cs|a1=1|t1=ahoj|t2=nazdar|t3=čau}}
+{{t|da|a1=1|t1=god dag|t2=hej}}
+{{t|sl|a1=1|t1=živijo}}
+{{t|eo|a1=1|t1=saluton}}
+{{t|eu|a1=1|t1=kaixo}}
+{{t|fi|a1=1|t1=terve|t2=moi|t3=hei}}
+{{t|fj|a1=1|t1=bula}}
+{{t|fr|a1=1|t1=salut|nota1=informal|t2=bonjour}}
+{{t|gl|a1=1|t1=ola}}
+{{t|gil|a1=1|t1=mauri}}
+{{t|el|a1=1|t1=γειά σου|tl1=ya su|nota1=informal|t2=γειά σας|tl2=ya sas|nota2=formal}}
+{{t|haw|a1=1|t1=aloha}}
+{{t|he|t1=שָׁלוֹם}}
+{{t|hi|t1=नमसते}}
+{{t|hu|a1=1|t1=szervusz|t2=szia|t3=szevasz}}
+{{t|id|a1=1|t1=hai}}
+{{t|en|a1=1|t1=hello|t2=hi}}
+{{t|is|a1=1|t1=hæ|t2=halló}}
+{{t|it|a1=1|t1=ciao|t2=salve}}
+{{t|kl|a1=1|t1=aluu}}
+{{t|kzg|a1=1|t1=拝みんせーら|t2=うがみんせーら|t3=拝みんしょーら|t4=うがみんしょーら}}
+{{t|la|a1=1|t1=salve|t2=ave}}
+{{t|lt|a1=1|t1=labas|t2=sveikas|nota2=informal|t3=sveiki|nota3=formal}}
+{{t|nci|a1=1|t1=hao|i2=s|t2=niltze}}
+{{t|nl|a1=1|t1=hallo|t2=hoi|t3=dag}}
+{{t|fa|a1=1|t1=سلام}}
+{{t|pt|a1=1|t1=oi|t2=olá|t3=alô}}
+{{t|pl|a1=1|t1=cześć}}
+{{t|ro|a1=1|t1=salut|t2=servus|t3=bună}}
+{{t|ru|a1=1|t1=привет|tl1=privet|nota1=informal|t2=здравствуйте|tl2=zdravstvuytë|nota2=formal}}
+{{t|sa|i1=s|t1=अहो}}
+{{t|sw|a1=1|t1=habari|t2=hujambo|nota2=a un hombre|t3=sijambo|nota3=a una mujer|t4=hamjambo|nota4=a varios|t5=jambo|nota5=forma simplificada usada por turistas}}
+{{t|sv|a1=1|t1=hallå|t2=hej}}
+{{t|ta|a1=1|t1=வானக்கம்|tl1=vānakkam}}
+{{t|th|a1=1|t1=สวัสดีครับ|g1=m|t2=สวัสดีค่ะ|g2=f}}
+{{t|tok|a1=1|t1=toki}}
+{{t|tr|a1=1|t1=merhaba|t2=selam}}
+{{t|uk|a1=1|t1=привіт}}
+{{t|zu|a1=1|t1=sawubona}}
+{{trad-abajo}}
+
+== {{lengua|ast}} ==
+{{pron-graf|leng=ast}}
+
+=== Etimología 1 ===
+{{etimología|leng=ast}}.
+
+==== {{interjección|ast}} ====
+;1: {{plm}}.
+
+== {{lengua|ca}} ==
+{{pron-graf|leng=ca}}
+
+=== Etimología 1 ===
+{{etimología|leng=ca|es|hola}}.
+
+==== {{interjección|ca}} ====
+;1: {{plm}}.
+
+== {{lengua|haw}} ==
+{{pron-graf|leng=haw|1fono1=ˈho.la}}
+
+=== Etimología 1 ===
+{{etimología|leng=haw}}.
+
+==== {{sustantivo|haw}} ====
+;1: {{plm|hora}}.
+
+== Referencias y notas ==
+<references />

@@ -1,0 +1,198 @@
+={{-pt-}}=
+==Substantivo==
+{{flex.pt|ms=cantar|mp=cantares}}
+{{oxítona|can|tar}}, {{gramática|m}}
+# o mesmo que [[cântico]]
+
+==Verbo==
+{{oxítona|can|tar}}, {{gramática|vt|intran}}
+# [[emitir]] [[som|sons]] [[vocálico]]s formando uma [[sequência]]  [[melodioso|melodiosa]]
+#* ''Convidado por um repórter de TV a '''cantar''' um trecho do hino belga no dia da festa nacional, o premiê entoou a Marselhesa, hino francês.'' {{OESP|2008|novembro|02}}
+# [[dizer]] em [[voz]] [[alto|alta]] os [[número]]s ou [[valor]]es obtidos em um [[sorteio]] ou [[jogo]]
+#* ''"Quando ele '''cantou''' vinte e dois, eu ganhei."''
+# {{escopo|pt|Brasil}} [[cortejar]], [[aliciar]] ou [[seduzir]] 
+
+===Conjugação===
+{{conj/pt|cant|ar}}
+
+===Expressões===
+* '''[[cantar pedra]]''':
+
+===Tradução===
+{{tradini|De 1 (emitir sons formando uma sequência melodiosa)}}
+* {{trad|af|sing}}
+* {{trad|ay|kirkiña|wanka}}
+* {{trad|sq|këndoj}}
+* {{trad|de|singen}}
+* {{t|am|ዘፈነ||zäfänä}}
+* {{trad|ar|غنى}}
+* {{trad|an|cantar}}
+* {{t|hy|երգել||ergel}}
+* {{trad|eu|abestu|kantatu}}
+* {{t|be|спяваць||spjavácʹ}}, {{xlatio|be|заспяваць|''(zaspjavácʹ)''}}
+* {{trad|br|kanañ}}
+* {{trad|bg|пея}}
+* {{trad|kea|kanta|kanka}}
+* {{trad|ca|cantar}}
+* {{trad|cs|zpívat|opìvovat}}
+* {{trad|zh|唱歌}}
+* {{trad|co|cantà}}
+* {{trad|hr|pjevati}}
+* {{trad|da|synge}}
+* {{trad|sk|spievať}}
+* {{trad|sl|peti}}
+* {{trad|es|cantar}}
+* {{trad|eo|kanti}}
+* {{trad|et|laulma}}
+* {{trad|fi|laulaa}}
+* {{trad|vls|zingen}}
+* {{trad|fr|chanter}}
+* {{trad|fur|cjantâ}}
+* {{trad|gd|seinn}}
+* {{trad|gl|cantar}}
+* {{trad|cy|canu}}
+* {{t|ka|მღერა||mghera}}
+* {{t|el|τραγουδάω||tragudáo}}, {{t+|el|τραγουδώ||tragudó}}, {{t+|el|άδω||ádo}}
+* {{trad|grc|άδω}}
+* {{trad|he|לשיר|לזמר}}
+* {{trad|nl|zingen}}
+* {{trad|hu|énekel}}
+{{tradmeio}}
+* {{trad|en|sing}}
+* {{trad|yo|kọ}}
+* {{trad|ga|can}}
+* {{trad|is|syngja}}
+* {{trad|it|cantare}}
+* {{trad|ja|歌う}}
+* {{t|lo|ຮ້ອງເພງ||hǭng phēng}}, {{xlatio|lo|ຮ້ອງ|''(hǭng)''}}
+* {{trad|la|canere|cantare}}
+* {{trad|lv|dziedāt}}
+* {{trad|li|zènge}}
+* {{trad|lt|dainuoti}}
+* {{trad|mt|tkanta}}
+* {{trad|mas|eranyare}}
+* {{trad|mdf|morams}}
+* {{trad|nap|cantà}}
+* {{trad|yrl|nheengari}}
+* {{trad|nb|synge}}
+* {{trad|pms|canté}}
+* {{trad|pl|śpiewać|zaśpiewać}}
+* {{trad|qu|takiy|jarawiy|kantay}}
+* {{trad|rap|riu|himene}}
+* {{trad|ro|cânta}}
+* {{trad|ru|петь|звучать|напевать}}
+* {{trad|cri|kantá}}
+* {{trad|sro|cantai}}
+* {{trad|sr|певати}}
+* {{trad|scn|cantàri}}
+* {{trad|sw|-imba}}
+* {{trad|sv|sjunga}}
+* {{trad|th|ร้องเพลง}}
+* {{trad|tet|hananu|kanta}}
+* {{trad|tu|nheengare}}
+* {{trad|tr|ötmek}}
+* {{trad|ur|گانا}}
+* {{trad|val|cantar}}
+* {{trad|vec|cantar}}
+* {{trad|vi|hát|hót}}
+{{tradfim}}
+
+=={{etimologia|pt}}==
+{{etimo2|la|cantare|pt}}
+
+==Ver também==
+===No Wikcionário===
+{{verTambém.Ini}}
+* {{verLigações|canção}}
+* [[canta]]
+* [[cantada]]
+* [[cantador]]
+* [[cantando]]
+* [[cantarei]]
+* [[cantaríeis]]
+* [[cantassem]]
+* [[cantautor]]
+* [[cantava]]
+{{verTambém.NovaColuna}}
+* [[cante]]
+* {{verLigações|cantiga}}
+* {{verLigações|canto}}
+* [[cantor]]
+* [[cocoricar]]
+* [[descantar]]
+* [[fadejar]]
+* [[harmonia]]
+* [[intérprete]]
+{{verTambém.NovaColuna}}
+* [[melodia]]
+* [[modular]]
+* {{verLigações|música}}
+* [[repentista]]
+* [[seduzir]]
+* [[serenata]]
+* [[seresta]]
+* [[sexo]]
+* {{verLigações|som}}
+{{verTambém.Fim}}
+
+==Anagramas==
+# [[tancar]]
+# [[tranca]]
+# [[trança]]
+
+[[Categoria:Substantivo (Português)]]
+[[Categoria:Verbo (Português)]]
+[[Categoria:Música (Português)]]
+
+
+={{-an-}}=
+==Verbo==
+'''cantar'''
+# [[cantar#Português|cantar]]
+
+[[Categoria:Verbo (Aragonês)]]
+
+
+={{-ca-}}=
+==Verbo==
+'''cantar'''
+# [[cantar#Português|cantar]]
+
+[[Categoria:Verbo (Catalão)]]
+
+
+={{-es-}}=
+==Verbo==
+'''can.tar''' (''verbo regular'')
+# [[cantar#Português|cantar]]
+# {{escopo|es|Figurado}} [[louvar]]
+
+===Conjugação===
+{{conj.es.ar|cant|cantado}}
+
+[[Categoria:Verbo (Espanhol)]]
+[[Categoria:Verbo regular (Espanhol)]]
+
+
+={{-gl-}}=
+==Verbo==
+'''cantar'''
+# [[cantar#Português|cantar]]
+
+[[Categoria:Verbo (Galego)]]
+
+
+={{-val-}}=
+==Verbo==
+'''cantar'''
+# [[cantar#Português|cantar]]
+
+[[Categoria:Verbo (Valenciano)]]
+
+
+={{-vec-}}=
+==Verbo==
+'''cantar'''
+# [[cantar#Português|cantar]]
+
+[[Categoria:Verbo (Vêneto)]]

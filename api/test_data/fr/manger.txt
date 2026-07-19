@@ -1,0 +1,670 @@
+== {{langue|fr}} ==
+=== {{S|étymologie}} ===
+: {{refnec|lang=fr}} Du {{étyl|frm|fr|manger}}, de l’{{étyl|fro|fr|mot=mangier}}, issu du {{étyl|la|fr|mot=manducare|sens=[[mâcher]] » et « manger » en latin populaire}}, lui-même issu de ''[[mandere]]'' (« manger »). L’italien ''[[mangiare]]'' est sans conteste d’origine gallo-romane. Une évolution de ''[[manducare]]'' conforme aux lois de l’évolution phonétique de l’italien aurait donné {{recons|lang-mot-vedette=fr|mandocare}}. De même, en occitan, ''[[manjar]]'' est dû à la langue d’oïl.
+
+=== {{S|verbe|fr}} ===
+[[File:Fernand Besnier-Illustration-Les Contes de nos Aïeux-Albert Meyrac-03-Du vilain qui mangea le pain.jpg|vignette|Le vilain qui '''mangea''' le pain.]]
+'''manger''' {{pron|mɑ̃.ʒe|fr}} {{conj|grp=1|fr}}
+# [[mâcher|Mâcher]] et [[avaler]] un [[aliment]] dans le [[but]] de se [[nourrir]].
+#* {{exemple | lang=fr
+ | '''Mangez''' donc, lui dit la jeune fille en lui servant un morceau de la hure d’un sanglier.
+ | source={{w|Alexandre Dumas}}, ''{{ws|Othon l’archer}}'', 1839}}
+#* {{exemple | lang=fr
+ | Sylvius avait déjà fait observer que les bœufs qui, pendant l'hiver, sont affectés de concrétions biliaires, se guérissent au printemps '''en mangeant''' les feuilles et les tiges de chiendent dans les pâturages.
+ | source=''Le Chiendent - Triticum repens'', dans la ''Revue de thérapeutique médico-chirurgicale'', Paris : Dr Martin-Lauzer, 1865, page 17}}
+#* {{exemple|lang=fr| Deux domestiques de restaurant, à Palavas-les-Flots (Hérault), […], ont été intoxiquées après '''avoir mangé''' un croissant au chocolat offert par une employée du même établissement. |source= « ''Faits & Méfaits'' », dans ''{{w|Le Petit Champenois}}'', 55{{e}} année, mardi 9 août 1939, p. 1}}
+#* {{exemple|lang=fr
+ | On dit que savoir bien '''manger''' est la marque d’une grande civilisation, mais on '''a''' toujours très mal '''mangé''' en Angleterre et en Allemagne.
+|source={{w|Julien Green}}, ''Journal 1946-1950 - Le Revenant'',  Plon, 1951 ; réédition Le Livre de Poche, 1975, page 52}}
+#* {{exemple | lang=fr
+ | Il '''mange''' lentement, handicapé par une mastication pénible, ne dit pas un mot, rit niaisement de loin en loin.
+ | source={{Citation/Victor Méric/Les Compagnons de l’Escopette/1930|213}}}}
+#* {{exemple | lang=fr
+ | J’avais neuf ans et j’attrapais avec mon frère des sauterelles que nous faisions griller dans le jardin pour les '''manger'''.
+ | source={{Citation/Francis Carco/Maman Petitdoigt/1922}}}}
+#* {{exemple | lang=fr
+ | Il '''mangea''' quelques mûres qu’il trouva dans les ronces de la lisière, après quoi il chercha à s’orienter.
+ | source={{w|André Dhôtel}}, ''Le Pays où l’on n’arrive jamais'', 1955}}
+# {{intransitif|fr}} {{par extension}} Prendre un [[repas]].
+#* {{exemple | lang=fr | Ils '''mangent''' et boivent, font ripaille, remuent leurs membres, embrassent les filles, sonnent les cloches, s’emplissent de bruit : rudes bacchanales où l’homme se débride, et qui sont la consécration de la vie naturelle : les puritains ne s’y sont pas trompés. | source={{w|Hippolyte Taine}}, ''Histoire de la littérature anglaise'', volume 1, 1856, page 255}}
+#* {{exemple | lang=fr | Aussi nous ne '''mangions''' pas tous les jours parce qu’il fallait d’abord que le père malade ne manquât de rien. | source={{w|Octave Mirbeau}}, ''{{ws|La Bonne}}'', dans ''Lettres de ma chaumière'', 1885}}
+#* {{exemple | lang=fr | Au bout d’une vingtaine de mètres, il s’arrêta devant un restaurant, une boite à bon marché, et nous invita à entrer avec lui, histoire de '''manger''' et de boire un peu.| source={{w|Henry Miller}}, ''L’Ancien Combattant alcoolique au crâne en planche à lessive'', dans ''Max et les Phagocytes'', traduction par Jean-Claude Lefaure, éditions du Chêne, 1947}}
+#* {{exemple | lang=fr| A midi on '''mange''' tous ensemble sur des grandes tables, c'est Kazimira qui fait la bouffe, de la fricassée de poulet avec des patates. |source=  {{w|Francis Ryck}} & {{w|Marina Edo}}, ''L'Été de Mathieu'', chap. 11, Presses de la Cité, 1991}}
+#* {{exemple|lang=fr|Ma mère était extrêmement pudique. Elle ne prononçait jamais les mots du corps qu’elle renvoyait à leur vulgarité. Par exemple, elle ne disait pas « '''manger''' », mais « déjeuner » ou « dîner ».|source={{w|Emmanuel de Waresquiel}}, ''Voyage autour de mon enfance'', Tallandier, 2022, page 65}}
+# {{figuré|fr}} [[consumer|Consumer]], [[dissiper]] en [[folle]]s [[dépense]]s.
+#* {{exemple | lang=fr | En quelques années il '''a mangé''' tout son patrimoine. - Il '''a mangé''' beaucoup d’argent.}}
+#* {{exemple | lang=fr
+ | Ils vous annoncent d’abord qu’ils sont des « fils de famille » en train de se ruiner ; ils sont à la veille de se voir donner un conseil judiciaire et, quand ils '''auront''' « tout '''mangé''' », ils se feront sauter la cervelle.
+ | source={{w|Valery Larbaud}}, ''Fermina Márquez'', 1911, réédition Le Livre de Poche, page 42}}
+#* {{exemple|lang=fr  |
+Michel '''a mangé''' la dot de sa femme, dont on ne mentionne pas qu’elle était fort mince ; il a même fallu, durant la dernière maladie de Berthe, offrir à Michel des subsides.
+ |source={{w|Marguerite Yourcenar}}, ''Quoi ? L'Éternité'', 1988}}
+# {{figuré|fr}} Consumer [[absorber|en absorbant]], [[ronger|en rongeant]], [[miner|en minant]], [[détruire|en détruisant]] d’[[autre]]s [[chose]]s, en parlant des choses.
+#* {{exemple | lang=fr | Ce poêle '''mange''' bien du charbon. Le soleil '''mange''' les couleurs. La rouille '''mange''' le fer.}}
+# {{familier|fr}} Témoigner une vive hostilité envers quelqu'un.
+#* {{exemple | lang=fr
+ | À l'en croire, il '''mangeait''' du prêtre sans remords.
+ | source=Camille de Cordemoy, ''Au Chili'', 1896}}
+# {{par analogie|fr}} Occuper une grande partie de quelque chose.
+#* {{exemple | lang=fr
+ | Sa bouille ronde '''mange''' la couverture. Lunettes rectangulaires sur yeux rieurs, cheveux poivre et sel brossés en arrière, costume gris pour le sérieux, Claude Allègre se tient le menton.
+ | source={{Lien web |auteur=Vanessa Schneider |url=https://www.lemonde.fr/m-le-mag/article/2018/12/21/claude-allegre-et-le-climat-retour-sur-un-flagrant-deni_5400954_4500055.html |titre=Claude Allègre et le climat : retour sur un flagrant déni |éditeur=''Le Monde'' |en ligne le=21 décembre 2018}}}}
+#* {{exemple | lang=fr
+ | Dans cette ville du cœur de l’Afrique du Sud, les restes de l’extraction minière '''mangent''' le paysage, stigmates d’une industrie en déliquescence.
+ | source={{Lien web |auteur=Adrien Barbier |url=https://www.lemonde.fr/afrique/article/2019/02/18/en-afrique-du-sud-l-industrie-miniere-est-un-dinosaure-en-voie-d-extinction_5425035_3212.html |titre=En Afrique du Sud, l’industrie minière est un « dinosaure en voie d’extinction » |éditeur=''Le Monde'' |en ligne le=18 février 2019}}}}
+#* {{exemple | lang=fr
+ | Un muret éboulé, la rivière, trois planches '''mangées''' de mousse qui esquissent un pont, et c’est déjà la forêt.
+ | source={{Lien web |auteur=Florence Aubenas |url=https://www.lemonde.fr/societe/article/2021/04/30/dans-les-cevennes-sur-les-traces-de-la-femme-des-bois_6078578_3224.html |titre=Dans les Cévennes, sur les traces de la femme des bois |éditeur=''Le Monde'' |en ligne le=30 avril 2021}}}}
+# {{pronl|fr}} Manger les autres qui peuvent nous manger aussi.
+#* {{exemple | lang=fr
+ | Mais de nombreux carnassiers se '''mangent''' entre eux : les loups, par exemple, malgré le proverbe; les taupes aussi, les renards aussi.
+ | source=''Revue zoologique'', Société cuviérienne, 1861, page 438}}
+# {{pronl|fr}} Être [[comestible]].
+#* {{exemple | lang=fr
+ | Elle s’appelle ''Ulva lactoca'' ‘Compos’, dit le lieutenant Lequentrec avec assurance. Une variété de laitue de mer. Mais contrairement à l’''Ulva lactoca'' tout court, elle ne '''se mange''' pas, et on se demande dans ce cas ce qu’elle faisait dans sa bouche.
+ | source=Stéphanie Benson, ''Le diable en vert'', 2002, chapitre 15}}
+# {{pronl|fr}} Être habituellement mangé.
+#* {{exemple | lang=fr
+ | Pendant les repas ou au goûter, votre enfant prend-il de petits aliments qui '''se mangent''' avec les doigts, les mâche-t-il ou les avale-t-il ?
+ | source=Éric Schopler, ‎Margaret D Lansing, ‎Margaret D. Lansing, ''PEP-3 : Profil psycho-éducatif'', 2021, page 32}}
+#* {{exemple | lang=fr
+ | En règle générale, tous les ragoûts quels qu’ils soient '''se mangent''' avec du pain (servi chaud ou réchauffé) ou de la galette, le pain servant à saisir les morceaux de ragoût et à saucer le jus.
+ | source=Annie Hubert, ''Le pain et l’olive : aspects de l’alimentation en Tunisie'', 1984}}
+#* {{exemple | lang=fr
+ | Le ''panis'' est aussi un objet de culture. Il se sème dans la proportion d’un quart de journal par ménage, vers le 15 avril, s’élève à un mètre et demi (4 pieds 1/2), se récolte en septembre, et rend ordinairement dix mesures : il se mange en grains, se met au four après le pain, pour disposer l’écorce à quitter le grain, se porte sur-le-champ sous la meule pour être mondé, se cuit à l’eau, '''se mange''' avec du lait, flatte l’appétit, ne nourrit pas, mais est très-apéritif.
+ | source=Jacques Peuchet, ''Description topographique et statistique de la France'', 1810, page 7}}
+# {{pronl|fr}} {{familier|fr}} Se faire du [[souci]].
+#* {{exemple | lang=fr
+ | Heureusement que la pauvre madame n’est plus là pour se faire du mauvais sang, elle '''se serait mangée'''…
+ | source={{w|François Mauriac}}, ''{{w|Le Mystère Frontenac}}'', 1933, réédition Le Livre de Poche, page 204}}
+# {{figuré|fr}} Être frappé, s’en prendre plein la tête.
+#* {{exemple|lang=fr
+| D’abord, j’ai réussi à le désarmer, et peut-être même que, dans la manœuvre, je lui ai cassé un ou deux doigts mais, quand ses trois compères ont compris ce qui se passait, j’'''ai mangé''' plus qu’à ma faim.
+| source={{w|Henri Lœvenbruck}}, ''Nous rêvions juste de liberté'', Flammarion, 2015}}
+
+==== {{S|synonymes}} ====
+{{(}}
+; ''Mâcher, avaler pour se nourrir (1)''
+* [[bouffer]] {{familier|nocat=1}}
+; ''Prendre un repas (2)''
+* [[becqueter]] {{France|nocat=1}}
+* [[bouffer]] {{familier|nocat=1}}
+* [[daba]] {{Côte d'Ivoire|nocat=1}}
+* [[grailler]] {{France|nocat=1}}
+* [[miamer]]
+* [[damer]] {{argot|nocat=1}}
+* [[s’alimenter]]
+* [[se nourrir]]
+* [[se réfecter]]
+* [[se restaurer]]
+* [[se sustenter]]
+* [[tchoper]]
+{{)}}
+
+==== {{S|quasi-synonymes}} ====
+; ''Manger avec excès'' {{péjoratif|nocat=1}} (1)
+* [[bâfrer]] {{France|nocat=1}}
+* [[ingurgiter]]
+* [[se goinfrer]]
+* [[s’empiffrer]]
+
+==== {{S|antonymes}} ====
+; ''Prendre un repas (2)''
+* [[jeûner]]
+* [[se serrer la ceinture]]
+
+==== {{S|dérivés}} ====
+{{(}}
+* [[avoir mangé de la vache enragée]]
+* [[avoir mangé du lion]]
+* [[avoir mangé son pain blanc]] (avoir été dans un état heureux, agréable, et n’y être plus)
+* [[avoir quelqu’un à manger]]
+* [[bête à manger de l’herbe]]
+* [[bête à manger du foin]]
+* [[col à manger de la tarte]]
+* [[donner à manger]]
+* [[entremanger]]
+* [[entremangerie]]
+* [[être bête à manger de l’avoine]]
+* [[être bête à manger de la paille]]
+* [[être bête à manger du foin]]
+* [[être du pain bien dur à manger]]
+* [[faire à manger]]
+* [[mangé aux mites]]
+* [[mangé aux vers]]
+* [[mange-bourgeons]]
+* [[mange-Canayen]]
+* [[mange-debout]]
+* [[mange-disques]]
+* [[mange-merde]]
+* [[mange-piles]]
+* [[mange-rave]]
+* [[mange-tout]]
+* [[mangeable]]
+* [[mangeaille]]
+* [[mangeailler]]
+* [[mangeoire]]
+* [[mangeotter]]
+* [[manger à jeun]]
+* [[manger à sa faim]]
+* [[manger à s’en faire péter la sous-ventrière]]
+* [[manger à s’en faire péter la souventrière]]
+* [[manger à tous les râteliers]]
+* [[manger avec le loup et pleurer avec le berger]]
+* [[manger avec un lance-pierre]]
+* [[manger bien]] (manger de bonnes choses, d’une nourriture abondante et de bonne qualité)
+* [[manger comme des cochons]]
+* [[manger comme quatre]]
+* [[manger comme cinq]]
+* [[manger comme un chancre]]
+* [[manger comme un cochon]]
+* [[manger comme un loup]]
+* [[manger comme un moineau]]
+* [[manger comme un ogre]]
+* [[manger comme un porc]]
+* [[manger comme une mauviette]]
+* [[manger dans la main de]]
+* [[manger dans les mains de]]
+* [[manger de baisers]]
+* [[manger de caresses]] (faire de grandes caresses)
+* [[manger de la marde]] {{Canada|nocat=1}}
+* [[manger de la vache enragée]]
+* [[manger de toutes ses dents]]
+* [[manger des beignets après la Pentecôte]]
+* [[manger des yeux]] (regarder avidement quelqu’un, quelque chose)
+* [[manger du bout des dents]]
+* [[manger du curé]]
+* [[manger du prêtre]]
+* [[manger du lotus]]
+* [[manger du nègre]]
+* [[manger en juif]]
+* [[manger l’oie]]
+* [[manger l’oreiller]]
+* [[manger la consigne]]
+* [[manger la feuille]]
+* [[manger la feuille de match]]
+* [[manger la grenouille]]
+* [[manger la puck]]
+* [[manger le diable et ses cornes]]
+* [[manger le micro]]
+* [[manger le morceau]]
+* [[manger le mot d’ordre]]
+* [[manger les grillots avec le Tac-Tac]]
+* [[manger les pissenlits par la racine]]
+* [[manger maigre]]
+* [[manger main]], [[manger-main]], [[manger mains]], [[manger-mains]]
+* [[manger sa langue]]
+* [[manger ses croutes]] {{ortho1990}}
+* [[manger ses croûtes]]
+* [[manger ses morts]]
+* [[manger ses mots]] ''(omettre des lettres ou des syllabes en prononçant)''
+* [[manger ses bas]] {{Québec|nocat=1}}
+* [[manger ses quatre sous]]
+* [[manger son argent]]
+* [[manger son bien en herbe]]
+* [[manger son blé en herbe]]
+* [[manger son blé en vert]]
+* [[manger son chapeau]]
+* [[manger son pain à la fumée du rôt]]
+* [[manger son pain blanc]]
+* [[manger son pain blanc le premier]]
+* [[manger son pain noir]]
+* [[manger sur le pouce]]
+* [[manger sur les brouillards du Rhône]]
+* [[manger un clown]]
+* [[manger un morceau]]
+* [[manger un rat]]
+* [[manger un rat mort]]
+* [[manger une balle]]
+* [[manger une bouchée]]
+* [[manger une volée]]
+* [[mangerie]]
+* [[mangeur]]
+* [[mangeure]]
+* [[mangeüre]] {{ortho1990}}
+* [[mangeuse]]
+* [[mangeux]] {{QC|nocat=1}}
+* [[ne pas manger]]
+* [[ne pas manger de ce pain-là]]
+* [[ne valoir pas le pain qu’on mange]]
+* [[pois mange-tout]]
+* [[remanger]]
+* [[salle à manger]]
+* [[se faire manger la cenne]]
+* [[se faire manger la graine]]
+* [[se faire manger la laine sur le dos]]
+* [[se laisser manger]]
+* [[se laisser manger la laine sur le dos]]
+* [[se manger les couilles]]
+* [[se manger les foies]]
+* [[se manger le sang]]
+* [[se manger les sangs]]
+* [[se manger un mur]]
+* [[s’en manger une]]
+* [[si les petits cochons ne le mangent pas]]
+* [[table à manger]]
+{{)}}
+
+==== {{S|phrases}} ====
+{{(}}
+* [[à défaut de grives on mange des merles]]
+* [[à petit manger, bien boire]]
+* [[ça mange pas de pain]]
+* [[ça ne mange pas de pain]]
+* [[ça ne mange pas de pain, ça ne boit pas de vin]]
+* [[celui louer devons, de qui le pain mangeons]]
+* [[faute de grives on mange des merles]]
+* [[il faut manger pour vivre, et non pas vivre pour manger]]
+* [[il faut manger pour vivre, et non vivre pour manger]]
+* Ils n’ont pas de pain, [[qu’ils mangent de la brioche]]
+* [[il y a à boire et à manger]]
+* [[l’appétit vient en mangeant]]
+* [[la petite bête ne mangera pas la grosse]]
+* [[la vengeance est un plat qui se mange froid]]
+* [[la vengeance se mange froide]]
+* [[les gros poissons mangent les petits]]
+* [[les loups ne se mangent pas entre eux]]
+* [[les petites bêtes ne mangent pas les grosses]]
+* [[mangeons les riches]]
+* [[qui se fait brebis, le loup le mange]]
+{{)}}
+
+==== {{S|troponymes}} ====
+{{(}}
+'''Mâcher, avaler pour se nourrir''' (1) :
+* [[avaler]]
+* [[ingérer]]
+* [[ingurgiter]]
+* [[mâcher]]
+* [[mastiquer]]
+* [[s’empiffrer]]
+* [[se bâfrer]]
+* [[se goinfrer]]
+'''Prendre un repas''' (2) :
+* [[déjeuner]]
+* [[dîner]]
+* [[faire bombance]]
+* [[faire bonne chère]]
+* [[faire ripaille]]
+* [[festoyer]]
+* [[pique-niquer]]
+* [[ripailler]]
+* [[se réfecter]]
+* [[souper]]
+{{)}}
+
+==== {{S|apparentés}} ====
+* [[manducateur]]
+* [[manducation]]
+* [[manducatoire]]
+
+==== {{S|vocabulaire}} ====
+* {{voir thésaurus|fr|dames|fourchette|café (établissement)|faim|nourriture|oignon|barbecue|anniversaire|repas|manger|dinosaure|tortue|régime alimentaire|alimentation}}
+
+==== {{S|traductions}} ====
+{{trad-début|Mâcher et avaler un aliment dans le but de se nourrir|1}}
+* {{T|af}} : {{trad+|af|eet}}
+* {{T|agq}} : {{trad|agq|alezə}}
+* {{T|ain}} : {{trad|ain|エ|tr=e}}
+* {{T|akz}} : {{trad|akz|ipa}}
+* {{T|sq}} : {{trad+|sq|ha}}
+* {{T|de}} : {{trad+|de|essen}}, {{trad+|de|fressen}} (quand sujet est un animal)
+* {{T|en}} : {{trad+|en|eat}}
+* {{T|ar}} : {{trad+|ar|أكل|R=ʾakala|dif=أَكَلَ}}
+* {{T|xaa}} : {{trad|xaa|خشا فوجهو}}
+* {{T|arz}} : {{trad|arz|كل|R=kal}}
+* {{T|ary}} : {{trad|ary|کلى|R=kla}}
+* {{T|an}} : {{trad+|an|minchar}}
+* {{T|hy}} : {{trad+|hy|ուտել|tr=utel}}
+* {{T|rup}} : {{trad|rup|mãc}}
+* {{T|az}} : {{trad+|az|yemək}}
+* {{T|bm}} : {{trad-|bm|dun}}
+* {{T|nds}} : {{trad+|nds|eten}}
+* {{T|eu}} : {{trad+|eu|jan}}
+* {{T|be}} : {{trad-|be|есці|tr=jésci}}
+* {{T|bum}} : {{trad|bum|e di}}
+* {{T|bourguignon}} : {{trad|bourguignon|maingé}}, {{trad|bourguignon|migé}}
+* {{T|br}} : {{trad+|br|debriñ}}
+* {{T|bg}} : {{trad+|bg|ям|tr=jam}}
+* {{T|yue}} : {{trad+|yue|食|tr=sik6}}
+* {{T|ca}} : {{trad+|ca|menjar}}
+* {{T|rmq}} : {{trad+|rmq|palimar}}
+* {{T|shy}} : {{trad+|shy|yečča}}
+* {{T|zh}} : {{trad+|zh|吃|R=chī}}, {{trad+|zh|吃饭|R=chīfàn|tradi=吃飯}}
+* {{T|ko}} : {{trad+|ko|먹다|tr=meokda}}, {{trad-|ko|드시다|tr=deusida}} ''(honorifique)'', {{trad+|ko|잡수시다|tr=japsusida}} ''(honorifique)''
+* {{T|kw}} : {{trad-|kw|dybry}}
+* {{T|co}} : {{trad+|co|manghjà}}, {{trad+|co|magnà}}
+* {{T|gcf}} : {{trad|gcf|manjé}}, {{trad|gcf|manj}}, {{trad|gcf|nannan}}
+* {{T|ht}} : {{trad|ht|manje}}
+* {{T|rcf}} : {{trad|rcf|i manz}}
+* {{T|hr}} : {{trad+|hr|jesti}}
+* {{T|dmr}} : {{trad|dmr|gameˈnan}}
+* {{T|da}} : {{trad+|da|æde}}, {{trad+|da|spise}}
+* {{T|es}} : {{trad+|es|comer}}
+* {{T|eo}} : {{trad+|eo|manĝi}}
+* {{T|et}} : {{trad+|et|sööma}}
+* {{T|uve}} : {{trad|uve|kai}}
+* {{T|fo}} : {{trad+|fo|eta}}
+* {{T|fi}} : {{trad+|fi|syödä}}
+* {{T|vls}} : {{trad|vls|binnedokn}}
+* {{T|ksh}} : {{trad|ksh|aachele}}
+* {{T|gd}} : {{trad-|gd|ith}}
+* {{T|ga}} : {{trad-|ga|ith}}
+* {{T|gl}} : {{trad+|gl|comer}}
+* {{T|gallo}} : {{trad|gallo|maunjae}}
+* {{T|gallo-italique de Sicile}} : {{trad|gallo-italique de Sicile|mangè}}
+* {{T|cy}} : {{trad+|cy|bwyta}}
+* {{T|ka}} : {{trad-|ka|ჭამა|tr=č̣ama}}
+* {{T|bbj}} : {{trad|bbj|ffâh}}
+* {{T|got}}&nbsp;: {{trad|got|𐌹𐍄𐌰𐌽|R=itan}}
+* {{T|el}} : {{trad+|el|τρώω|tr=tróo}}, {{trad+|el|τρώγω|tr=trógo}}
+* {{T|grc}} : {{trad|grc|ἔδω|tr=édō}}, {{trad|grc|ἐσθίω|tr=esthíō}}, {{trad|grc|ἔφαγον|tr=éphagon}}, {{trad|grc|τρώγω|tr=trṓgō}}
+* {{T|hak}} : {{trad|hak|食|tr=sid5}}
+* {{T|ha}} : {{trad-|ha|tchi}}
+* {{T|he}} : {{trad+|he|אוכל}}
+* {{T|hbo}} : {{trad|hbo|אכל|dif=אֹכֶל}}
+* {{T|hu}} : {{trad+|hu|eszik}}
+* {{T|io}} : {{trad+|io|manjar}}
+* {{T|id}} : {{trad+|id|makan}}
+* {{T|ia}} : {{trad-|ia|mangiar}}
+* {{T|iu}} : {{trad-|iu|ᓂᕆ-|R=[[niri-]]}}
+* {{T|is}} : {{trad+|is|borða}}, {{trad+|is|éta}}
+* {{T|it}} : {{trad+|it|mangiare}}
+* {{T|ja}} : {{trad+|ja|食べる|tr=taberu}}, {{trad+|ja|食う|tr=kuu}}
+* {{T|jje}} : {{trad|jje|먹다}}
+* {{T|kab}} : {{trad|kab|ečč}}
+* {{T|kk}} : {{trad+|kk|жеу|tr=jew}}
+* {{T|ken}} : {{trad|ken|bɛ́ nyɛ́}}
+* {{T|ki}} : {{trad|ki|kuria}}
+* {{T|kog}} : {{trad|kog|gáhĩ}}, {{trad|kog|záhĩ}}
+* {{T|avk}} : {{trad|avk|estú}}
+* {{T|ldn}} : {{trad|ldn|yod}}
+* {{T|lac}} : {{trad|lac|chiꞌbar}}
+* {{T|la}} : {{trad+|la|edo}}, {{trad-|la|vescor}}, {{trad-|la|manduco}} ''(latin tartif, latin vulgaire)''
+* {{T|lep}} : {{trad|lep|ᰋᰦ}}
+* {{T|lv}} : {{trad+|lv|ēst}}
+* {{T|lt}} : {{trad+|lt|valgyti}}
+* {{T|xlu}} : {{trad|xlu|𒀀𒁺𒈾}}
+* {{T|mk}} : {{trad-|mk|јаде|tr=jade}}, {{trad-|mk|јадење|tr=jadenje}}
+* {{T|ms}} : {{trad+|ms|makan}}
+* {{T|mg}} : {{trad+|mg|mihinana}}, {{trad+|mg|misakafo}}
+* {{T|mt}} : {{trad-|mt|kiel}}
+* {{T|gv}} : {{trad-|gv|ee}}
+* {{T|mcn}} : {{trad|mcn|tìě}}
+* {{T|mn}} : {{trad+|mn|идэх|tr=idekh|tradi=ᠢᠳᠡᠺᠥ}}
+* {{T|mnb}} : {{trad|mnb|fumaa}}
+* {{T|nl}} : {{trad+|nl|eten}}, {{trad+|nl|vreten}} (quand sujet est un animal)
+* {{T|normand}} : {{trad|normand|mogier}}, {{trad|normand|mâqui}}, {{trad|normand|mouogi}}
+* {{T|nb}} : {{trad+|nb|ete}}, {{trad+|nb|spise}}
+* {{T|nn}} : {{trad-|no|eta}}
+* {{T|ngh}} : {{trad|ngh|âi}}
+* {{T|oc}} : {{trad+|oc|manjar}}, {{trad+|oc|minjar}}, {{trad-|oc|comar}}
+* {{T|pln}} : {{trad|pln|kumé}}
+* {{T|fa}} : {{trad+|fa|خوردن|R=khordan}}
+* {{T|ff}} : {{trad|ff|miam}}
+* {{T|pcd}} : {{trad|pcd|minger}}, {{trad|pcd|minger}}, {{trad|pcd|mier}}, {{trad|pcd|minjer}}, {{trad|pcd|mnhier}}, {{trad|pcd|truqher}}, {{trad|pcd|maquer}}
+* {{T|myp}} : {{trad|myp|xohoái}}, {{trad|myp|oho}}, {{trad|myp|xaho}}
+* {{T|plodarisch}} : {{trad|plodarisch|èssn}}
+* {{T|pl}} : {{trad+|pl|jeść}}, {{trad+|pl|jadać}}, {{trad+|pl|zjeść}}, {{trad+|pl|zjadać}}, {{trad+|pl|szamać}}, {{trad+|pl|spożywać}}, {{trad+|pl|spożyć}}, {{trad+|pl|konsumować}}
+* {{T|pt}} : {{trad+|pt|comer}}
+* {{T|ro}} : {{trad+|ro|mânca}}
+* {{T|ru}} : {{trad+|ru|есть|tr=ect'}}, {{trad+|ru|съесть|tr=cect'}}, {{trad+|ru|поесть|tr=pojést}}, {{trad+|ru|кушать|tr=kúšat}}, {{trad+|ru|покушать|tr=pokušatʹ}}, {{trad+|ru|скушать|tr=skušatʹ}}, {{trad+|ru|питаться|tr=pitatʹsâ}}
+* {{T|rsk}} : {{trad|rsk|єсц|tr=jesc}}
+* {{T|se}} : {{trad|se|borrat}}
+* {{T|sms}} : {{trad|sms|poorrâd}}
+* {{T|sa}} : {{trad-|sa|आह्ड़|R=āhṛ}}
+* {{T|sr}} : {{trad+|sr|јести}}
+* {{T|swb}} : {{trad|swb|uɗya}}
+* {{T|zdj}} : {{trad|zdj|hula}}
+* {{T|scn}} : {{trad+|scn|manciari}}, {{trad+|scn|mangiari}}
+* {{T|sk}} : {{trad+|sk|jesť}}
+* {{T|sl}} : {{trad+|sl|jesti}}
+* {{T|fsl}} : [[https://dico.elix-lsf.fr/dictionnaire/manger|voir lien]]
+* {{T|mlv}} : {{trad|mlv|gen}}, {{trad|mlv|big}}
+* {{T|solrésol}} : {{trad|solrésol|dolamisi}}
+* {{T|ses}} : {{trad|ses|ŋaa}}
+* {{T|snk}} : {{trad|snk|nan yige}}
+* {{T|sv}} : {{trad+|sv|äta}}
+* {{T|sw}} : {{trad-|sw|-la}}
+* {{T|tl}} : {{trad+|tl|kain}}, {{trad-|tl|kumain}}, {{trad-|tl|kainin}}
+* talien: magnar
+* {{T|crh}} : {{trad|crh|așamaq}}
+* {{T|cs}} : {{trad+|cs|jíst}}
+* {{T|th}} : {{trad+|th|กิน|tr=gin}}, {{trad+|th|ทาน|tr=taan}}
+* {{T|tourangeau}} : {{trad|tourangeau|migner}}
+* {{T|tsolyáni}} : {{trad|tsolyáni|ssáing}}
+* {{T|tr}} : {{trad+|tr|yemek}}
+* {{T|uk}} : {{trad-|uk|істи|tr=isty}}, {{trad+|uk|їсти}}
+* {{T|vi}} : {{trad+|vi|ăn|tradi=咹}}
+* {{T|wls}} : {{trad|wls|kai}}
+* {{T|wa}} : {{trad+|wa|magnî}}, {{trad+|wa|mindjî}}
+* {{T|wrh}} : {{trad|wrh|dharra}}
+* {{T|wo}} : {{trad+|wo|lekk}}
+* {{T|yo}} : {{trad-|yo|jẹun}}
+* {{T|esu}} : {{trad|esu|nere-}}
+* {{T|dje}} : {{trad|dje|ŋwa}}
+{{trad-fin}}
+
+{{trad-début|Prendre un repas|2}}
+* {{T|de}} : {{trad+|de|essen}}, {{trad+|de|fressen}} (quand sujet est un animal), {{trad+|de|speisen}}
+* {{T|en}} : {{trad+|en|eat}}
+* {{T|ar}} : {{trad+|ar|أكل|R=ʾakala|dif=أَكَلَ}}
+* {{T|arz}} : {{trad|arz|كل|R=kal}}
+* {{T|ary}} : {{trad|ary|کلى|R=kla}}
+* {{T|bm}} : {{trad-|bm|dumuni kɛ}}
+* {{T|br}} : {{trad+|br|debriñ}}
+* {{T|cak}} : {{trad|cak|tej}}
+* {{T|ca}} : {{trad+|ca|menjar}}
+* {{T|zh}} : {{trad+|zh|吃饭|R=chīfàn|tradi=吃飯}}
+* {{T|ko}} : {{trad+|ko|먹다|tr=meogda}}, {{trad+|ko|식사하다|tr=sigsahada}} ''(soutenu)'', {{trad-|ko|드시다|tr=deusida}} ''(honorifique, soutenu)'', {{trad+|ko|잡수시다|tr=japsusida}} ''(honorifique, soutenu)''
+* {{T|gcf}} : {{trad|gcf|manjé}}, {{trad|gcf|manjé}}, {{trad|gcf|nannan}}
+* {{T|da}} : {{trad+|da|spise}}
+* {{T|fi}} : {{trad+|fi|aterioida}}
+* {{T|ja}} : {{trad-|ja|食事する|tr=shokujisuru}}
+* {{T|kk}} : {{trad-|kk|тамақ ішу|tr=tamaq işüw}}
+* {{T|avk}} : {{trad|avk|estú}}
+* {{T|la}} : {{trad-|la|prandeo}} ''(du petit-déjeuner ou déjeuner)'', {{trad-|la|ieiento}} ''(du petit-déjeuner)'', {{trad-|la|iento}} ''(contraction, du petit-déjeuner)''
+* {{T|lv}} : {{trad+|lv|ēst}}
+* {{T|mg}} : {{trad+|mg|misakafo}}
+* {{T|normand}} : {{trad|normand|maungî}}, {{trad|normand|borzâer}}, {{trad|normand|bordâer}}
+* {{T|ngh}} : {{trad|ngh|âi}}
+* {{T|oc}} : {{trad+|oc|manjar}}, {{trad+|oc|minjar}}
+* {{T|fa}} : {{trad-|fa|غذا خوردن|tr=ghiza khordan}}
+* {{T|pcd}} : {{trad|pcd|minjer}}, {{trad|pcd|foaire in rpos d'berbis}}
+* {{T|pl}} :
+* {{T|ru}} : {{trad+|ru|есть|tr=yéct'}}, {{trad+|ru|съесть|tr=cyést'}}
+* {{T|se}} : {{trad|se|reahttadit}}
+* {{T|solrésol}} : {{trad|solrésol|dolamisi}}
+* {{T|ses}} : {{trad|ses|ŋaa}}
+* {{T|cs}} : {{trad+|cs|jíst}}
+* {{T|tsolyáni}} : {{trad|tsolyáni|ssáing}}
+* {{T|tsolyáni}}&nbsp;: {{trad|tsolyáni|ssáing}}
+* {{T|tr}} : {{trad+|tr|yemek}}
+* {{T|wa}} : {{trad+|wa|mindjî}}
+* {{T|dje}} : {{trad|dje|ŋwa}}
+{{trad-fin}}
+
+{{trad-début|Dissiper en folles dépenses|3}}
+* {{T|de}} : {{trad+|de|verzehren}}
+* {{T|en}} : {{trad+|en|eat up}}
+* {{T|ko}} : {{trad-|ko|먹어버리다|tr=meog-eobeolida}}
+* {{T|la}} : {{trad-|la|comedo}}
+* {{T|nl}} : {{trad+|nl|verteren}}
+* {{T|pcd}} : {{trad|pcd|éssilher}}, {{trad|pcd|épàrzin·ner}}, {{trad|pcd|gàrsoulher}}
+* {{T|zdj}} : {{trad|zdj|-la|dif=hula}}
+* {{T|sw}} : {{trad-|sw|la|dif=kula}}
+{{trad-fin}}
+
+===== {{S|traductions à trier}} =====
+{{trad-début}}
+* {{T|de|trier}} : {{trad+|de|genießen}}, {{trad+|de|speisen}}
+* {{T|ang|trier}} : {{trad-|ang|etan}}
+* {{T|eu|trier}} : {{trad+|eu|jan}}
+* {{T|rcf}} : {{trad|rcf|i manz}}
+* {{T|fo|trier}} : {{trad+|fo|eta}}
+* {{T|fy|trier}} : {{trad+|fy|ite}}
+* {{T|gd|trier}} : {{trad-|gd|ith}}
+* {{T|hmn|trier}} : {{trad|hmn|noj}}
+* {{T|inh|trier}} : {{trad|inh|яъа}}
+* {{T|ket|trier}} : {{trad|ket|дивә}}
+* {{T|rw|trier}} : {{trad-|rw|rya}} (kurya)
+* {{T|ku|trier}} : {{trad+|ku|xwarin}}
+* {{T|lgg|trier}} : {{trad|lgg|ṇaː}}
+* {{T|lua|trier}} : {{trad|lua|kudia}}
+* {{T|mak|trier}} : {{trad|mak|ᨂ ᨙᨑ}}
+* {{T|ms|trier}} : {{trad+|ms|makan}}
+* {{T|yua|trier}} : {{trad|yua|hanal}}, {{trad|yua|hantik}}
+* {{T|nus|trier}} : {{trad|nus|čam}}
+* {{T|nl|trier}} : {{trad+|nl|bikken}}, {{trad+|nl|gebruiken}}, {{trad+|nl|nuttigen}}
+* {{T|niv|trier}} : {{trad|niv|инь}}
+* {{T|pap|trier}} : {{trad|pap|kome}}
+* {{T|ro|trier}} : {{trad+|ro|mînca}}
+* {{T|ses|trier}} : {{trad|ses|ɲɛmti}}
+* {{T|srb|trier}} : {{trad|srb|ʒum}}
+* {{T|srn|trier}} : {{trad|srn|nyan}}
+* {{T|vi|trier}} : {{trad+|vi|ăn}}
+* {{T|wnk}} : {{trad|wnk|angu}}
+* {{T|zu|trier}} : {{trad+|zu|ukudla}}
+{{trad-fin}}
+
+=== {{S|nom|fr}} ===
+{{fr-rég|mɑ̃.ʒe}}
+'''manger''' {{pron|mɑ̃.ʒe|fr}} {{m}}
+# Ce qu’on [[#Verbe|mange]], ce dont on se [[nourrir|nourrit]].
+#* {{exemple|lang=fr|Et, pendant ce temps, la vieille allumait un joli feu clair de gousses de fèves sèches qui éclairait toute la maison, afin de réjouir les petits membres du nouveau venu par une douce chaleur, et de lui préparer une excellente bouillie de fèves où elle délaya une cuillerée de miel qui en fit un '''manger''' délicieux.|source={{w|Charles Nodier}}, ''Trésor des Fèves et Fleur des Pois'', 1833}}
+#* {{exemple | lang=fr
+ | La troisième crêpe est rissolée, et Mattia avance la main, mais Capi pousse un formidable jappement ; il réclame son tour, et comme c’est justice, Mattia lui offre la crêpe au grand scandale de mère Barberin, qui a pour les bêtes l’indifférence des gens de la campagne, et qui ne comprend pas qu’on donne à un chien « un '''manger''' de chrétien. »
+ | source=Hector Malot, ''{{ws|Sans famille/Dentu, 1887/Texte entier|Sans famille}}'', 1878}}
+#* ''— C’est rien bon, mon vieux ! ai-je exhalé rayonnante.<br
+/>Alors lui, parti dans les grandeurs, millionnaire, reprend :<br
+/>— Hein ? c’est pas du '''manger''' d’ouvrier !'' {{source|{{w|Léon Frapié}}, ''{{ws|La maternelle/Texte entier|La maternelle}}'', Librairie Universelle, 1908}}
+#* {{exemple | lang=fr
+ | La facteur se hâte de rentrer pour le '''manger''' de midi.
+ | source={{w|Roger Martin du Gard}}, ''Vieille France'', Gallimard, 1933 ; réédition Le Livre de Poche, page 92}}
+#* {{exemple|lang=fr|À toute heure du jour, des équipes d’ouvriers vont et viennent le long des cafés au front bas où l’on peut « apporter son '''manger''' », laisser ses gosses « pour une heure », et dormir parfois sans consommer.|source={{w|Léon-Paul Fargue}}, ''Le Piéton de Paris'', Gallimard, 1939}}
+#* {{exemple | lang=fr
+ | Le '''manger''' est un territoire que nous traversons notre vie durant, et que nous ne quittons jamais. Il nous arrive d’y découvrir de nouvelles régions, au-delà des frontières que nous nous étions tracées, mais nous aimons revenir chez nous pour y retrouver saveurs, noms et souvenirs d’antan.
+ | source={{w|Françoise Vergès}}, ''À vos mangues !'', traduction de Dominique Malaquais, dans ''Politique africaine'', 2005/4, {{n°|100}}, page 317}}
+# {{familier|fr}} Fait de se nourrir.
+#* {{exemple | lang=fr | Il en perd le boire et le '''manger'''.}}
+
+==== {{S|dérivés}} ====
+* [[blanc-manger]]
+* [[en oublier le boire et le manger]]
+* [[garde-manger]]
+* [[perdre le boire et le manger]]
+
+==== {{S|traductions}} ====
+{{trad-début}}
+* {{T|de}} : {{trad+|de|Essen|n}}
+* {{T|en}} : {{trad+|en|food}}
+* {{T|ar}} : {{trad-|ar|تناول الطعام}}, {{trad+|ar|طَعَام}}
+* {{T|ht}} : {{trad|ht|manje}}
+* {{T|da}} : {{trad+|da|spise|c}}, {{trad+|da|mad|c}}
+* {{T|fo}} : {{trad+|fo|matur}}, {{trad-|fo|føði}}
+* {{T|fi}} : {{trad+|fi|ruoka}}
+* {{T|hbo}} : {{trad|hbo|אכל|dif=אֹכֶל}}
+* {{T|it}} : {{trad+|it|mangiare}}
+* {{T|nl}} : {{trad+|nl|eten|n}}
+* {{T|oc}} : {{trad+|oc|manjar}}
+* {{T|wa}} : {{trad+|wa|magnî|m}}, {{trad+|wa|mindjî}}, {{trad+|wa|amagnî|m}}
+{{trad-fin}}
+
+=== {{S|prononciation}} ===
+* {{pron|mɑ̃.ʒe|fr}}
+** {{écouter|lang=fr|France (Paris)|mɑ̃ː.ˈʒe|audio=Fr-manger-fr-FR-Paris.ogg}}
+** {{écouter|lang=fr|France <!-- précisez svp la ville ou la région -->|mɑ̃.ʒe|audio=Fr-manger.ogg}}
+* {{CA|nocat=1}} {{pron|mã.ʒe|fr}}
+* {{écouter||mɑ̃.ʒe|lang=fr|audio=LL-Q150 (fra)-Guilhelma-manger.wav}}
+* {{écouter|lang=fr|France|audio=LL-Q150 (fra)-Roll-Morton-manger.wav}}
+* {{écouter|lang=fr|France (Massy)|audio=LL-Q150 (fra)-X-Javier-manger.wav}}
+* {{écouter|lang=fr|France (Paris)|audio=LL-Q150 (fra)-GrandCelinien-manger.wav}}
+* {{écouter|lang=fr|Suisse (Genève)|audio=LL-Q150 (fra)-Nattes à chat-manger.wav}}
+* {{écouter|lang=fr|France (Toulouse)|audio=LL-Q150 (fra)-Lepticed7-manger.wav}}
+* {{écouter|lang=fr|France (Muntzenheim)|audio=LL-Q150 (fra)-0x010C-manger.wav}}
+* {{écouter|lang=fr|France (Vosges)|audio=LL-Q150 (fra)-Penegal-manger.wav}}
+* {{écouter|lang=fr|France (Vosges)|audio=LL-Q150 (fra)-Poslovitch-manger.wav}}
+* {{écouter|lang=fr|France (Lyon)||audio=LL-Q150 (fra)-WikiLucas00-manger.wav}}
+* {{écouter|lang=fr|France (Brétigny-sur-Orge)||audio=LL-Q150 (fra)-Pamputt-manger.wav}}
+* {{écouter|lang=fr|France (Paris)||audio=LL-Q150 (fra)-Ash Crow-manger.wav}}
+* {{écouter|lang=fr|||audio=LL-Q150 (fra)-Madehub-manger.wav}}
+* {{écouter|lang=fr|France (Lyon)||audio=LL-Q150 (fra)-Lyokoï-manger.wav}}
+* {{écouter|lang=fr|France (Hérault)||audio=LL-Q150 (fra)-T. Le Berre-manger.wav}}
+* {{écouter|lang=fr|Suisse (Lausanne)||audio=LL-Q150 (fra)-Eihel-manger.wav}}
+* {{écouter|lang=fr|||audio=LL-Q150 (fra)-Kaderousse-manger.wav}}
+* {{écouter|lang=fr|France (Metz)||audio=LL-Q150 (fra)-val (Eavq)-manger.wav}}
+* {{écouter|lang=fr|Suisse (canton du Valais)||audio=LL-Q150 (fra)-DSwissK-manger.wav}}
+* {{écouter|lang=fr|France||audio=LL-Q150 (fra)-Mecanautes-manger.wav}}
+* {{écouter|lang=fr|France (Lyon)||audio=LL-Q150 (fra)-Loizbec-manger.wav}}
+* {{écouter|lang=fr|France||audio=LL-Q150 (fra)-Julien Baley-manger.wav}}
+* {{écouter|lang=fr|||audio=LL-Q150 (fra)-Fabe56-manger.wav}}
+* {{écouter|canton du Valais (Suisse)||lang=fr|audio=LL-Q150 (fra)-Vampiro (ClasseNoes)-manger.wav}}
+* {{écouter|Mulhouse (France)||lang=fr|audio=LL-Q150 (fra)-Mathieu Kappler-manger.wav}}
+* {{écouter|||lang=fr|audio=LL-Q150 (fra)-Sagnamadr-manger.wav}}
+* {{écouter|Grenoble (France)||lang=fr|audio=LL-Q150 (fra)-Opsylac-manger.wav}}
+* {{écouter|Vosges (France)||lang=fr|audio=LL-Q150 (fra)-LoquaxFR-manger.wav}}
+* {{écouter|Canet-en-Roussillon (France)|mɑ̃.ʒe|lang=fr|audio=LL-Q150 (fra)-Mathias G. (BiblioCanet66)-manger.wav}}
+* {{écouter|Perpignan (France)|mɑ̃.ʒe|lang=fr|audio=LL-Q150 (fra)-Laszlo Cárdenas (Culex)-manger.wav}}
+* {{écouter|Courmayeur (Italie)||niveau=moyen|lang=fr|audio=LL-Q150 (fra)-XANA000-manger.wav}}
+* {{écouter|Vendée (France)||lang=fr|audio=LL-Q150 (fra)-Sartus85-manger.wav}}
+
+=== {{S|anagrammes}} ===
+{{voir anagrammes|fr}}
+
+=== {{S|voir aussi}} ===
+* {{Le Dico des Ados}}
+
+=== {{S|références}} ===
+* {{R:DAF8}}
+
+[[Catégorie:Verbes inergatifs en français]]
+
+== {{langue|en}} ==
+=== {{S|étymologie}} ===
+: De l’{{étyl|fro|en|mot=mangeoire}}, ''[[manjoire#ang|manjoire]]'', dérivé de ''[[mangier#fro|mangier]]'' (« [[#fr|manger]] »).
+
+=== {{S|nom|en}} ===
+{{en-nom-rég|ˈmeɪn.d͡ʒə|ˈmeɪn.d͡ʒɚ}}
+[[Fichier:Biyaire agneas.jpg|thumb|'''Manger'''.]]
+'''manger''' {{pron|ˈmeɪn.d͡ʒə(ɹ)|en}} {{UK|nocat=1}}, {{pron|ˈmeɪn.d͡ʒɚ|en}} {{US|nocat=1}}
+# [[mangeoire#fr|Mangeoire]], [[crèche]].
+#* {{exemple|lang=en}}
+
+==== {{S|dérivés}} ====
+* [[dog in the manger]]
+
+=== {{S|prononciation}} ===
+* {{pron|ˈmeɪn.d͡ʒə(ɹ)|en}} {{UK|nocat=1}}, {{AU|nocat=1}}
+** {{écouter|lang=en|Royaume Uni <!-- précisez svp la ville ou la région -->|ˈmeɪn.d͡ʒə|audio=En-uk-manger.ogg}}
+** {{écouter|{{AU|nocat=1}}|ˈmeɪn.d͡ʒə|lang=en|audio=En-au-manger.ogg}}
+* {{pron|ˈmeɪn.d͡ʒɚ|en}} {{US|nocat=1}}
+
+=== {{S|anagrammes}} ===
+{{voir anagrammes|en}}
+
+=== {{S|références}} ===
+* {{Source-wikt|en|manger|15387692}}
+
+== {{langue|gallo-italique de Sicile}} ==
+=== {{S|verbe|gallo-italique de Sicile|flexion}} ===
+'''manger''' {{phon||gallo-italique de Sicile}} {{Roccella}}
+# ''Forme euphonique du verbe'' {{lien|mangè|gallo-italique de Sicile}}.
+#* {{exemple|lang=gallo-italique de Sicile}}
+
+== {{langue|frm}} ==
+=== {{S|étymologie}} ===
+: De l’{{étyl|fro|frm|mot=mangier}}, issu du {{étyl|la|fr|mot=manducare|sens=mâcher}}, et « manger » en latin populaire, lui-même issu de ''{{lien|mandere|la}}'' (« manger »).
+
+=== {{S|verbe|frm}} ===
+'''manger''' {{pron-recons||frm}}
+# [[#fr|Manger]].
+
+=== {{S|nom|frm}} ===
+'''manger''' {{pron-recons||frm}} {{m}}
+# [[nourriture|Nourriture]].
+
+==== {{S|vocabulaire}} ====
+* [[boyre#frm|boyre]], [[boire#frm|boire]]
+
+=== {{S|références}} ===
+* {{Source-wikt|en|manger|15387692}}

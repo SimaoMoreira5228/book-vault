@@ -1,5 +1,6 @@
 pub mod dictionary;
 pub mod segment;
+pub mod wiktionary_parser;
 
 use axum::Json;
 use axum::Router;
@@ -93,6 +94,7 @@ pub struct LookupRequest {
 	pub word: String,
 	pub context: String,
 	pub language: String,
+	pub definition_language: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -131,8 +133,12 @@ async fn lookup_word(
 		return Err(AppError::BadRequest("Empty word".into()));
 	}
 
+	let definition_language = req.definition_language.clone().unwrap_or_else(|| req.language.clone());
+	let word_lang = &req.language[..req.language.len().min(2)];
+	let def_lang = &definition_language[..definition_language.len().min(2)];
+
 	let context_hash = blake3::hash(req.context.as_bytes()).to_hex().to_string();
-	let cache_key = format!("{}:{}:{}", word, req.language, &context_hash[..16]);
+	let cache_key = format!("{}:{}:{}:{}", word, word_lang, def_lang, &context_hash[..16]);
 
 	let existing = crate::db::entities::dictionary_cache::Entity::find()
 		.filter(
@@ -156,14 +162,15 @@ async fn lookup_word(
 		word: word.clone(),
 		context: req.context.clone(),
 		language: req.language.clone(),
+		definition_language: definition_language.clone(),
 	};
 
-	let entries = if let Some(provider) = state.dictionary_service.find_provider(&req.language) {
+	let entries = if let Some(provider) = state.dictionary_service.find_provider(word_lang) {
 		provider.lookup(&query).await.unwrap_or_default()
 	} else {
 		vec![dictionary::DictionaryEntry {
 			word: word.clone(),
-			lemma: segment::lemmatize(&word, &req.language),
+			lemma: segment::lemmatize(&word, word_lang),
 			sense_label: None,
 			sense_id: None,
 			part_of_speech: None,
@@ -175,8 +182,8 @@ async fn lookup_word(
 	};
 
 	let translation = if let Some(ref translator) = state.dictionary_service.translator {
-		if req.language != "en" {
-			translator.translate(&req.context, &req.language, "en").await.unwrap_or(None)
+		if def_lang != "en" {
+			translator.translate(&req.context, word_lang, def_lang).await.unwrap_or(None)
 		} else {
 			None
 		}

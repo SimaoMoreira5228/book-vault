@@ -613,7 +613,12 @@ export const api = {
 					: "";
 			return request<Array<Record<string, unknown>>>("GET", `/api/v1/vocabulary${q}`);
 		},
-		lookup: (data: { word: string; context: string; language: string }) =>
+		lookup: (data: {
+			word: string;
+			context: string;
+			language: string;
+			definition_language?: string;
+		}) =>
 			request<{ entries: Array<Record<string, unknown>>; cached: boolean }>(
 				"POST",
 				"/api/v1/vocabulary/lookup",

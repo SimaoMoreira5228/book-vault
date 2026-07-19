@@ -1,0 +1,174 @@
+={{-pt-}}=
+==Substantivo==
+{{flex.pt|ms=banco|mp=bancos}}
+{{paroxítona|ban|co}}, {{gramática|m}}
+# [[móvel]] para [[sentar]], sem [[encosto]] se [[ser|for]] [[individual]], em [[madeira]], [[cortiça]], [[plástico]], [[vime]] ou [[ferro]]; [[mocho]]; [[escabelo]]:
+#* ''"No '''banco''' de cortiça, sob as arvores, miss Sarah costurava preguiçosamente"'' – [[w:Eça de Queirós|Eça de Queirós]], [[s:Os Maias/Livro II/V|''Os Maias'']], livro II, cap. V
+# [[tábua]] ou pedra [[longo|longas]], [[assente]]s em dois ou [[quatro]] [[pé]]s, com ou sem [[encosto]], [[onde]] se [[poder|podem]] [[sentar]] [[vários|várias]] [[pessoa]]s:
+#* ''"De me ter deixado, a mim, num '''banco''' de carro eléctrico,"'' – [[w:Álvaro de Campos|Álvaro de Campos]], [[s:Sou Eu|''Sou Eu'']]
+# nos [[barco]]s [[pequeno]]s, [[tábua]] onde se [[sentar|sentam]] os [[ocupante]]s
+# {{escopo|pt|Náutica}} [[faixa]] de [[areia]] à [[superfície]] da [[água]]; [[baixio]]:
+#* ''"... adivinhava-se que havia à flor da água alguns '''bancos''' onde os penachos de escuma caíam com graça"'' – [[w:Victor Hugo|Victor Hugo]], [[s:Os Trabalhadores do Mar/Parte II/Livro I|''Os Trabalhadores do Mar'']], parte II, livro I (tradução de [[w:Machado de Assis|Machado de Assis]])
+# [[espécie]] de [[mesa]] sobre que [[trabalhar|trabalham]] certos [[artífice]]s, como os [[carpinteiro]]s; [[bancada]]; [[banca]]
+# {{escopo|pt|Medicina}} [[setor]] [[hospitalar]] permanentemente aberto, onde são [[atender|atendidos]] os [[caso]]s [[urgente]]s
+# [[instituição]] [[financeiro|financeira]] para [[depósito]]s, [[aplicação|aplicações]], [[guarda]] de [[dinheiro]] e [[valor]]es; em seus [[domínio]]s são efetuadas as mais [[variado|variadas]] [[modalidade]]s de [[atividade]]s [[financeiro|financeiras]]:
+#* ''"A farmácia faliu, é verdade; o dono fez-se banqueiro, e o '''banco''' prospera."'' – [[w:Machado de Assis|Machado de Assis]], [[s:Dom Casmurro/CXXXIV|Dom Casmurro, cap. CXXXIV]]
+# {{escopo2|por extensão}} qualquer [[instituição]] que [[guardar|guarde]], [[preservar|preserve]] e [[disponibilizar|disponibilize]] [[produto]]s [[biológico]]s ou [[órgão]]s [[humano]]s, nomeadamente [[sangue]], [[esperma]], [[óvulo]]s, [[rim|rins]], [[coração|corações]] e [[outro]]s:
+#* ''A cirurgia só foi possível porque o '''banco''' de sangue tinha o meu tipo.''
+# {{escopo|pt|Informática}} [[banco de dados]]
+#* ''Será necessário inserir estes registros no '''banco''' para que o programa funcione.''
+# {{escopo|pt|Náutica}} conjunto de peixes em [[cardume]] que nadam na superfície das águas
+
+===Expressões===
+* '''[[banco comercial]]''': 
+* '''[[banco de dados]]''': 
+* '''[[banco de esperma]]''': 
+* '''[[banco de óptica]]''': 
+* '''[[banco de órgãos]]''': 
+* '''[[banco de óvulos]]''': 
+* '''[[banco de sangue]]''': 
+* '''[[nota de banco]]''':
+
+===Tradução===
+{{tradini|De 1 (móvel)}}
+* {{trad|es|banco}}
+* {{trad|en|bench}}
+* {{trad|rap|pepe}}
+{{tradmeio}}
+* {{trad|sv|bänk}}
+* {{trad|wau|sepi}}
+{{tradfim}}
+
+{{tradini|De 7 (instituição financeira)}}
+* {{trad|sq|banka}}
+* {{t|de|Bank|n}}
+* {{trad|ar|مصرف}}
+* {{trad|az|bank}}
+* {{trad|eu|banku}}
+* {{trad|bs|banka}}
+* {{trad|bg|банка}}
+* {{trad|yue|銀行}}
+* {{trad|ca|banc}}
+* {{trad|cs|banka}}
+* {{trad|zh|銀行}}
+* {{trad|ko|은행}}
+* {{trad|hr|banka}}
+* {{trad|da|bank}}
+* {{trad|sk|banka}}
+* {{t|es|banco|m}}
+* {{trad|eo|banko}}
+* {{trad|et|pank}}
+* {{trad|fi|pankki}}
+* {{t|fr|banque|f}}
+* {{trad|gd|banca}}
+* {{trad|cy|banc}}
+* {{trad|ka|ბანკი}}
+* {{trad|el|τράπεζα}}
+* {{trad|gn|viruróga}}
+* {{trad|hak|ngiùn-hòng}}
+* {{trad|he|בנק}}
+* {{trad|hi|बैंक}}
+* {{trad|nl|bank}}
+* {{trad|hu|bank}}
+* {{trad|yi|באנק}}
+* {{trad|id|bank}}
+* {{trad|en|bank}}
+* {{trad|ia|banca}}
+* {{trad|is|banki}}
+{{tradmeio}}
+* {{t|it|banca|f}}
+* {{trad|ja|銀行}} (ぎんこう, ginkō)
+* {{trad|la|argentaria}}
+* {{trad|lv|banka}}
+* {{trad|lt|bankas}}
+* {{trad|lb|bank}}
+* {{trad|mk|банка}}
+* {{trad|ms|bank}}
+* {{trad|mn|банк}}
+* {{trad|roa-nor|banque}}
+* {{trad|nb|bank}}
+* {{trad|nn|bank}}
+* {{trad|fa|بانک}}
+* {{trad|pl|bank}}
+* {{trad|qu|qullqi wasi}}
+* {{trad|ro|bancă}}
+* {{trad|ru|банк}}
+* {{trad|sgs|banks}}
+* {{trad|sr|банка}}
+* {{trad|sh|banka}}
+* {{trad|scn|vancu}}
+* {{trad|sw|benki}}
+* {{trad|sv|bank}}
+* {{trad|tg|бонк}}
+* {{trad|tl|bangko}}
+* {{trad|th|ธนาคาร}}
+* {{trad|ta|வங்கி}}
+* {{trad|cv|банк}}
+* {{trad|to|pangikē}}
+* {{trad|tr|banka}}
+* {{trad|uk|банк}}
+* {{trad|ur|بینک}}
+* {{trad|uz|bank}}
+* {{trad|vi|ngân hàng}}
+* {{trad|wuu|银行}}
+{{tradfim}}
+
+===Verbetes derivados===
+{{verTambém.Ini}}
+* [[bancário]]
+* [[bancocracia]]
+{{verTambém.NovaColuna}}
+* [[banqueiro]]
+* [[multibanco]]
+{{verTambém.Fim}}
+
+=={{etimologia|pt}}==
+: Do germânico ''bank''.
+
+=={{pronúncia|pt}}==
+===Brasil===
+====Paulistana e Caipira====
+* AFI: /ˈbã.ku/
+
+===Portugal===
+* AFI: {{AFI|/ˈbɐ̃.ku/}}
+
+==Ver também==
+===No Wikcionário===
+{{verTambém.Ini}}
+* [[BB]]
+{{verTambém.NovaColuna}}
+* [[BNDES]]
+{{verTambém.NovaColuna}}
+* [[CEF]]
+{{verTambém.Fim}}
+
+===Na Wikipédia===
+* {{interwiki|w|pt|banco}}
+
+==Ligações externas==
+* {{Aulete}}
+* {{Michaelis}}
+* {{DicioAberto}}
+* {{DLPO}}
+* {{Infopédia}}
+* {{PLP}}
+* {{VOLPABL}}
+
+[[Categoria:Substantivo (Português)]]
+[[Categoria:Economia (Português)]]
+
+
+={{-gl-}}=
+==Substantivo==
+{{flex.gl|ms=banco|mp=bancos}}
+{{paroxítona|ban|co|id=gl}}, {{gramática|m|id=gl}}
+# [[#{{pt}}|banco]], móvel corrido para sentar várias pessoas; tábua que serve de assento
+# [[mesa]]
+# {{escopo|gl|Náutica}} [[#{{pt}}|banco]], nos [[barco]]s [[pequeno]]s, [[tábua]] onde se [[sentar|sentam]] os [[ocupante]]s
+# {{escopo|gl|Náutica}} [[#{{pt}}|banco]], baixio de areia
+# [[avalanche]] de terra e pedras
+# [[#{{pt}}|banco]], instituição financeira que guarda dinheiro
+# [[bancada]] de carpinteiro
+
+[[Categoria:Substantivo (Galego)]]
